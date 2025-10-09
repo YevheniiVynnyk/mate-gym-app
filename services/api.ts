@@ -1,0 +1,75 @@
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const API_URL = "http://192.168.0.102:8080/api";
+// const API_URL = "http://localhost:8080/api";
+
+export const api = axios.create({
+    baseURL: API_URL,
+    headers: {
+        "Content-Type": "application/json",
+    },
+    timeout: 10000,
+});
+
+api.interceptors.request.use(
+    async (config) => {
+        try {
+            const token = await AsyncStorage.getItem("access_token");
+            if (token && config.headers) {
+                config.headers.Authorization = `Bearer ${token}`;
+            }
+        } catch (err) {
+            console.warn("Не удалось получить токен:", err);
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
+
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
+
+        if (
+            (error.response?.status === 401 || error.response?.status === 403) &&
+            !originalRequest._retry
+        ) {
+            originalRequest._retry = true;
+
+            try {
+                console.log("🔄 Попытка обновить токен...");
+                const refreshToken = await AsyncStorage.getItem("refresh_token");
+
+                if (refreshToken) {
+                    const { data: tokenData } = await axios.post(
+                        `${API_URL}/auth/refresh`,
+                        { refreshToken },
+                        {
+                            headers: { "Content-Type": "application/json" },
+                        }
+                    );
+
+                    console.log("✅ Токен обновлён");
+
+                    await AsyncStorage.setItem("access_token", tokenData.accessToken);
+                    await AsyncStorage.setItem("refresh_token", tokenData.refreshToken);
+
+                    return api(originalRequest);
+                }
+            } catch (refreshError) {
+                console.error("Ошибка обновления токена:", refreshError);
+                await AsyncStorage.multiRemove([
+                    "access_token",
+                    "refresh_token",
+                    "fittracker_user",
+                ]);
+            }
+        }
+
+        return Promise.reject(error);
+    }
+);
+
+export default api;
