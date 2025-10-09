@@ -7,17 +7,17 @@ const Navbar = () => {
 	const router = useRouter();
 
 	return (
-		<View className="h-16 flex-row items-center justify-between px-3 bg-white border-b border-gray-300">
+		<View className="h-20 flex-row items-center justify-between px-3 bg-white shadow-2xl shadow-black">
 			{/* Логотип и название */}
 			<TouchableOpacity
 				onPress={() => router.push("/dashboard")}
 				className="flex-row items-center"
 			>
 				<Image
-					source={require("../../assets/logo-2.png")}
-					className="w-8 h-8 mr-2"
+					source={require("../../assets/images/logo-2.png")}
+					className="w-12 h-12 mr-2"
 				/>
-				<Text className="text-xl font-bold text-green-500">Mate Gym</Text>
+				<Text className="text-2xl font-bold text-primary shadow-black shadow-2xl">Mate Gym</Text>
 			</TouchableOpacity>
 
 			{/* Иконки */}
@@ -32,7 +32,7 @@ const Navbar = () => {
 
 				<TouchableOpacity onPress={() => router.push("/profile")}>
 					<Image
-						source={require("../../assets/logo-3.png")}
+						source={require("../../assets/images/logo-3.png")}
 						className="w-8 h-8 rounded-full"
 					/>
 				</TouchableOpacity>

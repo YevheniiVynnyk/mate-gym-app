@@ -72,7 +72,7 @@ export default function WelcomeScreen() {
 
 	return (
 		<KeyboardAvoidingView
-			className="flex-1 "
+			className="flex-1"
 		>
 			<View className="flex-1 p-2 justify-center">
 				{/* HEADER */}
@@ -117,7 +117,7 @@ export default function WelcomeScreen() {
 				{/* CARD */}
 				<View className="bg-card rounded-2xl shadow-xl p-4 mt-8 mx-2">
 					<View className="p-2">
-						<Text className="font-semibold tracking-tight text-xl text-center font-sans">Начните прямо сейчас</Text>
+						<Text className="text-2xl font-bold tracking-tight text-center font-sans">Начните прямо сейчас</Text>
 						<Text className="text-muted-foreground text-sm text-center font-sans">
 							Присоединяйтесь к тысячам довольных пользователей
 						</Text>
@@ -233,7 +233,7 @@ export default function WelcomeScreen() {
 
 function Feature({icon, title, text}) {
 	return (
-		<View className="flex-1  bg-card rounded-2xl shadow-xl p-3 mx-2 items-center">
+		<View className="flex-1 bg-card rounded-2xl shadow-xl p-3 mx-2 items-center">
 			{icon}
 			<Text className="text-sm font-semibold mt-2">{title}</Text>
 			<Text className="text-xs text-muted-foreground text-center mt-1">
