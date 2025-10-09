@@ -1,5 +1,4 @@
 import React from "react";
-import {View} from "react-native";
 import {useRouter} from "expo-router";
 import ClientDashboard from "@/components/dashboard/ClientDashboard";
 
@@ -18,12 +17,10 @@ export default function Dashboard() {
 	};
 
 	return (
-		<View style={{flex: 1, backgroundColor: "#f0f4f8"}}>
 			<ClientDashboard
 				onViewTrainingDays={handleViewTrainingDays}
 				onViewCalendar={handleViewCalendar}
 				onCreateTrainingDay={handleCreateTrainingDay}
 			/>
-		</View>
 	);
 }

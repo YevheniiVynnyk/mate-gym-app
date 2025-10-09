@@ -3,61 +3,91 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useRouter, usePathname } from "expo-router";
 
+type NavItem = {
+	label: string;
+	icon: keyof typeof Feather.glyphMap;
+	path: string;
+	activeColor: string;
+	activeBg: string;
+	description: string; // для понимания логики
+};
+
+// 🎨 Цвета по смыслу:
+// - Главная → нейтральная, спокойная (синевато-серая)
+// - Тренировки → зелёная, энергия, движение
+// - Прогресс → жёлтая/оранжевая, рост, достижения
+// - Планы → голубая, ясность, структура
+const navItems: NavItem[] = [
+	{
+		label: "Главная",
+		icon: "home",
+		path: "/dashboard",
+		activeColor: "#22C55E", // зеленый
+		activeBg: "#DCFCE7", // светло-зеленый
+		description: "спокойствие, дом, стабильность",
+	},
+	{
+		label: "Тренировки",
+		icon: "calendar",
+		path: "/trainingDay/trainingDayView",
+		activeColor: "#22C55E", // зеленый
+		activeBg: "#DCFCE7", // светло-зеленый
+		description: "энергия, здоровье, активность",
+	},
+	{
+		label: "Прогресс",
+		icon: "trending-up",
+		path: "/progress",
+		activeColor: "#22C55E", // зеленый
+		activeBg: "#DCFCE7", // светло-зеленый
+		description: "рост, успех, развитие",
+	},
+	{
+		label: "Планы",
+		icon: "shopping-cart",
+		path: "/trainingPlans",
+		activeColor: "#22C55E", // зеленый
+		activeBg: "#DCFCE7", // светло-зеленый
+		description: "ясность, структура, планирование",
+	},
+];
+
 export default function BottomNavigation() {
 	const router = useRouter();
 	const pathname = usePathname();
 
-	const getColor = (path: string) => (pathname === path ? "#007bff" : "gray");
-
 	return (
-		<View className="flex-row justify-around p-3 bg-white border-t border-gray-300">
-			<TouchableOpacity
-				className="items-center"
-				onPress={() => router.push("/dashboard")}
-			>
-				<Feather name="home" size={24} color={getColor("/dashboard")} />
-				<Text
-					className={`text-xs mt-1 ${pathname === "/dashboard" ? "text-blue-500 font-semibold" : "text-gray-500"}`}
-				>
-					Главная
-				</Text>
-			</TouchableOpacity>
+		<View className="flex-row justify-between items-center bg-white rounded-2xl m-2 p-2">
+			{navItems.map(({ label, icon, path, activeColor, activeBg }) => {
+				const isActive = pathname === path;
 
-			<TouchableOpacity
-				className="items-center"
-				onPress={() => router.push("/trainingDay/trainingDayView")}
-			>
-				<Feather name="calendar" size={24} color={getColor("/trainingDay/trainingDayView")} />
-				<Text
-					className={`text-xs mt-1 ${pathname === "/trainingDay/trainingDayView" ? "text-blue-500 font-semibold" : "text-gray-500"}`}
-				>
-					Тренировки
-				</Text>
-			</TouchableOpacity>
-
-			<TouchableOpacity
-				className="items-center"
-				onPress={() => router.push("/progress")}
-			>
-				<Feather name="trending-up" size={24} color={getColor("/progress")} />
-				<Text
-					className={`text-xs mt-1 ${pathname === "/progress" ? "text-blue-500 font-semibold" : "text-gray-500"}`}
-				>
-					Прогресс
-				</Text>
-			</TouchableOpacity>
-
-			<TouchableOpacity
-				className="items-center"
-				onPress={() => router.push("/trainingPlans")}
-			>
-				<Feather name="shopping-cart" size={24} color={getColor("/trainingPlans")} />
-				<Text
-					className={`text-xs mt-1 ${pathname === "/trainingPlans" ? "text-blue-500 font-semibold" : "text-gray-500"}`}
-				>
-					Планы
-				</Text>
-			</TouchableOpacity>
+				return (
+					<TouchableOpacity
+						key={path}
+						className="flex-1 items-center justify-center rounded-2xl py-2"
+						style={{
+							backgroundColor: isActive ? activeBg : "transparent",
+						}}
+						activeOpacity={0.85}
+						onPress={() => router.push(path)}
+					>
+						<Feather
+							name={icon}
+							size={24}
+							color={isActive ? activeColor : "#9CA3AF"}
+						/>
+						<Text
+							className={`text-xs mt-1 ${isActive ? "font-semibold" : ""}`}
+							style={{
+								color: isActive ? activeColor : "#9CA3AF",
+							}}
+						>
+							{label}
+						</Text>
+					</TouchableOpacity>
+				);
+			})}
 		</View>
+
 	);
 }

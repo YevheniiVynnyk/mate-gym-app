@@ -11,7 +11,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
 	return (
 		<View className="flex-1 bg-background">
 			<Navbar />
-			<View className="flex-1 pb-20">{children}</View>
+			<View className="flex-1 px-6">{children}</View>
 			<BottomNavigation />
 		</View>
 	);

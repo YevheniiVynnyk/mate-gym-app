@@ -38,7 +38,7 @@ export default function ClientDashboard({
 	}, []);
 
 	return (
-		<ScrollView className="flex-1 bg-gray-100 px-4" contentContainerStyle={{ paddingVertical: 16 }}>
+		<ScrollView className="flex-1 px-4" contentContainerStyle={{ paddingVertical: 16 }}>
 			{/* Приветствие */}
 			<View className="bg-white p-4 rounded-xl mb-4">
 				<Text className="text-xl font-bold">
