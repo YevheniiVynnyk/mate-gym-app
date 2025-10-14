@@ -5,21 +5,16 @@ import ClientDashboard from "@/components/dashboard/ClientDashboard";
 export default function Dashboard() {
 	const router = useRouter();
 	const handleViewTrainingDays = () => {
-		router.push("/trainingDays");
-	};
-
-	const handleViewCalendar = () => {
-		router.push("/trainingDays?tab=calendar");
+		router.push("/trainingDay/trainingDayView");
 	};
 
 	const handleCreateTrainingDay = () => {
-		router.push("/trainingDay/create");
+		router.push("/trainingDay/trainingDayForm");
 	};
 
 	return (
 			<ClientDashboard
 				onViewTrainingDays={handleViewTrainingDays}
-				onViewCalendar={handleViewCalendar}
 				onCreateTrainingDay={handleCreateTrainingDay}
 			/>
 	);

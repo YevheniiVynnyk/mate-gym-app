@@ -11,7 +11,7 @@ interface AuthContextType {
 	setUser: React.Dispatch<React.SetStateAction<User | null>>;
 	login: (email: string, password: string) => Promise<void>;
 	logout: () => Promise<void>;
-	register: (email: string, password: string, name: string, userType: 'CLIENT' | 'TRAINER') => Promise<void>;
+	register: (email: string, password: string, name: string, role: string) => Promise<void>;
 	isLoading: boolean;
 	updateUserOnboarding: (data: any) => void;
 	acceptTerms: () => Promise<void>;
@@ -72,7 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		email: string,
 		password: string,
 		login: string,
-		role: 'CLIENT' | 'TRAINER'
+		role: string
 	) => {
 		setIsLoading(true);
 		try {

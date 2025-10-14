@@ -10,7 +10,7 @@ import {
 import { Filter, Search, ShoppingCart } from "lucide-react-native";
 import PlanCard, { TrainingPlan } from "@/components/plans/PlanCard";
 
-const TrainingPlansPage: React.FC = () => {
+const TrainingPlansForm: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEquipment, setSelectedEquipment] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
@@ -134,7 +134,7 @@ const TrainingPlansPage: React.FC = () => {
                       key={filter.id}
                       className={`px-3 py-1.5 rounded-full border m-1 ${
                           selectedEquipment === filter.id
-                              ? "bg-blue-500 border-blue-500"
+                              ? "bg-primary border-primary"
                               : "border-gray-300"
                       }`}
                       onPress={() => toggleEquipment(filter.id)}
@@ -219,4 +219,4 @@ const TrainingPlansPage: React.FC = () => {
   );
 };
 
-export default TrainingPlansPage;
+export default TrainingPlansForm;

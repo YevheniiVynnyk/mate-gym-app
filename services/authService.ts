@@ -9,7 +9,7 @@ export interface SignUpRequest {
   login: string;
   password: string;
   email: string;
-  role: 'ADMIN' | 'TRAINER' | 'CLIENT';
+  role: string;
 }
 
 export interface Token {

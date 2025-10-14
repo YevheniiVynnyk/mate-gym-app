@@ -18,8 +18,9 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "edgeToEdgeEnabled": true
-	},
+      "edgeToEdgeEnabled": true,
+      "package": "com.vynnyk.mategym"
+    },
     "plugins": [
       "expo-router",
       [
@@ -38,6 +39,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "efd86157-7034-4e6a-9c60-d26003e88c77"
+      }
+    },
+    "owner": "yvyn"
   }
 }
