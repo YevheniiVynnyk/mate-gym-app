@@ -7,61 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="change style for Navbar and BottomNavigation">
+    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="refactor: split all app pages into components and hooks">
       <change afterPath="$PROJECT_DIR$/ToDo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/profile/AvatarSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/EmptyState.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/QuickStatsSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/TrainingTimeSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/WeeklyActivitySection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/CalendarModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/DurationModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCalendar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingSearch.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingTimer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/AuthTabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/CustomInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/Feature.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/FeaturesList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useProfile.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useProgress.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useTrainingDay.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useTrainingDays.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useWelcome.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mate-gym-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mate-gym-app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TermsRequiredPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/TermsRequiredPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/trainingDayDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/trainingDayView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/TermsDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/TermsDialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/WelcomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/welcome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/onboarding/WelcomeOnboarding.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/WelcomeOnboarding.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/AuthContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/authService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/authService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,29 +54,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Project/android/mate-gym-app/assets/fonts&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start -c.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start -с.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Project/android/mate-gym-app/assets/fonts",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start -c.executor": "Run",
+    "npm.start -с.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
+    "ts.external.directory.path": "E:\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Project\android\mate-gym-app\assets\fonts" />
@@ -188,7 +138,8 @@
       <workItem from="1760111437742" duration="6231000" />
       <workItem from="1760126845368" duration="132000" />
       <workItem from="1760209955582" duration="3931000" />
-      <workItem from="1760422051693" duration="2521000" />
+      <workItem from="1760422051693" duration="3497000" />
+      <workItem from="1760455284558" duration="358000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -238,11 +189,30 @@
       <option name="project" value="LOCAL" />
       <updated>1760044454763</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor: split all app pages into components and hooks">
+      <option name="closed" value="true" />
+      <created>1760425311936</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1760425311936</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
@@ -250,6 +220,7 @@
     <MESSAGE value="exclude .idea" />
     <MESSAGE value="added fonts" />
     <MESSAGE value="change style for Navbar and BottomNavigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="change style for Navbar and BottomNavigation" />
+    <MESSAGE value="refactor: split all app pages into components and hooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: split all app pages into components and hooks" />
   </component>
 </project>
