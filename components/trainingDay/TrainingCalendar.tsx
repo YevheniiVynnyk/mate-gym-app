@@ -1,41 +1,91 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Calendar } from "react-native-calendars";
+import {FlatList, Text, View} from "react-native";
 import TrainingCard from "./TrainingCard";
+import {Calendar} from "@/components/ui/calendar";
+import {TrainingDay} from "@/types/trainingDay";
 
-export const TrainingCalendar = ({
-									 selectedDate,
-									 setSelectedDate,
-									 trainingDays,
-								 }) => {
-	const selected = selectedDate
-		? trainingDays.filter(
-			(td) => td.date.toISOString().split("T")[0] === selectedDate
-		)
-		: [];
+interface TrainingCalendarProps {
+    selectedDate: string | undefined;
+    setSelectedDate: (date: string) => void;
+    trainingDays: TrainingDay[];
+}
 
-	return (
-		<View>
-			<Calendar
-				onDayPress={(day) => setSelectedDate(day.dateString)}
-				markedDates={{
-					[selectedDate || ""]: { selected: true, selectedColor: "#00adf5" },
-				}}
-			/>
-			{selectedDate && (
-				<View style={{ marginTop: 10 }}>
-					<Text style={{ fontWeight: "bold", fontSize: 18 }}>
-						Тренировки на {selectedDate}
-					</Text>
-					{selected.length > 0 ? (
-						selected.map((td) => <TrainingCard key={td.id} trainingDay={td} />)
-					) : (
-						<Text style={{ textAlign: "center", marginTop: 10 }}>
-							Нет тренировок на эту дату
-						</Text>
-					)}
-				</View>
-			)}
-		</View>
-	);
+export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
+                                                                      selectedDate,
+                                                                      setSelectedDate,
+                                                                      trainingDays,
+                                                                  }) => {
+    // Преобразуем trainingDays для календаря
+    const calendarData = trainingDays.map((td) => ({
+        date: new Date(td.date).toISOString().split("T")[0],
+        status: td.status,
+    }));
+
+    const selectedForDay = selectedDate
+        ? trainingDays.filter(
+            (td) => new Date(td.date).toISOString().split("T")[0] === selectedDate
+        )
+        : [];
+
+    return (
+        <View className="flex-1">
+            <View className="bg-white rounded-lg shadow-2xl p-2">
+                <Text className="text-2xl font-bold text-black text-left px-4 py-2">Календарь тренировок</Text>
+                <Calendar
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                    trainingDays={calendarData}
+                />
+                {/* Легенда */}
+                <View className="px-6 pb-4 mt-4">
+                    <View className="flex flex-row flex-wrap gap-4 text-sm">
+                        {/* Текущая дата */}
+                        <View className="flex flex-row items-center gap-2">
+                            <View className="w-3 h-3 rounded-full border-2 border-green-500"/>
+                            <Text className="text-sm">Сегодня</Text>
+                        </View>
+
+                        {/* Выбраная дата */}
+                        <View className="flex flex-row items-center gap-2">
+                            <View className="w-3 h-3 rounded-full border-2 border-blue-500"/>
+                            <Text className="text-sm">Обрана дата</Text>
+                        </View>
+
+                        {/* Запланировано */}
+                        <View className="flex flex-row items-center gap-2">
+                            <View className="w-3 h-3 rounded-full bg-blue-500"/>
+                            <Text className="text-sm">Запланировано</Text>
+                        </View>
+
+                        {/* Завершено */}
+                        <View className="flex flex-row items-center gap-2">
+                            <View className="w-3 h-3 rounded-full bg-green-500"/>
+                            <Text className="text-sm">Завершено</Text>
+                        </View>
+                    </View>
+                </View>
+
+            </View>
+
+            {selectedDate && (
+                <View className="mt-4 px-4">
+                    <Text className="font-bold text-lg mb-2">
+                        Тренировки на {selectedDate}
+                    </Text>
+
+                    {selectedForDay.length > 0 ? (
+                        <FlatList
+                            data={selectedForDay}
+                            keyExtractor={(trainingDay) => trainingDay.id.toString()}
+                            renderItem={({item}) => <TrainingCard trainingDay={item}/>}
+                        />
+                    ) : (
+                        <Text className="text-center mt-2 text-gray-500">
+                            Нет тренировок на эту дату
+                        </Text>
+                    )}
+                </View>
+            )}
+        </View>
+    );
 };

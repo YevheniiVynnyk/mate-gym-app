@@ -30,7 +30,7 @@ export default function Progress() {
 	if (noData) return <EmptyState/>;
 
 	return (
-		<ScrollView className="flex-1 bg-white px-4 pt-4">
+		<ScrollView className="flex-1 p-4">
 			<View className="flex-row items-center gap-2 mb-4">
 				<TrendingUp size={28} color="#007AFF" />
 				<Text className="text-2xl font-bold">Мой прогресс</Text>

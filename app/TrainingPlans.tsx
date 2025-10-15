@@ -73,7 +73,7 @@ const TrainingPlansPage = () => {
 	});
 
 	return (
-		<ScrollView className="flex-1 bg-gray-50 p-4">
+		<ScrollView className="flex-1 p-4">
 			{/* Заголовок */}
 			<View className="flex-row items-center mb-4 space-x-2">
 				<ShoppingCart color="#007bff" size={28} />
