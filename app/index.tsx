@@ -4,7 +4,7 @@ import Dashboard from "@/app/dashboard";
 import {useAuth} from "@/contexts/AuthContext";
 
 
-export default function App() {
+export default function Index() {
 	const {user} = useAuth();
 
 	if (user) {

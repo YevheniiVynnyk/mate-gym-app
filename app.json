@@ -14,9 +14,7 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "backgroundImage": "./assets/images/logo-3.png"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.vynnyk.mategym"
@@ -26,7 +24,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/logo-3.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
@@ -40,12 +38,12 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
+    "owner": "yvyn",
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "efd86157-7034-4e6a-9c60-d26003e88c77"
+        "projectId": "7d1c6bb3-e572-4919-9da1-7eabfa194fbd"
       }
-    },
-    "owner": "yvyn"
+    }
   }
 }

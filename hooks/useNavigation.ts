@@ -12,7 +12,7 @@ export const useNavigation = () => {
     const toTrainingEdit = (id: string | number) => router.push(`/trainingDay/${id}/edit`);
 
     // Пример для других разделов
-    const toHome = () => router.push("/");
+    const toHome = () => router.push("/app");
     const toDashboard = () => router.push("/dashboard");
     const toProfile = () => router.push("/profile");
     const toProgress = () => router.push("/progress");

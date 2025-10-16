@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"], // <-- шрифт по умолчанию
+        sans: ["Inter_400Regular"]
       },
     },
   },

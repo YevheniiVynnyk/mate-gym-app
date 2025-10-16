@@ -6,15 +6,15 @@ import {TrainingDaysProvider} from "@/contexts/TrainingDaysContext";
 import {SafeAreaView} from "react-native-safe-area-context";
 import AppLayout from "@/components/layout/AppLayout";
 import {ActivityIndicator, View} from "react-native";
-import {useFonts} from "expo-font";
 import "../global.css";
 import * as SplashScreen from 'expo-splash-screen';
-
+import { useFonts, Inter_400Regular, Inter_700Bold } from "@expo-google-fonts/inter";
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
     const [fontsLoaded] = useFonts({
-        Inter: require("../assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf"),
+        Inter_400Regular,
+        Inter_700Bold,
     });
 
     useEffect(() => {
