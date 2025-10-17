@@ -79,7 +79,7 @@ export default function Welcome() {
 				>
 					<View className="p-2">
 						<Text className="text-2xl font-bold tracking-tight text-center font-sans">
-							Начните прямо сейчас
+							Начните прямо сейчас!
 						</Text>
 						<Text className="text-muted-foreground text-sm text-center font-sans">
 							Присоединяйтесь к тысячам довольных пользователей
