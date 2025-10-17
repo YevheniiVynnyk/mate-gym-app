@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { styled } from 'nativewind';
 
 const StyledView = styled(View);
-const StyledText = styled(Text);
+//const StyledText = styled(Text);
 
 const languages = [
     { key: 'ru', name: 'Русский', flag: '🇷🇺' },
