@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, Text, View} from "react-native";
+import {FlatList, ScrollView, Text, View} from "react-native";
 import TrainingCard from "./TrainingCard";
 import {Calendar} from "@/components/ui/calendar";
 import {TrainingDay} from "@/types/trainingDay";
@@ -28,8 +28,9 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
         : [];
 
     return (
-        <View className="flex-1">
-            <View className="bg-white rounded-lg shadow-2xl p-2">
+        <ScrollView className="flex-1"
+        showsVerticalScrollIndicator={false}>
+            <View className="bg-white rounded-lg p-2">
                 <Text className="text-2xl font-bold text-black text-left px-4 py-2">Календарь тренировок</Text>
                 <Calendar
                     selectedDate={selectedDate}
@@ -86,6 +87,6 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
                     )}
                 </View>
             )}
-        </View>
+        </ScrollView>
     );
 };

@@ -98,37 +98,34 @@ const InfoRow = ({
     </View>
 );
 
-const InfoTraining = ({
-                          trainings
-                      }: {
-    trainings: Training[]
-}) => (
-    <View className="mt-2 p-2 rounded-lg bg-gray-100">
-        {trainings.length > 0 &&
-            trainings.map((t) => (
-                <View
-                    key={t.id}
-                    className="flex-row justify-between"
-                >
-                    {/* Название упражнения */}
-                    <Text className="text-sm font-semibold text-gray-700">
-                        {t.exercise.name}
-                    </Text>
+const InfoTraining = ({ trainings }: { trainings: Training[] }) => (
+    <View className="mt-1 p-1 rounded-lg">
+        {trainings.map((t) => (
+            <View key={t.id} className="bg-white rounded-lg p-2 m-1 border border-gray-200">
+                {/* Название упражнения */}
+                <Text className="text-sm font-semibold text-gray-700 mb-1">{t.exercise.name}</Text>
 
-                    {/* Подробности (sets x reps x weight) */}
+                {/* Подходы как плитки */}
+                <View className="flex-row flex-wrap justify-around">
                     {t.trainingDetails.map((d, i) => (
-                        <Text key={i} className="text-xs text-gray-500">
-                            {d.set}x{d.repetition}{d.weight ? ` ${d.weight} кг` : ""}
-                        </Text>
+                        <View
+                            key={i}
+                            className="bg-gray-200 rounded-md p-1"
+                        >
+                            <Text className="text-xs text-gray-700">
+                                {d.set} × {d.repetition} {d.weight ? `× ${d.weight}кг` : ""}
+                            </Text>
+                        </View>
                     ))}
-
-                    {/* Примечания */}
-                    {t.note && (
-                        <Text className="text-xs text-gray-400 italic ml-2">
-                            {t.note}
-                        </Text>
-                    )}
                 </View>
-            ))}
+
+                {/* Примечания */}
+                {t.note && (
+                    <Text className="text-xs text-gray-400 mt-1">
+                        {t.note}
+                    </Text>
+                )}
+            </View>
+        ))}
     </View>
 );
