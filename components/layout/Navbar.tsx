@@ -3,6 +3,8 @@ import {Image, Text, TouchableOpacity, View} from "react-native";
 import {Feather, FontAwesome5} from "@expo/vector-icons";
 import {useNavigation} from "@/hooks/useNavigation";
 
+
+
 const Navbar = () => {
     const router = useNavigation();
 
@@ -15,7 +17,7 @@ const Navbar = () => {
             >
                 <Image
                     source={require("../../assets/images/logo-3.png")}
-                    className="w-12 h-12 mr-2 rounded-2xl"
+                    className="w-14 h-14 rounded-full shadow-2xl mr-2"
                 />
                 <Text className="text-2xl font-bold text-primary shadow-2xl">Mate Gym</Text>
             </TouchableOpacity>

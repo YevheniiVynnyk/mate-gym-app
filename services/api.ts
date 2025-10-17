@@ -5,10 +5,10 @@ const API_URL = "https://mate-gym-api.onrender.com/api";
 
 export const api = axios.create({
     baseURL: API_URL,
-    headers: {
-        "Content-Type": "application/json",
-    },
-    timeout: 10000,
+    //headers: {
+     //   "Content-Type": "application/json",
+    //},
+    timeout: 30000,
 });
 
 api.interceptors.request.use(
@@ -51,7 +51,7 @@ api.interceptors.response.use(
 
                     await AsyncStorage.setItem("access_token", tokenData.accessToken);
                     await AsyncStorage.setItem("refresh_token", tokenData.refreshToken);
-
+                    originalRequest.headers.Authorization = `Bearer ${tokenData.accessToken}`; // <-- ДОБАВЛЕНО
                     return api(originalRequest);
                 }
             } catch (refreshError) {

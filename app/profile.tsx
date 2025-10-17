@@ -24,8 +24,7 @@ export default function Profile() {
 	return (
 		<ScrollView className="flex-1 bg-gray-50 p-4">
 			<View className="flex-row items-center mb-4">
-				<User size={28} color="#007AFF" />
-				<Text className="text-2xl font-bold ml-2">Профиль</Text>
+				<Text className="  text-2xl font-bold text-center">Профиль</Text>
 			</View>
 
 			<AvatarSection avatarUri={avatarUri} pickAvatar={pickAvatar} />
