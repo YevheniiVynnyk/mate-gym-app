@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
-import {trainingDayService} from "@/services/trainingDayService";
-import {QuickStatDTO, statisticsService} from "@/services/statisticsService";
-import {mapFromAPI} from "@/services/mapper/trainingDayMapper";
-import {TrainingDay} from "@/types/trainingDay";
+import { useEffect, useState } from 'react';
+import { trainingDayService } from '@/services/trainingDayService';
+import { QuickStatDTO, statisticsService } from '@/services/statisticsService';
+import { mapFromAPI } from '@/services/mapper/trainingDayMapper';
+import { TrainingDay } from '@/types/trainingDay';
 
 export function useDashboardData() {
     const [trainingDays, setTrainingDays] = useState<TrainingDay[]>([]);
@@ -18,7 +18,7 @@ export function useDashboardData() {
                 const stats = await statisticsService.getQuickStatistics();
                 setQuickStats(stats);
             } catch (e) {
-                console.error("Ошибка загрузки данных", e);
+                console.error('Ошибка загрузки данных', e);
             } finally {
                 setLoading(false);
             }
@@ -27,5 +27,5 @@ export function useDashboardData() {
         fetchData();
     }, []);
 
-    return {trainingDays, quickStats, loading};
+    return { trainingDays, quickStats, loading };
 }

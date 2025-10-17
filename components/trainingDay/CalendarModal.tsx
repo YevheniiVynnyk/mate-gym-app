@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {Modal, Text, TouchableOpacity, View} from "react-native";
-import {Calendar} from "react-native-calendars";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import React, { useState } from 'react';
+import { Modal, Text, TouchableOpacity, View } from 'react-native';
+import { Calendar } from 'react-native-calendars';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-export const CalendarModal = ({visible, onClose, onSelect, selectedDate}: any) => {
+export const CalendarModal = ({ visible, onClose, onSelect, selectedDate }: any) => {
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [tempDate, setTempDate] = useState(selectedDate || new Date());
 
@@ -32,7 +32,7 @@ export const CalendarModal = ({visible, onClose, onSelect, selectedDate}: any) =
                     <Calendar
                         onDayPress={handleDayPress}
                         markedDates={{
-                            [tempDate.toISOString().split("T")[0]]: {selected: true},
+                            [tempDate.toISOString().split('T')[0]]: { selected: true },
                         }}
                     />
                     {showTimePicker && (
@@ -43,10 +43,7 @@ export const CalendarModal = ({visible, onClose, onSelect, selectedDate}: any) =
                             onChange={handleTimeChange}
                         />
                     )}
-                    <TouchableOpacity
-                        onPress={onClose}
-                        className="mt-4 p-3 bg-gray-100 rounded-lg"
-                    >
+                    <TouchableOpacity onPress={onClose} className="mt-4 p-3 bg-gray-100 rounded-lg">
                         <Text className="text-center text-red-500 font-semibold">Закрыть</Text>
                     </TouchableOpacity>
                 </View>

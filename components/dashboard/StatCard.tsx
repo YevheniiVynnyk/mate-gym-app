@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { View, Text } from 'react-native';
 
 export function StatCard({
-                             title,
-                             value,
-                             subtitle,
-                         }: {
+    title,
+    value,
+    subtitle,
+}: {
     title: string;
     value: string;
     subtitle?: string;

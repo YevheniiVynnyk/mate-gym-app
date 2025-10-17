@@ -1,12 +1,12 @@
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_URL = "https://mate-gym-api.onrender.com/api";
+const API_URL = 'https://mate-gym-api.onrender.com/api';
 
 export const api = axios.create({
     baseURL: API_URL,
     //headers: {
-     //   "Content-Type": "application/json",
+    //   "Content-Type": "application/json",
     //},
     timeout: 30000,
 });
@@ -14,16 +14,16 @@ export const api = axios.create({
 api.interceptors.request.use(
     async (config) => {
         try {
-            const token = await AsyncStorage.getItem("access_token");
+            const token = await AsyncStorage.getItem('access_token');
             if (token && config.headers) {
                 config.headers.Authorization = `Bearer ${token}`;
             }
         } catch (err) {
-            console.warn("Не удалось получить токен:", err);
+            console.warn('Не удалось получить токен:', err);
         }
         return config;
     },
-    (error) => Promise.reject(error)
+    (error) => Promise.reject(error),
 );
 
 api.interceptors.response.use(
@@ -38,34 +38,34 @@ api.interceptors.response.use(
             originalRequest._retry = true;
 
             try {
-                console.log("🔄 Попытка обновить токен...");
-                const refreshToken = await AsyncStorage.getItem("refresh_token");
+                console.log('🔄 Попытка обновить токен...');
+                const refreshToken = await AsyncStorage.getItem('refresh_token');
                 console.log(refreshToken);
                 if (refreshToken) {
-                    const {data: tokenData} = await axios.post(
+                    const { data: tokenData } = await axios.post(
                         `${API_URL}/auth/refresh`,
                         refreshToken,
                     );
 
-                    console.log("✅ Токен обновлён");
+                    console.log('✅ Токен обновлён');
 
-                    await AsyncStorage.setItem("access_token", tokenData.accessToken);
-                    await AsyncStorage.setItem("refresh_token", tokenData.refreshToken);
+                    await AsyncStorage.setItem('access_token', tokenData.accessToken);
+                    await AsyncStorage.setItem('refresh_token', tokenData.refreshToken);
                     originalRequest.headers.Authorization = `Bearer ${tokenData.accessToken}`; // <-- ДОБАВЛЕНО
                     return api(originalRequest);
                 }
             } catch (refreshError) {
-                console.error("Ошибка обновления токена:", refreshError);
+                console.error('Ошибка обновления токена:', refreshError);
                 await AsyncStorage.multiRemove([
-                    "access_token",
-                    "refresh_token",
-                    "fittracker_user",
+                    'access_token',
+                    'refresh_token',
+                    'fittracker_user',
                 ]);
             }
         }
 
         return Promise.reject(error);
-    }
+    },
 );
 
 export default api;

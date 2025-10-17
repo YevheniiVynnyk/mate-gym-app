@@ -1,15 +1,15 @@
-import React, {useState} from "react";
-import {Alert, View} from "react-native";
-import {useTrainingDayForm} from "@/hooks/useTrainingDayForm";
-import {useNavigation} from "@/hooks/useNavigation";
-import {Header} from "@/components/trainingDay/Header";
-import {CalendarModal} from "@/components/trainingDay/CalendarModal";
-import {DurationModal} from "@/components/trainingDay/DurationModal";
-import {TrainingInfoSection} from "@/components/trainingDay/TrainingInfoSection";
-import {ExerciseListSection} from "@/components/trainingDay/ExerciseListSection";
-import {SaveButtonsSection} from "@/components/trainingDay/SaveButtonsSection";
+import React, { useState } from 'react';
+import { Alert, View } from 'react-native';
+import { useTrainingDayForm } from '@/hooks/useTrainingDayForm';
+import { useNavigation } from '@/hooks/useNavigation';
+import { Header } from '@/components/trainingDay/Header';
+import { CalendarModal } from '@/components/trainingDay/CalendarModal';
+import { DurationModal } from '@/components/trainingDay/DurationModal';
+import { TrainingInfoSection } from '@/components/trainingDay/TrainingInfoSection';
+import { ExerciseListSection } from '@/components/trainingDay/ExerciseListSection';
+import { SaveButtonsSection } from '@/components/trainingDay/SaveButtonsSection';
 
-export default function TrainingDayForm({isEdit}: { isEdit?: boolean }) {
+export default function TrainingDayForm({ isEdit }: { isEdit?: boolean }) {
     const route = useNavigation();
     const {
         trainingDayName,
@@ -41,7 +41,7 @@ export default function TrainingDayForm({isEdit}: { isEdit?: boolean }) {
     const handleDurationSubmit = () => {
         const duration = parseInt(trainingDayDuration);
         if (isNaN(duration) || duration <= 0) {
-            Alert.alert("Ошибка", "Введите корректное время тренировки");
+            Alert.alert('Ошибка', 'Введите корректное время тренировки');
             return;
         }
         setShowDurationModal(false);
@@ -52,7 +52,7 @@ export default function TrainingDayForm({isEdit}: { isEdit?: boolean }) {
         <View className="flex-1 bg-gray-100">
             <Header
                 onBack={() => route.goBack()}
-                title={isEdit ? "Редактировать тренировку" : "Создать тренировку"}
+                title={isEdit ? 'Редактировать тренировку' : 'Создать тренировку'}
             />
 
             <TrainingInfoSection

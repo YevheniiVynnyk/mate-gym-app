@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { View, Text } from 'react-native';
 
 interface ExerciseTotalProps {
     training: {
@@ -10,20 +10,15 @@ interface ExerciseTotalProps {
 export default function ExerciseTotal({ training }: ExerciseTotalProps) {
     if (!training?.trainingDetails?.length) return null;
 
-    const totalReps = training.trainingDetails.reduce(
-        (sum, set) => sum + (set.repetition || 0),
-        0
-    );
+    const totalReps = training.trainingDetails.reduce((sum, set) => sum + (set.repetition || 0), 0);
     const totalWeight = training.trainingDetails.reduce(
         (sum, set) => sum + (set.repetition || 0) * (set.weight || 0),
-        0
+        0,
     );
 
     return (
         <View className="mt-3">
-            <Text className="text-sm font-semibold text-gray-700 mb-2">
-                Итого по упражнению
-            </Text>
+            <Text className="text-sm font-semibold text-gray-700 mb-2">Итого по упражнению</Text>
 
             <View className="bg-gray-50 border border-gray-200 rounded-xl p-3">
                 <View className="flex-row justify-between mb-1">
