@@ -1,6 +1,5 @@
 import React from "react";
 import {ScrollView, Text, View} from "react-native";
-import {User} from "lucide-react-native";
 import {useProfile} from "@/hooks/useProfile";
 import AvatarSection from "@/components/profile/AvatarSection";
 import UserInfoSection from "@/components/profile/UserInfoSection";
@@ -9,8 +8,8 @@ import PrivacyDialog from "@/components/profile/PrivacyDialog";
 
 export default function Profile() {
 	const {
+		user,
 		loading,
-		avatarUri,
 		pickAvatar,
 		isEditing,
 		setIsEditing,
@@ -24,10 +23,10 @@ export default function Profile() {
 	return (
 		<ScrollView className="flex-1 bg-gray-50 p-4">
 			<View className="flex-row items-center mb-4">
-				<Text className="  text-2xl font-bold text-center">Профиль</Text>
+				<Text className="text-2xl font-bold text-center">Профиль</Text>
 			</View>
 
-			<AvatarSection avatarUri={avatarUri} pickAvatar={pickAvatar} />
+			<AvatarSection user={user} pickAvatar={pickAvatar} loading={loading}/>
 			<UserInfoSection
 				isEditing={isEditing}
 				setIsEditing={setIsEditing}
@@ -35,7 +34,7 @@ export default function Profile() {
 				setFormDataUser={setFormDataUser}
 				handleSaveUser={handleSaveUser}
 			/>
-			<SettingsSection handleLogout={handleLogout} />
+			<SettingsSection handleLogout={handleLogout}/>
 
 			<PrivacyDialog
 				open={isPrivacyDialogOpen}
