@@ -1,40 +1,93 @@
 import React from "react";
-import {Text, TouchableOpacity, View} from "react-native";
-import {Play, StopCircle, Trash2} from "lucide-react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Play, Trash2, Edit3, RotateCcw } from "lucide-react-native";
 
 interface Props {
-	isStarted: boolean;
-	status: string;
+
+	status: "COMPLETED" | "IN_PROGRESS" | string;
 	onStart: () => void;
-	onFinish: () => void;
+	onEdit: () => void;
+	onRepeat: () => void;
 	onDelete: () => void;
 }
 
-export default function TrainingActions({isStarted, status, onStart, onFinish, onDelete}: Props) {
+export default function TrainingActions({
+											status,
+											onStart,
+											onEdit,
+											onRepeat,
+											onDelete,
+										}: Props) {
 	return (
-		<View className="flex-row space-x-2 mb-4">
-			{!isStarted && status !== "COMPLETED" && (
-				<TouchableOpacity
-					className="flex-row items-center bg-green-600 px-3 py-2 rounded-lg"
-					onPress={onStart}>
-					<Play size={16} color="#fff" />
-					<Text className="text-white font-bold ml-2">Начать</Text>
-				</TouchableOpacity>
+		<View className="flex-row justify-around mb-4">
+			{/* === Если тренировка завершена === */}
+			{status === "COMPLETED" && (
+				<>
+					<ActionButton
+						label="Редактировать"
+						icon={<Edit3 size={16} color="#fff" />}
+						color="bg-blue-500"
+						onPress={onEdit}
+					/>
+					<ActionButton
+						label="Повторить"
+						icon={<RotateCcw size={16} color="#fff" />}
+						color="bg-green-600"
+						onPress={onRepeat}
+					/>
+					<ActionButton
+						label="Удалить"
+						icon={<Trash2 size={16} color="#fff" />}
+						color="bg-red-500"
+						onPress={onDelete}
+					/>
+				</>
 			)}
-			{isStarted && (
-				<TouchableOpacity
-					className="flex-row items-center bg-red-600 px-3 py-2 rounded-lg"
-					onPress={onFinish}>
-					<StopCircle size={16} color="#fff" />
-					<Text className="text-white font-bold ml-2">Завершить</Text>
-				</TouchableOpacity>
+
+			{/* === Если тренировка в процессе === */}
+			{(status === "IN_PROGRESS" || status!== "COMPLETED") && (
+				<>
+					<ActionButton
+						label="Начать"
+						icon={<Play size={16} color="#fff" />}
+						color="bg-green-600"
+						onPress={onStart}
+					/>
+					<ActionButton
+						label="Редактировать"
+						icon={<Edit3 size={16} color="#fff" />}
+						color="bg-blue-500"
+						onPress={onEdit}
+					/>
+					<ActionButton
+						label="Удалить"
+						icon={<Trash2 size={16} color="#fff" />}
+						color="bg-red-500"
+						onPress={onDelete}
+					/>
+				</>
 			)}
-			<TouchableOpacity
-				className="flex-row items-center bg-gray-500 px-3 py-2 rounded-lg"
-				onPress={onDelete}>
-				<Trash2 size={16} color="#fff" />
-				<Text className="text-white font-bold ml-2">Удалить</Text>
-			</TouchableOpacity>
 		</View>
 	);
 }
+/** Вложенный компонент кнопки */
+const ActionButton = ({
+						  label,
+						  icon,
+						  color,
+						  onPress,
+					  }: {
+	label: string;
+	icon: React.ReactNode;
+	color: string;
+	onPress: () => void;
+}) => (
+	<TouchableOpacity
+		className={`flex-row items-center ${color} px-3 py-2 rounded-lg shadow-sm`}
+		activeOpacity={0.8}
+		onPress={onPress}
+	>
+		{icon}
+		<Text className="text-white font-semibold ml-2">{label}</Text>
+	</TouchableOpacity>
+);

@@ -1,81 +1,90 @@
 import React from "react";
-import {Text, TouchableOpacity, View} from "react-native";
-import {Feather} from "@expo/vector-icons";
-import {usePathname, useRouter} from "expo-router";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { usePathname } from "expo-router";
+import { useNavigation } from "@/hooks/useNavigation";
 
 type NavItem = {
     label: string;
     icon: keyof typeof Feather.glyphMap;
-    path: string;
+    path: () => void;
+    route: string; // 👈 добавляем реальный путь для сравнения активного состояния
     activeColor: string;
     activeBg: string;
     description: string;
 };
 
-const navItems: NavItem[] = [
-    {
-        label: "Главная",
-        icon: "home",
-        path: "/dashboard",
-        activeColor: "#22C55E",
-        activeBg: "#DCFCE7",
-        description: "спокойствие, дом, стабильность",
-    },
-    {
-        label: "Тренировки",
-        icon: "calendar",
-        path: "/trainingDay/trainingDayView",
-        activeColor: "#22C55E",
-        activeBg: "#DCFCE7",
-        description: "энергия, здоровье, активность",
-    },
-    {
-        label: "Прогресс",
-        icon: "trending-up",
-        path: "/progress",
-        activeColor: "#22C55E",
-        activeBg: "#DCFCE7",
-        description: "рост, успех, развитие",
-    },
-    {
-        label: "Планы",
-        icon: "shopping-cart",
-        path: "/trainingPlans",
-        activeColor: "#22C55E",
-        activeBg: "#DCFCE7",
-        description: "ясность, структура, планирование",
-    },
-];
-
 export default function BottomNavigation() {
-    const router = useRouter();
+    const router = useNavigation();
     const pathname = usePathname();
 
+    const navItems: NavItem[] = [
+        {
+            label: "Главная",
+            icon: "home",
+            path: router.toDashboard,
+            route: "/dashboard",
+            activeColor: "#22C55E",
+            activeBg: "#DCFCE7",
+            description: "спокойствие, дом, стабильность",
+        },
+        {
+            label: "Тренировки",
+            icon: "calendar",
+            path: router.toTrainingList,
+            route: "/trainingDay/trainingDayView",
+            activeColor: "#22C55E",
+            activeBg: "#DCFCE7",
+            description: "энергия, здоровье, активность",
+        },
+        {
+            label: "Прогресс",
+            icon: "trending-up",
+            path: router.toProgress,
+            route: "/progress",
+            activeColor: "#22C55E",
+            activeBg: "#DCFCE7",
+            description: "рост, успех, развитие",
+        },
+        {
+            label: "Планы",
+            icon: "shopping-cart",
+            path: router.toTrainingPlan,
+            route: "/trainingPlans",
+            activeColor: "#22C55E",
+            activeBg: "#DCFCE7",
+            description: "ясность, структура, планирование",
+        },
+    ];
+
     return (
-        <View className="flex-row justify-between items-center bg-white rounded-2xl m-2 p-2">
-            {navItems.map(({label, icon, path, activeColor, activeBg}, index) => {
+        <View className="flex-row justify-between items-center p-2 rounded-t-2xl">
+            {navItems.map(({ label, icon, path, route, activeColor, activeBg }, index) => {
                 const isActive =
-                    pathname === path ||
+                    pathname === route ||
                     ((!pathname || pathname === "/app") && index === 0);
+
                 return (
                     <TouchableOpacity
-                        key={path}
-                        className="flex-1 items-center justify-center rounded-2xl py-2"
+                        key={route}
+                        className="flex-1 m-1 p-3 rounded-2xl items-center justify-center border border-gray-100"
                         style={{
-                            backgroundColor: isActive ? activeBg : "transparent",
+                            backgroundColor: isActive ? activeBg : "#FFF",
                         }}
                         activeOpacity={0.85}
-                        onPress={() => router.push(path)}
+                        onPress={path}
                     >
                         <Feather
                             name={icon}
-                            size={24}
-                            color={isActive ? activeColor : "#9CA3AF"}
+                            size={22}
+                            color={isActive ? activeColor : "#000"}
                         />
                         <Text
-                            className={`text-xs mt-1 ${isActive ? "font-semibold" : ""}`}
+                            className={`text-xs mt-1 ${
+                                isActive ? "font-semibold" : ""
+                            }`}
                             style={{
-                                color: isActive ? activeColor : "#9CA3AF",
+                                color: isActive ? activeColor : "#000",
                             }}
                         >
                             {label}

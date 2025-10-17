@@ -10,7 +10,6 @@ type TrainingCardProps = {
 };
 const TrainingCard: React.FC<TrainingCardProps> = memo(({trainingDay}) => {
     const router = useRouter();
-    const {user} = useAuth();
 
     const handlePress = useCallback(() => {
         router.push(`/trainingDay/${trainingDay.id}`);

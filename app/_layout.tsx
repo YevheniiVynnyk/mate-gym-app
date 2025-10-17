@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {Slot} from "expo-router";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {AuthProvider, useAuth} from "@/contexts/AuthContext";
 import {TrainingDaysProvider} from "@/contexts/TrainingDaysContext";
@@ -8,7 +7,9 @@ import AppLayout from "@/components/layout/AppLayout";
 import {ActivityIndicator, View} from "react-native";
 import "../global.css";
 import * as SplashScreen from 'expo-splash-screen';
-import { useFonts, Inter_400Regular, Inter_700Bold } from "@expo-google-fonts/inter";
+import {Inter_400Regular, Inter_700Bold, useFonts} from "@expo-google-fonts/inter";
+import { Slot } from "expo-router";
+
 const queryClient = new QueryClient();
 
 export default function RootLayout() {

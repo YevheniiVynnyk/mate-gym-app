@@ -21,7 +21,7 @@ export default function Dashboard() {
     }
 
     return (
-        <ScrollView className="flex-1 my-2" showsVerticalScrollIndicator={false}>
+        <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
             {/* Приветствие */}
             <View className="bg-white p-4 rounded-xl mb-4">
                 <Text className="text-xl font-bold">

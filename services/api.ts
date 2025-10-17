@@ -1,7 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// const API_URL = "http://192.168.0.101:8080/api";
 const API_URL = "https://mate-gym-api.onrender.com/api";
 
 export const api = axios.create({
@@ -43,7 +42,7 @@ api.interceptors.response.use(
                 const refreshToken = await AsyncStorage.getItem("refresh_token");
                 console.log(refreshToken);
                 if (refreshToken) {
-                    const { data: tokenData } = await axios.post(
+                    const {data: tokenData} = await axios.post(
                         `${API_URL}/auth/refresh`,
                         refreshToken,
                     );

@@ -7,75 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="refactor: split all app pages into components and hooks">
+    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="refactor: return index.tsx">
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseListSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseTotal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/SaveButtonsSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExercisesList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingInfoSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/OFL.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Black.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-BlackItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-ExtraBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-ExtraBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-ExtraLight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-ExtraLightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-MediumItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-SemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-SemiBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-Thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_18pt-ThinItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Black.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-BlackItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-ExtraBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-ExtraBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-ExtraLight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-ExtraLightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-MediumItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-SemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-SemiBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-Thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_24pt-ThinItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Black.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-BlackItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-ExtraBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-ExtraBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-ExtraLight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-ExtraLightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-MediumItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-SemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-SemiBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-Thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inter/static/Inter_28pt-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingHeader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useNavigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +79,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/Project/android/mate-gym-app&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -217,7 +172,11 @@
       <workItem from="1760597289951" duration="562000" />
       <workItem from="1760611766153" duration="9230000" />
       <workItem from="1760627025697" duration="1691000" />
-      <workItem from="1760646393575" duration="303000" />
+      <workItem from="1760646393575" duration="1778000" />
+      <workItem from="1760682623056" duration="5338000" />
+      <workItem from="1760700171146" duration="324000" />
+      <workItem from="1760700525859" duration="7296000" />
+      <workItem from="1760716529677" duration="6929000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -291,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760556547421</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor: return index.tsx">
+      <option name="closed" value="true" />
+      <created>1760646849081</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1760646849081</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +269,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -315,6 +294,7 @@
     <MESSAGE value="added fonts" />
     <MESSAGE value="change style for Navbar and BottomNavigation" />
     <MESSAGE value="refactor: split all app pages into components and hooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: split all app pages into components and hooks" />
+    <MESSAGE value="refactor: return index.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: return index.tsx" />
   </component>
 </project>

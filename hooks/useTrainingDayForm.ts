@@ -7,14 +7,16 @@ import {mapFromAPI, mapToCreateDTO, mapToUpdateDTO} from "@/services/mapper/trai
 import {createEmptyTraining, updateSetData, updateSetsCount, updateTrainingField} from "@/lib/utils";
 import {Exercise, Training, TrainingDay} from "@/types/trainingDay";
 
+export interface TrainingDayParams {
+    id?: string;
+    clientId?: string;
+    prefilledData?: TrainingDay;
+    selectedDate?: string;
+}
+
 export const useTrainingDayForm = (isEdit?: boolean) => {
     const navigation = useNavigation();
-    const params = useLocalSearchParams<{
-        id?: string;
-        clientId?: string;
-        prefilledData?: TrainingDay;
-        selectedDate?: string
-    }>();
+    const params = useLocalSearchParams() as TrainingDayParams;
     const {id, clientId, prefilledData, selectedDate} = params || {};
 
     const [trainingDayName, setTrainingDayName] = useState(prefilledData?.name || "");
@@ -68,7 +70,7 @@ export const useTrainingDayForm = (isEdit?: boolean) => {
         setFocusNew(true);
     };
 
-    const removeTraining = (trainingId: number) => setTrainings(trainings.filter(t => t.id !== trainingId));
+    const removeTraining = (id: number) => setTrainings(trainings.filter(t => t.id !== id));
 
     const updateExerciseById = (trainingId: number, exercise: Exercise) =>
         setTrainings(updateTrainingField(trainings, trainingId, "exercise", exercise));

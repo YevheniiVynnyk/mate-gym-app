@@ -1,14 +1,14 @@
 import React from "react";
-import {ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Text, TouchableOpacity, View} from "react-native";
 import {useLocalSearchParams} from "expo-router";
 import {useAuth} from "@/contexts/AuthContext";
-import TrainingHeader from "@/components/trainingDay/TrainingHeader";
 import TrainingTimer from "@/components/trainingDay/TrainingTimer";
 import TrainingActions from "@/components/trainingDay/TrainingActions";
 import TrainingStats from "@/components/trainingDay/TrainingStats";
-import ExerciseCard from "@/components/trainingDay/ExerciseCard";
 import {useTrainingDay} from "@/hooks/useTrainingDay";
 import {useNavigation} from "@/hooks/useNavigation";
+import {Header} from "@/components/trainingDay/Header";
+import TrainingExercisesList from "@/components/trainingDay/TrainingExercisesList";
 
 export default function Id() {
     const router = useNavigation();
@@ -31,8 +31,8 @@ export default function Id() {
     }
 
     return (
-        <ScrollView className="flex-1 bg-white p-4">
-            <TrainingHeader title={trainingDay.name} onBack={() => router.goBack()}/>
+        <View className="flex-1">
+            <Header title={trainingDay.name} onBack={() => router.goBack()}/>
 
             {isStarted && <TrainingTimer time={time}/>}
 
@@ -40,18 +40,17 @@ export default function Id() {
                 isStarted={isStarted}
                 status={trainingDay.status}
                 onStart={start}
+                onEdit={() => router.goBack()}
+                onRepeat={() => router.goBack()}
                 onFinish={finish}
                 onDelete={async () => {
                     await remove();
                     router.goBack();
                 }}
             />
-
             <TrainingStats trainingDay={trainingDay}/>
 
-            {trainingDay.trainings.map((training: any, i: number) => (
-                <ExerciseCard key={training.id} index={i} training={training}/>
-            ))}
-        </ScrollView>
+            <TrainingExercisesList trainingDay={trainingDay}/>
+        </View>
     );
 }
