@@ -1,6 +1,6 @@
 import React from "react";
 import Welcome from "@/app/welcome";
-import Dashboard from "@/app/Dashboard";
+import Dashboard from "@/app/dashboard";
 import {useAuth} from "@/contexts/AuthContext";
 
 
