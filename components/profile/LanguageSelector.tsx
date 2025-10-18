@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React, {useState} from "react";
+import {Text, TouchableOpacity, View} from "react-native";
 
 const languages = [
-	{ code: "en", label: "English" },
-	{ code: "ru", label: "Русский" },
-	{ code: "uk", label: "Українська" },
+	{code: "en", label: "English"},
+	{code: "ru", label: "Русский"},
+	{code: "uk", label: "Українська"},
 ];
 
 export default function LanguageSelector() {

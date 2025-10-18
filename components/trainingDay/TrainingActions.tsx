@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import { Play, Trash2, Edit3, RotateCcw } from "lucide-react-native";
+import {Text, TouchableOpacity, View} from "react-native";
+import {Edit3, Play, RotateCcw, Trash2} from "lucide-react-native";
 
 interface Props {
 
@@ -25,19 +25,19 @@ export default function TrainingActions({
 				<>
 					<ActionButton
 						label="Редактировать"
-						icon={<Edit3 size={16} color="#fff" />}
+						icon={<Edit3 size={16} color="#fff"/>}
 						color="bg-blue-500"
 						onPress={onEdit}
 					/>
 					<ActionButton
 						label="Повторить"
-						icon={<RotateCcw size={16} color="#fff" />}
+						icon={<RotateCcw size={16} color="#fff"/>}
 						color="bg-green-600"
 						onPress={onRepeat}
 					/>
 					<ActionButton
 						label="Удалить"
-						icon={<Trash2 size={16} color="#fff" />}
+						icon={<Trash2 size={16} color="#fff"/>}
 						color="bg-red-500"
 						onPress={onDelete}
 					/>
@@ -45,23 +45,23 @@ export default function TrainingActions({
 			)}
 
 			{/* === Если тренировка в процессе === */}
-			{(status === "IN_PROGRESS" || status!== "COMPLETED") && (
+			{(status === "IN_PROGRESS" || status !== "COMPLETED") && (
 				<>
 					<ActionButton
 						label="Начать"
-						icon={<Play size={16} color="#fff" />}
+						icon={<Play size={16} color="#fff"/>}
 						color="bg-green-600"
 						onPress={onStart}
 					/>
 					<ActionButton
 						label="Редактировать"
-						icon={<Edit3 size={16} color="#fff" />}
+						icon={<Edit3 size={16} color="#fff"/>}
 						color="bg-blue-500"
 						onPress={onEdit}
 					/>
 					<ActionButton
 						label="Удалить"
-						icon={<Trash2 size={16} color="#fff" />}
+						icon={<Trash2 size={16} color="#fff"/>}
 						color="bg-red-500"
 						onPress={onDelete}
 					/>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { Search, ShoppingCart } from "lucide-react-native";
-import PlanCard, { TrainingPlan } from "@/components/plans/PlanCard";
+import React, {useState} from "react";
+import {ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {Search, ShoppingCart} from "lucide-react-native";
+import PlanCard, {TrainingPlan} from "@/components/plans/PlanCard";
 
 const TrainingPlansPage = () => {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -50,15 +50,15 @@ const TrainingPlansPage = () => {
 	];
 
 	const equipmentFilters = [
-		{ id: "home", label: "Дом/Улица" },
-		{ id: "basic-gym", label: "Малый зал" },
-		{ id: "full-gym", label: "Полный зал" },
+		{id: "home", label: "Дом/Улица"},
+		{id: "basic-gym", label: "Малый зал"},
+		{id: "full-gym", label: "Полный зал"},
 	];
 
 	const levelFilters = [
-		{ id: "beginner", label: "Начинающий" },
-		{ id: "intermediate", label: "Средний" },
-		{ id: "advanced", label: "Продвинутый" },
+		{id: "beginner", label: "Начинающий"},
+		{id: "intermediate", label: "Средний"},
+		{id: "advanced", label: "Продвинутый"},
 	];
 
 	const filteredPlans = trainingPlans.filter((plan) => {
@@ -76,7 +76,7 @@ const TrainingPlansPage = () => {
 		<ScrollView className="flex-1 p-4">
 			{/* Заголовок */}
 			<View className="flex-row items-center mb-4 space-x-2">
-				<ShoppingCart color="#007bff" size={28} />
+				<ShoppingCart color="#007bff" size={28}/>
 				<View>
 					<Text className="text-xl font-bold text-gray-900">Планы тренировок</Text>
 					<Text className="text-gray-500 text-sm">
@@ -88,7 +88,7 @@ const TrainingPlansPage = () => {
 			{/* Поиск */}
 			<View className="mb-3">
 				<View className="flex-row items-center bg-white border border-gray-300 rounded-lg px-3 py-2">
-					<Search size={18} color="#888" />
+					<Search size={18} color="#888"/>
 					<TextInput
 						className="flex-1 ml-2 text-base text-gray-800"
 						placeholder="Поиск по названию..."
@@ -164,7 +164,7 @@ const TrainingPlansPage = () => {
 
 			{filteredPlans.length === 0 && (
 				<View className="items-center mt-10">
-					<ShoppingCart size={48} color="#999" />
+					<ShoppingCart size={48} color="#999"/>
 					<Text className="text-gray-500 mt-3 text-center">Планы не найдены</Text>
 					<TouchableOpacity
 						className="mt-4 bg-blue-500 px-5 py-2 rounded-lg"

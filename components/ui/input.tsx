@@ -1,11 +1,11 @@
 import React from "react";
-import { TextInput, TextInputProps } from "react-native";
-import { styled } from "nativewind";
+import {TextInput, TextInputProps} from "react-native";
+import {styled} from "nativewind";
 
 const StyledTextInput = styled(TextInput);
 
 const Input = React.forwardRef<TextInput, TextInputProps>(
-	({ className, style, ...props }, ref) => {
+	({className, style, ...props}, ref) => {
 		return (
 			<StyledTextInput
 				ref={ref}
@@ -19,4 +19,4 @@ const Input = React.forwardRef<TextInput, TextInputProps>(
 
 Input.displayName = "Input";
 
-export { Input };
+export {Input};

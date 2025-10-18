@@ -1,6 +1,6 @@
 import React from "react";
-import { TouchableOpacity, Text, ViewStyle, TextStyle } from "react-native";
-import { styled } from "nativewind";
+import {Text, TextStyle, TouchableOpacity, ViewStyle} from "react-native";
+import {styled} from "nativewind";
 
 const StyledTouchable = styled(TouchableOpacity);
 const StyledText = styled(Text);

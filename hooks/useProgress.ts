@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { statisticsService, QuickStatDTO, WeeklyActivityDTO } from "@/services/statisticsService";
-import { BodyDTO, bodyService } from "@/services/bodyService";
+import {useEffect, useState} from "react";
+import {QuickStatDTO, statisticsService, WeeklyActivityDTO} from "@/services/statisticsService";
+import {BodyDTO, bodyService} from "@/services/bodyService";
 
 export const useProgress = () => {
 	const [quickStats, setQuickStats] = useState<QuickStatDTO | null>(null);

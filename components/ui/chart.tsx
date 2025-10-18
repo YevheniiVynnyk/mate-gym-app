@@ -1,12 +1,7 @@
-import React, { createContext, useContext } from "react";
-import { View, ViewProps, Text } from "react-native";
-import { styled } from "nativewind";
-import {
-	VictoryChart,
-	VictoryTooltip,
-	VictoryLegend,
-	VictoryLine,
-} from "victory-native";
+import React, {createContext, useContext} from "react";
+import {View, ViewProps} from "react-native";
+import {styled} from "nativewind";
+import {VictoryChart, VictoryLegend, VictoryTooltip,} from "victory-native";
 
 const StyledView = styled(View);
 
@@ -34,9 +29,9 @@ function useChart() {
 
 export const ChartContainer: React.FC<
 	ViewProps & { config: ChartConfig; children: React.ReactNode }
-> = ({ className, config, children, ...props }) => {
+> = ({className, config, children, ...props}) => {
 	return (
-		<ChartContext.Provider value={{ config }}>
+		<ChartContext.Provider value={{config}}>
 			<StyledView
 				className={`flex justify-center p-4 ${className || ""}`}
 				{...props}
@@ -49,12 +44,12 @@ export const ChartContainer: React.FC<
 
 ChartContainer.displayName = "ChartContainer";
 
-export const ChartTooltip: React.FC<any> = ({ datum }) => {
-	const { config } = useChart();
+export const ChartTooltip: React.FC<any> = ({datum}) => {
+	const {config} = useChart();
 	const configItem = config[datum?.name || ""] || {};
 	return (
 		<VictoryTooltip
-			flyoutStyle={{ fill: configItem.color || "#fff" }}
+			flyoutStyle={{fill: configItem.color || "#fff"}}
 			text={`${configItem.label || datum?.y}`}
 		/>
 	);
@@ -62,14 +57,14 @@ export const ChartTooltip: React.FC<any> = ({ datum }) => {
 
 export const ChartLegend: React.FC<{
 	data: { name: string; symbol: { fill: string } }[];
-}> = ({ data }) => {
+}> = ({data}) => {
 	return (
 		<VictoryLegend
 			orientation="horizontal"
 			gutter={20}
 			data={data}
 			style={{
-				labels: { fontSize: 12 },
+				labels: {fontSize: 12},
 			}}
 		/>
 	);

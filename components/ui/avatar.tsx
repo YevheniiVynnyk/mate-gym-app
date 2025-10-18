@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Image, Text, ViewProps, ImageProps, TextProps } from "react-native";
-import { styled } from "nativewind";
+import {Image, ImageProps, Text, TextProps, View, ViewProps} from "react-native";
+import {styled} from "nativewind";
 
 const StyledView = styled(View);
 const StyledImage = styled(Image);
@@ -10,12 +10,12 @@ type AvatarProps = ViewProps & {
 	size?: number;
 };
 
-const Avatar = React.forwardRef<View, AvatarProps>(({ size = 40, className, style, ...props }, ref) => {
+const Avatar = React.forwardRef<View, AvatarProps>(({size = 40, className, style, ...props}, ref) => {
 	return (
 		<StyledView
 			ref={ref}
 			className={`relative flex items-center justify-center overflow-hidden rounded-full ${className}`}
-			style={[{ width: size, height: size, borderRadius: size / 2 }, style]}
+			style={[{width: size, height: size, borderRadius: size / 2}, style]}
 			{...props}
 		/>
 	);
@@ -26,12 +26,12 @@ type AvatarImageProps = ImageProps & {
 	className?: string;
 };
 
-const AvatarImage = React.forwardRef<Image, AvatarImageProps>(({ className, style, ...props }, ref) => {
+const AvatarImage = React.forwardRef<Image, AvatarImageProps>(({className, style, ...props}, ref) => {
 	return (
 		<StyledImage
 			ref={ref}
 			className={`h-full w-full aspect-square ${className}`}
-			style={[{ resizeMode: "cover" }, style]}
+			style={[{resizeMode: "cover"}, style]}
 			{...props}
 		/>
 	);
@@ -44,7 +44,7 @@ type AvatarFallbackProps = TextProps & {
 };
 
 const AvatarFallback = React.forwardRef<Text, AvatarFallbackProps>(
-	({ label = "?", className, style, ...props }, ref) => {
+	({label = "?", className, style, ...props}, ref) => {
 		return (
 			<StyledView
 				className={`flex items-center justify-center rounded-full bg-gray-300 ${className}`}
@@ -63,4 +63,4 @@ const AvatarFallback = React.forwardRef<Text, AvatarFallbackProps>(
 );
 AvatarFallback.displayName = "AvatarFallback";
 
-export { Avatar, AvatarImage, AvatarFallback };
+export {Avatar, AvatarImage, AvatarFallback};

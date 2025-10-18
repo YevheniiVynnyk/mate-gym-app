@@ -11,46 +11,52 @@ import {Header} from "@/components/trainingDay/Header";
 import TrainingExercisesList from "@/components/trainingDay/TrainingExercisesList";
 
 export default function Id() {
-    const router = useNavigation();
-    const {id} = useLocalSearchParams(); // получаем id из URL
-    const {user} = useAuth();
-    const {trainingDay, isStarted, time, start, finish, remove} = useTrainingDay(Number(id), user?.id);
+	const router = useNavigation();
+	const {id} = useLocalSearchParams(); // получаем id из URL
+	const {user} = useAuth();
+	const {trainingDay, isStarted, time, start, finish, remove} = useTrainingDay(Number(id), user?.id);
 
-    if (!trainingDay) {
-        return (
-            <View className="flex-1 bg-white p-4">
-                <Text className="text-lg text-center mt-6">Тренировка не найдена</Text>
-                <TouchableOpacity
-                    className="bg-blue-500 p-3 rounded-lg mt-4"
-                    onPress={() => router.goBack()}
-                >
-                    <Text className="text-white font-bold">Назад</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
+	if (!trainingDay) {
+		return (
+			<View className="flex-1 bg-white p-4">
+				<Text className="text-lg text-center mt-6">Тренировка не найдена</Text>
+				<TouchableOpacity
+					className="bg-blue-500 p-3 rounded-lg mt-4"
+					onPress={() => router.goBack()}
+				>
+					<Text className="text-white font-bold">Назад</Text>
+				</TouchableOpacity>
+			</View>
+		);
+	}
 
-    return (
-        <View className="flex-1">
-            <Header title={trainingDay.name} onBack={() => router.goBack()}/>
+	return (
+		<View className="flex-1">
+			<Header title={trainingDay.name} onBack={() => router.goBack()}/>
 
-            {isStarted && <TrainingTimer time={time}/>}
+			{isStarted && <TrainingTimer time={time}/>}
 
-            <TrainingActions
-                isStarted={isStarted}
-                status={trainingDay.status}
-                onStart={start}
-                onEdit={() => router.goBack()}
-                onRepeat={() => router.goBack()}
-                onFinish={finish}
-                onDelete={async () => {
-                    await remove();
-                    router.goBack();
-                }}
-            />
-            <TrainingStats trainingDay={trainingDay}/>
+			<TrainingActions
+				// isStarted={isStarted} ToDo доделать
+				status={trainingDay.status}
+				onStart={start}
+				onEdit={() => router.toTrainingEdit({
+					id: trainingDay.id,
+					clientId: user?.id.toString(),
+					selectedDate: new Date().toISOString(),
+					prefilledData: trainingDay,
+				})
+				}
+				onRepeat={() => router.goBack()}
+				// onFinish={finish} ToDo доделать
+				onDelete={async () => {
+					await remove();
+					router.goBack();
+				}}
+			/>
+			<TrainingStats trainingDay={trainingDay}/>
 
-            <TrainingExercisesList trainingDay={trainingDay}/>
-        </View>
-    );
+			<TrainingExercisesList trainingDay={trainingDay}/>
+		</View>
+	);
 }

@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { User } from '@/types/user';
-import { authService } from '@/services/authService';
-import { userService } from '@/services/userService';
-import { fromUserDTO } from "@/services/mapper/userMapper";
-import { tosService } from "@/services/tosService";
+import {User} from '@/types/user';
+import {authService} from '@/services/authService';
+import {userService} from '@/services/userService';
+import {fromUserDTO} from "@/services/mapper/userMapper";
+import {tosService} from "@/services/tosService";
 
 interface AuthContextType {
 	user: User | null;
@@ -19,7 +19,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}) => {
 	const [user, setUser] = useState<User | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -58,7 +58,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	const login = async (login: string, password: string) => {
 		setIsLoading(true);
 		try {
-			const tokenData = await authService.signIn({ login, password });
+			const tokenData = await authService.signIn({login, password});
 			await handleAuthSuccess(tokenData);
 		} catch (error) {
 			console.error('Login failed:', error);
@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	) => {
 		setIsLoading(true);
 		try {
-			const tokenData = await authService.signUp({ login, password, email, role });
+			const tokenData = await authService.signUp({login, password, email, role});
 			await handleAuthSuccess(tokenData);
 		} catch (error) {
 			console.error('Registration failed:', error);
@@ -117,7 +117,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	};
 
 
-
 	const updateUserOnboarding = async (data: any) => {
 		if (user) {
 			const updatedUser = {
@@ -156,7 +155,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	};
 
 	return (
-		<AuthContext.Provider value={{ user, setUser, login, logout, register, isLoading, updateUserOnboarding, acceptTerms }}>
+		<AuthContext.Provider
+			value={{user, setUser, login, logout, register, isLoading, updateUserOnboarding, acceptTerms}}>
 			{children}
 		</AuthContext.Provider>
 	);

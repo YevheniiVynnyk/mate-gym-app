@@ -1,49 +1,49 @@
 {
   "expo": {
-    "name": "mate-gym-app",
-    "slug": "mate-gym-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/logo-3.png",
-    "scheme": "mategymapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "backgroundImage": "./assets/images/logo-3.png"
-      },
-      "edgeToEdgeEnabled": true,
-      "package": "com.vynnyk.mategym"
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/logo-3.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    },
-    "owner": "yvyn",
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "7d1c6bb3-e572-4919-9da1-7eabfa194fbd"
-      }
-    }
+	"name": "mate-gym-app",
+	"slug": "mate-gym-app",
+	"version": "1.0.0",
+	"orientation": "portrait",
+	"icon": "./assets/images/logo-3.png",
+	"scheme": "mategymapp",
+	"userInterfaceStyle": "automatic",
+	"newArchEnabled": true,
+	"ios": {
+	  "supportsTablet": true
+	},
+	"android": {
+	  "adaptiveIcon": {
+		"backgroundColor": "#E6F4FE",
+		"backgroundImage": "./assets/images/logo-3.png"
+	  },
+	  "edgeToEdgeEnabled": true,
+	  "package": "com.vynnyk.mategym"
+	},
+	"plugins": [
+	  "expo-router",
+	  [
+		"expo-splash-screen",
+		{
+		  "image": "./assets/images/logo-3.png",
+		  "imageWidth": 200,
+		  "resizeMode": "contain",
+		  "backgroundColor": "#ffffff",
+		  "dark": {
+			"backgroundColor": "#000000"
+		  }
+		}
+	  ]
+	],
+	"experiments": {
+	  "typedRoutes": true,
+	  "reactCompiler": true
+	},
+	"owner": "yvyn",
+	"extra": {
+	  "router": {},
+	  "eas": {
+		"projectId": "7d1c6bb3-e572-4919-9da1-7eabfa194fbd"
+	  }
+	}
   }
 }

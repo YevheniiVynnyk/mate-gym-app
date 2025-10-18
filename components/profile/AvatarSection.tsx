@@ -1,9 +1,9 @@
-import { Image, Text, TouchableOpacity, View, ActivityIndicator, Modal, Pressable } from "react-native";
-import { Camera, User } from "lucide-react-native";
-import { imageService } from "@/services/imageService";
-import { useEffect, useState } from "react";
+import {ActivityIndicator, Image, Modal, Pressable, Text, TouchableOpacity, View} from "react-native";
+import {Camera, User} from "lucide-react-native";
+import {imageService} from "@/services/imageService";
+import {useEffect, useState} from "react";
 
-export default function AvatarSection({ user, pickAvatar, loading }: any) {
+export default function AvatarSection({user, pickAvatar, loading}: any) {
 	const [avatarUri, setAvatarUri] = useState<string | null>(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,19 +24,19 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
 				>
 					{avatarUri ? (
 						<Image
-							source={{ uri: avatarUri }}
+							source={{uri: avatarUri}}
 							className="w-24 h-24 rounded-full"
 							resizeMode="cover"
 						/>
 					) : (
 						<View className="w-24 h-24 rounded-full bg-gray-200 items-center justify-center">
-							<User size={60} color="#ccc" />
+							<User size={60} color="#ccc"/>
 						</View>
 					)}
 
 					{loading && (
 						<View className="absolute inset-0 items-center justify-center bg-white/50 rounded-full">
-							<ActivityIndicator size="small" color="#007AFF" />
+							<ActivityIndicator size="small" color="#007AFF"/>
 						</View>
 					)}
 				</TouchableOpacity>
@@ -46,7 +46,7 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
 					onPress={pickAvatar}
 					className="absolute bottom-0 right-0 bg-white p-1 rounded-full shadow"
 				>
-					<Camera size={20} color="#007AFF" />
+					<Camera size={20} color="#007AFF"/>
 				</TouchableOpacity>
 			</View>
 
@@ -64,7 +64,7 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
 				>
 					{avatarUri && (
 						<Image
-							source={{ uri: avatarUri }}
+							source={{uri: avatarUri}}
 							className="w-80 h-80 rounded-lg"
 							resizeMode="contain"
 						/>

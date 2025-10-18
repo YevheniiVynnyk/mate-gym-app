@@ -1,13 +1,6 @@
-import React, { useState, useEffect } from "react";
-import {
-	Modal,
-	View,
-	Text,
-	ScrollView,
-	ActivityIndicator,
-	TouchableOpacity,
-} from "react-native";
-import { tosService, TosContent } from "@/services/tosService";
+import React, {useEffect, useState} from "react";
+import {ActivityIndicator, Modal, ScrollView, Text, TouchableOpacity, View,} from "react-native";
+import {TosContent, tosService} from "@/services/tosService";
 
 interface TermsDialogProps {
 	open: boolean;
@@ -15,7 +8,7 @@ interface TermsDialogProps {
 	onDecline: () => void;
 }
 
-const TermsDialog: React.FC<TermsDialogProps> = ({ open, onAccept, onDecline }) => {
+const TermsDialog: React.FC<TermsDialogProps> = ({open, onAccept, onDecline}) => {
 	const [isAccepting, setIsAccepting] = useState(false);
 	const [tosContent, setTosContent] = useState<TosContent | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +52,7 @@ const TermsDialog: React.FC<TermsDialogProps> = ({ open, onAccept, onDecline }) 
 					<View className="flex-1 border border-gray-200 rounded-lg p-3 mb-4">
 						{isLoading ? (
 							<View className="flex-1 justify-center items-center h-72">
-								<ActivityIndicator size="small" color="#007AFF" />
+								<ActivityIndicator size="small" color="#007AFF"/>
 								<Text className="mt-2 text-gray-600">Загрузка...</Text>
 							</View>
 						) : (

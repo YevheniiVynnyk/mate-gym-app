@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { View, Text, Pressable, Modal, ScrollView } from "react-native";
-import { ChevronDown } from "lucide-react-native";
-import { styled } from "nativewind";
+import React, {useState} from "react";
+import {Modal, Pressable, ScrollView, Text, View} from "react-native";
+import {ChevronDown} from "lucide-react-native";
+import {styled} from "nativewind";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -16,7 +16,7 @@ interface NavigationMenuProps {
 	items: NavigationMenuItem[];
 }
 
-export const NavigationMenu: React.FC<NavigationMenuProps> = ({ items }) => {
+export const NavigationMenu: React.FC<NavigationMenuProps> = ({items}) => {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	const toggleMenu = (index: number) => {
@@ -32,7 +32,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({ items }) => {
 						className="flex-row items-center px-4 py-2 bg-white rounded-md shadow"
 					>
 						<StyledText className="text-sm font-medium">{item.label}</StyledText>
-						<ChevronDown size={16} className="ml-1" />
+						<ChevronDown size={16} className="ml-1"/>
 					</StyledPressable>
 
 					<Modal
@@ -42,7 +42,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({ items }) => {
 						onRequestClose={() => setOpenIndex(null)}
 					>
 						<Pressable
-							style={{ flex: 1 }}
+							style={{flex: 1}}
 							onPress={() => setOpenIndex(null)}
 							className="bg-black/50 flex-1"
 						>

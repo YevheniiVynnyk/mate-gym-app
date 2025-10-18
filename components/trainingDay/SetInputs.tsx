@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { Minus, Plus } from "lucide-react-native";
-import { TrainingDetail } from "@/types/trainingDay";
+import {Text, TextInput, TouchableOpacity, View} from "react-native";
+import {Minus, Plus} from "lucide-react-native";
+import {TrainingDetail} from "@/types/trainingDay";
 
 interface SetInputsProps {
 	sets: number;
@@ -33,7 +33,7 @@ const SetInputs: React.FC<SetInputsProps> = ({
 							disabled={sets <= 1}
 							className="p-2 border border-gray-200 rounded-lg bg-gray-100"
 						>
-							<Minus size={16} />
+							<Minus size={16}/>
 						</TouchableOpacity>
 						<Text className="mx-4 font-medium text-lg ">{sets}</Text>
 						<TouchableOpacity
@@ -41,13 +41,13 @@ const SetInputs: React.FC<SetInputsProps> = ({
 							disabled={sets >= 10}
 							className="p-2 border border-gray-200 rounded-lg bg-gray-50"
 						>
-							<Plus size={16} />
+							<Plus size={16}/>
 						</TouchableOpacity>
 					</View>
 				)}
 			</View>
 
-			{Array.from({ length: sets }).map((_, index) => (
+			{Array.from({length: sets}).map((_, index) => (
 				<View
 					key={index}
 					className="my-1 p-3 border border-gray-200 rounded-2xl"

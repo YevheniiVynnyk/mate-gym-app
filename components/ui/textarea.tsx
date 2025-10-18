@@ -1,11 +1,12 @@
 import * as React from "react";
-import { TextInput, TextInputProps } from "react-native";
-import { cn } from "@/lib/utils";
+import {TextInput, TextInputProps} from "react-native";
+import {cn} from "@/lib/utils";
 
-export interface TextareaProps extends TextInputProps {}
+export interface TextareaProps extends TextInputProps {
+}
 
 const Textarea = React.forwardRef<TextInput, TextareaProps>(
-	({ className, style, ...props }, ref) => {
+	({className, style, ...props}, ref) => {
 		return (
 			<TextInput
 				ref={ref}
@@ -24,4 +25,4 @@ const Textarea = React.forwardRef<TextInput, TextareaProps>(
 
 Textarea.displayName = "Textarea";
 
-export { Textarea };
+export {Textarea};

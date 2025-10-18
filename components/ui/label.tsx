@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, TextProps } from "react-native";
-import { styled } from "nativewind";
+import {Text, TextProps} from "react-native";
+import {styled} from "nativewind";
 
 const StyledText = styled(Text);
 
 const Label = React.forwardRef<Text, TextProps>(
-	({ className, children, style, ...props }, ref) => {
+	({className, children, style, ...props}, ref) => {
 		return (
 			<StyledText
 				ref={ref}
@@ -21,4 +21,4 @@ const Label = React.forwardRef<Text, TextProps>(
 
 Label.displayName = "Label";
 
-export { Label };
+export {Label};

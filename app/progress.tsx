@@ -21,7 +21,7 @@ export default function Progress() {
 	if (loading) {
 		return (
 			<View className="flex-1 justify-center items-center">
-				<ActivityIndicator size="large" color="#007AFF" />
+				<ActivityIndicator size="large" color="#007AFF"/>
 				<Text className="mt-2 text-gray-700">Загрузка...</Text>
 			</View>
 		);
@@ -32,7 +32,7 @@ export default function Progress() {
 	return (
 		<ScrollView className="flex-1 p-4">
 			<View className="flex-row items-center gap-2 mb-4">
-				<TrendingUp size={28} color="#007AFF" />
+				<TrendingUp size={28} color="#007AFF"/>
 				<Text className="text-2xl font-bold">Мой прогресс</Text>
 			</View>
 
