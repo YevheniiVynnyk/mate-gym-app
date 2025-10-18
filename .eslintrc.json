@@ -18,7 +18,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["react", "react-hooks", "@typescript-eslint", "import"],
+    "plugins": ["react", "react-hooks", "@typescript-eslint"],
     "rules": {
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
@@ -27,10 +27,7 @@
     "settings": {
         "react": {
             "version": "detect"
-        },
-        "import/resolver": {
-      "typescript": {} // Це дозволить ESLint використовувати ваш tsconfig.json для вирішення шляхів
-    }
+        }
     },
     "overrides": [
         {

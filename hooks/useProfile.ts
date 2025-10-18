@@ -15,8 +15,8 @@ export const useProfile = () => {
 
     const [isEditing, setIsEditing] = useState(false);
     const [isPrivacyDialogOpen, setIsPrivacyDialogOpen] = useState(false);
-    //const [avatarUri, setAvatarUri] = useState<string | null>(null);
-    //const [loading, setLoading] = useState(false);
+    const [avatarUri, setAvatarUri] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
 
     const [formDataUser, setFormDataUser] = useState({
         firstName: user?.firstName || '',

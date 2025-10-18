@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
-//import { User } from 'lucide-react-native';
+import { ScrollView, Text, View } from 'react-native';
+import { User } from 'lucide-react-native';
 import { useProfile } from '@/hooks/useProfile';
 import AvatarSection from '@/components/profile/AvatarSection';
 import UserInfoSection from '@/components/profile/UserInfoSection';
