@@ -1,42 +1,35 @@
 import React from "react";
-import {
-	View,
-	Text,
-	Image,
-	ScrollView,
-	TouchableOpacity,
-	Alert,
-} from "react-native";
+import {Alert, Image, ScrollView, Text, TouchableOpacity, View,} from "react-native";
 import * as Clipboard from "expo-clipboard";
-import { FontAwesome5, Feather } from "@expo/vector-icons";
+import {Feather, FontAwesome5} from "@expo/vector-icons";
 
 const supportOptions = [
 	{
 		title: "Карта Сбербанка",
 		description: "Поддержка через российскую карту",
 		number: "2202 2063 1234 5678",
-		icon: <FontAwesome5 name="credit-card" size={20} color="#38a169" />,
+		icon: <FontAwesome5 name="credit-card" size={20} color="#38a169"/>,
 		color: "bg-[#e6fffa]",
 	},
 	{
 		title: "Ethereum (ETH)",
 		description: "Криптовалютная поддержка",
 		number: "0x742d35cc6644c30532e6ce98f59a87093c7b4325",
-		icon: <FontAwesome5 name="ethereum" size={20} color="#3182ce" />,
+		icon: <FontAwesome5 name="ethereum" size={20} color="#3182ce"/>,
 		color: "bg-[#ebf8ff]",
 	},
 	{
 		title: "Bitcoin (BTC)",
 		description: "Биткоин поддержка",
 		number: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
-		icon: <FontAwesome5 name="bitcoin" size={20} color="#dd6b20" />,
+		icon: <FontAwesome5 name="bitcoin" size={20} color="#dd6b20"/>,
 		color: "bg-[#fffaf0]",
 	},
 	{
 		title: "TON Coin",
 		description: "TON блокчейн",
 		number: "UQD3FlatJI8UQx2oUSs3qMBl9LN8VBwueDUJ89JqHDWt7t8e",
-		icon: <FontAwesome5 name="coins" size={20} color="#805ad5" />,
+		icon: <FontAwesome5 name="coins" size={20} color="#805ad5"/>,
 		color: "bg-[#faf5ff]",
 	},
 ];
@@ -63,30 +56,30 @@ const DeveloperSupport = () => {
 					это сделать любым удобным способом.
 				</Text>
 				<View className="flex-row items-center mt-1.5">
-					<Feather name="heart" size={20} color="red" />
+					<Feather name="heart" size={20} color="red"/>
 					<Text className="mx-2 text-gray-500">Сделано с любовью</Text>
-					<FontAwesome5 name="coffee" size={20} color="#d69e2e" />
+					<FontAwesome5 name="coffee" size={20} color="#d69e2e"/>
 				</View>
 			</View>
 
 			{/* Информация о разработчике */}
 			<View className="bg-gray-50 p-4 rounded-xl my-2">
 				<View className="flex-row items-center mb-2">
-					<FontAwesome5 name="github" size={20} color="#000" />
+					<FontAwesome5 name="github" size={20} color="#000"/>
 					<Text className="ml-2 text-lg font-bold">О разработчике</Text>
 				</View>
 
 				<View className="mt-1">
 					<View className="flex-row items-center mb-1.5">
-						<Feather name="mail" size={16} color="gray" />
+						<Feather name="mail" size={16} color="gray"/>
 						<Text className="ml-2 text-gray-600">developer@mategym.ru</Text>
 					</View>
 					<View className="flex-row items-center mb-1.5">
-						<Feather name="phone" size={16} color="gray" />
+						<Feather name="phone" size={16} color="gray"/>
 						<Text className="ml-2 text-gray-600">+7 (999) 123-45-67</Text>
 					</View>
 					<View className="flex-row items-center mb-1.5">
-						<Feather name="map-pin" size={16} color="gray" />
+						<Feather name="map-pin" size={16} color="gray"/>
 						<Text className="ml-2 text-gray-600">Москва, Россия</Text>
 					</View>
 				</View>

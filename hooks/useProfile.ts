@@ -1,22 +1,18 @@
-import { useState } from "react";
+import {useState} from "react";
 import * as ImagePicker from "expo-image-picker";
-import { useAuth } from "@/contexts/AuthContext";
-import { UserDTO, userService } from "@/services/userService";
-import { fromUserDTO } from "@/services/mapper/userMapper";
-import { imageService } from "@/services/imageService";
-import { useNavigation } from "@/hooks/useNavigation";
+import {useAuth} from "@/contexts/AuthContext";
+import {UserDTO, userService} from "@/services/userService";
+import {fromUserDTO} from "@/services/mapper/userMapper";
+import {imageService} from "@/services/imageService";
+import {useNavigation} from "@/hooks/useNavigation";
 
 export const useProfile = () => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [isPrivacyDialogOpen, setIsPrivacyDialogOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	const { user, logout, setUser } = useAuth();
+	const {user, logout, setUser} = useAuth();
 	const router = useNavigation();
-
-	const [avatarUri, setAvatarUri] = useState<string | null>(
-		user?.imageId ? imageService.getUrl(user.imageId) : null
-	);
 
 	const [formDataUser, setFormDataUser] = useState({
 		firstName: user?.firstName || "",
@@ -75,7 +71,7 @@ export const useProfile = () => {
 				const id = await imageService.upload(fileData);
 
 				// ✅ Обновляем пользователя и стейт
-				setUser((prev) => (prev ? { ...prev, imageId: id } : prev));
+				setUser((prev) => (prev ? {...prev, imageId: id} : prev));
 				console.log("✅ Изображение загружено. ID:", id);
 			}
 		} catch (err) {

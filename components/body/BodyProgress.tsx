@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-	View,
-	Text,
-	StyleSheet,
-	TouchableOpacity,
-	FlatList,
-	TextInput,
-	Modal,
 	ActivityIndicator,
 	Alert,
 	Dimensions,
+	FlatList,
+	Modal,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
 } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
-import { bodyService, BodyDTO, BodyCreateDTO } from '@/services/bodyService';
+import {LineChart} from 'react-native-chart-kit';
+import {BodyCreateDTO, BodyDTO, bodyService} from '@/services/bodyService';
 
 interface EditableBody extends BodyDTO {
 	isEditing?: boolean;
@@ -65,9 +65,9 @@ const BodyProgress: React.FC = () => {
 
 		try {
 			if (modalId) {
-				await bodyService.updateBodyRecord({ id: modalId, ...newRecord, bmi });
+				await bodyService.updateBodyRecord({id: modalId, ...newRecord, bmi});
 				setBodyData(prev =>
-					prev.map(r => (r.id === modalId ? { ...r, ...newRecord, bmi } : r))
+					prev.map(r => (r.id === modalId ? {...r, ...newRecord, bmi} : r))
 				);
 			} else {
 				await bodyService.createBodyRecord(newRecord);
@@ -97,7 +97,7 @@ const BodyProgress: React.FC = () => {
 	if (loading) {
 		return (
 			<View style={styles.center}>
-				<ActivityIndicator size="large" color="#007AFF" />
+				<ActivityIndicator size="large" color="#007AFF"/>
 			</View>
 		);
 	}
@@ -146,7 +146,7 @@ const BodyProgress: React.FC = () => {
 			<LineChart
 				data={{
 					labels,
-					datasets: [{ data: tab === 'weight' ? weightData : bmiData }],
+					datasets: [{data: tab === 'weight' ? weightData : bmiData}],
 				}}
 				width={screenWidth}
 				height={220}
@@ -168,7 +168,7 @@ const BodyProgress: React.FC = () => {
 			<FlatList
 				data={bodyData}
 				keyExtractor={item => item.id.toString()}
-				renderItem={({ item }) => (
+				renderItem={({item}) => (
 					<View style={styles.row}>
 						<Text style={styles.cell}>{item.date.toLocaleDateString()}</Text>
 						<Text style={styles.cell}>{item.height} см</Text>
@@ -241,32 +241,38 @@ const BodyProgress: React.FC = () => {
 export default BodyProgress;
 
 const styles = StyleSheet.create({
-	container: { flex: 1, padding: 10, backgroundColor: '#fff' },
-	center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-	emptyText: { color: '#777', fontSize: 16, marginBottom: 20 },
-	header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
-	title: { fontSize: 18, fontWeight: '600', color: '#111' },
-	addButton: { backgroundColor: '#007AFF', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 6 },
-	addButtonText: { color: '#fff', fontWeight: 'bold' },
-	tabContainer: { flexDirection: 'row', marginVertical: 10 },
-	tabButton: { flex: 1, padding: 10, alignItems: 'center', borderBottomWidth: 2, borderColor: '#ccc' },
-	tabButtonActive: { borderColor: '#007AFF' },
-	tabText: { color: '#777' },
-	tabTextActive: { color: '#007AFF', fontWeight: '600' },
-	chart: { marginVertical: 8, borderRadius: 8 },
-	row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8, borderBottomWidth: 1, borderColor: '#eee' },
-	cell: { flex: 1, textAlign: 'center', fontSize: 13 },
-	actionCell: { flexDirection: 'row', gap: 6 },
-	editButton: { backgroundColor: '#E8F0FE', paddingHorizontal: 6, paddingVertical: 4, borderRadius: 4 },
-	deleteButton: { backgroundColor: '#FDECEC', paddingHorizontal: 6, paddingVertical: 4, borderRadius: 4 },
-	actionText: { fontSize: 12, color: '#007AFF' },
-	modalBackdrop: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.3)' },
-	modalContent: { backgroundColor: '#fff', padding: 20, borderRadius: 8, width: '90%' },
-	modalTitle: { fontSize: 18, fontWeight: '600', marginBottom: 12 },
-	input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 6, padding: 8, marginBottom: 10 },
-	modalButtons: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10 },
-	cancelButton: { marginRight: 10 },
-	cancelText: { color: '#555' },
-	saveButton: { backgroundColor: '#007AFF', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 6 },
-	saveText: { color: '#fff', fontWeight: 'bold' },
+	container: {flex: 1, padding: 10, backgroundColor: '#fff'},
+	center: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+	emptyText: {color: '#777', fontSize: 16, marginBottom: 20},
+	header: {flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10},
+	title: {fontSize: 18, fontWeight: '600', color: '#111'},
+	addButton: {backgroundColor: '#007AFF', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 6},
+	addButtonText: {color: '#fff', fontWeight: 'bold'},
+	tabContainer: {flexDirection: 'row', marginVertical: 10},
+	tabButton: {flex: 1, padding: 10, alignItems: 'center', borderBottomWidth: 2, borderColor: '#ccc'},
+	tabButtonActive: {borderColor: '#007AFF'},
+	tabText: {color: '#777'},
+	tabTextActive: {color: '#007AFF', fontWeight: '600'},
+	chart: {marginVertical: 8, borderRadius: 8},
+	row: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		paddingVertical: 8,
+		borderBottomWidth: 1,
+		borderColor: '#eee'
+	},
+	cell: {flex: 1, textAlign: 'center', fontSize: 13},
+	actionCell: {flexDirection: 'row', gap: 6},
+	editButton: {backgroundColor: '#E8F0FE', paddingHorizontal: 6, paddingVertical: 4, borderRadius: 4},
+	deleteButton: {backgroundColor: '#FDECEC', paddingHorizontal: 6, paddingVertical: 4, borderRadius: 4},
+	actionText: {fontSize: 12, color: '#007AFF'},
+	modalBackdrop: {flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.3)'},
+	modalContent: {backgroundColor: '#fff', padding: 20, borderRadius: 8, width: '90%'},
+	modalTitle: {fontSize: 18, fontWeight: '600', marginBottom: 12},
+	input: {borderWidth: 1, borderColor: '#ccc', borderRadius: 6, padding: 8, marginBottom: 10},
+	modalButtons: {flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10},
+	cancelButton: {marginRight: 10},
+	cancelText: {color: '#555'},
+	saveButton: {backgroundColor: '#007AFF', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 6},
+	saveText: {color: '#fff', fontWeight: 'bold'},
 });

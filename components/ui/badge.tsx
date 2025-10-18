@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, ViewProps, TextProps } from "react-native";
-import { styled } from "nativewind";
+import {Text, View, ViewProps} from "react-native";
+import {styled} from "nativewind";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -30,7 +30,7 @@ export const Badge: React.FC<BadgeProps> = ({
 	return (
 		<StyledView
 			className={`inline-flex items-center rounded-full border px-2.5 py-0.5 ${variantStyles[variant]} ${className}`}
-			style={[{ borderWidth: 0 }, style]}
+			style={[{borderWidth: 0}, style]}
 			{...props}
 		>
 			<StyledText className="text-xs font-semibold">{label}</StyledText>

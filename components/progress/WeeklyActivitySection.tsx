@@ -1,5 +1,5 @@
-import { View, Text } from "react-native";
-import { Calendar } from "lucide-react-native";
+import {Text, View} from "react-native";
+import {Calendar} from "lucide-react-native";
 
 export default function WeeklyActivitySection({
 												  weeklyStats,
@@ -10,7 +10,7 @@ export default function WeeklyActivitySection({
 	return (
 		<View className="bg-gray-50 p-4 rounded-xl mb-4">
 			<View className="flex-row items-center mb-3">
-				<Calendar size={20} color="#000" />
+				<Calendar size={20} color="#000"/>
 				<Text className="ml-2 text-lg font-bold">Активность на этой неделе</Text>
 			</View>
 
@@ -41,7 +41,7 @@ export default function WeeklyActivitySection({
 						<View className="h-2 bg-gray-300 rounded-full mt-1 overflow-hidden">
 							<View
 								className="h-2 bg-blue-500 rounded-full"
-								style={{ width: `${weekProgress}%` }}
+								style={{width: `${weekProgress}%`}}
 							/>
 						</View>
 					</View>

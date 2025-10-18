@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
-import { styled } from "nativewind";
+import {ScrollView, Text, View} from "react-native";
+import {styled} from "nativewind";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -10,12 +10,12 @@ interface TableProps {
 	children: React.ReactNode;
 }
 
-export const Table: React.FC<TableProps> = ({ className, children }) => {
+export const Table: React.FC<TableProps> = ({className, children}) => {
 	return (
 		<ScrollView
 			horizontal
 			className={className ?? "w-full"}
-			contentContainerStyle={{ flexGrow: 1 }}
+			contentContainerStyle={{flexGrow: 1}}
 		>
 			<StyledView className="w-full">{children}</StyledView>
 		</ScrollView>
@@ -57,7 +57,7 @@ interface TableRowProps {
 	children: React.ReactNode;
 }
 
-export const TableRow: React.FC<TableRowProps> = ({ className, children }) => (
+export const TableRow: React.FC<TableRowProps> = ({className, children}) => (
 	<StyledView className={className ?? "flex-row border-b border-gray-200"}>
 		{children}
 	</StyledView>
@@ -74,13 +74,13 @@ export const TableCell: React.FC<TableCellProps> = ({
 														children,
 														flex = 1,
 													}) => (
-	<StyledView className={className ?? "p-4"} style={{ flex }}>
+	<StyledView className={className ?? "p-4"} style={{flex}}>
 		<StyledText>{children}</StyledText>
 	</StyledView>
 );
 
 export const TableCaption: React.FC<{ className?: string; children: React.ReactNode }> =
-	({ className, children }) => (
+	({className, children}) => (
 		<StyledText className={className ?? "text-sm text-gray-500 p-2"}>
 			{children}
 		</StyledText>

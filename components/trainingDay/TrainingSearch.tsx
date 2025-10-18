@@ -1,10 +1,10 @@
 import React from "react";
-import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { Search, Filter } from "lucide-react-native";
+import {StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
+import {Filter, Search} from "lucide-react-native";
 
-export const TrainingSearch = ({ searchTerm, setSearchTerm }) => (
+export const TrainingSearch = ({searchTerm, setSearchTerm}) => (
 	<View style={styles.container}>
-		<Search size={20} />
+		<Search size={20}/>
 		<TextInput
 			style={styles.input}
 			placeholder="Поиск тренировок..."
@@ -12,7 +12,7 @@ export const TrainingSearch = ({ searchTerm, setSearchTerm }) => (
 			onChangeText={setSearchTerm}
 		/>
 		<TouchableOpacity>
-			<Filter size={20} />
+			<Filter size={20}/>
 		</TouchableOpacity>
 	</View>
 );
@@ -27,5 +27,5 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		marginBottom: 16,
 	},
-	input: { flex: 1, marginLeft: 8 },
+	input: {flex: 1, marginLeft: 8},
 });

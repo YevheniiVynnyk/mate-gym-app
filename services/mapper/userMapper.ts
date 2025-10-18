@@ -1,5 +1,5 @@
-import { UserDTO } from "@/services/userService";
-import { User } from "@/types/user";
+import {UserDTO} from "@/services/userService";
+import {User} from "@/types/user";
 
 /**
  * Преобразует UserDTO (сервер) в локальную модель User

@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, ViewProps, TextProps } from "react-native";
+import {Text, TextProps, View, ViewProps} from "react-native";
 
 const Card = React.forwardRef<View, ViewProps>((props, ref) => {
-	const { className, ...rest } = props;
+	const {className, ...rest} = props;
 	return (
 		<View
 			ref={ref}
@@ -14,7 +14,7 @@ const Card = React.forwardRef<View, ViewProps>((props, ref) => {
 Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<View, ViewProps>((props, ref) => {
-	const { className, ...rest } = props;
+	const {className, ...rest} = props;
 	return (
 		<View
 			ref={ref}
@@ -26,7 +26,7 @@ const CardHeader = React.forwardRef<View, ViewProps>((props, ref) => {
 CardHeader.displayName = "CardHeader";
 
 const CardTitle = React.forwardRef<Text, TextProps>((props, ref) => {
-	const { className, ...rest } = props;
+	const {className, ...rest} = props;
 	return (
 		<Text
 			ref={ref}
@@ -38,7 +38,7 @@ const CardTitle = React.forwardRef<Text, TextProps>((props, ref) => {
 CardTitle.displayName = "CardTitle";
 
 const CardDescription = React.forwardRef<Text, TextProps>((props, ref) => {
-	const { className, ...rest } = props;
+	const {className, ...rest} = props;
 	return (
 		<Text
 			ref={ref}
@@ -50,7 +50,7 @@ const CardDescription = React.forwardRef<Text, TextProps>((props, ref) => {
 CardDescription.displayName = "CardDescription";
 
 const CardContent = React.forwardRef<View, ViewProps>((props, ref) => {
-	const { className, ...rest } = props;
+	const {className, ...rest} = props;
 	return (
 		<View ref={ref} className={`p-4 pt-0 ${className || ""}`} {...rest} />
 	);
@@ -58,7 +58,7 @@ const CardContent = React.forwardRef<View, ViewProps>((props, ref) => {
 CardContent.displayName = "CardContent";
 
 const CardFooter = React.forwardRef<View, ViewProps>((props, ref) => {
-	const { className, ...rest } = props;
+	const {className, ...rest} = props;
 	return (
 		<View
 			ref={ref}
@@ -69,4 +69,4 @@ const CardFooter = React.forwardRef<View, ViewProps>((props, ref) => {
 });
 CardFooter.displayName = "CardFooter";
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+export {Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent};

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React, {useState} from "react";
+import {Text, TouchableOpacity, View} from "react-native";
 
 const themes = [
-	{ code: "light", label: "Светлая" },
-	{ code: "dark", label: "Тёмная" },
+	{code: "light", label: "Светлая"},
+	{code: "dark", label: "Тёмная"},
 ];
 
 export default function ThemeSelector() {

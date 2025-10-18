@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, Modal, TouchableOpacity } from "react-native";
+import {Modal, Text, TouchableOpacity, View} from "react-native";
 
 type PrivacyDialogProps = {
 	open: boolean;
 	onClose: () => void;
 };
 
-export default function PrivacyDialog({ open, onClose }: PrivacyDialogProps) {
+export default function PrivacyDialog({open, onClose}: PrivacyDialogProps) {
 	return (
 		<Modal transparent visible={open} animationType="fade">
 			<View className="flex-1 bg-black/50 justify-center items-center">

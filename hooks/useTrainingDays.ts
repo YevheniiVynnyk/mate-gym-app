@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { trainingDayService } from "@/services/trainingDayService";
-import { mapFromAPI } from "@/services/mapper/trainingDayMapper";
-import { useTrainingDays } from "@/contexts/TrainingDaysContext";
+import {useEffect, useState} from "react";
+import {trainingDayService} from "@/services/trainingDayService";
+import {mapFromAPI} from "@/services/mapper/trainingDayMapper";
+import {useTrainingDays} from "@/contexts/TrainingDaysContext";
 
 export const useTrainingDaysData = () => {
-	const { trainingDays, setTrainingDays } = useTrainingDays();
+	const {trainingDays, setTrainingDays} = useTrainingDays();
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -23,5 +23,5 @@ export const useTrainingDaysData = () => {
 		loadTrainingDays();
 	}, []);
 
-	return { trainingDays, isLoading };
+	return {trainingDays, isLoading};
 };

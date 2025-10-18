@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Dumbbell } from "lucide-react-native";
+import {Text, View} from "react-native";
+import {Dumbbell} from "lucide-react-native";
 
 const Header = () => (
 	<View className="items-center mb-4">
 		<View className="flex-row items-center justify-center gap-3 mb-4">
 			<View className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-				<Dumbbell color="#fff" size={28} />
+				<Dumbbell color="#fff" size={28}/>
 			</View>
 			<Text className="text-3xl font-bold text-foreground font-sans">
 				Mate Gym
