@@ -1,5 +1,5 @@
-import api from './api';
-import { UserDTO } from './userService';
+import { api } from "./api";
+import { UserDTO } from "./userService";
 
 export interface Trainer {
   id: number;
@@ -18,7 +18,7 @@ export interface ClientDTO {
 export const trainerService = {
   // Получить всех тренеров
   async getAllTrainers(): Promise<Trainer[]> {
-    const response = await api.get<Trainer[]>('/trainer');
+    const response = await api.get<Trainer[]>("/trainer");
     return response.data;
   },
 
@@ -30,7 +30,7 @@ export const trainerService = {
 
   // Поиск тренеров
   async searchTrainers(term: string): Promise<Trainer[]> {
-    const response = await api.get<Trainer[]>('/trainer/search', {
+    const response = await api.get<Trainer[]>("/trainer/search", {
       params: { term },
     });
     return response.data;
@@ -38,18 +38,18 @@ export const trainerService = {
 
   // Получить всех клиентов тренера
   async getAllClients(): Promise<ClientDTO[]> {
-    const response = await api.get<ClientDTO[]>('/trainer/clients');
+    const response = await api.get<ClientDTO[]>("/trainer/clients");
     return response.data;
   },
 
   // Создать тренера
-  async createTrainer(trainer: Omit<Trainer, 'id'>): Promise<void> {
-    await api.post('/trainer', trainer);
+  async createTrainer(trainer: Omit<Trainer, "id">): Promise<void> {
+    await api.post("/trainer", trainer);
   },
 
   // Обновить тренера
   async updateTrainer(trainer: Trainer): Promise<void> {
-    await api.put('/trainer', trainer);
+    await api.put("/trainer", trainer);
   },
 
   // Удалить тренера
@@ -58,17 +58,17 @@ export const trainerService = {
   },
 
   // Создать несколько тренеров
-  async createTrainers(trainers: Omit<Trainer, 'id'>[]): Promise<void> {
-    await api.post('/trainer/all', trainers);
+  async createTrainers(trainers: Omit<Trainer, "id">[]): Promise<void> {
+    await api.post("/trainer/all", trainers);
   },
 
   // Обновить несколько тренеров
   async updateTrainers(trainers: Trainer[]): Promise<void> {
-    await api.put('/trainer/all', trainers);
+    await api.put("/trainer/all", trainers);
   },
 
   // Удалить несколько тренеров
   async deleteTrainers(ids: number[]): Promise<void> {
-    await api.delete('/trainer/all', { data: ids });
+    await api.delete("/trainer/all", { data: ids });
   },
 };

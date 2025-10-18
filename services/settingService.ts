@@ -1,4 +1,4 @@
-import api from './api';
+import { api } from "./api";
 
 export interface NotificationDTO {
   id: number;
@@ -10,20 +10,20 @@ export interface NotificationDTO {
 
 export interface SettingDTO {
   id: number;
-  theme: 'LIGHT' | 'NIGHT' | 'CLASSIC';
-  language: 'UKR' | 'RUS' | 'ENG';
+  theme: "LIGHT" | "NIGHT" | "CLASSIC";
+  language: "UKR" | "RUS" | "ENG";
   notification: NotificationDTO;
 }
 
 export const settingService = {
   // Получить настройки
   async getSettings(): Promise<SettingDTO> {
-    const response = await api.get<SettingDTO>('/setting');
+    const response = await api.get<SettingDTO>("/setting");
     return response.data;
   },
 
   // Обновить настройки
   async updateSettings(settings: SettingDTO): Promise<void> {
-    await api.put('/setting', settings);
+    await api.put("/setting", settings);
   },
 };

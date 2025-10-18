@@ -1,4 +1,4 @@
-import api from './api';
+import { api } from "./api";
 
 export interface BodyDTO {
   id: number;
@@ -22,7 +22,7 @@ export interface ChartDataDTO {
 export const bodyService = {
   // Получить все записи о теле
   async getAllBodyRecords(): Promise<BodyDTO[]> {
-    const response = await api.get<BodyDTO[]>('/body');
+    const response = await api.get<BodyDTO[]>("/body");
     return response.data;
   },
 
@@ -34,18 +34,18 @@ export const bodyService = {
 
   // Получить текущую запись
   async getCurrentBodyRecord(): Promise<BodyDTO> {
-    const response = await api.get<BodyDTO>('/body/current');
+    const response = await api.get<BodyDTO>("/body/current");
     return response.data;
   },
 
   // Создать запись о теле
   async createBodyRecord(body: BodyCreateDTO): Promise<void> {
-    await api.post('/body', body);
+    await api.post("/body", body);
   },
 
   // Обновить запись о теле
   async updateBodyRecord(body: BodyDTO): Promise<void> {
-    await api.put('/body', body);
+    await api.put("/body", body);
   },
 
   // Удалить запись о теле
@@ -55,20 +55,20 @@ export const bodyService = {
 
   // Создать несколько записей
   async createBodyRecords(bodies: BodyCreateDTO[]): Promise<void> {
-    await api.post('/body/all', bodies);
+    await api.post("/body/all", bodies);
   },
 };
 
 export const chartService = {
   // Получить данные графика веса
   async getWeightChart(): Promise<ChartDataDTO[]> {
-    const response = await api.get<ChartDataDTO[]>('/chart/weight');
+    const response = await api.get<ChartDataDTO[]>("/chart/weight");
     return response.data;
   },
 
   // Получить данные графика BMI
   async getBMIChart(): Promise<ChartDataDTO[]> {
-    const response = await api.get<ChartDataDTO[]>('/chart/bmi');
+    const response = await api.get<ChartDataDTO[]>("/chart/bmi");
     return response.data;
   },
 };

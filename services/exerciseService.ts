@@ -1,4 +1,4 @@
-import api from './api';
+import { api } from "./api";
 
 export interface MuscleGroupDTO {
   id: number;
@@ -15,7 +15,7 @@ export interface ExerciseDTO {
 export const exerciseService = {
   // Получить все упражнения
   async getAllExercises(): Promise<ExerciseDTO[]> {
-    const response = await api.get<ExerciseDTO[]>('/exercise');
+    const response = await api.get<ExerciseDTO[]>("/exercise");
     return response.data;
   },
 
@@ -26,21 +26,25 @@ export const exerciseService = {
   },
 
   // Получить упражнения по группе мышц
-  async getExercisesByMuscleGroup(muscleGroupId: number): Promise<ExerciseDTO[]> {
-    const response = await api.get<ExerciseDTO[]>(`/exercise/muscle-groups/${muscleGroupId}/exercises`);
+  async getExercisesByMuscleGroup(
+    muscleGroupId: number
+  ): Promise<ExerciseDTO[]> {
+    const response = await api.get<ExerciseDTO[]>(
+      `/exercise/muscle-groups/${muscleGroupId}/exercises`
+    );
     return response.data;
   },
 
   // Обновить упражнение
   async updateExercise(exercise: ExerciseDTO): Promise<void> {
-    await api.put('/exercise', exercise);
+    await api.put("/exercise", exercise);
   },
 };
 
 export const muscleGroupService = {
   // Получить все группы мышц
   async getAllMuscleGroups(): Promise<MuscleGroupDTO[]> {
-    const response = await api.get<MuscleGroupDTO[]>('/muscleGroup');
+    const response = await api.get<MuscleGroupDTO[]>("/muscleGroup");
     return response.data;
   },
 

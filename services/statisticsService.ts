@@ -1,4 +1,4 @@
-import api from './api';
+import { api } from "./api";
 
 export interface StatDTO {
   id: number;
@@ -47,7 +47,7 @@ export interface StatisticsMuscleGroupDTO {
   lastWorkoutDate: string;
 }
 
-export type TimeFrame = 'WEEK' | 'MONTH' | 'YEAR';
+export type TimeFrame = "WEEK" | "MONTH" | "YEAR";
 
 // --- новые DTO ---
 export interface WeeklyActivityDTO {
@@ -70,24 +70,24 @@ export interface FavoriteMuscleGroupDTO {
 export const statisticsService = {
   // Получить все статистики
   async getAllStatistics(): Promise<StatDTO[]> {
-    const response = await api.get<StatDTO[]>('/statistics');
+    const response = await api.get<StatDTO[]>("/statistics");
     return response.data;
   },
 
   // Получить быструю статистику
   async getQuickStatistics(): Promise<QuickStatDTO> {
-    const response = await api.get<QuickStatDTO>('/statistics/quick');
+    const response = await api.get<QuickStatDTO>("/statistics/quick");
     return response.data;
   },
 
   // Создать статистику
   async createStatistic(stat: StatCreateDTO): Promise<void> {
-    await api.post('/statistics', stat);
+    await api.post("/statistics", stat);
   },
 
   // Обновить статистику
   async updateStatistic(stat: StatDTO): Promise<void> {
-    await api.put('/statistics', stat);
+    await api.put("/statistics", stat);
   },
 
   // Удалить статистику
@@ -97,41 +97,61 @@ export const statisticsService = {
 
   // Получить статистику по упражнению
   async getExerciseStatistics(id: number): Promise<StatisticsExerciseDTO> {
-    const response = await api.get<StatisticsExerciseDTO>(`/statistics/exercise/${id}`);
+    const response = await api.get<StatisticsExerciseDTO>(
+      `/statistics/exercise/${id}`
+    );
     return response.data;
   },
 
   // Получить прогресс по упражнению
-  async getExerciseProgress(id: number, timeframe: TimeFrame): Promise<StatProgressDTO> {
-    const response = await api.get<StatProgressDTO>(`/statistics/exercise-progress/${id}/${timeframe}`);
+  async getExerciseProgress(
+    id: number,
+    timeframe: TimeFrame
+  ): Promise<StatProgressDTO> {
+    const response = await api.get<StatProgressDTO>(
+      `/statistics/exercise-progress/${id}/${timeframe}`
+    );
     return response.data;
   },
 
   // Получить статистику по группе мышц
-  async getMuscleGroupStatistics(id: number): Promise<StatisticsMuscleGroupDTO> {
-    const response = await api.get<StatisticsMuscleGroupDTO>(`/statistics/muscle-group/${id}`);
+  async getMuscleGroupStatistics(
+    id: number
+  ): Promise<StatisticsMuscleGroupDTO> {
+    const response = await api.get<StatisticsMuscleGroupDTO>(
+      `/statistics/muscle-group/${id}`
+    );
     return response.data;
   },
 
   // Получить прогресс по группе мышц
-  async getMuscleGroupProgress(id: number, timeframe: TimeFrame): Promise<StatProgressDTO> {
-    const response = await api.get<StatProgressDTO>(`/statistics/muscle-progress/${id}/${timeframe}`);
+  async getMuscleGroupProgress(
+    id: number,
+    timeframe: TimeFrame
+  ): Promise<StatProgressDTO> {
+    const response = await api.get<StatProgressDTO>(
+      `/statistics/muscle-progress/${id}/${timeframe}`
+    );
     return response.data;
   },
 
   // --- новые методы ---
   async getWeeklyStats(): Promise<WeeklyActivityDTO[]> {
-    const response = await api.get<WeeklyActivityDTO[]>('/statistics/weekly');
+    const response = await api.get<WeeklyActivityDTO[]>("/statistics/weekly");
     return response.data;
   },
 
   async getFavoriteExercises(): Promise<FavoriteExerciseDTO[]> {
-    const response = await api.get<FavoriteExerciseDTO[]>('/statistics/favorites/exercises');
+    const response = await api.get<FavoriteExerciseDTO[]>(
+      "/statistics/favorites/exercises"
+    );
     return response.data;
   },
 
   async getFavoriteMuscleGroups(): Promise<FavoriteMuscleGroupDTO[]> {
-    const response = await api.get<FavoriteMuscleGroupDTO[]>('/statistics/favorites/muscle-groups');
+    const response = await api.get<FavoriteMuscleGroupDTO[]>(
+      "/statistics/favorites/muscle-groups"
+    );
     return response.data;
   },
 };

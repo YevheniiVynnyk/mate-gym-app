@@ -1,4 +1,4 @@
-import api from './api';
+import { api } from "./api";
 
 export interface TrainingDetailDTO {
   id?: number;
@@ -44,7 +44,7 @@ export interface TrainingDayDTO {
   modifiedDate?: Date;
   createdBy?: number;
   modifiedBy?: number;
-  status: 'CREATED' | 'IN_PROGRESS' | 'COMPLETED';
+  status: "CREATED" | "IN_PROGRESS" | "COMPLETED";
   startTime?: Date;
   endTime?: Date;
   durationMinutes?: number;
@@ -54,14 +54,14 @@ export interface TrainingDayCreateDTO {
   date: Date;
   name: string;
   trainings: TrainingCreateDTO[];
-  status: 'CREATED' | 'IN_PROGRESS' | 'COMPLETED';
+  status: "CREATED" | "IN_PROGRESS" | "COMPLETED";
   durationMinutes?: number;
 }
 
 export const trainingDayService = {
   // Получить все тренировочные дни
   async getAllTrainingDays(): Promise<TrainingDayDTO[]> {
-    const response = await api.get<TrainingDayDTO[]>('/trainingDay/all');
+    const response = await api.get<TrainingDayDTO[]>("/trainingDay/all");
     return response.data;
   },
 
@@ -72,20 +72,25 @@ export const trainingDayService = {
   },
 
   // Получить тренировочные дни по месяцу и году
-  async getTrainingDaysByMonth(month: number, year: number): Promise<TrainingDayDTO[]> {
-    const response = await api.get<TrainingDayDTO[]>(`/trainingDay/${month}/${year}`);
+  async getTrainingDaysByMonth(
+    month: number,
+    year: number
+  ): Promise<TrainingDayDTO[]> {
+    const response = await api.get<TrainingDayDTO[]>(
+      `/trainingDay/${month}/${year}`
+    );
     return response.data;
   },
 
   // Создать тренировочный день
   async createTrainingDay(trainingDay: TrainingDayCreateDTO): Promise<void> {
     console.log(trainingDay);
-    await api.post('/trainingDay', trainingDay);
+    await api.post("/trainingDay", trainingDay);
   },
 
   // Обновить тренировочный день
   async updateTrainingDay(trainingDay: TrainingDayDTO): Promise<void> {
-    await api.put('/trainingDay', trainingDay);
+    await api.put("/trainingDay", trainingDay);
   },
 
   // Удалить тренировочный день
@@ -94,32 +99,37 @@ export const trainingDayService = {
   },
 
   // Создать тренировку для клиента (тренером)
-  async createTrainingForClient(clientId: number, trainingDay: TrainingDayCreateDTO): Promise<void> {
+  async createTrainingForClient(
+    clientId: number,
+    trainingDay: TrainingDayCreateDTO
+  ): Promise<void> {
     await api.post(`/trainingDay/trainer/${clientId}`, trainingDay);
   },
 
   // Обновить тренировку клиента (тренером)
   async updateTrainingForClient(trainingDay: TrainingDayDTO): Promise<void> {
-    await api.put('/trainingDay/trainer', trainingDay);
+    await api.put("/trainingDay/trainer", trainingDay);
   },
 
   // Создать несколько тренировочных дней
-  async createTrainingDays(trainingDays: TrainingDayCreateDTO[]): Promise<void> {
-    await api.post('/trainingDay/all', trainingDays);
+  async createTrainingDays(
+    trainingDays: TrainingDayCreateDTO[]
+  ): Promise<void> {
+    await api.post("/trainingDay/all", trainingDays);
   },
 
   // Обновить несколько тренировочных дней
   async updateTrainingDays(trainingDays: TrainingDayDTO[]): Promise<void> {
-    await api.put('/trainingDay/all', trainingDays);
+    await api.put("/trainingDay/all", trainingDays);
   },
 
   // Удалить несколько тренировочных дней
   async deleteTrainingDays(ids: number[]): Promise<void> {
-    await api.delete('/trainingDay/all', { data: ids });
+    await api.delete("/trainingDay/all", { data: ids });
   },
 
   async getLatestThree(): Promise<TrainingDayDTO[]> {
-    const response = await api.get<TrainingDayDTO[]>('/trainingDay/latest');
+    const response = await api.get<TrainingDayDTO[]>("/trainingDay/latest");
     return response.data;
   },
 };

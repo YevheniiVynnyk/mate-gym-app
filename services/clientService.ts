@@ -1,5 +1,5 @@
-import api from './api';
-import { UserDTO } from './userService';
+import { api } from "./api";
+import { UserDTO } from "./userService";
 
 export interface ClientDTO {
   id: number;
@@ -10,7 +10,7 @@ export interface ClientDTO {
 export const clientService = {
   // Получить всех клиентов
   async getAllClients(): Promise<ClientDTO[]> {
-    const response = await api.get<ClientDTO[]>('/client');
+    const response = await api.get<ClientDTO[]>("/client");
     return response.data;
   },
 
@@ -21,13 +21,13 @@ export const clientService = {
   },
 
   // Создать клиента
-  async createClient(client: Omit<ClientDTO, 'id'>): Promise<void> {
-    await api.post('/client', client);
+  async createClient(client: Omit<ClientDTO, "id">): Promise<void> {
+    await api.post("/client", client);
   },
 
   // Обновить клиента
   async updateClient(client: ClientDTO): Promise<void> {
-    await api.put('/client', client);
+    await api.put("/client", client);
   },
 
   // Удалить клиента
@@ -54,22 +54,22 @@ export const clientService = {
 
   // Получить подписки клиента
   async getSubscriptions(): Promise<number[]> {
-    const response = await api.get<number[]>('/client/subscriptions');
+    const response = await api.get<number[]>("/client/subscriptions");
     return response.data;
   },
 
   // Создать несколько клиентов
-  async createClients(clients: Omit<ClientDTO, 'id'>[]): Promise<void> {
-    await api.post('/client/all', clients);
+  async createClients(clients: Omit<ClientDTO, "id">[]): Promise<void> {
+    await api.post("/client/all", clients);
   },
 
   // Обновить несколько клиентов
   async updateClients(clients: ClientDTO[]): Promise<void> {
-    await api.put('/client/all', clients);
+    await api.put("/client/all", clients);
   },
 
   // Удалить несколько клиентов
   async deleteClients(ids: number[]): Promise<void> {
-    await api.delete('/client/all', { data: ids });
+    await api.delete("/client/all", { data: ids });
   },
 };

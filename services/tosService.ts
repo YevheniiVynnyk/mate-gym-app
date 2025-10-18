@@ -1,4 +1,4 @@
-import api from './api';
+import { api } from "./api";
 
 export interface TosContent {
   id: number;
@@ -10,7 +10,7 @@ export interface TosContent {
 export const tosService = {
   // Получить текущее соглашение
   async getCurrent(): Promise<TosContent> {
-    const response = await api.get<TosContent>('/tos/current');
+    const response = await api.get<TosContent>("/tos/current");
     return response.data;
   },
 
