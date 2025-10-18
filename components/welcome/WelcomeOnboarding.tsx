@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from "react";
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
 
 interface FormData {
     firstName: string;
@@ -15,15 +21,18 @@ interface WelcomeOnboardingProps {
     onSkip: () => void;
 }
 
-const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete, onSkip }) => {
+const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({
+                                                                 onComplete,
+                                                                 onSkip,
+                                                             }) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState<FormData>({
-        firstName: '',
-        lastName: '',
-        age: '',
-        phone: '',
-        goal: '',
-        experience: '',
+        firstName: "",
+        lastName: "",
+        age: "",
+        phone: "",
+        goal: "",
+        experience: "",
     });
 
     const totalSteps = 4;
@@ -64,27 +73,27 @@ const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete, onSki
                             className="border p-3 rounded bg-gray-50"
                             placeholder="First Name"
                             value={formData.firstName}
-                            onChangeText={(text) => updateFormData('firstName', text)}
+                            onChangeText={(text) => updateFormData("firstName", text)}
                         />
                         <TextInput
                             className="border p-3 rounded bg-gray-50"
                             placeholder="Last Name"
                             value={formData.lastName}
-                            onChangeText={(text) => updateFormData('lastName', text)}
+                            onChangeText={(text) => updateFormData("lastName", text)}
                         />
                         <TextInput
                             className="border p-3 rounded bg-gray-50"
                             placeholder="Age"
                             keyboardType="number-pad"
                             value={formData.age}
-                            onChangeText={(text) => updateFormData('age', text)}
+                            onChangeText={(text) => updateFormData("age", text)}
                         />
                         <TextInput
                             className="border p-3 rounded bg-gray-50"
                             placeholder="Phone"
                             keyboardType="phone-pad"
                             value={formData.phone}
-                            onChangeText={(text) => updateFormData('phone', text)}
+                            onChangeText={(text) => updateFormData("phone", text)}
                         />
                     </View>
                 );
@@ -93,15 +102,13 @@ const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete, onSki
                 return (
                     <View className="space-y-4">
                         <Text className="text-xl font-bold">Step 2: Your Goal</Text>
-                        {['weightLoss', 'muscleGain', 'fitness', 'strength'].map((goal) => (
+                        {["weightLoss", "muscleGain", "fitness", "strength"].map((goal) => (
                             <TouchableOpacity
                                 key={goal}
                                 className={`p-3 border rounded ${
-                                    formData.goal === goal
-                                        ? 'bg-blue-200 border-blue-500'
-                                        : 'bg-gray-50'
+                                    formData.goal === goal ? "bg-blue-200 border-blue-500" : "bg-gray-50"
                                 }`}
-                                onPress={() => updateFormData('goal', goal)}
+                                onPress={() => updateFormData("goal", goal)}
                             >
                                 <Text className="text-lg">{goal}</Text>
                             </TouchableOpacity>
@@ -113,15 +120,13 @@ const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete, onSki
                 return (
                     <View className="space-y-4">
                         <Text className="text-xl font-bold">Step 3: Experience Level</Text>
-                        {['beginner', 'intermediate', 'advanced'].map((level) => (
+                        {["beginner", "intermediate", "advanced"].map((level) => (
                             <TouchableOpacity
                                 key={level}
                                 className={`p-3 border rounded ${
-                                    formData.experience === level
-                                        ? 'bg-blue-200 border-blue-500'
-                                        : 'bg-gray-50'
+                                    formData.experience === level ? "bg-blue-200 border-blue-500" : "bg-gray-50"
                                 }`}
-                                onPress={() => updateFormData('experience', level)}
+                                onPress={() => updateFormData("experience", level)}
                             >
                                 <Text className="text-lg">{level}</Text>
                             </TouchableOpacity>
@@ -133,9 +138,7 @@ const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete, onSki
                 return (
                     <View className="space-y-4">
                         <Text className="text-xl font-bold">All Done!</Text>
-                        <Text>
-                            Name: {formData.firstName} {formData.lastName}
-                        </Text>
+                        <Text>Name: {formData.firstName} {formData.lastName}</Text>
                         <Text>Goal: {formData.goal}</Text>
                         <Text>Experience: {formData.experience}</Text>
                     </View>
@@ -173,7 +176,7 @@ const WelcomeOnboarding: React.FC<WelcomeOnboardingProps> = ({ onComplete, onSki
                         onPress={handleNext}
                     >
                         <Text className="text-center text-white font-bold">
-                            {currentStep === totalSteps ? 'Finish' : 'Next'}
+                            {currentStep === totalSteps ? "Finish" : "Next"}
                         </Text>
                     </TouchableOpacity>
                 </View>

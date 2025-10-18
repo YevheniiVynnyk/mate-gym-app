@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { TrainingExerciseCard } from '@/components/trainingDay/TrainingExerciseCard';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { TrainingExerciseCard } from "@/components/trainingDay/TrainingExerciseCard";
 
 interface Props {
     trainings: any[];
@@ -13,14 +13,14 @@ interface Props {
 }
 
 export const ExerciseListSection = ({
-    trainings,
-    addTraining,
-    removeTraining,
-    updateExerciseById,
-    updateNotesById,
-    updateSetDataById,
-    updateSetsById,
-}: Props) => (
+                                        trainings,
+                                        addTraining,
+                                        removeTraining,
+                                        updateExerciseById,
+                                        updateNotesById,
+                                        updateSetDataById,
+                                        updateSetsById,
+                                    }: Props) => (
     <View className="bg-white p-4 rounded-xl mb-2">
         {trainings.map((t, i) => (
             <TrainingExerciseCard

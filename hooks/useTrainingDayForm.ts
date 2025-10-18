@@ -1,16 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useLocalSearchParams } from 'expo-router';
-import { trainingDayService } from '@/services/trainingDayService';
-import { mapFromAPI, mapToCreateDTO, mapToUpdateDTO } from '@/services/mapper/trainingDayMapper';
-import {
-    createEmptyTraining,
-    updateSetData,
-    updateSetsCount,
-    updateTrainingField,
-} from '@/lib/utils';
-import { Exercise, Training, TrainingDay } from '@/types/trainingDay';
+import {useEffect, useRef, useState} from "react";
+import {Alert} from "react-native";
+import {useNavigation} from "@react-navigation/native";
+import {useLocalSearchParams} from "expo-router";
+import {trainingDayService} from "@/services/trainingDayService";
+import {mapFromAPI, mapToCreateDTO, mapToUpdateDTO} from "@/services/mapper/trainingDayMapper";
+import {createEmptyTraining, updateSetData, updateSetsCount, updateTrainingField} from "@/lib/utils";
+import {Exercise, Training, TrainingDay} from "@/types/trainingDay";
 
 export interface TrainingDayParams {
     id?: string;
@@ -22,9 +17,9 @@ export interface TrainingDayParams {
 export const useTrainingDayForm = (isEdit?: boolean) => {
     const navigation = useNavigation();
     const params = useLocalSearchParams() as TrainingDayParams;
-    const { id, clientId, prefilledData, selectedDate } = params || {};
+    const {id, clientId, prefilledData, selectedDate} = params || {};
 
-    const [trainingDayName, setTrainingDayName] = useState(prefilledData?.name || '');
+    const [trainingDayName, setTrainingDayName] = useState(prefilledData?.name || "");
     const [trainingDayDate, setTrainingDayDate] = useState<Date>(() => {
         if (prefilledData?.date) return new Date(prefilledData.date);
         if (selectedDate) {
@@ -37,9 +32,7 @@ export const useTrainingDayForm = (isEdit?: boolean) => {
     });
 
     const [trainings, setTrainings] = useState<Training[]>(prefilledData?.trainings || []);
-    const [trainingDayDuration, setTrainingDayDuration] = useState(
-        prefilledData?.durationMinutes?.toString() || '',
-    );
+    const [trainingDayDuration, setTrainingDayDuration] = useState(prefilledData?.durationMinutes?.toString() || "");
     const [originalTrainingDay, setOriginalTrainingDay] = useState<TrainingDay | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const lastExerciseRef = useRef<any>(null);
@@ -56,7 +49,7 @@ export const useTrainingDayForm = (isEdit?: boolean) => {
                     setTrainingDayDate(adapted.date);
                     setTrainings(adapted.trainings || []);
                 } catch {
-                    Alert.alert('Ошибка', 'Не удалось загрузить тренировку');
+                    Alert.alert("Ошибка", "Не удалось загрузить тренировку");
                     navigation.goBack();
                 }
             })();
@@ -73,72 +66,59 @@ export const useTrainingDayForm = (isEdit?: boolean) => {
     }, [focusNew, trainings]);
 
     const addTraining = () => {
-        setTrainings((prev) => [...prev, createEmptyTraining()]);
+        setTrainings(prev => [...prev, createEmptyTraining()]);
         setFocusNew(true);
     };
 
-    const removeTraining = (id: number) => setTrainings(trainings.filter((t) => t.id !== id));
+    const removeTraining = (id: number) => setTrainings(trainings.filter(t => t.id !== id));
 
     const updateExerciseById = (trainingId: number, exercise: Exercise) =>
-        setTrainings(updateTrainingField(trainings, trainingId, 'exercise', exercise));
+        setTrainings(updateTrainingField(trainings, trainingId, "exercise", exercise));
 
     const updateNotesById = (trainingId: number, note: string) =>
-        setTrainings(updateTrainingField(trainings, trainingId, 'note', note));
+        setTrainings(updateTrainingField(trainings, trainingId, "note", note));
 
-    const updateSetDataById = (
-        trainingId: number,
-        setIndex: number,
-        field: 'weight' | 'repetition',
-        value: number,
-    ) => setTrainings(updateSetData(trainings, trainingId, setIndex, field, value));
+    const updateSetDataById = (trainingId: number, setIndex: number, field: "weight" | "repetition", value: number) =>
+        setTrainings(updateSetData(trainings, trainingId, setIndex, field, value));
 
     const updateSetsById = (trainingId: number, sets: number) =>
         setTrainings(updateSetsCount(trainings, trainingId, sets));
 
     const validateInputs = () => {
         if (!trainingDayName.trim()) {
-            Alert.alert('Ошибка', 'Введите название тренировки');
+            Alert.alert("Ошибка", "Введите название тренировки");
             return false;
         }
-        if (!trainings.length || trainings.every((t) => !t.exercise.name.trim())) {
-            Alert.alert('Ошибка', 'Добавьте хотя бы одно упражнение');
+        if (!trainings.length || trainings.every(t => !t.exercise.name.trim())) {
+            Alert.alert("Ошибка", "Добавьте хотя бы одно упражнение");
             return false;
         }
         return true;
     };
 
     const saveTrainingDay = async (execute = false, duration?: number) => {
-        const finalName =
-            trainingDayName.trim() || `Тренировка ${trainingDayDate.toLocaleDateString()}`;
+        const finalName = trainingDayName.trim() || `Тренировка ${trainingDayDate.toLocaleDateString()}`;
         setTrainingDayName(finalName);
         setIsLoading(true);
 
         try {
-            const status = execute ? 'COMPLETED' : 'CREATED';
+            const status = execute ? "COMPLETED" : "CREATED";
             const payload = {
                 id: null,
                 name: finalName,
                 date: trainingDayDate,
                 trainings,
-                status,
-                ...(duration ? { durationMinutes: duration } : {}),
+                status, ...(duration ? {durationMinutes: duration} : {})
             };
 
-            if (clientId)
-                await trainingDayService.createTrainingForClient(
-                    +clientId,
-                    mapToCreateDTO(payload),
-                );
-            else if (isEdit && originalTrainingDay && id)
-                await trainingDayService.updateTrainingDay(
-                    mapToUpdateDTO({ ...originalTrainingDay, ...payload }),
-                );
+            if (clientId) await trainingDayService.createTrainingForClient(+clientId, mapToCreateDTO(payload));
+            else if (isEdit && originalTrainingDay && id) await trainingDayService.updateTrainingDay(mapToUpdateDTO({...originalTrainingDay, ...payload}));
             else await trainingDayService.createTrainingDay(mapToCreateDTO(payload));
 
-            Alert.alert('Успешно!', execute ? 'Тренировка выполнена' : 'Тренировка сохранена');
+            Alert.alert("Успешно!", execute ? "Тренировка выполнена" : "Тренировка сохранена");
             navigation.goBack();
         } catch {
-            Alert.alert('Ошибка', 'Не удалось сохранить тренировку');
+            Alert.alert("Ошибка", "Не удалось сохранить тренировку");
         } finally {
             setIsLoading(false);
         }

@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
 
 export const useNavigation = () => {
     const router = useRouter();
@@ -6,18 +6,18 @@ export const useNavigation = () => {
     const goBack = () => router.back();
 
     // Тренировки
-    const toCreateTrainingDay = () => router.push('/trainingDay/trainingDayForm');
-    const toTrainingList = () => router.push('/trainingDay/trainingDayView');
+    const toCreateTrainingDay = () => router.push("/trainingDay/trainingDayForm");
+    const toTrainingList = () => router.push("/trainingDay/trainingDayView");
     const toTrainingDetail = (id: string | number) => router.push(`/trainingDay/${id}`);
     const toTrainingEdit = (id: string | number) => router.push(`/trainingDay/${id}/edit`);
 
     // Пример для других разделов
-    const toHome = () => router.push('/app');
-    const toDashboard = () => router.push('/dashboard');
-    const toProfile = () => router.push('/profile');
-    const toProgress = () => router.push('/progress');
-    const toDeveloperSupport = () => router.push('/developerSupport');
-    const toTrainingPlan = () => router.push('/trainingPlans');
+    const toHome = () => router.push("/app");
+    const toDashboard = () => router.push("/dashboard");
+    const toProfile = () => router.push("/profile");
+    const toProgress = () => router.push("/progress");
+    const toDeveloperSupport = () => router.push("/developerSupport");
+    const toTrainingPlan = () => router.push("/trainingPlans");
 
     return {
         goBack,
@@ -30,6 +30,6 @@ export const useNavigation = () => {
         toProfile,
         toProgress,
         toDeveloperSupport,
-        toTrainingPlan,
+        toTrainingPlan
     };
 };

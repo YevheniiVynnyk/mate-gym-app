@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 
 interface Props {
     isLoading: boolean;
@@ -15,7 +15,7 @@ export const SaveButtonsSection = ({ isLoading, onSave, onExecute }: Props) => (
             disabled={isLoading}
         >
             <Text className="text-white font-bold">
-                {isLoading ? 'Сохранение...' : 'Сохранить'}
+                {isLoading ? "Сохранение..." : "Сохранить"}
             </Text>
         </TouchableOpacity>
 

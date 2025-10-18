@@ -11,20 +11,20 @@ interface TrainingCalendarProps {
 }
 
 export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
-    selectedDate,
-    setSelectedDate,
-    trainingDays,
-}) => {
+                                                                      selectedDate,
+                                                                      setSelectedDate,
+                                                                      trainingDays,
+                                                                  }) => {
     // Преобразуем trainingDays для календаря
     const calendarData = trainingDays.map((td) => ({
-        date: new Date(td.date).toISOString().split('T')[0],
+        date: new Date(td.date).toISOString().split("T")[0],
         status: td.status,
     }));
 
     const selectedForDay = selectedDate
         ? trainingDays.filter(
-              (td) => new Date(td.date).toISOString().split('T')[0] === selectedDate,
-          )
+            (td) => new Date(td.date).toISOString().split("T")[0] === selectedDate
+        )
         : [];
 
     return (
@@ -42,40 +42,43 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
                     <View className="flex flex-row flex-wrap gap-4 text-sm">
                         {/* Текущая дата */}
                         <View className="flex flex-row items-center gap-2">
-                            <View className="w-3 h-3 rounded-full border-2 border-green-500" />
+                            <View className="w-3 h-3 rounded-full border-2 border-green-500"/>
                             <Text className="text-sm">Сегодня</Text>
                         </View>
 
                         {/* Выбраная дата */}
                         <View className="flex flex-row items-center gap-2">
-                            <View className="w-3 h-3 rounded-full border-2 border-blue-500" />
+                            <View className="w-3 h-3 rounded-full border-2 border-blue-500"/>
                             <Text className="text-sm">Обрана дата</Text>
                         </View>
 
                         {/* Запланировано */}
                         <View className="flex flex-row items-center gap-2">
-                            <View className="w-3 h-3 rounded-full bg-blue-500" />
+                            <View className="w-3 h-3 rounded-full bg-blue-500"/>
                             <Text className="text-sm">Запланировано</Text>
                         </View>
 
                         {/* Завершено */}
                         <View className="flex flex-row items-center gap-2">
-                            <View className="w-3 h-3 rounded-full bg-green-500" />
+                            <View className="w-3 h-3 rounded-full bg-green-500"/>
                             <Text className="text-sm">Завершено</Text>
                         </View>
                     </View>
                 </View>
+
             </View>
 
             {selectedDate && (
                 <View className="mt-4 px-4">
-                    <Text className="font-bold text-lg mb-2">Тренировки на {selectedDate}</Text>
+                    <Text className="font-bold text-lg mb-2">
+                        Тренировки на {selectedDate}
+                    </Text>
 
                     {selectedForDay.length > 0 ? (
                         <FlatList
                             data={selectedForDay}
                             keyExtractor={(trainingDay) => trainingDay.id.toString()}
-                            renderItem={({ item }) => <TrainingCard trainingDay={item} />}
+                            renderItem={({item}) => <TrainingCard trainingDay={item}/>}
                         />
                     ) : (
                         <Text className="text-center mt-2 text-gray-500">

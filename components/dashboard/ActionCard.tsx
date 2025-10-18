@@ -1,11 +1,11 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import {Text, TouchableOpacity} from "react-native";
 
 export function ActionCard({
-    icon,
-    label,
-    onPress,
-}: {
+                               icon,
+                               label,
+                               onPress,
+                           }: {
     icon: React.ReactNode;
     label: string;
     onPress: () => void;

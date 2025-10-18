@@ -1,23 +1,20 @@
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
-import { useAuth } from '@/contexts/AuthContext';
-import TrainingTimer from '@/components/trainingDay/TrainingTimer';
-import TrainingActions from '@/components/trainingDay/TrainingActions';
-import TrainingStats from '@/components/trainingDay/TrainingStats';
-import { useTrainingDay } from '@/hooks/useTrainingDay';
-import { useNavigation } from '@/hooks/useNavigation';
-import { Header } from '@/components/trainingDay/Header';
-import TrainingExercisesList from '@/components/trainingDay/TrainingExercisesList';
+import React from "react";
+import {Text, TouchableOpacity, View} from "react-native";
+import {useLocalSearchParams} from "expo-router";
+import {useAuth} from "@/contexts/AuthContext";
+import TrainingTimer from "@/components/trainingDay/TrainingTimer";
+import TrainingActions from "@/components/trainingDay/TrainingActions";
+import TrainingStats from "@/components/trainingDay/TrainingStats";
+import {useTrainingDay} from "@/hooks/useTrainingDay";
+import {useNavigation} from "@/hooks/useNavigation";
+import {Header} from "@/components/trainingDay/Header";
+import TrainingExercisesList from "@/components/trainingDay/TrainingExercisesList";
 
 export default function Id() {
     const router = useNavigation();
-    const { id } = useLocalSearchParams(); // получаем id из URL
-    const { user } = useAuth();
-    const { trainingDay, isStarted, time, start, finish, remove } = useTrainingDay(
-        Number(id),
-        user?.id,
-    );
+    const {id} = useLocalSearchParams(); // получаем id из URL
+    const {user} = useAuth();
+    const {trainingDay, isStarted, time, start, finish, remove} = useTrainingDay(Number(id), user?.id);
 
     if (!trainingDay) {
         return (
@@ -35,9 +32,9 @@ export default function Id() {
 
     return (
         <View className="flex-1">
-            <Header title={trainingDay.name} onBack={() => router.goBack()} />
+            <Header title={trainingDay.name} onBack={() => router.goBack()}/>
 
-            {isStarted && <TrainingTimer time={time} />}
+            {isStarted && <TrainingTimer time={time}/>}
 
             <TrainingActions
                 isStarted={isStarted}
@@ -51,9 +48,9 @@ export default function Id() {
                     router.goBack();
                 }}
             />
-            <TrainingStats trainingDay={trainingDay} />
+            <TrainingStats trainingDay={trainingDay}/>
 
-            <TrainingExercisesList trainingDay={trainingDay} />
+            <TrainingExercisesList trainingDay={trainingDay}/>
         </View>
     );
 }

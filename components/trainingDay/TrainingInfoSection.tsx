@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Calendar } from 'lucide-react-native';
+import React from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Calendar } from "lucide-react-native";
 
 interface Props {
     trainingDayName: string;
@@ -10,11 +10,11 @@ interface Props {
 }
 
 export const TrainingInfoSection = ({
-    trainingDayName,
-    setTrainingDayName,
-    trainingDayDate,
-    onOpenCalendar,
-}: Props) => (
+                                        trainingDayName,
+                                        setTrainingDayName,
+                                        trainingDayDate,
+                                        onOpenCalendar,
+                                    }: Props) => (
     <View className="bg-white p-4 rounded-xl mb-4 shadow-sm">
         <View className="mb-3 flex-row items-center justify-start space-x-3">
             <Text className="text-lg font-medium w-24">Название</Text>
@@ -34,8 +34,8 @@ export const TrainingInfoSection = ({
             >
                 <Calendar size={20} color="#555" className="mr-2" />
                 <Text>
-                    {trainingDayDate.toLocaleDateString()}{' '}
-                    {trainingDayDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    {trainingDayDate.toLocaleDateString()}{" "}
+                    {trainingDayDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                 </Text>
             </TouchableOpacity>
         </View>

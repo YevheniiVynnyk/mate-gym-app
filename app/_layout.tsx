@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { AuthProvider, useAuth } from '@/contexts/AuthContext';
-import { TrainingDaysProvider } from '@/contexts/TrainingDaysContext';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import AppLayout from '@/components/layout/AppLayout';
-import { ActivityIndicator, View } from 'react-native';
-import '../global.css';
+import React, {useEffect} from "react";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {AuthProvider, useAuth} from "@/contexts/AuthContext";
+import {TrainingDaysProvider} from "@/contexts/TrainingDaysContext";
+import {SafeAreaView} from "react-native-safe-area-context";
+import AppLayout from "@/components/layout/AppLayout";
+import {ActivityIndicator, View} from "react-native";
+import "../global.css";
 import * as SplashScreen from 'expo-splash-screen';
-import { Inter_400Regular, Inter_700Bold, useFonts } from '@expo-google-fonts/inter';
-import { Slot } from 'expo-router';
+import {Inter_400Regular, Inter_700Bold, useFonts} from "@expo-google-fonts/inter";
+import { Slot } from "expo-router";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +26,7 @@ export default function RootLayout() {
     if (!fontsLoaded) {
         return (
             <View className="flex-1 justify-center items-center bg-background">
-                <ActivityIndicator size="large" color="#4ADE80" />
+                <ActivityIndicator size="large" color="#4ADE80"/>
             </View>
         );
     }
@@ -37,7 +37,7 @@ export default function RootLayout() {
                 <TrainingDaysProvider>
                     <SafeAreaView className="flex-1 bg-background">
                         <AuthGate>
-                            <Slot />
+                            <Slot/>
                         </AuthGate>
                     </SafeAreaView>
                 </TrainingDaysProvider>
@@ -46,13 +46,13 @@ export default function RootLayout() {
     );
 }
 
-const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { user, isLoading } = useAuth();
+const AuthGate: React.FC<{ children: React.ReactNode }> = ({children}) => {
+    const {user, isLoading} = useAuth();
 
     if (isLoading) {
         return (
             <View className="flex-1 justify-center items-center">
-                <ActivityIndicator />
+                <ActivityIndicator/>
             </View>
         );
     }

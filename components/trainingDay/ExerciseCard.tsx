@@ -1,15 +1,12 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import ExerciseTotal from '@/components/trainingDay/ExerciseTotal';
+import React from "react";
+import {Text, View} from "react-native";
+import ExerciseTotal from "@/components/trainingDay/ExerciseTotal";
 
-export default function ExerciseCard({ training, index }: { training: any; index: number }) {
-    const totalReps = training.trainingDetails.reduce(
-        (s: number, set: any) => s + set.repetition,
-        0,
-    );
+export default function ExerciseCard({training, index}: { training: any; index: number }) {
+    const totalReps = training.trainingDetails.reduce((s: number, set: any) => s + set.repetition, 0);
     const totalWeight = training.trainingDetails.reduce(
         (s: number, set: any) => s + set.repetition * set.weight,
-        0,
+        0
     );
 
     return (
@@ -22,10 +19,7 @@ export default function ExerciseCard({ training, index }: { training: any; index
             </Text>
 
             {training.trainingDetails.map((set: any, i: number) => (
-                <View
-                    key={i}
-                    className="flex-row justify-between m-1 p-1 px-2 bg-gray-100 border border-gray-100 rounded-lg"
-                >
+                <View key={i} className="flex-row justify-between m-1 p-1 px-2 bg-gray-100 border border-gray-100 rounded-lg">
                     <Text className="font-medium">Подход {i + 1}</Text>
                     <View className="flex-row items-center space-x-1">
                         <Text>{set.repetition}</Text>
@@ -46,7 +40,7 @@ export default function ExerciseCard({ training, index }: { training: any; index
                 </View>
             )}
 
-            <ExerciseTotal training={training} />
+           <ExerciseTotal training={training} />
         </View>
     );
 }

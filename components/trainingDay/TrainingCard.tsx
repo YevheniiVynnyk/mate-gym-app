@@ -1,34 +1,34 @@
-import React, { memo, useCallback } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { Clock, Target } from 'lucide-react-native';
-import { useRouter } from 'expo-router';
-import { useAuth } from '@/contexts/AuthContext';
-import { Training, TrainingDay } from '@/types/trainingDay';
+import React, {memo, useCallback} from "react";
+import {Pressable, Text, View} from "react-native";
+import {Clock, Target} from "lucide-react-native";
+import {useRouter} from "expo-router";
+import {useAuth} from "@/contexts/AuthContext";
+import {Training, TrainingDay} from "@/types/trainingDay";
 
 type TrainingCardProps = {
     trainingDay: TrainingDay;
 };
-const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
+const TrainingCard: React.FC<TrainingCardProps> = memo(({trainingDay}) => {
     const router = useRouter();
 
     const handlePress = useCallback(() => {
         router.push(`/trainingDay/${trainingDay.id}`);
     }, [router, trainingDay.id]);
 
-    const isCompleted = trainingDay.status === 'COMPLETED';
+    const isCompleted = trainingDay.status === "COMPLETED";
 
     const formatDuration = (minutes?: number) => {
-        if (!minutes) return 'Не указано';
+        if (!minutes) return "Не указано";
         const h = Math.floor(minutes / 60);
         const m = minutes % 60;
         return h > 0 ? `${h}ч ${m}м` : `${m}м`;
     };
 
     const formatDate = (date: string | Date) =>
-        new Date(date).toLocaleDateString('ru-RU', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric',
+        new Date(date).toLocaleDateString("ru-RU", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
         });
 
     return (
@@ -38,15 +38,17 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
         >
             {/* HEADER */}
             <View className="flex-row justify-between items-center">
-                <Text className="text-base font-bold text-foreground">{trainingDay.name}</Text>
+                <Text className="text-base font-bold text-foreground">
+                    {trainingDay.name}
+                </Text>
 
                 <View
                     className={`px-2 py-1 rounded-full ${
-                        isCompleted ? 'bg-green-500' : 'bg-yellow-400'
+                        isCompleted ? "bg-green-500" : "bg-yellow-400"
                     }`}
                 >
                     <Text className="text-xs text-white font-semibold">
-                        {isCompleted ? 'Завершена' : 'Запланирована'}
+                        {isCompleted ? "Завершена" : "Запланирована"}
                     </Text>
                 </View>
             </View>
@@ -77,11 +79,17 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
     );
 });
 
-TrainingCard.displayName = 'TrainingCard';
+TrainingCard.displayName = "TrainingCard";
 
 export default TrainingCard;
 
-const InfoRow = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
+const InfoRow = ({
+                     icon,
+                     text,
+                 }: {
+    icon: React.ReactNode;
+    text: string;
+}) => (
     <View className="m-1">
         <View className="flex-row items-center">
             {icon}
