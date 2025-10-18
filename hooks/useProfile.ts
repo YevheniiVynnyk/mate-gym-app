@@ -14,10 +14,6 @@ export const useProfile = () => {
 	const {user, logout, setUser} = useAuth();
 	const router = useNavigation();
 
-	const [avatarUri, setAvatarUri] = useState<string | null>(
-		user?.imageId ? imageService.getUrl(user.imageId) : null
-	);
-
 	const [formDataUser, setFormDataUser] = useState({
 		firstName: user?.firstName || "",
 		lastName: user?.lastName || "",

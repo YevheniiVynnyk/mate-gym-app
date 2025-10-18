@@ -1,4 +1,5 @@
-import { api } from "./api";
+import {api} from "./api";
+import {User} from "@/types/user";
 
 export const imageService = {
   // ✅ Загрузка изображения
@@ -15,7 +16,7 @@ export const imageService = {
       name: file.name,
     } as any); // <- важное изменение: используем объект формата RN
 
-    const response = await api.post<number>("/images/upload", formData, {
+    const response = await api.post<number>("/images/upload/avatar", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
