@@ -10,7 +10,7 @@ import {useWelcome} from "@/hooks/useWelcome";
 
 export default function Welcome() {
 	const {
-		user,
+		user, 
 		isLoading,
 		isRegistering,
 		showTermsRequired,
