@@ -1,57 +1,34 @@
 module.exports = {
-  // Указываем парсер для TypeScript
-  parser: '@typescript-eslint/parser',
-  extends: [
-    // Настройки для TypeScript
-    'plugin:@typescript-eslint/recommended',
-    // Настройки для React (включает JSX)
-    'plugin:react/recommended',
-    // Настройки для React Native
-    'plugin:react-native/all',
-    // Отключает правила ESLint, которые конфликтуют с Prettier
-    'prettier', 
-    'plugin:prettier/recommended', // Включает prettier как правило ESLint и выводит ошибки
-  ],
+  // ... (существующие настройки)
+  
+  // Обновляем секцию plugins:
   plugins: [
     'react', 
     'react-native', 
     '@typescript-eslint', 
-    'prettier'
+    'prettier',
+    'import' // ✅ ДОБАВЛЯЕМ ПЛАГИН IMPORT
   ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2020, 
-    sourceType: 'module',
-  },
-  root: true, // Указывает, что это корневой файл конфигурации
-  rules: {
-    // Включаем ошибки форматирования от Prettier
-    'prettier/prettier': ['error', {
-        "trailingComma": "all",
-        "tabWidth": 4,
-        "semi": true,
-        "singleQuote": true,
-        "jsxSingleQuote": false,
-        "printWidth": 100,
-        "arrowParens": "always"
-    }],
-    
-    // Общие правила
-    'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
-    'react/prop-types': 'off', // Отключаем, так как используем TypeScript
-    'react-native/no-raw-text': 'off', // Часто отключают, чтобы не ругался на текст
-    
-    // TypeScript Specific Rules
-    '@typescript-eslint/explicit-module-boundary-types': 'off', // Слишком строго
-    '@typescript-eslint/no-explicit-any': 'off', // Разрешаем 'any'
-  },
-  // Настройки для React Native
+
+  // ... (parserOptions и root)
+
+  // ... (rules)
+  
+  // ✅ НОВАЯ/ОБНОВЛЕННАЯ СЕКЦИЯ settings:
   settings: {
     react: {
-      version: 'detect', // Автоматическое определение версии React
+      version: 'detect',
     },
-    'react-native/host-platform': 'all', // Для всех платформ
+    'react-native/host-platform': 'all',
+    // 🎯 УКАЗЫВАЕМ ESLINT ИСПОЛЬЗОВАТЬ tsconfig.json ДЛЯ РАЗРЕШЕНИЯ ПУТЕЙ
+    'import/resolver': {
+      typescript: {
+        // Указываем путь к вашему tsconfig.json (по умолчанию он в корне)
+        project: './tsconfig.json', 
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
 };

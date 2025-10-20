@@ -1,18 +1,25 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-	"strict": true,
-	"paths": {
-	  "@/*": [
-		"./*"
-	  ]
-	}
-  },
-  "include": [
-	"**/*.ts",
-	"**/*.tsx",
-	".expo/types/**/*.ts",
-	"expo-env.d.ts",
-	"nativewind-env.d.ts"
-  ]
-}
+	"extends": "expo/tsconfig.base",
+	"compilerOptions": {
+	  "strict": true,
+	  "baseUrl": ".", // Базовый путь для разрешения модулей - корень проекта
+	  "paths": {
+		// Базовый алиас
+		"@/*": ["./*"], 
+		
+		// Явные алиасы для ESLint и VS Code
+		"@/components/*": ["components/*"], 
+		"@/services/*": ["services/*"],
+		"@/hooks/*": ["hooks/*"],
+		"@/types/*": ["types/*"]
+	  }
+	  // ✅ ЗДЕСЬ ДОЛЖНА ЗАКРЫВАТЬСЯ СЕКЦИЯ compilerOptions
+	}, 
+	"include": [
+	  "**/*.ts",
+	  "**/*.tsx",
+	  ".expo/types/**/*.ts",
+	  "expo-env.d.ts",
+	  "nativewind-env.d.ts"
+	]
+  }
