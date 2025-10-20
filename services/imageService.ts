@@ -1,5 +1,5 @@
-import {api} from "./api";
-import {User} from "@/types/user";
+import { api } from "./api";
+import { User } from "@/types/user";
 
 export const imageService = {
   // ✅ Загрузка изображения
