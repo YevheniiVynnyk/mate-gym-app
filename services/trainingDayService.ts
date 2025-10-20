@@ -74,10 +74,10 @@ export const trainingDayService = {
   // Получить тренировочные дни по месяцу и году
   async getTrainingDaysByMonth(
     month: number,
-    year: number
+    year: number,
   ): Promise<TrainingDayDTO[]> {
     const response = await api.get<TrainingDayDTO[]>(
-      `/trainingDay/${month}/${year}`
+      `/trainingDay/${month}/${year}`,
     );
     return response.data;
   },
@@ -102,7 +102,7 @@ export const trainingDayService = {
   // Создать тренировку для клиента (тренером)
   async createTrainingForClient(
     clientId: number,
-    trainingDay: TrainingDayCreateDTO
+    trainingDay: TrainingDayCreateDTO,
   ): Promise<void> {
     await api.post(`/trainingDay/trainer/${clientId}`, trainingDay);
   },
@@ -114,7 +114,7 @@ export const trainingDayService = {
 
   // Создать несколько тренировочных дней
   async createTrainingDays(
-    trainingDays: TrainingDayCreateDTO[]
+    trainingDays: TrainingDayCreateDTO[],
   ): Promise<void> {
     await api.post("/trainingDay/all", trainingDays);
   },

@@ -98,7 +98,7 @@ export const statisticsService = {
   // Получить статистику по упражнению
   async getExerciseStatistics(id: number): Promise<StatisticsExerciseDTO> {
     const response = await api.get<StatisticsExerciseDTO>(
-      `/statistics/exercise/${id}`
+      `/statistics/exercise/${id}`,
     );
     return response.data;
   },
@@ -106,20 +106,20 @@ export const statisticsService = {
   // Получить прогресс по упражнению
   async getExerciseProgress(
     id: number,
-    timeframe: TimeFrame
+    timeframe: TimeFrame,
   ): Promise<StatProgressDTO> {
     const response = await api.get<StatProgressDTO>(
-      `/statistics/exercise-progress/${id}/${timeframe}`
+      `/statistics/exercise-progress/${id}/${timeframe}`,
     );
     return response.data;
   },
 
   // Получить статистику по группе мышц
   async getMuscleGroupStatistics(
-    id: number
+    id: number,
   ): Promise<StatisticsMuscleGroupDTO> {
     const response = await api.get<StatisticsMuscleGroupDTO>(
-      `/statistics/muscle-group/${id}`
+      `/statistics/muscle-group/${id}`,
     );
     return response.data;
   },
@@ -127,10 +127,10 @@ export const statisticsService = {
   // Получить прогресс по группе мышц
   async getMuscleGroupProgress(
     id: number,
-    timeframe: TimeFrame
+    timeframe: TimeFrame,
   ): Promise<StatProgressDTO> {
     const response = await api.get<StatProgressDTO>(
-      `/statistics/muscle-progress/${id}/${timeframe}`
+      `/statistics/muscle-progress/${id}/${timeframe}`,
     );
     return response.data;
   },
@@ -143,14 +143,14 @@ export const statisticsService = {
 
   async getFavoriteExercises(): Promise<FavoriteExerciseDTO[]> {
     const response = await api.get<FavoriteExerciseDTO[]>(
-      "/statistics/favorites/exercises"
+      "/statistics/favorites/exercises",
     );
     return response.data;
   },
 
   async getFavoriteMuscleGroups(): Promise<FavoriteMuscleGroupDTO[]> {
     const response = await api.get<FavoriteMuscleGroupDTO[]>(
-      "/statistics/favorites/muscle-groups"
+      "/statistics/favorites/muscle-groups",
     );
     return response.data;
   },

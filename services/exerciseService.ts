@@ -27,10 +27,10 @@ export const exerciseService = {
 
   // Получить упражнения по группе мышц
   async getExercisesByMuscleGroup(
-    muscleGroupId: number
+    muscleGroupId: number,
   ): Promise<ExerciseDTO[]> {
     const response = await api.get<ExerciseDTO[]>(
-      `/exercise/muscle-groups/${muscleGroupId}/exercises`
+      `/exercise/muscle-groups/${muscleGroupId}/exercises`,
     );
     return response.data;
   },

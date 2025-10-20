@@ -12,7 +12,7 @@ import PlanCard, { TrainingPlan } from "@/components/plans/PlanCard";
 const TrainingPlansPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEquipment, setSelectedEquipment] = useState<string | null>(
-    null
+    null,
   );
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
 
@@ -122,7 +122,7 @@ const TrainingPlansPage = () => {
             }`}
             onPress={() =>
               setSelectedEquipment(
-                selectedEquipment === filter.id ? null : filter.id
+                selectedEquipment === filter.id ? null : filter.id,
               )
             }
           >
