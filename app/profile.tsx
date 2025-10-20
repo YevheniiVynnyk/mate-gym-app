@@ -13,6 +13,7 @@ export default function Profile() {
 		pickAvatar,
 		isEditing,
 		setIsEditing,
+		setFormDataUserWithAge,
 		formDataUser,
 		setFormDataUser,
 		handleSaveUser,
@@ -22,10 +23,6 @@ export default function Profile() {
 	} = useProfile();
 	return (
 		<ScrollView className="flex-1 bg-gray-50 p-4">
-			<View className="flex-row items-center mb-4">
-				<Text className="text-2xl font-bold text-center">Профиль</Text>
-			</View>
-
 			<AvatarSection user={user} pickAvatar={pickAvatar} loading={loading}/>
 			<UserInfoSection
 				isEditing={isEditing}
@@ -33,6 +30,7 @@ export default function Profile() {
 				formDataUser={formDataUser}
 				setFormDataUser={setFormDataUser}
 				handleSaveUser={handleSaveUser}
+				setFormDataUserWithAge={setFormDataUserWithAge}
 			/>
 			<SettingsSection handleLogout={handleLogout}/>
 

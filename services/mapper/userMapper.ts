@@ -13,6 +13,8 @@ export const fromUserDTO = (dto: UserDTO): User => ({
 	lastName: dto.lastName,
 	age: dto.age || 0,
 	phoneNumber: dto.phoneNumber || '',
+	// ✅ ИСПРАВЛЕНИЕ 1: birthday должно браться из dto.birthday и быть строкой
+    birthday: dto.birthday || '',
 	role: dto.role === 'CLIENT' ? 'CLIENT' : 'TRAINER',
 	subscription: dto.role === 'TRAINER' ? 'pro_trainer' : 'free',
 	createdAt: dto.birthday ? new Date(dto.birthday) : new Date(),
@@ -34,6 +36,8 @@ export const toUserDTO = (user: User): UserDTO => ({
 	role: user.role === 'TRAINER' ? 'TRAINER' : 'CLIENT',
 	phoneNumber: user.phoneNumber,
 	imageId: user.imageId, // если есть возможность, можно передавать ID изображения
-	birthday: user.createdAt.toISOString(),
+	// Если user.birthday - это чистая строка "YYYY-MM-DD", передаем ее
+    birthday: user.birthday,
+	//birthday: user.createdAt.toISOString(),
 	settings: undefined
 });

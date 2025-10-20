@@ -6,6 +6,7 @@ export interface User {
 	firstName: string;
 	lastName: string;
 	age: number;
+	birthday: string;
 	phoneNumber: string;
 	role: 'CLIENT' | 'TRAINER';
 	subscription: 'free' | 'pro_client' | 'pro_trainer';
