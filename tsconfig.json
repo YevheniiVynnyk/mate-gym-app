@@ -2,18 +2,15 @@
 	"extends": "expo/tsconfig.base",
 	"compilerOptions": {
 	  "strict": true,
-	  "baseUrl": ".", // Базовый путь для разрешения модулей - корень проекта
+	  "baseUrl": ".",
+	  "moduleResolution": "node",
 	  "paths": {
-		// Базовый алиас
 		"@/*": ["./*"], 
-		
-		// Явные алиасы для ESLint и VS Code
 		"@/components/*": ["components/*"], 
 		"@/services/*": ["services/*"],
 		"@/hooks/*": ["hooks/*"],
 		"@/types/*": ["types/*"]
 	  }
-	  // ✅ ЗДЕСЬ ДОЛЖНА ЗАКРЫВАТЬСЯ СЕКЦИЯ compilerOptions
 	}, 
 	"include": [
 	  "**/*.ts",
