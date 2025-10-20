@@ -3,11 +3,11 @@ import { Text, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Globe } from "lucide-react-native";
 import { useTranslation } from "react-i18next";
-import { styled } from "nativewind";
+/*import { styled } from "nativewind";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
-
+*/
 const languages = [
   { key: "ru", name: "Русский", flag: "🇷🇺" },
   { key: "en", name: "English", flag: "🇺🇸" },
@@ -39,7 +39,8 @@ const LanguageSelector: React.FC = () => {
   );
 
   return (
-    <StyledView className="flex flex-row items-center gap-2 p-2 bg-white rounded-md border">
+    <>
+      {/*<StyledView className="flex flex-row items-center gap-2 p-2 bg-white rounded-md border">*/}
       <Globe size={20} color="black" />
       <Picker
         selectedValue={selectedLanguage}
@@ -54,7 +55,8 @@ const LanguageSelector: React.FC = () => {
           />
         ))}
       </Picker>
-    </StyledView>
+      {/*</StyledView>*/}
+    </>
   );
 };
 

@@ -27,7 +27,8 @@ export interface TrainingDayParams {
 export const useTrainingDayForm = () => {
   const navigation = useNavigation();
   const params = useLocalSearchParams() as TrainingDayParams;
-  const { id, clientId, prefilledData, selectedDate, isEdit } = params || {};
+  const { id, /*clientId,*/ prefilledData, selectedDate, isEdit } =
+    params || {};
 
   const [trainingDayName, setTrainingDayName] = useState(
     prefilledData?.name || "",

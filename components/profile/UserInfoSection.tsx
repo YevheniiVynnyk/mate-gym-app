@@ -28,7 +28,7 @@ export default function UserInfoSection({
       if (isNaN(date.getTime())) return dateString; // Вернуть, если неверная дата
       return date.toISOString().split("T")[0]; // "YYYY-MM-DD"
     } catch (e) {
-      return dateString;
+      return dateString + e;
     }
   };
   // ✅ ИЗМЕНЕННЫЙ Обработчик выбора даты

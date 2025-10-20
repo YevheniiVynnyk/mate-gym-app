@@ -21,7 +21,7 @@ export default function Welcome() {
     user,
     isLoading,
     isRegistering,
-    showTermsRequired,
+    /*showTermsRequired,*/
     loginForm,
     registerForm,
     setLoginForm,

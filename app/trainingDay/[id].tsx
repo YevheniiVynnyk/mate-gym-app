@@ -14,7 +14,7 @@ export default function Id() {
   const router = useNavigation();
   const { id } = useLocalSearchParams(); // получаем id из URL
   const { user } = useAuth();
-  const { trainingDay, isStarted, time, start, finish, remove } =
+  const { trainingDay, isStarted, time, start, /*finish, */ remove } =
     useTrainingDay(Number(id), user?.id);
 
   if (!trainingDay) {

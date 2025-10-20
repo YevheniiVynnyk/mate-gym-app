@@ -9,14 +9,14 @@ export default function ExerciseCard({
   training: any;
   index: number;
 }) {
-  const totalReps = training.trainingDetails.reduce(
+  /*const totalReps = training.trainingDetails.reduce(
     (s: number, set: any) => s + set.repetition,
     0,
   );
   const totalWeight = training.trainingDetails.reduce(
     (s: number, set: any) => s + set.repetition * set.weight,
     0,
-  );
+  );*/
 
   return (
     <View className="p-1 rounded-lg mb-2">

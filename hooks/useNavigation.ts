@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { TrainingDay } from "@/types/trainingDay";
+//import { TrainingDay } from "@/types/trainingDay";
 import { TrainingDayParams } from "@/hooks/useTrainingDayForm";
 
 export const useNavigation = () => {
