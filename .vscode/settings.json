@@ -1,0 +1,22 @@
+{"git.autofetch": true,
+    "window.zoomLevel": 1,
+    "tabnine.experimentalAutoImports": true,
+    // 1. Включает автоматическое форматирование при сохранении (это Prettier)
+  "editor.formatOnSave": true, 
+  
+  // 2. Включает автоматическое исправление ошибок ESLint при сохранении
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  
+  // 3. (Опционально) Устанавливает Prettier форматтером по умолчанию для JS/TS файлов
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
