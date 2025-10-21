@@ -1,5 +1,14 @@
-import { TextInput } from "react-native";
+import { TextInput, TextInputProps } from "react-native";
 import React from "react"; // Не забывайте импортировать React
+
+type CustomInputProps = TextInputProps & {
+  // Вы можете удалить эти явные объявления, так как они уже есть в TextInputProps,
+  // но оставляем их для наглядности, если они были в исходном коде.
+  placeholder?: string;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  secureTextEntry?: boolean;
+};
 
 const CustomInput: React.FC<CustomInputProps> = ({
   placeholder,
