@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Calendar, Edit3, Save } from "lucide-react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useTranslation } from "react-i18next";
 
 export default function UserInfoSection({
   isEditing,
@@ -17,6 +18,8 @@ export default function UserInfoSection({
   handleSaveUser,
   setFormDataUserWithAge,
 }: any) {
+  // 💡 Вызываем хук useTranslation для получения функции t
+  const { t } = useTranslation();
   const [showDatePicker, setShowDatePicker] = useState(false);
   // Функция для форматирования даты в "ГГГГ-ММ-ДД"
   const formatDate = (dateString: string) => {
@@ -50,12 +53,24 @@ export default function UserInfoSection({
   };
   // Список полей, теперь без 'birthday' в цикле
   const textFields = [
-    { placeholder: "Имя", key: "firstName" },
-    { placeholder: "Фамилия", key: "lastName" },
-    { placeholder: "Email", key: "email", keyboardType: "email-address" },
-    { placeholder: "Логин", key: "login" },
-    { placeholder: "Телефон", key: "phoneNumber", keyboardType: "phone-pad" },
-    { placeholder: "Возраст", key: "age", keyboardType: "numeric" },
+    { placeholder: t("userInfo.placeholder.firstName"), key: "firstName" },
+    { placeholder: t("userInfo.placeholder.lastName"), key: "lastName" },
+    {
+      placeholder: t("userInfo.placeholder.email"),
+      key: "email",
+      keyboardType: "email-address",
+    },
+    { placeholder: t("userInfo.placeholder.login"), key: "login" },
+    {
+      placeholder: t("userInfo.placeholder.phone"),
+      key: "phoneNumber",
+      keyboardType: "phone-pad",
+    },
+    {
+      placeholder: t("userInfo.placeholder.age"),
+      key: "age",
+      keyboardType: "numeric",
+    },
   ];
   // ✅ НОВОЕ РЕШЕНИЕ: Инициализация pickerDate через useMemo
   const pickerDate = useMemo(() => {
@@ -82,14 +97,14 @@ export default function UserInfoSection({
   return (
     <View className="bg-white p-4 rounded-lg mb-4 shadow-sm">
       <View className="flex-row justify-between items-center mb-2">
-        <Text className="text-lg font-semibold">Личная информация</Text>
+        <Text className="text-lg font-semibold">{t("userInfo.header")}</Text>
         <TouchableOpacity
           className="flex-row items-center"
           onPress={() => (isEditing ? handleSaveUser() : setIsEditing(true))}
         >
           {isEditing ? <Save size={18} /> : <Edit3 size={18} />}
           <Text className="ml-1 text-blue-500">
-            {isEditing ? "Сохранить" : "Редактировать"}
+            {isEditing ? t("userInfo.save") : t("userInfo.edit")}
           </Text>
         </TouchableOpacity>
       </View>
@@ -122,8 +137,8 @@ export default function UserInfoSection({
           className={formDataUser.birthday ? "text-gray-800" : "text-gray-400"}
         >
           {formDataUser.birthday
-            ? `Дата рождения: ${formatDate(formDataUser.birthday)}`
-            : "Дата рождения"}
+            ? `${t("userInfo.birthday")}: ${formatDate(formDataUser.birthday)}`
+            : t("userInfo.birthday")}
         </Text>
         <Calendar size={18} color={isEditing ? "#3b82f6" : "#9ca3af"} />
       </TouchableOpacity>
@@ -142,7 +157,7 @@ export default function UserInfoSection({
       {formDataUser.role === "CLIENT" && (
         <TextInput
           className="border border-gray-300 rounded-md p-2 mb-2"
-          placeholder="Цели"
+          placeholder={t("userInfo.goals")}
           value={formDataUser.goals}
           editable={isEditing}
           onChangeText={(text) =>

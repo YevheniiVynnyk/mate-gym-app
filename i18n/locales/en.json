@@ -1,0 +1,20 @@
+{
+    "userInfo": {
+      "header": "Personal Information",
+      "save": "Save",
+      "edit": "Edit",
+      "placeholder": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "login": "Login",
+        "phone": "Phone",
+        "age": "Age"
+      },
+      "birthday": "Date of Birth",
+      "goals": "Goals"
+    },
+    "welcome": "Welcome to Mate Gym App!",
+    "selectLanguage": "Select Language",
+    "hello": "Hello"
+  }

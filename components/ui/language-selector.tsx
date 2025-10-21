@@ -22,15 +22,16 @@ const languages = [
 ];
 
 const LanguageSelector: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation(); // 💡 Использование useTranslation
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
   useEffect(() => {
+    // Синхронизация, если язык меняется внешне (например, при инициализации)
     setSelectedLanguage(i18n.language);
   }, [i18n.language]);
 
   const handleLanguageChange = (language: string) => {
-    i18n.changeLanguage(language);
+    i18n.changeLanguage(language); // 💡 Корректное изменение языка i18next
     setSelectedLanguage(language);
   };
 

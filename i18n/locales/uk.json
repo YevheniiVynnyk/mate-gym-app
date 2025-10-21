@@ -1,0 +1,20 @@
+{
+    "userInfo": {
+      "header": "Особиста інформація",
+      "save": "Зберегти",
+      "edit": "Редагувати",
+      "placeholder": {
+        "firstName": "Ім'я",
+        "lastName": "Прізвище",
+        "email": "Електронна пошта",
+        "login": "Логін",
+        "phone": "Телефон",
+        "age": "Вік"
+      },
+      "birthday": "Дата народження",
+      "goals": "Цілі"
+    },
+    "welcome": "Ласкаво просимо в Mate Gym App!",
+    "selectLanguage": "Вибрати мову",
+    "hello": "Привіт"
+  }

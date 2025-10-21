@@ -1,0 +1,25 @@
+{
+    "userInfo": {
+      "header": "Личная информация",
+      "save": "Сохранить",
+      "edit": "Редактировать",
+      "placeholder": {
+        "firstName": "Имя",
+        "lastName": "Фамилия",
+        "email": "Email",
+        "login": "Логин",
+        "phone": "Телефон",
+        "age": "Возраст"
+      },
+      "birthday": "Дата рождения",
+      "goals": "Цели"
+    },
+    "welcome": "Добро пожаловать в Mate Gym App!",
+    "selectLanguage": "Выбрать язык",
+    "hello": "Привет",
+    "SettingsSection":{
+      "title":"Настройки и действия",
+      "logout": "Выйти"
+
+    }
+  }

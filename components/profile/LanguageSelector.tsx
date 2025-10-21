@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { useTranslation } from "react-i18next";
 
 const languages = [
   { code: "en", label: "English" },
@@ -8,11 +9,23 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
-  const [selectedLanguage, setSelectedLanguage] = useState("ru");
+  // 💡 Получаем объект i18n
+  const { i18n } = useTranslation();
+
+  // Инициализируем состояние текущим языком из i18n
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+  // 💡 Синхронизация состояния с языком i18next, если он меняется внешне
+  useEffect(() => {
+    setSelectedLanguage(i18n.language);
+  }, [i18n.language]);
 
   const changeLanguage = (code: string) => {
+    // 💡 Основная логика: меняем язык через i18next
+    i18n.changeLanguage(code);
+
+    // Обновляем локальное состояние для обновления стилей
     setSelectedLanguage(code);
-    // TODO: Добавить логику изменения языка приложения
   };
 
   return (

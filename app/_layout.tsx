@@ -13,8 +13,13 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { Slot } from "expo-router";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/i18n"; // Предполагаем, что i18n.ts находится в папке /i18n
 
 const queryClient = new QueryClient();
+
+// Загрузка сплэш-скрина должна быть отключена (unprevented) перед монтированием RootLayout
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +29,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded) {
-      SplashScreen.hide();
+      SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
   if (!fontsLoaded) {
@@ -36,17 +41,19 @@ export default function RootLayout() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <TrainingDaysProvider>
-          <SafeAreaView className="flex-1 bg-background">
-            <AuthGate>
-              <Slot />
-            </AuthGate>
-          </SafeAreaView>
-        </TrainingDaysProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <I18nextProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <TrainingDaysProvider>
+            <SafeAreaView className="flex-1 bg-background">
+              <AuthGate>
+                <Slot />
+              </AuthGate>
+            </SafeAreaView>
+          </TrainingDaysProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </I18nextProvider>
   );
 }
 
