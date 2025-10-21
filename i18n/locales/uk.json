@@ -1,20 +1,86 @@
 {
-    "userInfo": {
-      "header": "Особиста інформація",
-      "save": "Зберегти",
-      "edit": "Редагувати",
-      "placeholder": {
-        "firstName": "Ім'я",
-        "lastName": "Прізвище",
-        "email": "Електронна пошта",
-        "login": "Логін",
-        "phone": "Телефон",
-        "age": "Вік"
-      },
-      "birthday": "Дата народження",
-      "goals": "Цілі"
+  "nameApp": "Mate Gym",
+  "selectLanguage": "Вибрати мову",
+  "welcome": {
+    "title": "Почніть прямо зараз!",
+    "subtitle": "Приєднуйтеся до тисяч задоволених користувачів",
+    "captionText1": "Твій персональний",
+    "captionText2": "фітнес-тренер",
+    "captionText3": "у кишені",
+    "captionText4": "Створюйте тренування, відстежуйте прогрес і досягайте цілей разом із професійними тренерами",
+    "FeaturesListBlock": {
+      "FeatureTitle1": "Прогрес",
+      "FeatureTitle2": "Тренери",
+      "FeatureTitle3": "Зручно",
+      "FeatureText1": "Стеж за результатами",
+      "FeatureText2": "Допомога від профі",
+      "FeatureText3": "Усе під рукою"
     },
-    "welcome": "Ласкаво просимо в Mate Gym App!",
-    "selectLanguage": "Вибрати мову",
-    "hello": "Привіт"
-  }
+    "animatedView": {
+      "title": "Почніть прямо зараз!",
+      "text": "Приєднуйтеся до тисяч задоволених користувачів",
+      "authLoginText": "Вхід",
+      "authRegisterText": "Реєстрація"
+    }
+  },
+  "LoginForm": {
+    "loginText": "Логін",
+    "passwordText": "Пароль",
+    "emailText": "Електронна пошта",
+    "authButtonText": "Увійти",
+    "registerButtonText": "Створити акаунт"
+  },
+  "userInfo": {
+    "header": "Особиста інформація",
+    "save": "Зберегти",
+    "edit": "Редагувати",
+    "placeholder": {
+      "firstName": "Ім'я",
+      "lastName": "Прізвище",
+      "email": "Електронна пошта",
+      "login": "Логін",
+      "phone": "Телефон",
+      "age": "Вік"
+    },
+    "birthday": "Дата народження",
+    "goals": "Цілі"
+  },
+  "hello": "Привіт",
+  "SettingsSection": {
+    "title": "Налаштування та дії",
+    "logout": "Вийти"
+  },
+  "BottomNavigation": {
+    "navItems": {
+      "nav1": "Головна",
+      "nav2": "Тренування",
+      "nav3": "Прогрес",
+      "nav4": "Плани"
+    }
+  },
+  "Dashboard": {
+    "welcomeText": "Ласкаво просимо, ",
+    "welcomeMessage": "Готові до нового тренування? Перегляньте свій прогрес та заплануйте наступне заняття.",
+    "statisticBlock": {
+      "statisticTitle": "Статистика",
+      "subTitle1": "Усього тренувань",
+      "subTitle2": "Завершено",
+      "subTitle2Caption": "% від загальної кількості",
+      "subTitle3": "Загальний час",
+      "subTitle3Caption": "В середньому "
+    },
+    "quickActionsBlock": {
+      "quickActionsTite": "Швидкі дії",
+      "actionCardTitle1": "Нове",
+      "actionCardTitle2": "Мої",
+      "actionCardTitle3": "Прогрес",
+      "actionCardTitle4": "Плани"
+    },
+    "lastTrainingsBlock": {
+      "lastTrainingsBlockTtle": "Останні тренування",
+      "captionZeroTraining": "У вас поки що немає тренувань",
+      "captionCrreateTraining": "Створити перше тренування"
+    }
+  },
+  "loadingText": "Завантаження..."
+}

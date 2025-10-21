@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { usePathname } from "expo-router";
 import { useNavigation } from "@/hooks/useNavigation";
+import { useTranslation } from "react-i18next";
 
 type NavItem = {
   label: string;
@@ -15,12 +16,13 @@ type NavItem = {
 };
 
 export default function BottomNavigation() {
+  const { t } = useTranslation();
   const router = useNavigation();
   const pathname = usePathname();
 
   const navItems: NavItem[] = [
     {
-      label: "Главная",
+      label: t("BottomNavigation.navItems.nav1"),
       icon: "home",
       path: router.toDashboard,
       route: "/dashboard",
@@ -29,7 +31,7 @@ export default function BottomNavigation() {
       description: "спокойствие, дом, стабильность",
     },
     {
-      label: "Тренировки",
+      label: t("BottomNavigation.navItems.nav2"),
       icon: "calendar",
       path: router.toTrainingList,
       route: "/trainingDay/trainingDayView",
@@ -38,7 +40,7 @@ export default function BottomNavigation() {
       description: "энергия, здоровье, активность",
     },
     {
-      label: "Прогресс",
+      label: t("BottomNavigation.navItems.nav3"),
       icon: "trending-up",
       path: router.toProgress,
       route: "/progress",
@@ -47,7 +49,7 @@ export default function BottomNavigation() {
       description: "рост, успех, развитие",
     },
     {
-      label: "Планы",
+      label: t("BottomNavigation.navItems.nav4"),
       icon: "shopping-cart",
       path: router.toTrainingPlan,
       route: "/trainingPlans",
@@ -90,7 +92,7 @@ export default function BottomNavigation() {
               </Text>
             </TouchableOpacity>
           );
-        },
+        }
       )}
     </View>
   );

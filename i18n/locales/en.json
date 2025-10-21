@@ -1,20 +1,86 @@
 {
-    "userInfo": {
-      "header": "Personal Information",
-      "save": "Save",
-      "edit": "Edit",
-      "placeholder": {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "login": "Login",
-        "phone": "Phone",
-        "age": "Age"
-      },
-      "birthday": "Date of Birth",
-      "goals": "Goals"
+  "nameApp": "Mate Gym",
+  "selectLanguage": "Select Language",
+  "welcome": {
+    "title": "Start right now!",
+    "subtitle": "Join thousands of satisfied users",
+    "captionText1": "Your personal",
+    "captionText2": "fitness trainer",
+    "captionText3": "in your pocket",
+    "captionText4": "Create workouts, track progress, and achieve goals together with professional trainers",
+    "FeaturesListBlock": {
+      "FeatureTitle1": "Progress",
+      "FeatureTitle2": "Trainers",
+      "FeatureTitle3": "Convenient",
+      "FeatureText1": "Track your results",
+      "FeatureText2": "Help from pros",
+      "FeatureText3": "Everything at hand"
     },
-    "welcome": "Welcome to Mate Gym App!",
-    "selectLanguage": "Select Language",
-    "hello": "Hello"
-  }
+    "animatedView": {
+      "title": "Start right now!",
+      "text": "Join thousands of satisfied users",
+      "authLoginText": "Login",
+      "authRegisterText": "Register"
+    }
+  },
+  "LoginForm": {
+    "loginText": "Login",
+    "passwordText": "Password",
+    "emailText": "Email",
+    "authButtonText": "Sign In",
+    "registerButtonText": "Create Account"
+  },
+  "userInfo": {
+    "header": "Personal Information",
+    "save": "Save",
+    "edit": "Edit",
+    "placeholder": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "login": "Login",
+      "phone": "Phone",
+      "age": "Age"
+    },
+    "birthday": "Date of Birth",
+    "goals": "Goals"
+  },
+  "hello": "Hello",
+  "SettingsSection": {
+    "title": "Settings and Actions",
+    "logout": "Logout"
+  },
+  "BottomNavigation": {
+    "navItems": {
+      "nav1": "Home",
+      "nav2": "Workouts",
+      "nav3": "Progress",
+      "nav4": "Plans"
+    }
+  },
+  "Dashboard": {
+    "welcomeText": "Welcome, ",
+    "welcomeMessage": "Ready for a new workout? View your progress and plan your next session.",
+    "statisticBlock": {
+      "statisticTitle": "Statistics",
+      "subTitle1": "Total Workouts",
+      "subTitle2": "Completed",
+      "subTitle2Caption": "% of total",
+      "subTitle3": "Total Time",
+      "subTitle3Caption": "Average "
+    },
+    "quickActionsBlock": {
+      "quickActionsTite": "Quick Actions",
+      "actionCardTitle1": "New",
+      "actionCardTitle2": "My Workouts",
+      "actionCardTitle3": "Progress",
+      "actionCardTitle4": "Plans"
+    },
+    "lastTrainingsBlock": {
+      "lastTrainingsBlockTtle": "Last Workouts",
+      "captionZeroTraining": "You don't have any workouts yet",
+      "captionCrreateTraining": "Create your first workout"
+    }
+  },
+  "loadingText": "Loading..."
+}

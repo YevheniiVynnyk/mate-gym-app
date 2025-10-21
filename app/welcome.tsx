@@ -8,15 +8,19 @@ import {
   View,
   KeyboardEvent,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 import TermsDialog from "@/components/welcome/TermsDialog";
 import Header from "@/components/welcome/Header";
 import FeaturesList from "@/components/welcome/FeaturesList";
 import AuthTabs from "@/components/welcome/AuthTabs";
 import LoginForm from "@/components/welcome/LoginForm";
 import RegisterForm from "@/components/welcome/RegisterForm";
+import LanguageDropdown from "@/components/welcome/LanguageDropdown";
+
 import { useWelcome } from "@/hooks/useWelcome";
 
 export default function Welcome() {
+  const { t } = useTranslation();
   const {
     user,
     isLoading,
@@ -79,44 +83,49 @@ export default function Welcome() {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View className="flex-1 bg-background justify-center">
-        <Header />
-        <FeaturesList />
+      <View className="flex-1 bg-background ">
+        <View className="absolute bottom-4 right-4 z-10">
+          <LanguageDropdown />
+        </View>
+        <View className="flex-1 justify-center">
+          <Header />
+          <FeaturesList />
 
-        <Animated.View
-          style={{ transform: [{ translateY: shift }] }}
-          className="bg-card rounded-2xl shadow-xl p-4 mt-8 mx-4"
-        >
-          <View className="p-2">
-            <Text className="text-2xl font-bold tracking-tight text-center font-sans">
-              Начните прямо сейчас!
-            </Text>
-            <Text className="text-muted-foreground text-sm text-center font-sans">
-              Присоединяйтесь к тысячам довольных пользователей
-            </Text>
-          </View>
+          <Animated.View
+            style={{ transform: [{ translateY: shift }] }}
+            className="bg-card rounded-2xl shadow-xl p-4 mt-8 mx-4"
+          >
+            <View className="p-2">
+              <Text className="text-2xl font-bold tracking-tight text-center font-sans">
+                {t("welcome.animatedView.title")}
+              </Text>
+              <Text className="text-muted-foreground text-sm text-center font-sans">
+                {t("welcome.animatedView.text")}
+              </Text>
+            </View>
 
-          <AuthTabs
-            isRegistering={isRegistering}
-            setIsRegistering={setIsRegistering}
-          />
-
-          {!isRegistering ? (
-            <LoginForm
-              form={loginForm}
-              setForm={setLoginForm}
-              onSubmit={handleLogin}
-              isLoading={isLoading}
+            <AuthTabs
+              isRegistering={isRegistering}
+              setIsRegistering={setIsRegistering}
             />
-          ) : (
-            <RegisterForm
-              form={registerForm}
-              setForm={setRegisterForm}
-              onSubmit={handleRegister}
-              isLoading={isLoading}
-            />
-          )}
-        </Animated.View>
+
+            {!isRegistering ? (
+              <LoginForm
+                form={loginForm}
+                setForm={setLoginForm}
+                onSubmit={handleLogin}
+                isLoading={isLoading}
+              />
+            ) : (
+              <RegisterForm
+                form={registerForm}
+                setForm={setRegisterForm}
+                onSubmit={handleRegister}
+                isLoading={isLoading}
+              />
+            )}
+          </Animated.View>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );

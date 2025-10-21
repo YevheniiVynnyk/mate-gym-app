@@ -1,4 +1,35 @@
 {
+  "nameApp" : "Mate Gym",
+  "selectLanguage": "Выбрать язык",
+  "welcome": {
+    "title": "Начните прямо сейчас!", 
+    "subtitle": "Присоединяйтесь к тысячам довольных пользователей",
+    "captionText1" : "Твой персональный",
+    "captionText2" : "фитнес-тренер",
+    "captionText3" : "в кармане",
+    "captionText4" : "Создавайте тренировки, отслеживайте прогресс и достигайте целей вместе с профессиональными тренерами",
+    "FeaturesListBlock":{
+      "FeatureTitle1" : "Прогресс",
+      "FeatureTitle2" : "Тренеры",
+      "FeatureTitle3" : "Удобно",
+      "FeatureText1" : "Следи за результатами",
+      "FeatureText2" : "Помощь от профи",
+      "FeatureText3" : "Всё под рукой"
+    },
+    "animatedView": {
+      "title":"Начните прямо сейчас!",
+      "text": "Присоединяйтесь к тысячам довольных пользователей",
+      "authLoginText": "Вход",
+      "authRegisterText" : "Регистрация"
+    }
+  },
+  "LoginForm":{
+    "loginText" : "Логин",
+    "passwordText": "Пароль",
+    "emailText": "Email",
+    "authButtonText":"Войти",
+    "registerButtonText" :"Создать Аккаунт"
+  },
     "userInfo": {
       "header": "Личная информация",
       "save": "Сохранить",
@@ -14,12 +45,44 @@
       "birthday": "Дата рождения",
       "goals": "Цели"
     },
-    "welcome": "Добро пожаловать в Mate Gym App!",
-    "selectLanguage": "Выбрать язык",
     "hello": "Привет",
     "SettingsSection":{
       "title":"Настройки и действия",
       "logout": "Выйти"
 
-    }
+    },
+    "BottomNavigation":{
+      "navItems":{
+        "nav1": "Главная",
+        "nav2": "Тренировки",
+        "nav3": "Прогресс",
+        "nav4": "Планы"
+      }
+    },
+    "Dashboard":{
+      "welcomeText": "Добро пожаловать, ",
+      "welcomeMessage": "Готовы к новой тренировке? Посмотрите свой прогресс и запланируйте следующее занятие.",
+      "statisticBlock": {
+        "statisticTitle" :"Статистика",
+        "subTitle1": "Всего тренировок",
+        "subTitle2": "Завершено",
+        "subTitle2Caption": "% от общего числа",
+        "subTitle3": "Общее время",
+        "subTitle3Caption": "В среднем "
+      },
+      "quickActionsBlock":{
+        "quickActionsTite": "Быстрые действия",
+        "actionCardTitle1": "Новая",
+        "actionCardTitle2" :"Мои",
+        "actionCardTitle3": "Прогресс",
+        "actionCardTitle4": "Прогресс"
+      },
+      "lastTrainingsBlock":{
+        "lastTrainingsBlockTtle" : "Последние тренировки",
+        "captionZeroTraining":"У вас пока нет тренировок",
+        "captionCrreateTraining" : "Создать первую тренировку"
+      }
+    },
+    "loadingText": "Загрузка..."
+
   }
