@@ -21,7 +21,7 @@ export const useTrainingDaysData = () => {
       }
     };
     loadTrainingDays();
-  }, []);
+  }, [setTrainingDays]);
 
   return { trainingDays, isLoading };
 };

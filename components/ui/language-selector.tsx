@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+//import { Text, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Globe } from "lucide-react-native";
 import { useTranslation } from "react-i18next";
@@ -34,9 +34,9 @@ const LanguageSelector: React.FC = () => {
     setSelectedLanguage(language);
   };
 
-  const currentLanguage = languages.find(
+  /*const currentLanguage = languages.find(
     (lang) => lang.key === selectedLanguage,
-  );
+  );*/
 
   return (
     <>

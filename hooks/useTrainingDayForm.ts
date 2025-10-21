@@ -72,7 +72,7 @@ export const useTrainingDayForm = () => {
         }
       })();
     }
-  }, [isEdit, id]);
+  }, [isEdit, id, navigation]);
 
   useEffect(() => {
     if (focusNew) {
