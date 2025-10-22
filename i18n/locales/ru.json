@@ -1,6 +1,11 @@
 {
   "nameApp" : "Mate Gym",
   "selectLanguage": "Выбрать язык",
+  "ThemeSelector":{
+    "light":"Светлая",
+    "dark":"Темная",
+    "ocean":"Океан"
+  },
   "welcome": {
     "title": "Начните прямо сейчас!", 
     "subtitle": "Присоединяйтесь к тысячам довольных пользователей",

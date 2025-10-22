@@ -95,15 +95,21 @@ export default function UserInfoSection({
   }, [formDataUser.birthday]);
 
   return (
-    <View className="bg-white p-4 rounded-lg mb-4 shadow-sm">
+    <View
+      className="bg-white p-4 rounded-lg mb-4 shadow-sm 
+    dark:bg-gray-800 
+    ocean:bg-ocean-card-DEFAULT"
+    >
       <View className="flex-row justify-between items-center mb-2">
-        <Text className="text-lg font-semibold">{t("userInfo.header")}</Text>
+        <Text className="text-lg font-semibold mb-2 dark:text-gray-100 ocean:text-ocean-foreground">
+          {t("userInfo.header")}
+        </Text>
         <TouchableOpacity
           className="flex-row items-center"
           onPress={() => (isEditing ? handleSaveUser() : setIsEditing(true))}
         >
           {isEditing ? <Save size={18} /> : <Edit3 size={18} />}
-          <Text className="ml-1 text-blue-500">
+          <Text className="ml-1 text-blue-500 mb-2 dark:text-gray-100 ocean:text-ocean-foreground">
             {isEditing ? t("userInfo.save") : t("userInfo.edit")}
           </Text>
         </TouchableOpacity>
@@ -112,7 +118,10 @@ export default function UserInfoSection({
       {textFields.map((item) => (
         <TextInput
           key={item.key}
-          className="border border-gray-300 rounded-md p-2 mb-2"
+          className="border border-gray-300 rounded-md p-2 mb-2 
+          text-gray-800 
+          dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
+          ocean:bg-ocean-card-DEFAULT ocean:border-blue-800 ocean:text-ocean-foreground"
           placeholder={item.placeholder}
           value={String((formDataUser as any)[item.key] || "")}
           editable={isEditing}
@@ -129,12 +138,16 @@ export default function UserInfoSection({
       {/* ✅ Блок для даты рождения с DatePicker */}
       {/* ✅ Блок для даты рождения с DatePicker */}
       <TouchableOpacity
-        className={`flex-row justify-between items-center border rounded-md p-2 mb-2 ${isEditing ? "border-blue-500" : "border-gray-300 bg-gray-50"}`}
+        className={`flex-row justify-between items-center border rounded-md p-2 mb-2 dark:text-gray-100 ocean:text-ocean-foreground  ${isEditing ? "border-blue-500" : "border-gray-300"}`}
         onPress={() => isEditing && setShowDatePicker(true)}
         disabled={!isEditing}
       >
         <Text
-          className={formDataUser.birthday ? "text-gray-800" : "text-gray-400"}
+          className={
+            formDataUser.birthday
+              ? "text-gray-800 dark:text-gray-100 ocean:text-ocean-foreground"
+              : "text-gray-400 dark:text-gray-100 ocean:text-ocean-foreground"
+          }
         >
           {formDataUser.birthday
             ? `${t("userInfo.birthday")}: ${formatDate(formDataUser.birthday)}`
@@ -156,9 +169,10 @@ export default function UserInfoSection({
       )}
       {formDataUser.role === "CLIENT" && (
         <TextInput
-          className="border border-gray-300 rounded-md p-2 mb-2"
+          className="border border-gray-300 rounded-md p-2 mb-2 dark:text-gray-100 ocean:text-ocean-foreground"
           placeholder={t("userInfo.goals")}
           value={formDataUser.goals}
+          placeholderTextColor="#9ca3af"
           editable={isEditing}
           onChangeText={(text) =>
             setFormDataUser({ ...formDataUser, goals: text })

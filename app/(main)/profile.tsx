@@ -22,7 +22,11 @@ export default function Profile() {
     setIsPrivacyDialogOpen,
   } = useProfile();
   return (
-    <ScrollView className="flex-1 bg-gray-50 p-4">
+    <ScrollView
+      className="flex-1 bg-gray-50 p-4 
+    dark:bg-gray-900 
+    ocean:bg-ocean-background"
+    >
       <AvatarSection user={user} pickAvatar={pickAvatar} loading={loading} />
       <UserInfoSection
         isEditing={isEditing}

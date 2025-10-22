@@ -1,35 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-
-const themes = [
-  { code: "light", label: "Светлая" },
-  { code: "dark", label: "Тёмная" },
-];
+// Импортируем наш новый хук
+import { useTheme } from "@/contexts/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 export default function ThemeSelector() {
-  const [selectedTheme, setSelectedTheme] = useState("light");
-
-  const changeTheme = (code: string) => {
-    setSelectedTheme(code);
-    // TODO: Добавить логику изменения темы приложения
-  };
+  const { theme, setTheme, themes } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <View className="flex-row flex-wrap my-2">
-      {themes.map((theme) => (
+      {themes.map((tItem) => (
         <TouchableOpacity
-          key={theme.code}
-          className={`p-2 m-1 border rounded-md border-blue-500 ${
-            selectedTheme === theme.code ? "bg-blue-500" : ""
-          }`}
-          onPress={() => changeTheme(theme.code)}
+          key={tItem.value}
+          className={`p-2 m-1 border rounded-md border-blue-500 
+            ${theme === tItem.value ? "bg-blue-500" : "bg-white dark:bg-gray-700"}
+          `}
+          onPress={() => setTheme(tItem.value)}
         >
           <Text
-            className={`${
-              selectedTheme === theme.code ? "text-white" : "text-blue-500"
-            }`}
+            className={`
+              ${theme === tItem.value ? "text-white" : "text-blue-500 dark:text-gray-300"}
+            `}
           >
-            {theme.label}
+            {t(`ThemeSelector.${tItem.value}`)}
           </Text>
         </TouchableOpacity>
       ))}

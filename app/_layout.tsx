@@ -15,6 +15,8 @@ import {
 import { Slot } from "expo-router";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/i18n"; // Предполагаем, что i18n.ts находится в папке /i18n
+import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const queryClient = new QueryClient();
 
@@ -43,19 +45,38 @@ export default function RootLayout() {
   return (
     <I18nextProvider i18n={i18n}>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <TrainingDaysProvider>
-            <SafeAreaView className="flex-1 bg-background">
-              <AuthGate>
-                <Slot />
-              </AuthGate>
-            </SafeAreaView>
-          </TrainingDaysProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <TrainingDaysProvider>
+              <SafeAreaView className="flex-1 bg-background">
+                <AuthGate>
+                  <Slot />
+                </AuthGate>
+              </SafeAreaView>
+            </TrainingDaysProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </I18nextProvider>
   );
 }
+
+// Новый компонент-обертка для управления классом темы
+const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const { theme } = useTheme();
+
+  // Кастомный класс для Nativewind: если тема 'ocean', добавляем класс 'ocean'.
+  // Если 'light'/'dark', Nativewind управляет этим сам через useColorScheme.
+  const customThemeClass = theme === "ocean" ? "ocean" : "";
+
+  return (
+    <SafeAreaView className={`flex-1 bg-background ${customThemeClass}`}>
+      {children}
+    </SafeAreaView>
+  );
+};
 
 const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
