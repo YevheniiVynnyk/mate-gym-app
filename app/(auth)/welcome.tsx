@@ -39,6 +39,14 @@ export default function Welcome() {
 
   const shift = useRef(new Animated.Value(0)).current;
 
+  // --- Адаптивные классы Card UI ---
+  const screenBg = "bg-background dark:bg-gray-900 ocean:bg-ocean-background";
+  const cardBg = "bg-card dark:bg-gray-800 ocean:bg-ocean-card-DEFAULT";
+  const textFg =
+    "text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+  const textMutedFg =
+    "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70";
+
   useEffect(() => {
     const showEvent =
       Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow";
@@ -47,8 +55,10 @@ export default function Welcome() {
 
     const onKeyboardShow = (e: KeyboardEvent) => {
       const height = e.endCoordinates.height;
+      // Используем Platform.OS для учета разницы в поведении клавиатуры (iOS требует немного больше отступа)
+      const offset = Platform.OS === "ios" ? 80 : 20;
       Animated.timing(shift, {
-        toValue: -height - 20, // поднимаем форму на высоту клавиатуры + запас 20
+        toValue: -height + offset,
         duration: 250,
         useNativeDriver: true,
       }).start();
@@ -84,26 +94,31 @@ export default function Welcome() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View
-        className="flex-1 bg-gray-50 p-4 
-    dark:bg-gray-900 
-    ocean:bg-ocean-background"
+        // ✅ АДАПТАЦИЯ: Фон экрана
+        className={`flex-1 p-4 ${screenBg}`}
       >
-        <View className="absolute bottom-4 right-4 z-10">
-          <LanguageDropdown />
-        </View>
+        <LanguageDropdown />
+
         <View className="flex-1 justify-center">
           <Header />
           <FeaturesList />
 
           <Animated.View
             style={{ transform: [{ translateY: shift }] }}
-            className="bg-white dark:bg-gray-800 ocean:bg-ocean-card-DEFAULT rounded-2xl shadow-xl p-4 mt-8 mx-4"
+            // ✅ АДАПТАЦИЯ: Фон карточки формы
+            className={`rounded-2xl shadow-xl p-4 mt-8 mx-4 ${cardBg}`}
           >
             <View className="p-2">
-              <Text className="text-2xl font-bold tracking-tight text-center font-sans text-black dark:text-gray-100 ocean:text-ocean-foreground">
+              <Text
+                // ✅ АДАПТАЦИЯ: Заголовок (foreground)
+                className={`text-2xl font-bold tracking-tight text-center font-sans ${textFg}`}
+              >
                 {t("welcome.animatedView.title")}
               </Text>
-              <Text className="text-sm text-center font-sans text-gray-500 dark:text-gray-400 ocean:text-blue-200">
+              <Text
+                // ✅ АДАПТАЦИЯ: Описание (muted-foreground)
+                className={`text-sm text-center font-sans ${textMutedFg}`}
+              >
                 {t("welcome.animatedView.text")}
               </Text>
             </View>
