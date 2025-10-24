@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "target": "es2021",
     "module": "esnext",
     "esModuleInterop": true,
@@ -14,9 +14,6 @@
     "allowJs": true,
     "noEmit": true,
     "isolatedModules": true,
-    "customConditions": [
-      "react-native"
-    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [

@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import ExerciseCard from "@/components/trainingDay/ExerciseCard";
 
 interface Props {
@@ -7,19 +7,21 @@ interface Props {
 }
 
 export default function TrainingExercisesList({ trainingDay }: Props) {
+  // Адаптивные классы для рамки контейнера упражнения
+  const containerClasses =
+    "bg-card rounded-xl p-4  " + "dark:bg-gray-800 " + "ocean:bg-ocean-card";
+
   return (
-    <ScrollView
-      className="bg-white p-2 my-2 rounded-2xl"
-      showsVerticalScrollIndicator={false}
-    >
+    <>
       {trainingDay.trainings.map((training: any, i: number) => (
         <View
           key={training.id}
-          className="rounded-xl p-2 mb-4 border border-gray-100 "
+          // Применяем адаптивные классы к рамке
+          className={`rounded-xl p-2 mb-4 ${containerClasses}`}
         >
           <ExerciseCard index={i} training={training} />
         </View>
       ))}
-    </ScrollView>
+    </>
   );
 }

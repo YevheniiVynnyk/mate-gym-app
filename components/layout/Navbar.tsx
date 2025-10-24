@@ -75,7 +75,7 @@ const Navbar = () => {
 
   // Получаем цвета иконок
   const bellColor = getIconColor(theme, "primary"); // "Bell" - вторичный цвет
-  const heartColor = getIconColor(theme, "danger"); // "Heart" - красный
+  const heartColor = getIconColor(theme, "primary"); // "Heart" - красный
   return (
     <View className={rootClasses}>
       {/* Логотип и название */}
