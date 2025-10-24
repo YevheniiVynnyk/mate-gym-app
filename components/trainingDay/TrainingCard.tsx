@@ -36,7 +36,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
       <CardUI className="rounded-2xl p-4">
         {/* HEADER */}
         <View className="flex-row justify-between items-center">
-          <Text className="text-base font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
+          <Text className="text-base text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
             {trainingDay.name}
           </Text>
 

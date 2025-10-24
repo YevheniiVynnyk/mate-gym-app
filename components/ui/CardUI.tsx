@@ -44,7 +44,7 @@ const CardTitle = React.forwardRef<Text, TextProps>((props, ref) => {
 
   const combinedClasses = cn(
     // text-foreground обеспечивает адаптацию цвета текста
-    "text-2xl font-semibold leading-none tracking-tight text-foreground",
+    "text-2xl leading-none tracking-tight text-foreground",
     // ✅ ИСПРАВЛЕНИЕ ТЕМЫ: Явно указываем цвета для тем, чтобы текст был светлым в Dark
     "dark:text-gray-100 ocean:text-ocean-foreground",
     className

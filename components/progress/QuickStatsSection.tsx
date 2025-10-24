@@ -8,7 +8,7 @@ export default function QuickStatsSection({ quickStats }: any) {
     "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70 text-sm";
   // Класс для значения (например, 15)
   const valueClass =
-    "font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+    " text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
 
   return (
     // ✅ Адаптивный фон: bg-card, скругление и тень
@@ -17,9 +17,7 @@ export default function QuickStatsSection({ quickStats }: any) {
                  p-4 rounded-xl mb-4 border border-border dark:border-gray-700"
     >
       {/* ✅ Адаптивный цвет для заголовка (Foreground) */}
-      <Text className={`text-lg font-bold mb-3 ${valueClass}`}>
-        Общая статистика
-      </Text>
+      <Text className={`text-lg mb-3 ${valueClass}`}>Общая статистика</Text>
 
       {quickStats ? (
         <>

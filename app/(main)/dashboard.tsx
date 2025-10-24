@@ -32,7 +32,7 @@ export default function Dashboard() {
 
   // ✅ Адаптивные классы для заголовков разделов (text-foreground адаптивен)
   const sectionTitleClasses =
-    "text-lg font-bold mb-2 text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+    "text-lg mb-2 text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
   // ✅ Адаптивные классы для текста при отсутствии тренировок
   const emptyTrainingTextClasses =
     "text-gray-500 my-2 dark:text-gray-400 ocean:text-ocean-foreground/70";

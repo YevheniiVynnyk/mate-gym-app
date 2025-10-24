@@ -124,9 +124,7 @@ const TrainingPlansPage = () => {
         <ShoppingCart size={28} className={primaryText} />
         <View>
           {/* ✅ Заголовок с основным цветом текста */}
-          <Text className={`text-xl font-bold ${textFg}`}>
-            Планы тренировок
-          </Text>
+          <Text className={`text-xl ${textFg}`}>Планы тренировок</Text>
           {/* ✅ Описание с приглушенным цветом текста */}
           <Text className={`text-sm ${textMutedFg}`}>
             Выберите программу под ваш инвентарь и уровень

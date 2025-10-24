@@ -21,7 +21,7 @@ export default function WeeklyActivitySection({
           className="text-primary dark:text-green-500 ocean:text-ocean-primary"
         />
         {/* ✅ Адаптивный цвет для заголовка (Foreground) */}
-        <Text className="ml-2 text-lg font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
+        <Text className="ml-2 text-lg text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
           Активность на этой неделе
         </Text>
       </View>

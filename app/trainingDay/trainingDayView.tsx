@@ -30,7 +30,7 @@ export default function TrainingDayView() {
     <View className="flex-1 p-4 bg-background dark:bg-gray-900 ocean:bg-ocean-background">
       {/* Заголовок */}
       <View className="mb-4">
-        <Text className="text-2xl font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
+        <Text className="text-2xl text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
           Мои тренировки
         </Text>
         <Text className="text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70">
