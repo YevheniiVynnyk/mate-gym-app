@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import {
+  /*ActivityIndicator,*/ Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useTrainingDaysData } from "@/hooks/useTrainingDays";
 import { TrainingCalendar } from "@/components/trainingDay/TrainingCalendar";
 import { TrainingList } from "@/components/trainingDay/TrainingList";
 import { useNavigation } from "@/hooks/useNavigation";
+import { LoadingPageUI } from "@/components/ui/LoadingPageUI";
+import { CardUI, cn } from "@/components/ui/CardUI";
 
 export default function TrainingDayView() {
   const router = useNavigation();
@@ -15,56 +21,75 @@ export default function TrainingDayView() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredDays = trainingDays.filter((td) =>
-    td.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    td.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (isLoading)
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" />
-      </View>
-    );
+  if (isLoading) return <LoadingPageUI />;
 
   return (
-    <View className="flex-1 p-4">
+    <View className="flex-1 p-4 bg-background dark:bg-gray-900 ocean:bg-ocean-background">
       {/* Заголовок */}
       <View className="mb-4">
-        <Text className="text-2xl font-bold">Мои тренировки</Text>
-        <Text className="text-gray-500">
+        <Text className="text-2xl font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
+          Мои тренировки
+        </Text>
+        <Text className="text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70">
           Планируйте и отслеживайте тренировки
         </Text>
       </View>
 
       {/* Кнопка создания */}
       <TouchableOpacity
-        className="bg-primary p-3 rounded-xl mb-4"
+        className={cn(
+          "p-3 rounded-xl mb-4 active:opacity-80",
+          "bg-primary dark:bg-primary-600 ocean:bg-ocean-primary" // Фон кнопки
+        )}
         onPress={router.toCreateTrainingDay}
       >
-        <Text className="text-white text-center font-semibold">
+        <Text
+          className={cn(
+            "text-center font-semibold",
+            "text-primary-foreground dark:text-white ocean:text-ocean-primary-foreground" // Текст кнопки
+          )}
+        >
           Создать тренировку
         </Text>
       </TouchableOpacity>
 
       {/* Вкладки */}
-      <View className="flex-row mb-4 rounded-xl overflow-hidden">
-        {["calendar", "list"].map((tab) => (
-          <TouchableOpacity
-            key={tab}
-            className={`flex-1 p-3 items-center ${
-              activeTab === tab ? "bg-primary" : "bg-gray-300"
-            }`}
-            onPress={() => setActiveTab(tab as "calendar" | "list")}
-          >
-            <Text
-              className={`font-semibold ${
-                activeTab === tab ? "text-white" : "text-gray-700"
-              }`}
+      <CardUI className="flex-row mb-4 p-0 rounded-xl">
+        {["calendar", "list"].map((tab) => {
+          const isActive = activeTab === tab;
+          return (
+            <TouchableOpacity
+              key={tab}
+              className={cn(
+                "flex-1 p-3 items-center rounded-xl",
+                // Активная вкладка
+                isActive &&
+                  "bg-primary dark:bg-primary-600 ocean:bg-ocean-primary",
+                // Неактивная вкладка
+                !isActive && "bg-card dark:bg-gray-800 ocean:bg-ocean-card"
+              )}
+              onPress={() => setActiveTab(tab as "calendar" | "list")}
             >
-              {tab === "calendar" ? "Календарь" : "Список"}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+              <Text
+                className={cn(
+                  "font-semibold rounded-xl",
+                  // Текст активной вкладки
+                  isActive &&
+                    "text-primary-foreground dark:text-white ocean:text-ocean-primary-foreground",
+                  // Текст неактивной вкладки
+                  !isActive &&
+                    "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70"
+                )}
+              >
+                {tab === "calendar" ? "Календарь" : "Список"}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </CardUI>
 
       {/* Контент */}
       {activeTab === "calendar" ? (

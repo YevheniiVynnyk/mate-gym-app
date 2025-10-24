@@ -83,7 +83,11 @@ export default function Welcome() {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View className="flex-1 bg-background ">
+      <View
+        className="flex-1 bg-gray-50 p-4 
+    dark:bg-gray-900 
+    ocean:bg-ocean-background"
+      >
         <View className="absolute bottom-4 right-4 z-10">
           <LanguageDropdown />
         </View>
@@ -93,13 +97,13 @@ export default function Welcome() {
 
           <Animated.View
             style={{ transform: [{ translateY: shift }] }}
-            className="bg-card rounded-2xl shadow-xl p-4 mt-8 mx-4"
+            className="bg-white dark:bg-gray-800 ocean:bg-ocean-card-DEFAULT rounded-2xl shadow-xl p-4 mt-8 mx-4"
           >
             <View className="p-2">
-              <Text className="text-2xl font-bold tracking-tight text-center font-sans">
+              <Text className="text-2xl font-bold tracking-tight text-center font-sans text-black dark:text-gray-100 ocean:text-ocean-foreground">
                 {t("welcome.animatedView.title")}
               </Text>
-              <Text className="text-muted-foreground text-sm text-center font-sans">
+              <Text className="text-sm text-center font-sans text-gray-500 dark:text-gray-400 ocean:text-blue-200">
                 {t("welcome.animatedView.text")}
               </Text>
             </View>

@@ -5,7 +5,10 @@ import AvatarSection from "@/components/profile/AvatarSection";
 import UserInfoSection from "@/components/profile/UserInfoSection";
 import SettingsSection from "@/components/profile/SettingsSection";
 import PrivacyDialog from "@/components/profile/PrivacyDialog";
-
+// Используем функцию cn, как это было сделано в других компонентах.
+const cn = (...classes: (string | boolean | undefined | null)[]): string => {
+  return classes.filter(Boolean).join(" ");
+};
 export default function Profile() {
   const {
     user,
@@ -21,11 +24,15 @@ export default function Profile() {
     isPrivacyDialogOpen,
     setIsPrivacyDialogOpen,
   } = useProfile();
+  // ✅ ИСПОЛЬЗУЕМ CN для применения адаптивных классов фона к ScrollView
+  const scrollContainerClasses = cn(
+    "flex-1 p-4",
+    "bg-gray-50 dark:bg-gray-900 ocean:bg-ocean-background"
+  );
+
   return (
     <ScrollView
-      className="flex-1 bg-gray-50 p-4 
-    dark:bg-gray-900 
-    ocean:bg-ocean-background"
+      className={scrollContainerClasses} // Применяем объединенные классы
     >
       <AvatarSection user={user} pickAvatar={pickAvatar} loading={loading} />
       <UserInfoSection

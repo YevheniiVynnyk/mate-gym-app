@@ -16,7 +16,7 @@ import { Slot } from "expo-router";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/i18n"; // Предполагаем, что i18n.ts находится в папке /i18n
 import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+//import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const queryClient = new QueryClient();
 

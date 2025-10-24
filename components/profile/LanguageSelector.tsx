@@ -28,21 +28,30 @@ export default function LanguageSelector() {
     setSelectedLanguage(code);
   };
 
+  // ✅ Определение адаптивных классов
+  const activeBgClass =
+    "bg-primary border-primary dark:bg-primary-600 dark:border-primary-600 ocean:bg-ocean-primary ocean:border-ocean-primary";
+  const inactiveBgClass =
+    "bg-card border-border dark:bg-gray-700 dark:border-gray-600 ocean:bg-ocean-card ocean:border-blue-700";
+  const activeTextClass = "text-primary-foreground dark:text-white";
+  const inactiveTextClass =
+    "text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+
   return (
     <View className="flex-row flex-wrap my-2">
       {languages.map((lang) => (
         <TouchableOpacity
           key={lang.code}
           className={`px-4 py-2 m-1 border rounded-lg ${
-            selectedLanguage === lang.code
-              ? "bg-blue-600 border-blue-600"
-              : "border-blue-600"
+            selectedLanguage === lang.code ? activeBgClass : inactiveBgClass
           }`}
           onPress={() => changeLanguage(lang.code)}
         >
           <Text
-            className={`${
-              selectedLanguage === lang.code ? "text-white" : "text-blue-600"
+            className={`font-medium ${
+              selectedLanguage === lang.code
+                ? activeTextClass
+                : inactiveTextClass
             }`}
           >
             {lang.label}

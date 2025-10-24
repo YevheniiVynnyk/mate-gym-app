@@ -14,127 +14,162 @@ import { ActionCard } from "@/components/dashboard/ActionCard";
 import TrainingCard from "@/components/trainingDay/TrainingCard";
 import { useNavigation } from "@/hooks/useNavigation";
 import { useTranslation } from "react-i18next";
+import { LoadingPageUI } from "@/components/ui/LoadingPageUI";
+import {
+  CardUI,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/CardUI";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const router = useNavigation();
   const { user } = useAuth();
   const { trainingDays, quickStats, loading } = useDashboardData();
+  const { theme } = useTheme();
+
+  // ✅ Адаптивные классы для заголовков разделов (text-foreground адаптивен)
+  const sectionTitleClasses =
+    "text-lg font-bold mb-2 text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+  // ✅ Адаптивные классы для текста при отсутствии тренировок
+  const emptyTrainingTextClasses =
+    "text-gray-500 my-2 dark:text-gray-400 ocean:text-ocean-foreground/70";
+  const plusButtonTextClasses = "text-white ml-2 dark:text-gray-900";
+
   if (loading) {
-    return (
-      <View className="flex-1 items-center justify-center">
-        <Text className="text-gray-500">{t("loadingText")}</Text>
-      </View>
-    );
+    return <LoadingPageUI />;
   }
 
   return (
-    <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-      {/* Приветствие */}
-      <View className="bg-white p-4 rounded-xl mb-4">
-        <Text className="text-xl font-bold">
-          {t("Dashboard.welcomeText")}
-          {user?.firstName || "Пользователь"}!
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("Dashboard.welcomeMessage")}
-        </Text>
-      </View>
+    <ScrollView
+      className="flex-1 bg-background dark:bg-gray-900 ocean:bg-ocean-background"
+      showsVerticalScrollIndicator={false}
+    >
+      <View className="p-4">
+        {/* Приветствие */}
+        <CardUI>
+          <CardHeader>
+            <CardTitle className="text-xl">
+              {t("Dashboard.welcomeText")}
+              {user?.firstName || "Пользователь"}!
+            </CardTitle>
+            <CardDescription className="mt-1">
+              {t("Dashboard.welcomeMessage")}
+            </CardDescription>
+          </CardHeader>
+        </CardUI>
 
-      {/* Статистика */}
-      {quickStats && (
-        <View className="my-4 p-2">
-          <Text className="text-lg font-bold mb-2">
-            📊 {t("Dashboard.statisticBlock.statisticTitle")}
-          </Text>
-          <View className="flex-row justify-between">
-            <StatCard
-              title={t("Dashboard.statisticBlock.subTitle1")}
-              value={quickStats.totalTrainings.toString()}
-            />
-            <StatCard
-              title={t("Dashboard.statisticBlock.subTitle2")}
-              value={quickStats.completedTrainings.toString()}
-              subtitle={
-                `${
-                  quickStats.totalTrainings
-                    ? (
-                        (quickStats.completedTrainings /
-                          quickStats.totalTrainings) *
-                        100
-                      ).toFixed(0)
-                    : 0
-                }` + t("Dashboard.statisticBlock.subTitle2Caption")
-              }
-            />
-            <StatCard
-              title={t("Dashboard.statisticBlock.subTitle3")}
-              value={quickStats.totalTimeMinutes.toString()}
-              subtitle={
-                quickStats.averageDurationMinutes +
-                t("Dashboard.statisticBlock.subTitle2Caption")
-              }
-            />
-          </View>
-        </View>
-      )}
-
-      {/* Быстрые действия */}
-      <View className="my-6 p-2">
-        <Text className="text-lg font-bold mb-2">
-          ⚡ {t("Dashboard.quickActionsBlock.quickActionsTite")}
-        </Text>
-        <View className="flex-row flex-wrap justify-between">
-          <ActionCard
-            icon={<Plus size={24} color="#22c55e" />}
-            label={t("Dashboard.quickActionsBlock.actionCardTitle1")}
-            onPress={router.toCreateTrainingDay}
-          />
-          <ActionCard
-            icon={<Calendar size={24} color="#22c55e" />}
-            label={t("Dashboard.quickActionsBlock.actionCardTitle2")}
-            onPress={router.toTrainingList}
-          />
-          <ActionCard
-            icon={<TrendingUp size={24} color="#f59e0b" />}
-            label={t("Dashboard.quickActionsBlock.actionCardTitle3")}
-            onPress={router.toProgress}
-          />
-          <ActionCard
-            icon={<UserRoundPen size={24} color="#f59e0b" />}
-            label={t("Dashboard.quickActionsBlock.actionCardTitle4")}
-            onPress={router.toProfile}
-          />
-        </View>
-      </View>
-
-      {/* Последние тренировки */}
-      <View className="my-6 p-2">
-        <Text className="text-lg font-bold mb-2">
-          📅 {t("Dashboard.lastTrainingsBlock.lastTrainingsBlockTtle")}
-        </Text>
-
-        {trainingDays.length === 0 ? (
-          <View className="items-center p-6">
-            <Target size={48} color="#ccc" />
-            <Text className="text-gray-500 my-2">
-              {t("Dashboard.lastTrainingsBlock.captionZeroTraining")}
-            </Text>
-            <TouchableOpacity
-              className="flex-row items-center bg-green-500 px-4 py-2 rounded-lg"
-              onPress={router.toCreateTrainingDay}
-            >
-              <Plus size={16} color="#fff" />
-              <Text className="text-white ml-2">
-                {t("Dashboard.lastTrainingsBlock.captionCrreateTraining")}
+        {/* Статистика */}
+        {quickStats && (
+          <View>
+            {/* ✅ Заголовок раздела с адаптивным текстом */}
+            <View className="my-4 p-2">
+              <Text className={sectionTitleClasses}>
+                📊 {t("Dashboard.statisticBlock.statisticTitle")}
               </Text>
-            </TouchableOpacity>
+            </View>
+            <View className="flex-row justify-between">
+              {/* StatCard должен использовать CardUI внутри себя */}
+              <StatCard
+                title={t("Dashboard.statisticBlock.subTitle1")}
+                value={quickStats.totalTrainings.toString()}
+              />
+              <StatCard
+                title={t("Dashboard.statisticBlock.subTitle2")}
+                value={quickStats.completedTrainings.toString()}
+                subtitle={
+                  `${
+                    quickStats.totalTrainings
+                      ? (
+                          (quickStats.completedTrainings /
+                            quickStats.totalTrainings) *
+                          100
+                        ).toFixed(0)
+                      : 0
+                  }` + t("Dashboard.statisticBlock.subTitle2Caption")
+                }
+              />
+              <StatCard
+                title={t("Dashboard.statisticBlock.subTitle3")}
+                value={quickStats.totalTimeMinutes.toString()}
+                subtitle={
+                  quickStats.averageDurationMinutes +
+                  t("Dashboard.statisticBlock.subTitle2Caption")
+                }
+              />
+            </View>
           </View>
-        ) : (
-          trainingDays.map((td) => (
-            <TrainingCard key={td.id} trainingDay={td} />
-          ))
         )}
+
+        {/* Быстрые действия */}
+        <View>
+          {/* ✅ Заголовок раздела с адаптивным текстом */}
+          <View className="my-4 p-2">
+            <Text className={sectionTitleClasses}>
+              ⚡ {t("Dashboard.quickActionsBlock.quickActionsTite")}
+            </Text>
+          </View>
+          <View className="flex-row flex-wrap justify-between">
+            {/* ActionCard должен использовать CardUI внутри себя */}
+            <ActionCard
+              icon={<Plus size={24} color="#22c55e" />}
+              label={t("Dashboard.quickActionsBlock.actionCardTitle1")}
+              onPress={router.toCreateTrainingDay}
+            />
+            <ActionCard
+              icon={<Calendar size={24} color="#22c55e" />}
+              label={t("Dashboard.quickActionsBlock.actionCardTitle2")}
+              onPress={router.toTrainingList}
+            />
+            <ActionCard
+              icon={<TrendingUp size={24} color="#f59e0b" />}
+              label={t("Dashboard.quickActionsBlock.actionCardTitle3")}
+              onPress={router.toProgress}
+            />
+            <ActionCard
+              icon={<UserRoundPen size={24} color="#f59e0b" />}
+              label={t("Dashboard.quickActionsBlock.actionCardTitle4")}
+              onPress={router.toProfile}
+            />
+          </View>
+        </View>
+
+        {/* Последние тренировки */}
+        <View className="pb-8">
+          {/* ✅ Заголовок раздела с адаптивным текстом */}
+          <View className="my-4 p-2">
+            <Text className={sectionTitleClasses}>
+              📅 {t("Dashboard.lastTrainingsBlock.lastTrainingsBlockTtle")}
+            </Text>
+          </View>
+
+          {trainingDays.length === 0 ? (
+            // ✅ Используем CardUI для оформления блока "Нет тренировок"
+            <CardUI className="items-center p-6">
+              {/* Иконка адаптируется под тему (темнее в dark) */}
+              <Target size={48} color={theme === "dark" ? "#555" : "#ccc"} />
+              <Text className={emptyTrainingTextClasses}>
+                {t("Dashboard.lastTrainingsBlock.captionZeroTraining")}
+              </Text>
+              <TouchableOpacity
+                className="flex-row items-center bg-green-500 px-4 py-2 rounded-lg mt-4"
+                onPress={router.toCreateTrainingDay}
+              >
+                <Plus size={16} color="#fff" />
+                <Text className={plusButtonTextClasses}>
+                  {t("Dashboard.lastTrainingsBlock.captionCrreateTraining")}
+                </Text>
+              </TouchableOpacity>
+            </CardUI>
+          ) : (
+            // TrainingCard должен использовать CardUI внутри себя
+            trainingDays.map((td) => (
+              <TrainingCard key={td.id} trainingDay={td} />
+            ))
+          )}
+        </View>
       </View>
     </ScrollView>
   );

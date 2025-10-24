@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 export default function FeaturesList() {
   const { t } = useTranslation();
   return (
-    <View className="flex-row justify-between mt-2 mx-2 space-x-4">
+    <View className="flex-row flex-wrap justify-between mt-2 mx-2 ">
       <Feature
         icon={<TrendingUp color="#4ADE80" size={22} />}
         title={t("welcome.FeaturesListBlock.FeatureTitle1")}

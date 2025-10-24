@@ -1,9 +1,10 @@
 import React from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text /*View */ } from "react-native";
 import TrainingCard from "./TrainingCard";
-import { Calendar } from "@/components/ui/calendar";
+import { CalendarUI } from "@/components/ui/CalendarUI";
 import { TrainingDay } from "@/types/trainingDay";
 import { CalendarLegend } from "@/components/trainingDay/CalendarLegend";
+import { CardUI /*cn */ } from "@/components/ui/CardUI";
 
 interface TrainingCalendarProps {
   selectedDate: string | undefined;
@@ -23,24 +24,23 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
 
   const selectedForDay = selectedDate
     ? trainingDays.filter(
-        (td) => new Date(td.date).toISOString().split("T")[0] === selectedDate,
+        (td) => new Date(td.date).toISOString().split("T")[0] === selectedDate
       )
     : [];
 
   // Контент сверху (календарь + легенда)
   const ListHeader = () => (
-    <View className="bg-white rounded-lg mb-4">
-      <Text className="text-2xl font-bold text-black text-left px-4 py-2">
-        Календарь тренировок
-      </Text>
-      <Calendar
+    <CardUI className="rounded-lg mb-4 p-0 text-center">
+      {/* Заголовок. Убираем фиксированный bg-white и text-black, используем адаптивные классы CardUI */}
+
+      <CalendarUI
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         trainingDays={calendarData}
       />
       {/* Легенда */}
       <CalendarLegend />
-    </View>
+    </CardUI>
   );
 
   return (
@@ -51,7 +51,7 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
       ListHeaderComponent={ListHeader}
       ListEmptyComponent={
         selectedDate ? (
-          <Text className="text-center mt-2 text-gray-500">
+          <Text className="text-center mt-2 text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70">
             Нет тренировок на эту дату
           </Text>
         ) : null

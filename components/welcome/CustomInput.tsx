@@ -19,7 +19,10 @@ const CustomInput: React.FC<CustomInputProps> = ({
   ...rest
 }) => (
   <TextInput
-    className="border-gray-200 rounded-lg p-4 bg-background text-base text-foreground"
+    className="border border-gray-200 dark:border-gray-600 ocean:border-blue-700 
+      rounded-lg p-4 
+      bg-white dark:bg-gray-700 ocean:bg-ocean-input-DEFAULT
+      text-base text-black dark:text-gray-100 ocean:text-ocean-foreground"
     placeholder={placeholder}
     placeholderTextColor="#888"
     value={value}

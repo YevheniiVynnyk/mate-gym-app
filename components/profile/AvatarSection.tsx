@@ -10,7 +10,8 @@ import {
 import { Camera, User } from "lucide-react-native";
 import { imageService } from "@/services/imageService";
 import { useEffect, useState } from "react";
-import { useTheme } from "@/contexts/ThemeContext"; // Добавляем useTheme для получения цветов
+import { useTheme } from "@/contexts/ThemeContext";
+import { CardUI } from "@/components/ui/CardUI";
 
 export default function AvatarSection({ user, pickAvatar, loading }: any) {
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
@@ -26,20 +27,8 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
     }
   }, [user?.imageId]);
 
-  // Динамический цвет иконки камеры
-  const cameraIconColor =
-    theme === "ocean"
-      ? "#33c9ff" // ocean:primary-DEFAULT
-      : theme === "dark"
-        ? "#93c5fd" // blue-300
-        : "#007AFF"; // light theme default blue
-
   return (
-    <View
-      className="bg-white p-4 rounded-lg mb-4 shadow-sm items-center
-      dark:bg-gray-800 
-      ocean:bg-ocean-card-DEFAULT"
-    >
+    <CardUI className="p-4 mb-4 items-center">
       {/* Контейнер аватарки */}
       <View className="relative">
         {/* Аватарка - для увеличения */}
@@ -55,18 +44,19 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
             />
           ) : (
             <View
-              className="w-24 h-24 rounded-full bg-gray-200 items-center justify-center 
+              className="w-24 h-24 rounded-full bg-muted items-center justify-center 
               dark:bg-gray-700 
-              ocean:bg-ocean-background"
+              ocean:bg-ocean-muted"
             >
               <User
                 size={60}
+                // ✅ ИЗМЕНЕНИЕ: Используем text-muted-foreground для цвета иконки
                 color={
                   theme === "dark"
-                    ? "#4b5563"
+                    ? "#6b7280" // dark:text-gray-500
                     : theme === "ocean"
-                      ? "#003366"
-                      : "#ccc"
+                      ? "#336699" // Более темный синий
+                      : "#9ca3af" // gray-400
                 }
               />
             </View>
@@ -78,7 +68,12 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
             bg-white/50 
             dark:bg-black/50"
             >
-              <ActivityIndicator size="small" color="#007AFF" />
+              <ActivityIndicator
+                size="small"
+                color={
+                  theme === "dark" || theme === "ocean" ? "white" : "#4ADE80" // Primary DEFAULT
+                }
+              />
             </View>
           )}
         </TouchableOpacity>
@@ -86,19 +81,28 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
         {/* Кнопка камеры */}
         <TouchableOpacity
           onPress={pickAvatar}
-          className="absolute bottom-0 right-0 bg-white p-1 rounded-full shadow-md -mr-1 
+          className="absolute bottom-0 right-0 bg-card p-1 rounded-full shadow-md -mr-1 
           dark:bg-gray-700 
           ocean:bg-ocean-background"
         >
-          <Camera size={20} color={cameraIconColor} />
+          <Camera
+            size={20}
+            color={
+              theme === "ocean"
+                ? "#33c9ff"
+                : theme === "dark"
+                  ? "#10B981" // Немного темнее primary
+                  : "#4ADE80" // Primary DEFAULT
+            }
+          />
         </TouchableOpacity>
       </View>
 
       {!avatarUri && (
         <Text
-          className="text-lg font-medium mt-2 text-center text-black
-        dark:text-gray-100 
-        ocean:text-ocean-foreground"
+          className="text-lg font-medium mt-2 text-center text-foreground
+          dark:text-gray-100 
+          ocean:text-ocean-foreground"
         >
           Фото профиля
         </Text>
@@ -119,6 +123,6 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
           )}
         </Pressable>
       </Modal>
-    </View>
+    </CardUI>
   );
 }

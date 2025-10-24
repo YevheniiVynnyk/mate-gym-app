@@ -9,6 +9,9 @@ import {
 import { Calendar, Edit3, Save } from "lucide-react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@/contexts/ThemeContext";
+import { CardUI, CardHeader, CardTitle } from "@/components/ui/CardUI";
+import { TextInputUI } from "@/components/ui/TextInputUI";
 
 export default function UserInfoSection({
   isEditing,
@@ -21,6 +24,35 @@ export default function UserInfoSection({
   // 💡 Вызываем хук useTranslation для получения функции t
   const { t } = useTranslation();
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const { theme } = useTheme();
+
+  // Вспомогательная функция для определения цвета иконок (lucide-react-native не принимает классы)
+  const getIconColor = (isActive = false) => {
+    if (!isActive) {
+      // Цвет по умолчанию для неактивных/второстепенных элементов (muted-foreground)
+      return theme === "ocean"
+        ? "#336699"
+        : theme === "dark"
+          ? "#9ca3af"
+          : "#9ca3af";
+    }
+    // Цвет для активных/основных элементов (primary)
+    return theme === "ocean"
+      ? "#33c9ff"
+      : theme === "dark"
+        ? "#16A34A"
+        : "#4ADE80";
+  };
+
+  // Вспомогательная функция для определения цвета рамки даты
+  const getDateBorderColor = () => {
+    if (!isEditing) {
+      // Неактивная рамка: border-gray-300 / dark:border-gray-600 / ocean:border-blue-800
+      return "border-gray-300 dark:border-gray-600 ocean:border-blue-800";
+    }
+    // Активная рамка: border-primary
+    return "border-primary dark:border-primary-500 ocean:border-ocean-primary";
+  };
   // Функция для форматирования даты в "ГГГГ-ММ-ДД"
   const formatDate = (dateString: string) => {
     if (!dateString) return "";
@@ -95,90 +127,85 @@ export default function UserInfoSection({
   }, [formDataUser.birthday]);
 
   return (
-    <View
-      className="bg-white p-4 rounded-lg mb-4 shadow-sm 
-    dark:bg-gray-800 
-    ocean:bg-ocean-card-DEFAULT"
-    >
-      <View className="flex-row justify-between items-center mb-2">
-        <Text className="text-lg font-semibold mb-2 dark:text-gray-100 ocean:text-ocean-foreground">
+    <CardUI className="mb-4">
+      <CardHeader className="flex-row justify-between items-center pb-0">
+        <CardTitle className="text-lg font-semibold mb-0">
           {t("userInfo.header")}
-        </Text>
+        </CardTitle>
         <TouchableOpacity
           className="flex-row items-center"
           onPress={() => (isEditing ? handleSaveUser() : setIsEditing(true))}
         >
-          {isEditing ? <Save size={18} /> : <Edit3 size={18} />}
-          <Text className="ml-1 text-blue-500 mb-2 dark:text-gray-100 ocean:text-ocean-foreground">
+          {isEditing ? (
+            <Save size={18} color={getIconColor(true)} />
+          ) : (
+            <Edit3 size={18} color={getIconColor(true)} />
+          )}
+          <Text className="ml-1 text-primary mb-2 dark:text-primary-500 ocean:text-ocean-primary">
             {isEditing ? t("userInfo.save") : t("userInfo.edit")}
           </Text>
         </TouchableOpacity>
-      </View>
+      </CardHeader>
+      <View className="p-4 pt-2">
+        {textFields.map((item) => (
+          <TextInputUI
+            key={item.key}
+            placeholder={item.placeholder}
+            value={String((formDataUser as any)[item.key] || "")}
+            editable={isEditing}
+            keyboardType={item.keyboardType as any}
+            onChangeText={(text) =>
+              setFormDataUser((prev: any) => ({
+                ...prev,
+                [item.key]: item.key === "age" ? Number(text) : text,
+              }))
+            }
+          />
+        ))}
 
-      {textFields.map((item) => (
-        <TextInput
-          key={item.key}
-          className="border border-gray-300 rounded-md p-2 mb-2 
-          text-gray-800 
-          dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
-          ocean:bg-ocean-card-DEFAULT ocean:border-blue-800 ocean:text-ocean-foreground"
-          placeholder={item.placeholder}
-          value={String((formDataUser as any)[item.key] || "")}
-          editable={isEditing}
-          keyboardType={item.keyboardType as any}
-          onChangeText={(text) =>
-            setFormDataUser((prev: any) => ({
-              ...prev,
-              [item.key]: item.key === "age" ? Number(text) : text,
-            }))
-          }
-        />
-      ))}
-
-      {/* ✅ Блок для даты рождения с DatePicker */}
-      {/* ✅ Блок для даты рождения с DatePicker */}
-      <TouchableOpacity
-        className={`flex-row justify-between items-center border rounded-md p-2 mb-2 dark:text-gray-100 ocean:text-ocean-foreground  ${isEditing ? "border-blue-500" : "border-gray-300"}`}
-        onPress={() => isEditing && setShowDatePicker(true)}
-        disabled={!isEditing}
-      >
-        <Text
-          className={
-            formDataUser.birthday
-              ? "text-gray-800 dark:text-gray-100 ocean:text-ocean-foreground"
-              : "text-gray-400 dark:text-gray-100 ocean:text-ocean-foreground"
-          }
+        {/* ✅ Блок для даты рождения с DatePicker */}
+        {/* ✅ Блок для даты рождения с DatePicker */}
+        <TouchableOpacity
+          className={`flex-row justify-between items-center border rounded-md p-2 mb-2 ${getDateBorderColor()}`}
+          onPress={() => isEditing && setShowDatePicker(true)}
+          disabled={!isEditing}
         >
-          {formDataUser.birthday
-            ? `${t("userInfo.birthday")}: ${formatDate(formDataUser.birthday)}`
-            : t("userInfo.birthday")}
-        </Text>
-        <Calendar size={18} color={isEditing ? "#3b82f6" : "#9ca3af"} />
-      </TouchableOpacity>
+          <Text
+            className={
+              formDataUser.birthday
+                ? "text-foreground dark:text-gray-100 ocean:text-ocean-foreground"
+                : "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/80"
+            }
+          >
+            {formDataUser.birthday
+              ? `${t("userInfo.birthday")}: ${formatDate(formDataUser.birthday)}`
+              : t("userInfo.birthday")}
+          </Text>
+          <Calendar size={18} color={getIconColor(isEditing)} />
+        </TouchableOpacity>
 
-      {/* ✅ Отображение пикера даты */}
-      {showDatePicker && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={pickerDate} // Используем корректно парсенное или дефолтное значение
-          mode="date"
-          display={Platform.OS === "ios" ? "spinner" : "default"}
-          onChange={onDateChange} // В onDateChange мы правильно обновляем только при 'set'
-          maximumDate={new Date()}
-        />
-      )}
-      {formDataUser.role === "CLIENT" && (
-        <TextInput
-          className="border border-gray-300 rounded-md p-2 mb-2 dark:text-gray-100 ocean:text-ocean-foreground"
-          placeholder={t("userInfo.goals")}
-          value={formDataUser.goals}
-          placeholderTextColor="#9ca3af"
-          editable={isEditing}
-          onChangeText={(text) =>
-            setFormDataUser({ ...formDataUser, goals: text })
-          }
-        />
-      )}
-    </View>
+        {/* ✅ Отображение пикера даты */}
+        {showDatePicker && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={pickerDate} // Используем корректно парсенное или дефолтное значение
+            mode="date"
+            display={Platform.OS === "ios" ? "spinner" : "default"}
+            onChange={onDateChange} // В onDateChange мы правильно обновляем только при 'set'
+            maximumDate={new Date()}
+          />
+        )}
+        {formDataUser.role === "CLIENT" && (
+          <TextInputUI
+            placeholder={t("userInfo.goals")}
+            value={formDataUser.goals}
+            editable={isEditing}
+            onChangeText={(text) =>
+              setFormDataUser({ ...formDataUser, goals: text })
+            }
+          />
+        )}
+      </View>
+    </CardUI>
   );
 }

@@ -12,9 +12,24 @@ import PlanCard, { TrainingPlan } from "@/components/plans/PlanCard";
 const TrainingPlansPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEquipment, setSelectedEquipment] = useState<string | null>(
-    null,
+    null
   );
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
+
+  // --- Адаптивные классы Card UI ---
+  const screenBg = "bg-background dark:bg-gray-900 ocean:bg-ocean-background";
+  const cardBg = "bg-card dark:bg-gray-800 ocean:bg-ocean-card";
+  const borderClass =
+    "border-border dark:border-gray-700 ocean:border-ocean-border";
+  const textFg =
+    "text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+  const textMutedFg =
+    "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70";
+  const primaryBg = "bg-primary dark:bg-primary-600 ocean:bg-ocean-primary";
+  const primaryText =
+    "text-primary dark:text-primary-400 ocean:text-ocean-primary";
+  const primaryFgText = "text-primary-foreground dark:text-white";
+  const mutedBg = "bg-muted dark:bg-gray-700 ocean:bg-ocean-muted";
 
   const trainingPlans: TrainingPlan[] = [
     {
@@ -56,6 +71,25 @@ const TrainingPlansPage = () => {
         "Растяжка и восстановление",
       ],
     },
+    // Добавьте еще один план для демонстрации full-gym и advanced
+    {
+      id: "3",
+      title: "Про-бодибилдинг",
+      description: "Комплексная программа для набора массы в полном зале",
+      price: 4999,
+      duration: "3 месяца",
+      level: "advanced",
+      equipmentType: "full-gym",
+      exercises: 60,
+      workoutsPerWeek: 5,
+      features: [
+        "Сплит-программа на 5 дней",
+        "Подробные схемы питания",
+        "Инструкции по сушке и объему",
+        "Приоритет на большие мышечные группы",
+      ],
+      popular: false,
+    },
   ];
 
   const equipmentFilters = [
@@ -82,90 +116,103 @@ const TrainingPlansPage = () => {
   });
 
   return (
-    <ScrollView className="flex-1 p-4">
-      {/* Заголовок */}
+    // ✅ Адаптивный фон для всего экрана
+    <ScrollView className={`flex-1 p-4 ${screenBg}`}>
+      {/* --- Заголовок --- */}
       <View className="flex-row items-center mb-4 space-x-2">
-        <ShoppingCart color="#007bff" size={28} />
+        {/* ✅ Иконка с основным цветом */}
+        <ShoppingCart size={28} className={primaryText} />
         <View>
-          <Text className="text-xl font-bold text-gray-900">
+          {/* ✅ Заголовок с основным цветом текста */}
+          <Text className={`text-xl font-bold ${textFg}`}>
             Планы тренировок
           </Text>
-          <Text className="text-gray-500 text-sm">
+          {/* ✅ Описание с приглушенным цветом текста */}
+          <Text className={`text-sm ${textMutedFg}`}>
             Выберите программу под ваш инвентарь и уровень
           </Text>
         </View>
       </View>
 
-      {/* Поиск */}
+      {/* --- Поиск --- */}
       <View className="mb-3">
-        <View className="flex-row items-center bg-white border border-gray-300 rounded-lg px-3 py-2">
-          <Search size={18} color="#888" />
+        <View
+          className={`flex-row items-center rounded-lg px-3 py-2 shadow-sm ${cardBg} border ${borderClass}`}
+        >
+          {/* ✅ Иконка поиска с приглушенным цветом */}
+          <Search size={18} className={textMutedFg} />
           <TextInput
-            className="flex-1 ml-2 text-base text-gray-800"
+            // ✅ Основной цвет текста
+            className={`flex-1 ml-2 text-base ${textFg}`}
             placeholder="Поиск по названию..."
+            // Placeholder color adjustment for dark/ocean themes
+            placeholderTextColor={
+              screenBg.includes("dark") || screenBg.includes("ocean")
+                ? "#888"
+                : "#666"
+            }
             value={searchTerm}
             onChangeText={setSearchTerm}
           />
         </View>
       </View>
 
-      {/* Фильтры */}
-      <Text className="font-semibold text-gray-700 mt-2 mb-1">
-        Оборудование
-      </Text>
+      {/* --- Фильтры Оборудования --- */}
+      <Text className={`font-semibold mt-2 mb-1 ${textFg}`}>Оборудование</Text>
       <View className="flex-row flex-wrap mb-3">
-        {equipmentFilters.map((filter) => (
-          <TouchableOpacity
-            key={filter.id}
-            className={`px-3 py-1.5 rounded-full mr-2 mb-2 ${
-              selectedEquipment === filter.id ? "bg-blue-500" : "bg-gray-200"
-            }`}
-            onPress={() =>
-              setSelectedEquipment(
-                selectedEquipment === filter.id ? null : filter.id,
-              )
-            }
-          >
-            <Text
-              className={`text-sm ${
-                selectedEquipment === filter.id ? "text-white" : "text-gray-800"
+        {equipmentFilters.map((filter) => {
+          const isActive = selectedEquipment === filter.id;
+          return (
+            <TouchableOpacity
+              key={filter.id}
+              className={`px-3 py-1.5 rounded-full mr-2 mb-2 transition-all ${
+                // ✅ Адаптивный фон: Primary для активного, Muted для неактивного
+                isActive ? primaryBg : mutedBg
               }`}
+              onPress={() => setSelectedEquipment(isActive ? null : filter.id)}
             >
-              {filter.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
+              <Text
+                // ✅ Адаптивный цвет текста: Primary Foreground для активного, Foreground для неактивного
+                className={`text-sm ${isActive ? primaryFgText : textFg}`}
+              >
+                {filter.label}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
       </View>
 
-      <Text className="font-semibold text-gray-700 mb-1">Уровень</Text>
+      {/* --- Фильтры Уровня --- */}
+      <Text className={`font-semibold mb-1 ${textFg}`}>Уровень</Text>
       <View className="flex-row flex-wrap mb-3">
-        {levelFilters.map((filter) => (
-          <TouchableOpacity
-            key={filter.id}
-            className={`px-3 py-1.5 rounded-full mr-2 mb-2 ${
-              selectedLevel === filter.id ? "bg-blue-500" : "bg-gray-200"
-            }`}
-            onPress={() =>
-              setSelectedLevel(selectedLevel === filter.id ? null : filter.id)
-            }
-          >
-            <Text
-              className={`text-sm ${
-                selectedLevel === filter.id ? "text-white" : "text-gray-800"
+        {levelFilters.map((filter) => {
+          const isActive = selectedLevel === filter.id;
+          return (
+            <TouchableOpacity
+              key={filter.id}
+              className={`px-3 py-1.5 rounded-full mr-2 mb-2 transition-all ${
+                // ✅ Адаптивный фон: Primary для активного, Muted для неактивного
+                isActive ? primaryBg : mutedBg
               }`}
+              onPress={() => setSelectedLevel(isActive ? null : filter.id)}
             >
-              {filter.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
+              <Text
+                // ✅ Адаптивный цвет текста: Primary Foreground для активного, Foreground для неактивного
+                className={`text-sm ${isActive ? primaryFgText : textFg}`}
+              >
+                {filter.label}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
       </View>
 
-      {/* Количество найденных */}
-      <Text className="text-gray-600 mb-2">
+      {/* --- Количество найденных --- */}
+      <Text className={`${textMutedFg} mb-2`}>
         Найдено планов: {filteredPlans.length}
       </Text>
 
-      {/* Карточки планов */}
+      {/* --- Карточки планов (используется обновленный PlanCard) --- */}
       <View>
         {filteredPlans.map((plan) => (
           <PlanCard
@@ -177,21 +224,28 @@ const TrainingPlansPage = () => {
         ))}
       </View>
 
+      {/* --- Пустой результат --- */}
       {filteredPlans.length === 0 && (
         <View className="items-center mt-10">
-          <ShoppingCart size={48} color="#999" />
-          <Text className="text-gray-500 mt-3 text-center">
-            Планы не найдены
+          {/* ✅ Иконка с приглушенным цветом */}
+          <ShoppingCart size={48} className={textMutedFg} />
+          {/* ✅ Текст с приглушенным цветом */}
+          <Text className={`${textMutedFg} mt-3 text-center`}>
+            Планы не найдены. Попробуйте сбросить фильтры.
           </Text>
           <TouchableOpacity
-            className="mt-4 bg-blue-500 px-5 py-2 rounded-lg"
+            // ✅ Кнопка с основным фоном
+            className={`mt-4 px-5 py-2 rounded-lg ${primaryBg}`}
             onPress={() => {
               setSearchTerm("");
               setSelectedEquipment(null);
               setSelectedLevel(null);
             }}
           >
-            <Text className="text-white font-medium">Сбросить фильтры</Text>
+            {/* ✅ Текст с основным цветом фона */}
+            <Text className={`${primaryFgText} font-medium`}>
+              Сбросить фильтры
+            </Text>
           </TouchableOpacity>
         </View>
       )}

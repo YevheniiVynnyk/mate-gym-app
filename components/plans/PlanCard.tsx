@@ -28,16 +28,32 @@ const PlanCard: React.FC<PlanCardProps> = ({
   onPurchase,
   isPurchased = false,
 }) => {
+  // Адаптивные классы
+  const cardBg = "bg-card dark:bg-gray-800 ocean:bg-ocean-card";
+  const borderClass =
+    "border-border dark:border-gray-700 ocean:border-ocean-border";
+  const textFg =
+    "text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
+  const textMutedFg =
+    "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70";
+  const primaryBg = "bg-primary dark:bg-primary-600 ocean:bg-ocean-primary";
+  const primaryText =
+    "text-primary dark:text-primary-400 ocean:text-ocean-primary";
+  const primaryFgText = "text-primary-foreground dark:text-white";
+  const mutedBg = "bg-muted dark:bg-gray-700 ocean:bg-ocean-muted";
+
   const getEquipmentIcon = () => {
+    // ✅ Иконки теперь используют Muted Foreground
+    const iconClass = textMutedFg;
     switch (plan.equipmentType) {
       case "home":
-        return <Home size={18} color="#555" />;
+        return <Home size={18} className={iconClass} />;
       case "basic-gym":
-        return <Dumbbell size={18} color="#555" />;
+        return <Dumbbell size={18} className={iconClass} />;
       case "full-gym":
-        return <Building size={18} color="#555" />;
+        return <Building size={18} className={iconClass} />;
       default:
-        return <Dumbbell size={18} color="#555" />;
+        return <Dumbbell size={18} className={iconClass} />;
     }
   };
 
@@ -68,37 +84,65 @@ const PlanCard: React.FC<PlanCardProps> = ({
   };
 
   const getLevelColors = () => {
+    // ✅ Адаптивные цвета для бейджей уровней
     switch (plan.level) {
       case "beginner":
-        return { bg: "bg-green-100", text: "text-green-800" };
+        return {
+          bg: "bg-green-100/30 dark:bg-green-800/50 ocean:bg-green-700/50",
+          text: "text-green-800 dark:text-green-300 ocean:text-green-300",
+        };
       case "intermediate":
-        return { bg: "bg-yellow-100", text: "text-yellow-800" };
+        return {
+          bg: "bg-yellow-100/30 dark:bg-yellow-800/50 ocean:bg-yellow-700/50",
+          text: "text-yellow-800 dark:text-yellow-300 ocean:text-yellow-300",
+        };
       case "advanced":
-        return { bg: "bg-red-100", text: "text-red-800" };
+        return {
+          bg: "bg-red-100/30 dark:bg-red-800/50 ocean:bg-red-700/50",
+          text: "text-red-800 dark:text-red-300 ocean:text-red-300",
+        };
       default:
-        return { bg: "bg-gray-200", text: "text-gray-800" };
+        return {
+          bg: "bg-muted dark:bg-gray-700",
+          text: "text-foreground dark:text-gray-100",
+        };
     }
   };
 
   const levelColors = getLevelColors();
 
   return (
+    // ✅ Адаптивный фон, граница и тень
     <View
-      className={`bg-white rounded-xl p-4 mb-4 shadow ${plan.popular ? "border-2 border-blue-400" : ""}`}
+      className={`${cardBg} rounded-xl p-4 mb-4 shadow-lg border ${borderClass}
+        ${plan.popular ? "border-2 border-primary dark:border-primary-400 ocean:border-ocean-primary" : ""}`}
     >
       {plan.popular && (
-        <View className="absolute -top-2 left-1/2 transform -translate-x-1/2 flex-row items-center bg-blue-400 px-3 py-1 rounded-full">
-          <Star size={14} color="#fff" className="mr-1" />
-          <Text className="text-white text-xs font-semibold">Популярный</Text>
+        // ✅ Адаптивный фон для метки "Популярный"
+        <View
+          className={`absolute -top-2 left-1/2 transform -translate-x-1/2 flex-row items-center ${primaryBg} px-3 py-1 rounded-full`}
+        >
+          <Star
+            size={14}
+            className="text-primary-foreground dark:text-white mr-1"
+          />
+          <Text className={`${primaryFgText} text-xs font-semibold`}>
+            Популярный
+          </Text>
         </View>
       )}
 
       <View className="mb-2">
         <View className="flex-row justify-between mb-2">
+          {/* Инвентарь */}
           <View className="flex-row items-center space-x-1">
             {getEquipmentIcon()}
-            <Text className="text-sm text-gray-700">{getEquipmentLabel()}</Text>
+            {/* ✅ Адаптивный текст */}
+            <Text className={`text-sm ${textMutedFg}`}>
+              {getEquipmentLabel()}
+            </Text>
           </View>
+          {/* Уровень */}
           <View className={`${levelColors.bg} px-2 py-1 rounded-lg`}>
             <Text className={`text-xs font-semibold ${levelColors.text}`}>
               {getLevelLabel()}
@@ -106,60 +150,92 @@ const PlanCard: React.FC<PlanCardProps> = ({
           </View>
         </View>
 
-        <Text className="text-lg font-bold mb-1">{plan.title}</Text>
-        <Text className="text-sm text-gray-600 mb-2">{plan.description}</Text>
+        {/* Заголовок и описание */}
+        <Text className={`text-lg font-bold mb-1 ${textFg}`}>{plan.title}</Text>
+        <Text className={`text-sm mb-2 ${textMutedFg}`}>
+          {plan.description}
+        </Text>
 
+        {/* Цена */}
         <View className="flex-row items-baseline space-x-2">
-          <Text className="text-2xl font-bold text-blue-500">
+          {/* ✅ Адаптивный основной цвет для цены */}
+          <Text className={`text-2xl font-bold ${primaryText}`}>
             {plan.price}₴
           </Text>
           {plan.originalPrice && (
-            <Text className="text-sm text-gray-500 line-through">
+            // ✅ Адаптивный текст
+            <Text className={`text-sm line-through ${textMutedFg}`}>
               {plan.originalPrice}₴
             </Text>
           )}
-          <Text className="text-xs text-gray-500">/ {plan.duration}</Text>
+          {/* ✅ Адаптивный текст */}
+          <Text className={`text-xs ${textMutedFg}`}>/ {plan.duration}</Text>
         </View>
       </View>
 
       <View className="mt-2">
         <View className="flex-row justify-between mb-2">
+          {/* Кол-во упражнений */}
           <View className="flex-row items-center space-x-1">
-            <Dumbbell size={16} color="#666" />
-            <Text className="text-sm text-gray-800">
+            {/* ✅ Адаптивный цвет для иконки */}
+            <Dumbbell size={16} className={textMutedFg} />
+            <Text className={`text-sm ${textFg}`}>
               {plan.exercises} упражнений
             </Text>
           </View>
+          {/* Тренировок в неделю */}
           <View className="flex-row items-center space-x-1">
-            <View className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center">
-              <Text className="text-white text-xs font-bold">
+            {/* ✅ Адаптивный фон для бейджа */}
+            <View
+              className={`w-5 h-5 rounded-full ${primaryBg} flex items-center justify-center`}
+            >
+              <Text className={`${primaryFgText} text-xs font-bold`}>
                 {plan.workoutsPerWeek}
               </Text>
             </View>
-            <Text className="text-sm text-gray-800">
+            <Text className={`text-sm ${textFg}`}>
               {plan.workoutsPerWeek} раз/неделю
             </Text>
           </View>
         </View>
 
-        <Text className="text-sm font-semibold mb-1">Что включено:</Text>
+        {/* Список особенностей */}
+        <Text className={`text-sm font-semibold mb-1 ${textFg}`}>
+          Что включено:
+        </Text>
         <ScrollView className="max-h-32">
           {plan.features.map((feature, i) => (
             <View key={i} className="flex-row items-center space-x-2 mb-1">
-              <Check size={14} color="#0EA5E9" />
-              <Text className="text-sm text-gray-800">{feature}</Text>
+              {/* ✅ Адаптивный основной цвет для галочки */}
+              <Check size={14} className={primaryText} />
+              <Text className={`text-sm ${textFg}`}>{feature}</Text>
             </View>
           ))}
         </ScrollView>
       </View>
 
+      {/* Кнопка покупки */}
       <TouchableOpacity
-        className={`mt-3 py-2 rounded-lg items-center ${isPurchased ? "bg-gray-300" : "bg-blue-500"}`}
+        className={`mt-3 py-2 rounded-lg items-center transition-all 
+          ${
+            isPurchased
+              ? // ✅ Адаптивный фон для купленной/недоступной кнопки
+                mutedBg
+              : // ✅ Адаптивный фон для активной кнопки
+                primaryBg
+          }`}
         disabled={isPurchased}
         onPress={() => onPurchase(plan.id)}
       >
         <Text
-          className={`font-semibold ${isPurchased ? "text-gray-600" : "text-white"}`}
+          className={`font-semibold 
+            ${
+              isPurchased
+                ? // ✅ Адаптивный цвет для текста купленной кнопки
+                  textMutedFg
+                : // ✅ Адаптивный цвет для текста активной кнопки
+                  primaryFgText
+            }`}
         >
           {isPurchased ? "Уже куплено" : "Купить план"}
         </Text>
