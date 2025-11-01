@@ -134,7 +134,7 @@ export default function BottomNavigation() {
         // Классы для текста
         const labelClasses = cn(
           "text-xs mt-1",
-          isActive ? "font-semibold" : "font-normal",
+          isActive ? "font-normal" : "font-normal",
           {
             // LIGHT/DEFAULT
             "text-primary": isActive && theme === "light",
