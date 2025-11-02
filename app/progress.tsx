@@ -6,7 +6,7 @@ import WeeklyActivitySection from "@/components/progress/WeeklyActivitySection";
 import QuickStatsSection from "@/components/progress/QuickStatsSection";
 import TrainingTimeSection from "@/components/progress/TrainingTimeSection";
 import EmptyState from "@/components/progress/EmptyState";
-import { LoadingPageUI } from "@/components/ui/LoadingPageUI";
+import { LoadingPage } from "@/components/ui/LoadingPage";
 
 export default function Progress() {
   const {
@@ -20,7 +20,7 @@ export default function Progress() {
   } = useProgress();
 
   if (loading) {
-    return <LoadingPageUI />;
+    return <LoadingPage />;
   }
 
   if (noData) return <EmptyState />;

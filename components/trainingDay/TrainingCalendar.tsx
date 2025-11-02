@@ -1,10 +1,10 @@
 import React from "react";
 import { FlatList, Text /*View */ } from "react-native";
 import TrainingCard from "./TrainingCard";
-import { CalendarUI } from "@/components/ui/CalendarUI";
+import { Calendar } from "@/components/ui/Calendar";
 import { TrainingDay } from "@/types/trainingDay";
 import { CalendarLegend } from "@/components/trainingDay/CalendarLegend";
-import { CardUI /*cn */ } from "@/components/ui/CardUI";
+import { Card /*cn */ } from "@/components/ui/Card";
 
 interface TrainingCalendarProps {
   selectedDate: string | undefined;
@@ -30,17 +30,17 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
 
   // Контент сверху (календарь + легенда)
   const ListHeader = () => (
-    <CardUI className="rounded-lg mb-4 p-0 text-center">
+    <Card className="rounded-lg mb-4 p-0 text-center">
       {/* Заголовок. Убираем фиксированный bg-white и text-black, используем адаптивные классы CardUI */}
 
-      <CalendarUI
+      <Calendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         trainingDays={calendarData}
       />
       {/* Легенда */}
       <CalendarLegend />
-    </CardUI>
+    </Card>
   );
 
   return (

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const SaveButtonsSection = ({ isLoading, onSave, onExecute }: Props) => (
-  <View className="flex-row justify-between my-2">
+  <View className="flex-row justify-between m-2">
     <TouchableOpacity
       className="flex-1 bg-green-500 py-3 rounded-lg items-center mr-2"
       onPress={onSave}

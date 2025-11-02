@@ -96,9 +96,9 @@ export default function BottomNavigation() {
   ];
   // Стили для корневого контейнера навигации
   const rootClasses = cn(
-    "flex-row justify-between items-center p-2 rounded-t-2xl shadow-lg",
+    "flex-row justify-between items-center p-2",
     // Адаптивные стили фона и верхней границы
-    "bg-card border-t border-border",
+    "bg-background",
     "dark:bg-gray-800 dark:border-gray-700",
     "ocean:bg-ocean-card ocean:border-blue-800"
   );
@@ -111,7 +111,7 @@ export default function BottomNavigation() {
         const iconColor = getIconColor(isActive);
         // Классы для кнопки (TouchableOpacity)
         const buttonClasses = cn(
-          "flex-1 m-1 p-3 rounded-2xl items-center justify-center border",
+          "flex-1 mx-1 p-2 rounded-2xl items-center justify-center border",
           {
             // LIGHT/DEFAULT
             "bg-white border-gray-100": !isActive && theme === "light",

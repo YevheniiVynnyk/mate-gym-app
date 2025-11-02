@@ -1,11 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
 import {
-  CardUI,
+  Card,
   CardContent,
   CardDescription,
   cn,
-} from "@/components/ui/CardUI";
+} from "@/components/ui/Card";
 
 interface StatCardProps {
   title: string;
@@ -29,7 +29,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   return (
     // CardUI используется как корневой элемент.
     // Занимает примерно 1/3 ширины и имеет внутренний отступ p-3.
-    <CardUI className={cn("w-[32%] p-3 items-start", className)}>
+    <Card className={cn("w-[32%] p-3 items-start", className)}>
       {/* Используем CardContent, но с нулевым отступом, чтобы управлять им вручную */}
       <CardContent className="p-0 pt-0">
         {/* Большое значение метрики. Цвет должен быть ярким, например, primary/зеленый */}
@@ -56,6 +56,6 @@ export const StatCard: React.FC<StatCardProps> = ({
           </Text>
         )}
       </CardContent>
-    </CardUI>
+    </Card>
   );
 };

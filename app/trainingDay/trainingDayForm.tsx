@@ -50,7 +50,7 @@ export default function TrainingDayForm() {
   };
 
   return (
-    <View className="flex-1 bg-gray-100">
+    <View className="flex-1">
       <Header
         onBack={() => route.goBack()}
         title={isEdit ? "Редактировать тренировку" : "Создать тренировку"}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { cn } from "@/components/ui/CardUI"; // Используем cn для условного объединения классов
+import { cn } from "@/components/ui/Card"; // Используем cn для условного объединения классов
 
 // Определяем адаптивные стили для легенды, основываясь на логике CalendarUI
 const statuses = [

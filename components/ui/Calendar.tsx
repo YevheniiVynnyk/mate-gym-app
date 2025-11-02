@@ -3,17 +3,17 @@ import { Text, TouchableOpacity, View } from "react-native";
 import dayjs from "dayjs";
 import { ChevronLeft, ChevronRight } from "lucide-react-native";
 // ✅ Импортируем cn для условной стилизации
-import { cn } from "@/components/ui/CardUI";
+import { cn } from "@/components/ui/Card";
 
 export type DayStatus = "CREATED" | "IN_PROGRESS" | "COMPLETED";
 
-interface CalendarUIProps {
+interface CalendarProps {
   selectedDate: string | undefined;
   setSelectedDate: (date: string) => void;
   trainingDays: { date: string; status: DayStatus }[];
 }
 
-export const CalendarUI: React.FC<CalendarUIProps> = ({
+export const Calendar: React.FC<CalendarProps> = ({
   selectedDate,
   setSelectedDate,
   trainingDays,
@@ -48,9 +48,6 @@ export const CalendarUI: React.FC<CalendarUIProps> = ({
     }
     weeks.push(days);
   }
-  // Конец логики построения сетки календаря
-
-  // ✅ ФУНКЦИЯ ПЕРЕРАБОТАНА: теперь возвращает классы Tailwind
   const getDayStyle = (dayObj: { day: number; monthOffset: number }) => {
     const { day, monthOffset } = dayObj;
     let dateKey = currentMonth.date(day).format("YYYY-MM-DD");

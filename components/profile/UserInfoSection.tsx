@@ -10,7 +10,7 @@ import { Calendar, Edit3, Save } from "lucide-react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/contexts/ThemeContext";
-import { CardUI, CardHeader, CardTitle } from "@/components/ui/CardUI";
+import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { TextInputUI } from "@/components/ui/TextInputUI";
 
 export default function UserInfoSection({
@@ -127,7 +127,7 @@ export default function UserInfoSection({
   }, [formDataUser.birthday]);
 
   return (
-    <CardUI className="mb-4">
+    <Card className="mb-4">
       <CardHeader className="flex-row justify-between items-center pb-0">
         <CardTitle className="text-lg font-semibold mb-0">
           {t("userInfo.header")}
@@ -206,6 +206,6 @@ export default function UserInfoSection({
           />
         )}
       </View>
-    </CardUI>
+    </Card>
   );
 }

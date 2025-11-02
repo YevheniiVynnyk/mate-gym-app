@@ -2,12 +2,12 @@ import { Text, TouchableOpacity, View } from "react-native";
 import LanguageSelector from "@/components/profile/LanguageSelector";
 import ThemeSelector from "@/components/profile/ThemeSelector";
 import { useTranslation } from "react-i18next";
-import { CardUI, CardHeader, CardTitle } from "@/components/ui/CardUI";
+import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 
 export default function SettingsSection({ handleLogout }: any) {
   const { t } = useTranslation();
   return (
-    <CardUI className="p-4 mb-4 ">
+    <Card className="p-4 mb-4 ">
       <CardHeader className="flex-row justify-between items-center pb-0 items-center">
         <CardTitle className="text-lg font-semibold mb-0">
           {t("SettingsSection.title")}
@@ -23,6 +23,6 @@ export default function SettingsSection({ handleLogout }: any) {
           {t("SettingsSection.logout")}
         </Text>
       </TouchableOpacity>
-    </CardUI>
+    </Card>
   );
 }

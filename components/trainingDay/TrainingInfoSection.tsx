@@ -15,7 +15,7 @@ export const TrainingInfoSection = ({
   trainingDayDate,
   onOpenCalendar,
 }: Props) => (
-  <View className="bg-white p-4 rounded-xl mb-4 shadow-sm">
+  <View className="bg-white p-4 rounded-xl m-1">
     <View className="mb-3 flex-row items-center justify-start space-x-3">
       <Text className="text-lg font-medium w-24">Название</Text>
       <TextInput

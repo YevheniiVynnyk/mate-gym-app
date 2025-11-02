@@ -29,7 +29,7 @@ const cn = (
  * Адаптивный компонент страницы загрузки.
  * Отображает ActivityIndicator и сообщение о загрузке.
  */
-export const LoadingPageUI: React.FC = () => {
+export const LoadingPage: React.FC = () => {
   const { t } = useTranslation();
   const { theme } = useTheme();
 

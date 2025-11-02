@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 import { Clock, Target } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { Training, TrainingDay } from "@/types/trainingDay";
-import { CardUI, cn } from "@/components/ui/CardUI";
+import { Card, cn } from "@/components/ui/Card";
 
 type TrainingCardProps = {
   trainingDay: TrainingDay;
@@ -33,7 +33,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
 
   return (
     <Pressable onPress={handlePress} className="mb-3 active:opacity-80">
-      <CardUI className="rounded-2xl p-4">
+      <Card className="rounded-2xl p-4">
         {/* HEADER */}
         <View className="flex-row justify-between items-center">
           <Text className="text-base text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
@@ -73,7 +73,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
           {/* Вторая строка с InfoTraining */}
           <InfoTraining trainings={trainingDay.trainings} />
         </View>
-      </CardUI>
+      </Card>
     </Pressable>
   );
 });

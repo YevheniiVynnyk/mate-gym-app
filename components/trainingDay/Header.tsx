@@ -27,7 +27,7 @@ export const Header = ({
 
   return (
     // Добавлен отступ pt-4 и px-4 для лучшей компоновки
-    <View className="flex-row items-center justify-between mb-4 px-4 pt-4">
+    <View className="flex-row items-center justify-between mb-1 p-2">
       <TouchableOpacity
         onPress={onBack}
         // ✅ РЕФАКТОРИНГ: Применяем адаптивные классы для фона и рамки

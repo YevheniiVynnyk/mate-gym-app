@@ -6,8 +6,7 @@ const cn = (...classes: (string | boolean | undefined | null)[]): string => {
   return classes.filter(Boolean).join(" ");
 };
 
-// ✅ ИЗМЕНЕНИЕ: Переименовано с Card на CardUI
-const CardUI = React.forwardRef<View, ViewProps>((props, ref) => {
+const Card = React.forwardRef<View, ViewProps>((props, ref) => {
   const { className, ...rest } = props;
 
   const combinedClasses = cn(
@@ -28,7 +27,7 @@ const CardUI = React.forwardRef<View, ViewProps>((props, ref) => {
 
   return <View ref={ref} className={combinedClasses} {...rest} />;
 });
-CardUI.displayName = "CardUI"; // ✅ ИЗМЕНЕНИЕ: Обновлен displayName
+Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<View, ViewProps>((props, ref) => {
   const { className, ...rest } = props;
@@ -83,7 +82,7 @@ const CardFooter = React.forwardRef<View, ViewProps>((props, ref) => {
 CardFooter.displayName = "CardFooter";
 
 export {
-  CardUI, // ✅ ИЗМЕНЕНИЕ: Экспортируем CardUI
+  Card,
   CardHeader,
   CardFooter,
   CardTitle,

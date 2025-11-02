@@ -11,7 +11,7 @@ import { Camera, User } from "lucide-react-native";
 import { imageService } from "@/services/imageService";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { CardUI } from "@/components/ui/CardUI";
+import { Card } from "@/components/ui/Card";
 
 export default function AvatarSection({ user, pickAvatar, loading }: any) {
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
@@ -28,7 +28,7 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
   }, [user?.imageId]);
 
   return (
-    <CardUI className="p-4 mb-4 items-center">
+    <Card className="p-4 mb-4 items-center">
       {/* Контейнер аватарки */}
       <View className="relative">
         {/* Аватарка - для увеличения */}
@@ -123,6 +123,6 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
           )}
         </Pressable>
       </Modal>
-    </CardUI>
+    </Card>
   );
 }
