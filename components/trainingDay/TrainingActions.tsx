@@ -27,7 +27,7 @@ const ActionButton = ({
   // Класс для текста/иконки (всегда белый/светлый на сплошном фоне)
   const textAndIconClasses =
     "text-white dark:text-white ocean:text-ocean-primary-foreground";
-  const iconSize = 16;
+  const iconSize = 24;
 
   // Клонируем иконку, чтобы применить фиксированный белый цвет
   const coloredIcon = React.cloneElement(icon as React.ReactElement, {
