@@ -76,6 +76,9 @@ const Navbar = () => {
   // Получаем цвета иконок
   const bellColor = getIconColor(theme, "primary"); // "Bell" - вторичный цвет
   const heartColor = getIconColor(theme, "primary"); // "Heart" - красный
+  const toolColor = getIconColor(theme, "primary"); // "Heart" - красный
+  // В реальном приложении здесь должна быть проверка роли пользователя
+    const isAdmin = true; // Условная переменная
   return (
     <View className={rootClasses}>
       {/* Логотип и название */}
@@ -102,7 +105,11 @@ const Navbar = () => {
         <TouchableOpacity className="mx-2">
           <Feather name="bell" size={22} color={bellColor} />
         </TouchableOpacity>
-
+        {isAdmin && (
+        <TouchableOpacity className="mx-2" onPress={() => router.toAdminPage()}>
+          <Feather name="tool" size={22} color={toolColor} />
+        </TouchableOpacity>
+)}
         <TouchableOpacity onPress={() => router.toProfile()} className="mx-2">
           <Image
             source={{ uri: avatarUri }}

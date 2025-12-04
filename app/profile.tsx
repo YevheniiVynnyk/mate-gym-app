@@ -27,7 +27,7 @@ export default function Profile() {
   // ✅ ИСПОЛЬЗУЕМ CN для применения адаптивных классов фона к ScrollView
   const scrollContainerClasses = cn(
     "flex-1 p-4",
-    "bg-gray-50 dark:bg-gray-900 ocean:bg-ocean-background"
+    "bg-gray-50 dark:bg-gray-900 ocean:bg-ocean-background",
   );
 
   return (

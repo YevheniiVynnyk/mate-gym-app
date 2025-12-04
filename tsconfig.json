@@ -8,22 +8,16 @@
     "strict": true,
     "skipLibCheck": true,
     "jsx": "react-native",
-    "lib": [
-      "es2021"
-    ],
+    "lib": ["es2021"],
     "allowJs": true,
     "noEmit": true,
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "extends": "expo/tsconfig.base",
   "include": [
     "**/*.ts",
