@@ -25,7 +25,7 @@ export function ActionCard({ icon, label, onPress }: ActionCardProps) {
         <Text
           className={cn(
             "mt-2 font-semibold text-foreground",
-            "dark:text-gray-100 ocean:text-ocean-foreground"
+            "dark:text-gray-100 ocean:text-ocean-foreground",
           )}
         >
           {label}

@@ -39,7 +39,7 @@ export const CalendarLegend = () => (
         const legendClasses = cn(
           "w-3 h-3 rounded-full",
           s.classes,
-          s.isBorder ? "border-2" : ""
+          s.isBorder ? "border-2" : "",
         );
 
         return (

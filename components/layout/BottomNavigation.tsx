@@ -100,7 +100,7 @@ export default function BottomNavigation() {
     // Адаптивные стили фона и верхней границы
     "bg-background",
     "dark:bg-gray-800 dark:border-gray-700",
-    "ocean:bg-ocean-card ocean:border-blue-800"
+    "ocean:bg-ocean-card ocean:border-blue-800",
   );
   return (
     <View className={rootClasses}>
@@ -128,7 +128,7 @@ export default function BottomNavigation() {
               !isActive && theme === "ocean",
             "ocean:bg-ocean-primary/10 ocean:border-ocean-primary":
               isActive && theme === "ocean",
-          }
+          },
         );
 
         // Классы для текста
@@ -147,7 +147,7 @@ export default function BottomNavigation() {
             // OCEAN
             "ocean:text-ocean-primary": isActive && theme === "ocean",
             "ocean:text-ocean-foreground/80": !isActive && theme === "ocean",
-          }
+          },
         );
         return (
           <TouchableOpacity

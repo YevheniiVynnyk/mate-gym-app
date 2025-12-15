@@ -22,7 +22,7 @@ const Card = React.forwardRef<View, ViewProps>((props, ref) => {
     // Ocean theme overrides
     "ocean:bg-ocean-card ocean:text-ocean-foreground",
 
-    className
+    className,
   );
 
   return <View ref={ref} className={combinedClasses} {...rest} />;
@@ -46,7 +46,7 @@ const CardTitle = React.forwardRef<Text, TextProps>((props, ref) => {
     "text-2xl leading-none tracking-tight text-foreground",
     // ✅ ИСПРАВЛЕНИЕ ТЕМЫ: Явно указываем цвета для тем, чтобы текст был светлым в Dark
     "dark:text-gray-100 ocean:text-ocean-foreground",
-    className
+    className,
   );
 
   return <Text ref={ref} className={combinedClasses} {...rest} />;

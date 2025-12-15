@@ -119,7 +119,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         textClasses,
         statusClass.includes("text-")
           ? statusClass.match(/text-\S+/)?.[0]
-          : "text-foreground dark:text-gray-100 ocean:text-ocean-foreground"
+          : "text-foreground dark:text-gray-100 ocean:text-ocean-foreground",
       );
     } else {
       // Текст прошлого/будущего месяца - приглушенный
@@ -132,7 +132,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     if (!textClasses.includes("text-")) {
       textClasses = cn(
         textClasses,
-        "text-foreground dark:text-gray-100 ocean:text-ocean-foreground"
+        "text-foreground dark:text-gray-100 ocean:text-ocean-foreground",
       );
     }
 

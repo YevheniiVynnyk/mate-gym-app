@@ -12,11 +12,11 @@ export default function ExerciseTotal({ training }: ExerciseTotalProps) {
 
   const totalReps = training.trainingDetails.reduce(
     (sum, set) => sum + (set.repetition || 0),
-    0
+    0,
   );
   const totalWeight = training.trainingDetails.reduce(
     (sum, set) => sum + (set.repetition || 0) * (set.weight || 0),
-    0
+    0,
   );
 
   // --- Адаптивные классы ---

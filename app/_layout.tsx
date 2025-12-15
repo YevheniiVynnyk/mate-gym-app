@@ -80,7 +80,6 @@ const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
 
 const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
-
   if (isLoading) {
     return (
       <View className="flex-1 justify-center items-center">

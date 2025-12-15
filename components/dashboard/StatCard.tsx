@@ -1,11 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  cn,
-} from "@/components/ui/Card";
+import { Card, CardContent, CardDescription, cn } from "@/components/ui/Card";
 
 interface StatCardProps {
   title: string;

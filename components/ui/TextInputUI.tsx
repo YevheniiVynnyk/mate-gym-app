@@ -29,7 +29,7 @@ const TextInputUI = React.forwardRef<TextInput, TextInputUIProps>(
       // ✅ Адаптивные стили для Ocean темы (фон, рамка, цвет текста)
       "ocean:bg-ocean-input ocean:border-blue-800 ocean:text-ocean-foreground",
 
-      className // Пользовательские классы
+      className, // Пользовательские классы
     );
 
     // 2. Логика цвета плейсхолдера на основе темы (управляемая хуком useTheme)
@@ -53,7 +53,7 @@ const TextInputUI = React.forwardRef<TextInput, TextInputUIProps>(
         {...rest}
       />
     );
-  }
+  },
 );
 
 TextInputUI.displayName = "TextInputUI";

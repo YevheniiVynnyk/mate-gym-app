@@ -38,7 +38,7 @@ export const LoadingPage: React.FC = () => {
     "flex-1 items-center justify-center",
     "bg-background", // Light тема
     "dark:bg-gray-900", // Dark тема
-    "ocean:bg-ocean-background" // Ocean тема
+    "ocean:bg-ocean-background", // Ocean тема
   );
 
   // ✅ Адаптивный цвет для ActivityIndicator и текста
@@ -49,7 +49,7 @@ export const LoadingPage: React.FC = () => {
     "mt-4 text-base",
     "text-gray-500", // Light тема
     "dark:text-gray-400", // Dark тема
-    "ocean:text-ocean-foreground" // Ocean тема
+    "ocean:text-ocean-foreground", // Ocean тема
   );
 
   return (

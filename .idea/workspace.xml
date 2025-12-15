@@ -8,29 +8,144 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="refactor: return index.tsx">
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseListSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseTotal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/SaveButtonsSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExercisesList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingInfoSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/432.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/UnderDevelopment.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDo" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/exercises.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/payments.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/stats.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/users.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/analytics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/analytics.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developerSupport.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/developerSupport.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/progress.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/termsRequiredPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/termsRequiredPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/trainingDay/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/trainingDayView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingPlans.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingPlans.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/logo512.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/analytics/Analytics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/analytics/Analytics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/body/BodyProgress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/body/BodyProgress.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/ActionCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/ActionCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/Badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/Badge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/StatCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/StatCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/AppLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/plans/PlanCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/plans/PlanCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/AvatarSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/AvatarSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/LanguageSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/LanguageSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/PrivacyDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/PrivacyDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/ThemeSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/ThemeSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/EmptyState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/EmptyState.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/QuickStatsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/QuickStatsSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/TrainingTimeSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/TrainingTimeSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/WeeklyActivitySection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/WeeklyActivitySection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/CalendarLegend.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/CalendarLegend.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/CalendarModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/CalendarModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/DurationModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/DurationModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseListSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseListSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseSearchSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseSearchSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseTotal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseTotal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/SaveButtonsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/SaveButtonsSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/SetInputs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/SetInputs.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCalendar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingHeader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingExercisesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExercisesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingInfoSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingInfoSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingSearch.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingTimer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LoadingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LoadingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/TextInputUI.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TextInputUI.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/avatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/badge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/chart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/chart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/language-selector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/language-selector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/navigation-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navigation-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/privacy-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/privacy-dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/progress.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/separator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/separator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/terms-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/terms-dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/textarea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/textarea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/theme-selector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/theme-selector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/AuthTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/AuthTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/CustomInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/CustomInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/Feature.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/Feature.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/FeaturesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/FeaturesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/LanguageDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/LanguageDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/TermsDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/TermsDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/WelcomeOnboarding.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/WelcomeOnboarding.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/ThemeContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/ThemeContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/TrainingDaysContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/TrainingDaysContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/admin/useExercises.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useWorkoutReminders.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/admin/useMuscleGroup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useDashboardData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useDashboardData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProfile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useProgress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProgress.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDay.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDays.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDays.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useWelcome.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useWelcome.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/locales/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/locales/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/uk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nativewind-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nativewind-env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/admin/paymentService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/admin/paymentService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/admin/userService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/admin/userService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/analyticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/analyticsService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/authService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/authService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/bodyService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/bodyService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/clientService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/clientService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/exerciseService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/exerciseService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/imageService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/imageService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapper/trainingDayMapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapper/trainingDayMapper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapper/userMapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapper/userMapper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/privacyService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/privacyService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/settingService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/settingService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/statisticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/statisticsService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/tosService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/tosService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/trainerService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/trainerService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/trainingDayService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/trainingDayService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/userService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/trainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/trainingDay.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,42 +188,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Project/android/mate-gym-app&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start -c.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start -с.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Project/android/mate-gym-app/assets/images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start -c.executor": "Run",
+    "npm.start -с.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "E:\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\android\mate-gym-app\assets\images" />
       <recent name="E:\Project\android\mate-gym-app\assets\fonts" />
       <recent name="E:\Project\android\mate-gym-app\components\ui" />
       <recent name="E:\Project\android\mate-gym-app\assets" />
       <recent name="E:\Project\android\mate-gym-app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\android\mate-gym-app\components\layout" />
       <recent name="E:\Project\android\mate-gym-app\hooks" />
       <recent name="E:\Project\android\mate-gym-app\components\welcome" />
       <recent name="E:\Project\android\mate-gym-app\app" />
       <recent name="E:\Project\android\mate-gym-app\assets\images" />
-      <recent name="E:\Project\android\mate-gym-app\app\trainingDay" />
     </key>
   </component>
   <component name="RunManager">
@@ -177,6 +295,10 @@
       <workItem from="1760700171146" duration="324000" />
       <workItem from="1760700525859" duration="7296000" />
       <workItem from="1760716529677" duration="6929000" />
+      <workItem from="1765570836092" duration="2794000" />
+      <workItem from="1765635516219" duration="4146000" />
+      <workItem from="1765795899311" duration="4067000" />
+      <workItem from="1765818533299" duration="2267000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />

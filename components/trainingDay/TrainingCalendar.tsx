@@ -24,7 +24,7 @@ export const TrainingCalendar: React.FC<TrainingCalendarProps> = ({
 
   const selectedForDay = selectedDate
     ? trainingDays.filter(
-        (td) => new Date(td.date).toISOString().split("T")[0] === selectedDate
+        (td) => new Date(td.date).toISOString().split("T")[0] === selectedDate,
       )
     : [];
 

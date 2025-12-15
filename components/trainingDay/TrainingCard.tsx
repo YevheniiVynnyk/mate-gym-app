@@ -105,7 +105,7 @@ const InfoTraining = ({ trainings }: { trainings: Training[] }) => (
           // Dark Theme: Более темный фон, менее заметная граница
           "dark:bg-gray-800 dark:border-gray-700",
           // Ocean Theme: Вариация цвета CardUI
-          "ocean:bg-ocean-card/50 ocean:border-ocean-border"
+          "ocean:bg-ocean-card/50 ocean:border-ocean-border",
         )}
       >
         {/* Название упражнения */}
@@ -122,7 +122,7 @@ const InfoTraining = ({ trainings }: { trainings: Training[] }) => (
                 "rounded-md p-1 mr-1 mt-1",
                 "bg-gray-200", // Light
                 "dark:bg-gray-700", // Dark
-                "ocean:bg-ocean-primary/20" // Ocean (используем акцентный цвет с прозрачностью)
+                "ocean:bg-ocean-primary/20", // Ocean (используем акцентный цвет с прозрачностью)
               )}
             >
               <Text className="text-xs text-gray-700 dark:text-gray-200 ocean:text-ocean-foreground">

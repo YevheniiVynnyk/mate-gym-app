@@ -49,7 +49,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     const loadTheme = async () => {
       try {
         const storedTheme = (await AsyncStorage.getItem(
-          THEME_STORAGE_KEY
+          THEME_STORAGE_KEY,
         )) as Theme | null;
         if (storedTheme && themes.some((t) => t.value === storedTheme)) {
           setThemeState(storedTheme);

@@ -49,13 +49,6 @@ export const useNavigation = () => {
   const toProgress = () => router.push("/progress");
   const toDeveloperSupport = () => router.push("/developerSupport");
   const toTrainingPlan = () => router.push("/trainingPlans");
-  // --- АДМИН-СТРАНИЦЫ ---
-  const toAdminPage = () => router.push("/admin"); // Маршрут соответствует app/admin/index.tsx
-  const toStatsPage = () => router.push("/admin/stats");
-  const toUsersPage = () => router.push("/admin/users");
-  const toExercisesPage = () => router.push("/admin/exercises");
-  const toPaymentsPage = () => router.push("/admin/payments");
-
   return {
     goBack,
     toCreateTrainingDay,
@@ -68,10 +61,5 @@ export const useNavigation = () => {
     toProgress,
     toDeveloperSupport,
     toTrainingPlan,
-    toAdminPage,
-    toStatsPage,
-    toUsersPage,
-    toExercisesPage,
-    toPaymentsPage,
   };
 };

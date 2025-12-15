@@ -29,7 +29,7 @@ const cn = (
 
 const getIconColor = (
   theme: string,
-  type: "primary" | "secondary" | "danger"
+  type: "primary" | "secondary" | "danger",
 ) => {
   switch (type) {
     case "primary": // Иконка "Bell" (Уведомления)
@@ -64,21 +64,18 @@ const Navbar = () => {
     "h-20 flex-row items-center justify-between px-6 border-b",
     "bg-card border-border", // Общие классы
     "dark:bg-gray-800 dark:border-gray-700", // Dark тема
-    "ocean:bg-ocean-card ocean:border-blue-800" // Ocean тема
+    "ocean:bg-ocean-card ocean:border-blue-800", // Ocean тема
   );
 
   // ✅ Адаптивные классы для текста "Mate Gym"
   const titleClasses = cn(
     "text-2xl font-bold",
-    "text-primary dark:text-primary-400 ocean:text-ocean-primary"
+    "text-primary dark:text-primary-400 ocean:text-ocean-primary",
   );
 
   // Получаем цвета иконок
   const bellColor = getIconColor(theme, "primary"); // "Bell" - вторичный цвет
   const heartColor = getIconColor(theme, "primary"); // "Heart" - красный
-  const toolColor = getIconColor(theme, "primary"); // "Heart" - красный
-  // В реальном приложении здесь должна быть проверка роли пользователя
-    const isAdmin = true; // Условная переменная
   return (
     <View className={rootClasses}>
       {/* Логотип и название */}
@@ -105,11 +102,7 @@ const Navbar = () => {
         <TouchableOpacity className="mx-2">
           <Feather name="bell" size={22} color={bellColor} />
         </TouchableOpacity>
-        {isAdmin && (
-        <TouchableOpacity className="mx-2" onPress={() => router.toAdminPage()}>
-          <Feather name="tool" size={22} color={toolColor} />
-        </TouchableOpacity>
-)}
+
         <TouchableOpacity onPress={() => router.toProfile()} className="mx-2">
           <Image
             source={{ uri: avatarUri }}
