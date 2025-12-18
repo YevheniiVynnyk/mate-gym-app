@@ -33,7 +33,8 @@
 	"passwordText": "Пароль",
 	"emailText": "Email",
 	"authButtonText": "Войти",
-	"registerButtonText": "Создать Аккаунт"
+	"registerButtonText": "Создать Аккаунт",
+	"forgotPassword": "Забыли пароль ?"
   },
   "userInfo": {
 	"header": "Личная информация",
@@ -51,6 +52,10 @@
 	"goals": "Цели"
   },
   "hello": "Привет",
+  "common": {
+	"back": "Назад"
+  },
+
   "SettingsSection": {
 	"title": "Настройки и действия",
 	"logout": "Выйти"
@@ -91,5 +96,31 @@
   "underDevelopment": {
 	"title": "Функционал в разработке",
 	"description": "Этот раздел будет доступен в будущих обновлениях."
+  },
+  "resetPassword": {
+	"title": "Восстановление пароля",
+	"email": "Электронная почта",
+	"enterEmail": "Пожалуйста, введите электронную почту",
+	"send": "Отправить",
+	"sending": "Отправка...",
+	"emailSentTitle": "Письмо отправлено",
+	"emailSentMessage": "Если электронная почта существует, на неё отправлено ссылку для восстановления пароля",
+	"errorTitle": "Ошибка",
+	"errorMessage": "Произошла ошибка при отправке письма",
+	"subtitle": "Введите email, который вы использовали при регистрации"
+  },
+  "resetPasswordNew": {
+	"title": "Установите новый пароль",
+	"newPassword": "Новый пароль",
+	"confirmPassword": "Подтверждение пароля",
+	"enterNewPassword": "Пожалуйста, введите новый пароль",
+	"enterConfirmPassword": "Пожалуйста, подтвердите пароль",
+	"mismatch": "Пароли не совпадают",
+	"submit": "Установить пароль",
+	"submitting": "Установка...",
+	"successTitle": "Пароль обновлён",
+	"successMessage": "Ваш пароль успешно обновлён",
+	"errorTitle": "Ошибка",
+	"errorMessage": "Произошла ошибка при обновлении пароля"
   }
 }

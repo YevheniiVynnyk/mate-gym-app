@@ -1,51 +1,71 @@
 {
   "expo": {
-    "name": "Mate Gym App",
-    "slug": "mate-gym-app",
-    "version": "1.0.0",
-    "orientation": "default",
-    "icon": "./assets/images/512.png",
-    "scheme": "mategymapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "backgroundImage": "./assets/images/432.png"
-      },
-      "edgeToEdgeEnabled": false,
-      "package": "com.vynnyk.mategym",
-      "useNextNotificationsApi": true
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/512.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
-        }
-      ],
-      "expo-localization"
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    },
-    "owner": "yvynnyk",
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "7d1c6bb3-e572-4919-9da1-7eabfa194fbd"
-      }
-    }
+	"name": "Mate Gym App",
+	"slug": "mate-gym-app",
+	"version": "1.0.0",
+	"orientation": "default",
+	"icon": "./assets/images/432.png",
+	"scheme": "mategymapp",
+	"userInterfaceStyle": "automatic",
+	"newArchEnabled": true,
+	"ios": {
+	  "supportsTablet": true,
+	  "bundleIdentifier": "com.vynnyk.mategymapp",
+	  "associatedDomains": [
+		"applinks:mate-gym-api.onrender.com"
+	  ]
+	},
+	"android": {
+	  "adaptiveIcon": {
+		"backgroundColor": "#E6F4FE",
+		"backgroundImage": "./assets/images/432.png"
+	  },
+	  "edgeToEdgeEnabled": false,
+	  "package": "com.vynnyk.mategymapp",
+	  "intentFilters": [
+		{
+		  "action": "VIEW",
+		  "autoVerify": true,
+		  "data": [
+			{
+			  "scheme": "https",
+			  "host": "mate-gym-api.onrender.com",
+			  "pathPrefix": "/reset-password"
+			}
+		  ],
+		  "category": [
+			"BROWSABLE",
+			"DEFAULT"
+		  ]
+		}
+	  ]
+	},
+	"plugins": [
+	  "expo-router",
+	  [
+		"expo-splash-screen",
+		{
+		  "image": "./assets/images/512.png",
+		  "imageWidth": 200,
+		  "resizeMode": "contain",
+		  "backgroundColor": "#ffffff",
+		  "dark": {
+			"backgroundColor": "#000000"
+		  }
+		}
+	  ],
+	  "expo-localization"
+	],
+	"experiments": {
+	  "typedRoutes": true,
+	  "reactCompiler": true
+	},
+	"owner": "mate-gym-app",
+	"extra": {
+	  "router": {},
+	  "eas": {
+		"projectId": "7d1c6bb3-e572-4919-9da1-7eabfa194fbd"
+	  }
+	}
   }
 }

@@ -8,15 +8,20 @@ type Props = {
   setForm: (v: any) => void;
   onSubmit: () => void;
   isLoading: boolean;
+  onForgotPassword?: () => void; // добавлено для обработки клика
 };
 
-const LoginForm: React.FC<Props> = ({ form, setForm, onSubmit, isLoading }) => {
+const LoginForm: React.FC<Props> = ({
+  form,
+  setForm,
+  onSubmit,
+  isLoading,
+  onForgotPassword,
+}) => {
   const { t } = useTranslation();
-  // Определяем адаптивные классы для текста меток
   const labelTextClass =
     "text-sm font-medium leading-none p-2 text-black dark:text-gray-100 ocean:text-ocean-foreground";
 
-  // Определяем адаптивные классы для кнопки (secondary)
   const buttonBgClass = "bg-primary dark:bg-primary-600 ocean:bg-ocean-primary";
 
   return (
@@ -36,8 +41,18 @@ const LoginForm: React.FC<Props> = ({ form, setForm, onSubmit, isLoading }) => {
         onChangeText={(text: string) => setForm({ ...form, password: text })}
         autoCapitalize="none"
       />
+
+      {/* Ссылка "Забыл пароль?" */}
+      {onForgotPassword && (
+        <TouchableOpacity onPress={onForgotPassword} className="mt-2 mb-4">
+          <Text className="text-sm text-blue-500 dark:text-blue-400 text-right">
+            {t("LoginForm.forgotPassword")}
+          </Text>
+        </TouchableOpacity>
+      )}
+
       <TouchableOpacity
-        className={`rounded-lg p-3 mt-4 ${buttonBgClass}`}
+        className={`rounded-lg p-3 ${buttonBgClass}`}
         onPress={onSubmit}
         disabled={isLoading}
       >

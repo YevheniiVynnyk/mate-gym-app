@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from "react";
 import {
   Animated,
   Keyboard,
+  KeyboardEvent,
   Platform,
   Text,
   TouchableWithoutFeedback,
   View,
-  KeyboardEvent,
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import TermsDialog from "@/components/welcome/TermsDialog";
@@ -35,6 +35,7 @@ export default function Welcome() {
     handleRegister,
     acceptTerms,
     setShowTermsRequired,
+    goToResetPasswordRequest,
   } = useWelcome();
 
   const shift = useRef(new Animated.Value(0)).current;
@@ -134,6 +135,7 @@ export default function Welcome() {
                 setForm={setLoginForm}
                 onSubmit={handleLogin}
                 isLoading={isLoading}
+                onForgotPassword={goToResetPasswordRequest}
               />
             ) : (
               <RegisterForm

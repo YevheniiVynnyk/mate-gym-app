@@ -18,6 +18,7 @@ export const useWelcome = () => {
     role: "CLIENT",
   });
 
+  // --- Логика авторизации ---
   const handleLogin = async () => {
     setIsLoading(true);
     try {
@@ -44,6 +45,15 @@ export const useWelcome = () => {
     }
   };
 
+  // --- Роутинг для сброса пароля ---
+  const goToResetPasswordRequest = () => {
+    router.push("/reset-password-request");
+  };
+
+  const goToResetPassword = (token: string) => {
+    router.push(`/reset-password/${token}`);
+  };
+
   return {
     user,
     isLoading,
@@ -59,5 +69,7 @@ export const useWelcome = () => {
     acceptTerms,
     logout,
     setShowTermsRequired,
+    goToResetPasswordRequest, // навигация на экран запроса сброса
+    goToResetPassword, // навигация на экран установки нового пароля с токеном
   };
 };

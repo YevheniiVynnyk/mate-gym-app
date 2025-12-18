@@ -28,7 +28,8 @@
 	"passwordText": "Пароль",
 	"emailText": "Електронна пошта",
 	"authButtonText": "Увійти",
-	"registerButtonText": "Створити акаунт"
+	"registerButtonText": "Створити акаунт",
+	"forgotPassword": "Забули пароль ?"
   },
   "userInfo": {
 	"header": "Особиста інформація",
@@ -46,6 +47,10 @@
 	"goals": "Цілі"
   },
   "hello": "Привіт",
+  "common": {
+	"back": "Назад"
+  },
+
   "SettingsSection": {
 	"title": "Налаштування та дії",
 	"logout": "Вийти"
@@ -86,5 +91,31 @@
   "underDevelopment": {
 	"title": "Функціонал у розробці",
 	"description": "Цей розділ буде доступний у наступних оновленнях."
+  },
+  "resetPassword": {
+	"title": "Відновлення пароля",
+	"email": "Електронна пошта",
+	"enterEmail": "Будь ласка, введіть електронну пошту",
+	"send": "Надіслати",
+	"sending": "Надсилання...",
+	"emailSentTitle": "Лист надіслано",
+	"emailSentMessage": "Якщо електронна пошта існує, на неї надіслано посилання для відновлення пароля",
+	"errorTitle": "Помилка",
+	"errorMessage": "Сталася помилка при надсиланні листа",
+	"subtitle": "Введіть email, який ви використовували при реєстрації"
+  },
+  "resetPasswordNew": {
+	"title": "Встановіть новий пароль",
+	"newPassword": "Новий пароль",
+	"confirmPassword": "Підтвердження пароля",
+	"enterNewPassword": "Будь ласка, введіть новий пароль",
+	"enterConfirmPassword": "Будь ласка, підтвердіть пароль",
+	"mismatch": "Паролі не збігаються",
+	"submit": "Встановити пароль",
+	"submitting": "Встановлення...",
+	"successTitle": "Пароль оновлено",
+	"successMessage": "Ваш пароль успішно оновлено",
+	"errorTitle": "Помилка",
+	"errorMessage": "Сталася помилка при оновленні пароля"
   }
 }

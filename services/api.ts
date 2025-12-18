@@ -2,6 +2,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const API_URL = "https://mate-gym-api.onrender.com/api";
+// const API_URL = "http://192.168.0.100:8080/api";
 
 export const api = axios.create({
   baseURL: API_URL,

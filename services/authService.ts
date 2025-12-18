@@ -26,6 +26,16 @@ export interface TelegramUserRequest {
   username?: string;
 }
 
+// --- Типы для сброса пароля ---
+export interface ForgotPasswordRequest {
+  email: string;
+}
+
+export interface ResetPasswordRequest {
+  token: string;
+  password: string;
+}
+
 export const authService = {
   // Вход в систему
   async signIn(data: SignInRequest): Promise<Token> {
@@ -49,5 +59,14 @@ export const authService = {
   async signInTelegram(data: TelegramUserRequest): Promise<Token> {
     const response = await api.post<Token>("/auth/telegram", data);
     return response.data;
+  },
+
+  // --- Сброс пароля ---
+  async forgotPassword(data: ForgotPasswordRequest): Promise<void> {
+    await api.post("/auth/password/forgot", data);
+  },
+
+  async resetPassword(data: ResetPasswordRequest): Promise<void> {
+    await api.post("/auth/password/reset", data);
   },
 };

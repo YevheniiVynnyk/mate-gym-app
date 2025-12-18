@@ -1,5 +1,5 @@
+import React from "react";
 import { TextInput, TextInputProps } from "react-native";
-import React from "react"; // Не забывайте импортировать React
 
 type CustomInputProps = TextInputProps & {
   // Вы можете удалить эти явные объявления, так как они уже есть в TextInputProps,

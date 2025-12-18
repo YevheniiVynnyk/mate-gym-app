@@ -28,7 +28,8 @@
 	"passwordText": "Password",
 	"emailText": "Email",
 	"authButtonText": "Sign In",
-	"registerButtonText": "Create Account"
+	"registerButtonText": "Create Account",
+	"forgotPassword": "Forgot password ?"
   },
   "userInfo": {
 	"header": "Personal Information",
@@ -46,6 +47,10 @@
 	"goals": "Goals"
   },
   "hello": "Hello",
+  "common": {
+	"back": "Back"
+  },
+
   "SettingsSection": {
 	"title": "Settings and Actions",
 	"logout": "Logout"
@@ -86,5 +91,31 @@
   "underDevelopment": {
 	"title": "Feature under development",
 	"description": "This section will be available in future updates."
+  },
+  "resetPassword": {
+	"title": "Reset Password",
+	"email": "Email",
+	"enterEmail": "Please enter your email",
+	"send": "Send",
+	"sending": "Sending...",
+	"emailSentTitle": "Email Sent",
+	"emailSentMessage": "If the email exists, a reset link has been sent",
+	"errorTitle": "Error",
+	"errorMessage": "An error occurred while sending the email",
+	"subtitle": "Enter the email you used during registration"
+  },
+  "resetPasswordNew": {
+	"title": "Set New Password",
+	"newPassword": "New Password",
+	"confirmPassword": "Confirm Password",
+	"enterNewPassword": "Please enter new password",
+	"enterConfirmPassword": "Please confirm password",
+	"mismatch": "Passwords do not match",
+	"submit": "Set Password",
+	"submitting": "Submitting...",
+	"successTitle": "Password Updated",
+	"successMessage": "Your password has been successfully updated",
+	"errorTitle": "Error",
+	"errorMessage": "An error occurred while updating the password"
   }
 }
