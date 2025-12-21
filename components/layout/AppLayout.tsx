@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import Navbar from "./Navbar";
 import BottomNavigation from "./BottomNavigation";
+import Banner from "../ads/Banner";
 
 const cn = (...classes: (string | boolean | undefined | null)[]): string => {
   return classes.filter(Boolean).join(" ");
@@ -22,6 +23,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
       <Navbar />
       <View className="flex-1">{children}</View>
       <BottomNavigation />
+      <Banner />
     </View>
   );
 };

@@ -2,7 +2,6 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // для сохранения выбранного языка
 import * as Localization from "expo-localization"; // для получения системного языка
-import { Platform } from "react-native";
 
 // 💡 Импорт ресурсов
 import en from "./locales/en.json";

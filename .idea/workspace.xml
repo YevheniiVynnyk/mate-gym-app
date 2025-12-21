@@ -7,24 +7,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/reset-password-request.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/reset-password.tsx" afterDir="false" />
+    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="Added logic for forgot password">
+      <change afterPath="$PROJECT_DIR$/assets/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ads/Banner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/welcome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/welcome/CustomInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/CustomInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useWelcome.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useWelcome.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/locales/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/ru.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/locales/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/uk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/LanguageDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/LanguageDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useDashboardData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useDashboardData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProfile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDay.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDays.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDays.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/admin/paymentService.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/admin/userService.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/authService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/authService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapper/trainingDayMapper.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapper/userMapper.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/trainingDayService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/trainingDayService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/userService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/trainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/trainingDay.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +95,7 @@
     &quot;npm.start -c.executor&quot;: &quot;Run&quot;,
     &quot;npm.start -с.executor&quot;: &quot;Run&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -183,7 +190,15 @@
       <workItem from="1765967230819" duration="4664000" />
       <workItem from="1765982518909" duration="4158000" />
       <workItem from="1766002248714" duration="6300000" />
-      <workItem from="1766042021113" duration="2060000" />
+      <workItem from="1766042021113" duration="2164000" />
+      <workItem from="1766131790360" duration="10614000" />
+      <workItem from="1766257888228" duration="2275000" />
+      <workItem from="1766261162205" duration="1163000" />
+      <workItem from="1766262514124" duration="1256000" />
+      <workItem from="1766264761704" duration="1058000" />
+      <workItem from="1766266177666" duration="1978000" />
+      <workItem from="1766307978571" duration="842000" />
+      <workItem from="1766313583188" duration="7905000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -273,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765822693973</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added logic for forgot password">
+      <option name="closed" value="true" />
+      <created>1766044876665</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1766044876665</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +334,7 @@
     <MESSAGE value="refactor: split all app pages into components and hooks" />
     <MESSAGE value="refactor: return index.tsx" />
     <MESSAGE value="refactor: return stable version" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: return stable version" />
+    <MESSAGE value="Added logic for forgot password" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logic for forgot password" />
   </component>
 </project>

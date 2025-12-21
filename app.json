@@ -3,8 +3,12 @@
 	"name": "Mate Gym App",
 	"slug": "mate-gym-app",
 	"version": "1.0.0",
+	"extra": {
+	  "admobBannerIdAndroid": "ca-app-pub-XXXXXXXXXX/YYYYYYYYYY",
+	  "admobBannerIdIos": "ca-app-pub-XXXXXXXXXX/ZZZZZZZZZZ"
+	},
 	"orientation": "default",
-	"icon": "./assets/images/432.png",
+	"icon": "./assets/images/icon.png",
 	"scheme": "mategymapp",
 	"userInterfaceStyle": "automatic",
 	"newArchEnabled": true,
@@ -20,7 +24,6 @@
 		"backgroundColor": "#E6F4FE",
 		"backgroundImage": "./assets/images/432.png"
 	  },
-	  "edgeToEdgeEnabled": false,
 	  "package": "com.vynnyk.mategymapp",
 	  "intentFilters": [
 		{
@@ -54,7 +57,14 @@
 		  }
 		}
 	  ],
-	  "expo-localization"
+	  "expo-localization",
+	  [
+		"react-native-google-mobile-ads",
+		{
+		  "androidAppId": "ca-app-pub-3240569896257496~1234567890",
+		  "iosAppId": "ca-app-pub-3240569896257496~0987654321"
+		}
+	  ]
 	],
 	"experiments": {
 	  "typedRoutes": true,

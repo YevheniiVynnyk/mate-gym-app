@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { trainingDayService } from "@/services/trainingDayService";
 import { QuickStatDTO, statisticsService } from "@/services/statisticsService";
-import { mapFromAPI } from "@/services/mapper/trainingDayMapper";
 import { TrainingDay } from "@/types/trainingDay";
 
 export function useDashboardData() {
@@ -13,7 +12,7 @@ export function useDashboardData() {
     const fetchData = async () => {
       try {
         const latest = await trainingDayService.getLatestThree();
-        setTrainingDays(latest.map(mapFromAPI));
+        setTrainingDays(latest);
 
         const stats = await statisticsService.getQuickStatistics();
         setQuickStats(stats);

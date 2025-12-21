@@ -1,79 +1,52 @@
-import React from "react";
-import { Platform, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 import { useTranslation } from "react-i18next";
-import { Picker } from "@react-native-picker/picker";
-import { useTheme } from "@/contexts/ThemeContext"; // ✅ Импортируем хук темы
+import { useTheme } from "@/contexts/ThemeContext";
 
 const languages = [
-  // 🇺🇸 Флаг США (English)
-  { code: "en", label: "🇺🇸 English" },
-  // 🇷🇺 Флаг России (Русский)
-  { code: "ru", label: "🇷🇺 Русский" },
-  // 🇺🇦 Флаг Украины (Українська)
-  { code: "uk", label: "🇺🇦 Українська" },
+  { label: "🇺🇸 English", value: "en" },
+  { label: "🇷🇺 Русский", value: "ru" },
+  { label: "🇺🇦 Українська", value: "uk" },
 ];
 
 export default function LanguageDropdown() {
   const { i18n, t } = useTranslation();
   const { theme } = useTheme();
 
-  const changeLanguage = (code: string) => {
-    i18n.changeLanguage(code);
-  };
+  const pickerTextColor = theme === "ocean" ? "#33c9ff" : "#4ADE80";
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(i18n.language);
 
-  // --- Адаптивные классы ---
-  // Цвет текста: Акцентный цвет (primary) для текста в Picker
-  const pickerTextColor = theme === "ocean" ? "#33c9ff" : "#4ADE80"; // Пример акцентного цвета
-  // Цвет фона и рамки: bg-card и border-border
-  const pickerBgClass =
-    "bg-card border-border dark:bg-gray-700 dark:border-gray-600 ocean:bg-ocean-card ocean:border-blue-700";
-
-  // Так как Picker сложно стилизовать через Nativewind, используем
-  // инлайн-стили для критических свойств (width/height/color) и
-  // классы для фона/рамки (где Nativewind более надежен).
+  // Обновляем язык при смене через i18n
+  useEffect(() => {
+    i18n.changeLanguage(value);
+  }, [value]);
 
   return (
-    <View
-      // ✅ АДАПТАЦИЯ: Применяем классы фона и рамки для адаптивности
-      // Используем w-36 (144px) для ширины и h-10 (40px) для высоты
-      className={`w-36 h-10 rounded-lg overflow-hidden border shadow-xl ${pickerBgClass}`}
-    >
-      <Picker
-        selectedValue={i18n.language}
-        onValueChange={(itemValue: string) => changeLanguage(itemValue)}
-        prompt={t("selectLanguage")}
-        // 💡 ИСПРАВЛЕНИЕ: Используем инлайн-стили для ширины/высоты и цвета текста,
-        // так как Picker плохо поддерживает классы.
-        style={{
-          width: "100%",
-          height: "100%",
-          // 💡 ИСПРАВЛЕНИЕ ТЕКСТА: Устанавливаем цвет текста
-          color: pickerTextColor,
-          // 💡 ИСПРАВЛЕНИЕ ДЛЯ ANDROID:
-          textAlign: "right",
-          // Немного сдвигаем на iOS для центрирования
-          ...(Platform.OS === "ios" && {
-            transform: [{ scaleX: 0.9 }, { scaleY: 0.9 }],
-            marginTop: -5,
-            marginLeft: -5,
-          }),
+    <View className="absolute top-4 right-4 z-50">
+      <DropDownPicker
+        open={open}
+        value={value}
+        items={languages}
+        setOpen={setOpen}
+        setValue={setValue}
+        placeholder={t("selectLanguage")}
+        style={[
+          { backgroundColor: theme === "ocean" ? "#1E3A8A" : "#fff" },
+          {
+            borderColor: theme === "ocean" ? "#33c9ff" : "#ccc",
+          },
+        ]}
+        textStyle={{ color: pickerTextColor, fontWeight: "500" }}
+        dropDownContainerStyle={{
+          backgroundColor: theme === "ocean" ? "#1E3A8A" : "#fff",
+          borderColor: theme === "ocean" ? "#33c9ff" : "#ccc",
         }}
-        dropdownIconColor={pickerTextColor} // Цвет иконки (стрелки)
-      >
-        {languages.map((lang) => (
-          <Picker.Item
-            key={lang.code}
-            label={lang.label}
-            value={lang.code}
-            // 💡 ИСПРАВЛЕНИЕ: Цвет текста элемента списка
-            color={pickerTextColor}
-            // 💡 Нельзя использовать itemStyle для Android, только iOS
-            style={
-              Platform.OS === "ios" ? { fontSize: 14, height: 40 } : undefined
-            }
-          />
-        ))}
-      </Picker>
+        containerStyle={{ width: 130 }}
+        zIndex={9999} // overlay поверх всего
+        zIndexInverse={9999} // для безопасного рендера
+      />
     </View>
   );
 }
