@@ -2,11 +2,7 @@
   "expo": {
 	"name": "Mate Gym App",
 	"slug": "mate-gym-app",
-	"version": "1.0.0",
-	"extra": {
-	  "admobBannerIdAndroid": "ca-app-pub-XXXXXXXXXX/YYYYYYYYYY",
-	  "admobBannerIdIos": "ca-app-pub-XXXXXXXXXX/ZZZZZZZZZZ"
-	},
+	"version": "1.0.1",
 	"orientation": "default",
 	"icon": "./assets/images/icon.png",
 	"scheme": "mategymapp",
@@ -14,7 +10,7 @@
 	"newArchEnabled": true,
 	"ios": {
 	  "supportsTablet": true,
-	  "bundleIdentifier": "com.vynnyk.mategymapp",
+	  "bundleIdentifier": "com.vynnyk.mategym",
 	  "associatedDomains": [
 		"applinks:mate-gym-api.onrender.com"
 	  ]

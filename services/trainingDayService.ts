@@ -84,13 +84,11 @@ export const trainingDayService = {
 
   // Создать тренировочный день
   async createTrainingDay(trainingDay: TrainingDayCreateDTO): Promise<void> {
-    console.log(trainingDay);
     await api.post("/trainingDay", trainingDay);
   },
 
   // Обновить тренировочный день
   async updateTrainingDay(trainingDay: TrainingDayDTO): Promise<void> {
-    console.log(trainingDay);
     await api.put("/trainingDay", trainingDay);
   },
 

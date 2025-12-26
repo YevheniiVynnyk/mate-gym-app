@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Minus, Plus } from "lucide-react-native";
 import { TrainingDetail } from "@/types/trainingDay";
@@ -20,10 +20,52 @@ const SetInputs: React.FC<SetInputsProps> = ({
   onSetDataChange,
   onSetsChange,
 }) => {
+  // Локальное состояние для веса каждого подхода
+  const [weightInputs, setWeightInputs] = useState<string[]>(
+    setData.map((s) => (s.weight != null ? s.weight.toString() : "")),
+  );
+  console.log(sets);
+  console.log(setData);
+  console.log(onSetDataChange);
+  console.log(onSetsChange);
+
   const handleSetsChange = (newSetsCount: number) => {
     if (newSetsCount >= 1 && newSetsCount <= 10 && onSetsChange) {
+      console.log("Sets", newSetsCount);
       onSetsChange(newSetsCount);
+
+      // Добавляем новые элементы в weightInputs при увеличении подходов
+      if (newSetsCount > weightInputs.length) {
+        const prevWeight = weightInputs[weightInputs.length - 1] || "0";
+        setWeightInputs([...weightInputs, prevWeight]);
+      } else if (newSetsCount < weightInputs.length) {
+        setWeightInputs(weightInputs.slice(0, newSetsCount));
+      }
     }
+  };
+
+  const handleWeightChange = (index: number, val: string) => {
+    // Разрешаем только цифры, точку и запятую
+    let sanitized = val.replace(/[^0-9.,]/g, "");
+
+    // Убираем ведущий ноль, если начинается с него
+    if (
+      sanitized.startsWith("0") &&
+      sanitized.length > 1 &&
+      !sanitized.startsWith("0.")
+    ) {
+      sanitized = sanitized.replace(/^0+/, "");
+    }
+
+    const newWeights = [...weightInputs];
+    newWeights[index] = sanitized;
+    setWeightInputs(newWeights);
+  };
+
+  const handleWeightEndEditing = (index: number) => {
+    const normalized = weightInputs[index].replace(",", ".");
+    const num = parseFloat(normalized);
+    onSetDataChange(index, "weight", isNaN(num) ? 0 : num);
   };
 
   return (
@@ -64,6 +106,7 @@ const SetInputs: React.FC<SetInputsProps> = ({
             </View>
 
             <View className="flex-row flex-1 mx-1 justify-between">
+              {/* Повторения */}
               <View className="flex-1 mx-1">
                 <Text className="text-xs font-medium p-1">Повторения</Text>
                 <TextInput
@@ -79,20 +122,24 @@ const SetInputs: React.FC<SetInputsProps> = ({
                   }
                 />
               </View>
+
+              {/* Вес */}
               <View className="flex-1 mx-1">
                 <Text className="text-xs font-medium p-1">Вес (кг)</Text>
                 <TextInput
                   className="border-1 border-gray-300 rounded-2xl bg-gray-100 px-3"
                   keyboardType="decimal-pad"
-                  value={setData[index]?.weight?.toString() ?? ""}
-                  onChangeText={(val) => {
-                    if (val === "") {
-                      onSetDataChange(index, "weight", 0);
-                      return;
+                  value={weightInputs[index]}
+                  onChangeText={(val) => handleWeightChange(index, val)}
+                  onFocus={() => {
+                    // Убираем дефолтный ноль при фокусе
+                    if (weightInputs[index] === "0") {
+                      const newWeights = [...weightInputs];
+                      newWeights[index] = "";
+                      setWeightInputs(newWeights);
                     }
-                    const num = parseFloat(val);
-                    if (!isNaN(num)) onSetDataChange(index, "weight", num);
                   }}
+                  onEndEditing={() => handleWeightEndEditing(index)}
                 />
               </View>
             </View>

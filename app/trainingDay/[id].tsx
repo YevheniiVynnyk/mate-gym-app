@@ -15,9 +15,8 @@ export default function TrainingDayDetailScreen() {
   const router = useNavigation();
   const { id } = useLocalSearchParams(); // получаем id из URL
   const { user } = useAuth();
-  const { theme } = useTheme(); // ✅ Получаем текущую тему
 
-  const { trainingDay, isStarted, time, start, /*finish, */ remove } =
+  const { trainingDay, isStarted, time, start, finish, remove } =
     useTrainingDay(Number(id), user?.id);
 
   // --- Адаптивные классы ---
@@ -59,7 +58,7 @@ export default function TrainingDayDetailScreen() {
       {isStarted && <TrainingTimer time={time} />}
 
       <TrainingActions
-        // isStarted={isStarted} ToDo доделать
+        isStarted={isStarted}
         status={trainingDay.status}
         onStart={start}
         onEdit={() =>
@@ -71,7 +70,7 @@ export default function TrainingDayDetailScreen() {
           })
         }
         onRepeat={() => router.goBack()}
-        // onFinish={finish} ToDo доделать
+        onStop={finish}
         onDelete={async () => {
           await remove();
           router.goBack();

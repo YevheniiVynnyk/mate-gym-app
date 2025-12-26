@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import ExerciseSearchSelect from "./ExerciseSearchSelect";
 import SetInputs from "./SetInputs";
-import { Training } from "@/types/trainingDay";
+import { MuscleGroup, Training } from "@/types/trainingDay";
 import { X } from "lucide-react-native";
 import ExerciseTotal from "@/components/trainingDay/ExerciseTotal";
+import MuscleGroupSearchSelect from "@/components/trainingDay/MuscleGroupSelect";
 
 export const TrainingExerciseCard = ({
   key,
@@ -27,6 +28,12 @@ export const TrainingExerciseCard = ({
   onSetsChange: (count: number) => void;
   onRemove: () => void;
 }) => {
+  const [selectedMuscleGroup, setSelectedMuscleGroup] =
+    useState<MuscleGroup | null>(
+      training?.exercise?.muscleGroup?.id != null
+        ? training?.exercise?.muscleGroup
+        : null,
+    );
   return (
     <View className="p-2 mb-4 border border-gray-200 rounded-2xl">
       <View className="flex-row align-items-center justify-between">
@@ -36,11 +43,34 @@ export const TrainingExerciseCard = ({
         </TouchableOpacity>
       </View>
 
-      <ExerciseSearchSelect
-        value={training.exercise.name}
-        onChange={onExerciseChange}
-        onExerciseSelect={onExerciseSelect}
+      {/* Выбор группы мышц */}
+      <MuscleGroupSearchSelect
+        value={selectedMuscleGroup}
+        onSelect={(group) => {
+          setSelectedMuscleGroup(group);
+          // сбрасываем упражнение при смене группы
+          onExerciseSelect({
+            id: 0,
+            name: "",
+            description: "",
+            muscleGroup: group,
+          });
+        }}
       />
+
+      {/* Выбор упражнения */}
+      {selectedMuscleGroup ? (
+        <ExerciseSearchSelect
+          muscleGroupId={selectedMuscleGroup.id}
+          value={training.exercise?.name || ""}
+          onChange={onExerciseChange}
+          onExerciseSelect={onExerciseSelect}
+        />
+      ) : (
+        <Text className="text-xs text-gray-400 px-2 mt-1">
+          Сначала выберите группу мышц
+        </Text>
+      )}
 
       <SetInputs
         sets={training.trainingDetails.length}

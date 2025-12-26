@@ -1,8 +1,8 @@
-import { TrainingDay } from "@/types/trainingDay.ts";
+import { TrainingDay } from "@/types/trainingDay";
 import {
   TrainingDayCreateDTO,
   TrainingDayDTO,
-} from "@/services/trainingDayService.ts";
+} from "@/services/trainingDayService";
 
 export const mapToCreateDTO = (
   localData: TrainingDay,

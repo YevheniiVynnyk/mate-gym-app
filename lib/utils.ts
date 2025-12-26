@@ -41,24 +41,33 @@ export const updateSetData = (
 export const updateSetsCount = (
   trainings: Training[],
   trainingId: number,
-  sets: number,
-) =>
-  trainings.map((t) => {
-    if (t.id === trainingId) {
-      const updatedDetails = Array.from(
-        { length: sets },
-        (_, i) =>
-          t.trainingDetails[i] || {
-            id: null,
-            set: i + 1,
-            weight: 0,
-            repetition: 0,
-          },
-      );
-      return { ...t, trainingDetails: updatedDetails };
+  newSets: number,
+) => {
+  return trainings.map((t) => {
+    if (t.id !== trainingId) return t;
+
+    const currentSets = t.trainingDetails || [];
+    const updatedSets = [...currentSets];
+
+    if (newSets > currentSets.length) {
+      const lastSet = currentSets[currentSets.length - 1] || {
+        weight: 0,
+        repetition: 0,
+      };
+      for (let i = currentSets.length; i < newSets; i++) {
+        updatedSets.push({
+          ...lastSet,
+          set: i + 1, // новый номер подхода
+          id: undefined, // или генерируй временный уникальный id
+        });
+      }
+    } else if (newSets < currentSets.length) {
+      updatedSets.length = newSets;
     }
-    return t;
+
+    return { ...t, trainingDetails: updatedSets };
   });
+};
 
 export const calculateTotals = (details: TrainingDetail[]) => {
   const totalReps = details.reduce((sum, d) => sum + d.repetition, 0);

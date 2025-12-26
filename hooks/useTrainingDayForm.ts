@@ -139,6 +139,7 @@ export const useTrainingDayForm = () => {
         status,
         ...(duration ? { durationMinutes: duration } : {}),
       };
+      console.log(JSON.stringify(payload, null, 2));
       if (isEdit && originalTrainingDay && id)
         await trainingDayService.updateTrainingDay(
           mapToUpdateDTO({ ...originalTrainingDay, ...payload }),

@@ -22,8 +22,6 @@ import {
 } from "@/components/ui/Card";
 import { useTheme } from "@/contexts/ThemeContext";
 import { LoadingPage } from "@/components/ui/LoadingPage";
-import Banner from "@/components/ads/Banner";
-import { BannerAdSize } from "react-native-google-mobile-ads";
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -49,7 +47,6 @@ export default function Dashboard() {
       className="flex-1 bg-background dark:bg-gray-900 ocean:bg-ocean-background"
       showsVerticalScrollIndicator={false}
     >
-      <Banner size={BannerAdSize.BANNER} />
       <View className="p-4">
         {/* Приветствие */}
         <Card>

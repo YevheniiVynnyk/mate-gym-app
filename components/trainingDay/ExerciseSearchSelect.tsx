@@ -12,6 +12,7 @@ import { ExerciseDTO, exerciseService } from "@/services/exerciseService";
 
 interface ExerciseSearchSelectProps {
   value: string;
+  muscleGroupId?: number;
   onChange: (value: string) => void;
   onExerciseSelect?: (exercise: ExerciseDTO) => void;
   placeholder?: string;
@@ -19,6 +20,7 @@ interface ExerciseSearchSelectProps {
 
 const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
   value,
+  muscleGroupId,
   onChange,
   onExerciseSelect,
   placeholder = "Выберите упражнение...",
@@ -29,29 +31,20 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
   const [exercises, setExercises] = useState<ExerciseDTO[]>([]);
 
   useEffect(() => {
+    if (!muscleGroupId) {
+      setExercises([]);
+      return;
+    }
     const loadExercises = async () => {
       try {
-        const exerciseData = await exerciseService.getAllExercises();
-        setExercises(exerciseData);
-      } catch (error) {
-        console.error("Failed to load exercises:", error);
-        const fallbackExercises: ExerciseDTO[] = [
-          "Жим лежа",
-          "Приседания",
-          "Становая тяга",
-          "Жим стоя",
-          "Подтягивания",
-        ].map((name, index) => ({
-          id: index + 1,
-          name,
-          description: "",
-          muscleGroup: { id: 1, name: "Общие" },
-        }));
-        setExercises(fallbackExercises);
+        const data = await exerciseService.getByMuscleGroup(muscleGroupId);
+        setExercises(data);
+      } catch {
+        setExercises([]);
       }
     };
     loadExercises();
-  }, []);
+  }, [muscleGroupId]);
 
   useEffect(() => {
     setInputValue(value);
@@ -71,14 +64,15 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
   const handleSelectExercise = (exercise: ExerciseDTO) => {
     setInputValue(exercise.name);
     onChange(exercise.name);
-    onExerciseSelect && onExerciseSelect(exercise);
+    onExerciseSelect?.(exercise);
     setIsOpen(false);
     setSearchTerm("");
     Keyboard.dismiss();
   };
-
   const handleClear = () => {
     setInputValue("");
+    setSearchTerm("");
+    setIsOpen(false);
   };
 
   const toggleDropdown = () => {
@@ -106,11 +100,14 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
         </TouchableOpacity>
       </View>
 
-      {isOpen && (
-        <View className="bg-white border border-gray-300 rounded-lg max-h-52 mt-1">
+      {isOpen && muscleGroupId && (
+        <View
+          className="bg-white border border-gray-300 rounded-lg mt-1"
+          style={{ maxHeight: 200 }}
+        >
           {filteredExercises.length > 0 ? (
             <FlatList
-              data={filteredExercises}
+              data={exercises}
               keyExtractor={(item) => item.id.toString()}
               keyboardShouldPersistTaps="handled"
               nestedScrollEnabled
@@ -120,14 +117,6 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
                   onPress={() => handleSelectExercise(item)}
                 >
                   <Text className="font-bold">{item.name}</Text>
-                  {item.description ? (
-                    <Text className="text-xs text-gray-500">
-                      {item.description}
-                    </Text>
-                  ) : null}
-                  <Text className="text-[10px] text-gray-400">
-                    {item.muscleGroup.name}
-                  </Text>
                 </TouchableOpacity>
               )}
             />
