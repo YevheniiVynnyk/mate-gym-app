@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { TrainingDaysProvider } from "@/contexts/TrainingDaysContext";
@@ -16,7 +16,7 @@ import { Slot } from "expo-router";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/i18n"; // Предполагаем, что i18n.ts находится в папке /i18n
 import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
-//import AsyncStorage from "@react-native-async-storage/async-storage";
+import { initializeDatabase, initializeExerciseData } from "@/database";
 
 const queryClient = new QueryClient();
 
@@ -28,13 +28,33 @@ export default function RootLayout() {
     Inter_400Regular,
     Inter_700Bold,
   });
+  const [dbInitialized, setDbInitialized] = useState(false);
 
   useEffect(() => {
-    if (fontsLoaded) {
+    const initApp = async () => {
+      try {
+        // Initialize database
+        await initializeDatabase();
+
+        // Initialize exercise data (load from API and save to local DB)
+        await initializeExerciseData();
+
+        setDbInitialized(true);
+      } catch (error) {
+        console.error("Failed to initialize database:", error);
+        setDbInitialized(true); // Continue even if DB init fails
+      }
+    };
+
+    initApp();
+  }, []);
+
+  useEffect(() => {
+    if (fontsLoaded && dbInitialized) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
-  if (!fontsLoaded) {
+  }, [fontsLoaded, dbInitialized]);
+  if (!fontsLoaded || !dbInitialized) {
     return (
       <View className="flex-1 justify-center items-center bg-background">
         <ActivityIndicator size="large" color="#4ADE80" />

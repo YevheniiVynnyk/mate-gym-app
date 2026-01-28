@@ -1,6 +1,6 @@
 {
   "expo": {
-	"name": "Mate Gym App",
+	"name": "Mate Gym",
 	"slug": "mate-gym-app",
 	"version": "1.0.1",
 	"orientation": "default",
@@ -18,9 +18,9 @@
 	"android": {
 	  "adaptiveIcon": {
 		"backgroundColor": "#E6F4FE",
-		"backgroundImage": "./assets/images/432.png"
+		"backgroundImage": "./assets/images/icon.png"
 	  },
-	  "package": "com.vynnyk.mategymapp",
+	  "package": "com.vynnyk.mategym",
 	  "intentFilters": [
 		{
 		  "action": "VIEW",
