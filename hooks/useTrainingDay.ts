@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { trainingDayService } from "@/services/trainingDayService";
 import { mapFromAPI } from "@/services/mapper/trainingDayMapper";
+import { TrainingDay } from "@/types/trainingDay";
 
 export const useTrainingDay = (id: number, userId?: number) => {
-  const [trainingDay, setTrainingDay] = useState<any>(null);
+  const [trainingDay, setTrainingDay] = useState<TrainingDay | null>(null);
   const [isStarted, setIsStarted] = useState(false);
   const [time, setTime] = useState(0);
 

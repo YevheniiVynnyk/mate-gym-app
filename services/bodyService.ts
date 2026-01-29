@@ -1,4 +1,5 @@
 import { api } from "./api";
+import { ENDPOINTS } from "@/config/endpoints";
 
 export interface BodyDTO {
   id: number;
@@ -22,53 +23,55 @@ export interface ChartDataDTO {
 export const bodyService = {
   // Получить все записи о теле
   async getAllBodyRecords(): Promise<BodyDTO[]> {
-    const response = await api.get<BodyDTO[]>("/body");
+    const response = await api.get<BodyDTO[]>(ENDPOINTS.body.root);
     return response.data;
   },
 
   // Получить запись по ID
   async getBodyRecordById(id: number): Promise<BodyDTO> {
-    const response = await api.get<BodyDTO>(`/body/${id}`);
+    const response = await api.get<BodyDTO>(ENDPOINTS.body.byId);
     return response.data;
   },
 
   // Получить текущую запись
   async getCurrentBodyRecord(): Promise<BodyDTO> {
-    const response = await api.get<BodyDTO>("/body/current");
+    const response = await api.get<BodyDTO>(ENDPOINTS.body.me);
     return response.data;
   },
 
   // Создать запись о теле
   async createBodyRecord(body: BodyCreateDTO): Promise<void> {
-    await api.post("/body", body);
+    await api.post(ENDPOINTS.body.root, body);
   },
 
   // Обновить запись о теле
   async updateBodyRecord(body: BodyDTO): Promise<void> {
-    await api.put("/body", body);
+    await api.put(ENDPOINTS.body.root, body);
   },
 
   // Удалить запись о теле
   async deleteBodyRecord(id: number): Promise<void> {
-    await api.delete(`/body/${id}`);
+    await api.delete(ENDPOINTS.body.root, {
+      params: { id },
+    });
   },
 
   // Создать несколько записей
   async createBodyRecords(bodies: BodyCreateDTO[]): Promise<void> {
-    await api.post("/body/all", bodies);
+    await api.post(ENDPOINTS.body.bulk, bodies);
   },
 };
 
 export const chartService = {
   // Получить данные графика веса
   async getWeightChart(): Promise<ChartDataDTO[]> {
-    const response = await api.get<ChartDataDTO[]>("/chart/weight");
+    const response = await api.get<ChartDataDTO[]>(ENDPOINTS.chart.weight);
     return response.data;
   },
 
   // Получить данные графика BMI
   async getBMIChart(): Promise<ChartDataDTO[]> {
-    const response = await api.get<ChartDataDTO[]>("/chart/bmi");
+    const response = await api.get<ChartDataDTO[]>(ENDPOINTS.chart.bmi);
     return response.data;
   },
 };

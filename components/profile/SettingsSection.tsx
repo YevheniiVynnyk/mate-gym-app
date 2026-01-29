@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import LanguageSelector from "@/components/profile/LanguageSelector";
 import ThemeSelector from "@/components/profile/ThemeSelector";
+import BiometricSelector from "@/components/profile/BiometricSelector";
 import { useTranslation } from "react-i18next";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 
@@ -13,6 +14,7 @@ export default function SettingsSection({ handleLogout }: any) {
           {t("SettingsSection.title")}
         </CardTitle>
       </CardHeader>
+      <BiometricSelector />
       <LanguageSelector />
       <ThemeSelector />
       <TouchableOpacity

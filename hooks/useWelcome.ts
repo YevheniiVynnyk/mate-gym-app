@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export const useWelcome = () => {
   const router = useRouter();
-  const { user, login, register, acceptTerms, logout } = useAuth();
+  const { user, login, loginWithGoogle, register, acceptTerms, logout } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
   const [showTermsRequired, setShowTermsRequired] = useState(false);
@@ -45,6 +45,22 @@ export const useWelcome = () => {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    setIsLoading(true);
+    try {
+      await loginWithGoogle();
+      router.push("/dashboard");
+    } catch (e: any) {
+      console.error("Ошибка входа через Google:", e);
+      // Можно добавить Alert.alert для показа ошибки пользователю
+      const errorMessage =
+        e?.message || "Не удалось войти через Google. Попробуйте еще раз.";
+      throw new Error(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // --- Роутинг для сброса пароля ---
   const goToResetPasswordRequest = () => {
     router.push("/reset-password-request");
@@ -66,6 +82,7 @@ export const useWelcome = () => {
     setIsRegistering,
     handleLogin,
     handleRegister,
+    handleGoogleLogin,
     acceptTerms,
     logout,
     setShowTermsRequired,

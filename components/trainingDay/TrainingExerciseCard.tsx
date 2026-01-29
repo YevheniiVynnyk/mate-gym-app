@@ -8,7 +8,6 @@ import ExerciseTotal from "@/components/trainingDay/ExerciseTotal";
 import MuscleGroupSearchSelect from "@/components/trainingDay/MuscleGroupSelect";
 
 export const TrainingExerciseCard = ({
-  key,
   training,
   index,
   onExerciseChange,

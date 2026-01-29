@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { useAuth } from "@/contexts/AuthContext";
 import { UserDTO, userService } from "@/services/userService";
+import { syncQueueService } from "@/database";
 import { fromUserDTO } from "@/services/mapper/userMapper";
 import { imageService } from "@/services/imageService";
 import { useNavigation } from "@/hooks/useNavigation";
@@ -99,6 +100,14 @@ export const useProfile = () => {
       setIsEditing(false);
     } catch (err) {
       console.error("Ошибка при сохранении профиля:", err);
+      // Если не удалось отправить на сервер (офлайн), сохраняем в очередь синка
+      try {
+        await syncQueueService.queueProfileUpdate(user.id, updatedUser);
+        setUser(fromUserDTO(updatedUser)); // локально обновим
+        setIsEditing(false);
+      } catch (queueErr) {
+        console.error("Не удалось добавить профиль в очередь синка:", queueErr);
+      }
     } finally {
       setLoading(false);
     }

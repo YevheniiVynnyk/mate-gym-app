@@ -5,9 +5,11 @@ import {
   KeyboardEvent,
   Platform,
   Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { ArrowLeft } from "lucide-react-native";
 import { useTranslation } from "react-i18next";
 import TermsDialog from "@/components/welcome/TermsDialog";
 import Header from "@/components/welcome/Header";
@@ -16,16 +18,19 @@ import AuthTabs from "@/components/welcome/AuthTabs";
 import LoginForm from "@/components/welcome/LoginForm";
 import RegisterForm from "@/components/welcome/RegisterForm";
 import LanguageDropdown from "@/components/welcome/LanguageDropdown";
+import { useNavigation } from "@/hooks/useNavigation";
+import { useTheme } from "@/contexts/ThemeContext";
 
 import { useWelcome } from "@/hooks/useWelcome";
 
-export default function Welcome() {
+export default function Auth() {
   const { t } = useTranslation();
+  const router = useNavigation();
+  const { theme } = useTheme();
   const {
     user,
     isLoading,
     isRegistering,
-    /*showTermsRequired,*/
     loginForm,
     registerForm,
     setLoginForm,
@@ -33,6 +38,7 @@ export default function Welcome() {
     setIsRegistering,
     handleLogin,
     handleRegister,
+    handleGoogleLogin,
     acceptTerms,
     setShowTermsRequired,
     goToResetPasswordRequest,
@@ -98,6 +104,23 @@ export default function Welcome() {
         // ✅ АДАПТАЦИЯ: Фон экрана
         className={`flex-1 p-4 ${screenBg}`}
       >
+        {/* Кнопка "Назад" в верхнем левом углу */}
+        <TouchableOpacity
+          onPress={() => router.toDashboard()}
+          className="absolute top-12 left-4 z-10 bg-card dark:bg-gray-800 ocean:bg-ocean-card p-2 rounded-full shadow-md"
+        >
+          <ArrowLeft
+            size={24}
+            color={
+              theme === "ocean"
+                ? "#b3e5fc"
+                : theme === "dark"
+                  ? "#f3f4f6"
+                  : "#111827"
+            }
+          />
+        </TouchableOpacity>
+
         <LanguageDropdown />
 
         <View className="flex-1 justify-center">
@@ -134,6 +157,7 @@ export default function Welcome() {
                 form={loginForm}
                 setForm={setLoginForm}
                 onSubmit={handleLogin}
+                onGoogleLogin={handleGoogleLogin}
                 isLoading={isLoading}
                 onForgotPassword={goToResetPasswordRequest}
               />

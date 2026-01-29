@@ -36,6 +36,10 @@ const RegisterForm: React.FC<Props> = ({
         value={form.login}
         onChangeText={(text: string) => setForm({ ...form, login: text })}
         autoCapitalize="none"
+        autoCorrect={false}
+        autoComplete="username"
+        textContentType="username"
+        importantForAutofill="yes"
       />
       <Text className={labelTextClass}>{t("LoginForm.emailText")}</Text>
       <CustomInput
@@ -43,6 +47,11 @@ const RegisterForm: React.FC<Props> = ({
         value={form.email}
         onChangeText={(text: string) => setForm({ ...form, email: text })}
         autoCapitalize="none"
+        autoCorrect={false}
+        keyboardType="email-address"
+        autoComplete="email"
+        textContentType="emailAddress"
+        importantForAutofill="yes"
       />
       <Text className={labelTextClass}>{t("LoginForm.passwordText")}</Text>
       <CustomInput
@@ -51,6 +60,10 @@ const RegisterForm: React.FC<Props> = ({
         value={form.password}
         onChangeText={(text: string) => setForm({ ...form, password: text })}
         autoCapitalize="none"
+        autoCorrect={false}
+        autoComplete="new-password"
+        textContentType="newPassword"
+        importantForAutofill="yes"
       />
       <TouchableOpacity
         className={`rounded-lg p-3 mt-4 ${buttonBgClass}`}

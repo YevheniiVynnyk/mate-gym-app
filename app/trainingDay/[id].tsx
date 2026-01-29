@@ -9,7 +9,6 @@ import { useTrainingDay } from "@/hooks/useTrainingDay";
 import { useNavigation } from "@/hooks/useNavigation";
 import { Header } from "@/components/trainingDay/Header";
 import TrainingExercisesList from "@/components/trainingDay/TrainingExercisesList";
-import { useTheme } from "@/contexts/ThemeContext"; // ✅ Импортируем хук темы
 
 export default function TrainingDayDetailScreen() {
   const router = useNavigation();

@@ -31,7 +31,7 @@
 	"registerButtonText": "Create Account",
 	"forgotPassword": "Forgot password ?"
   },
-  "userInfo": {
+  "UserInfo": {
 	"header": "Personal Information",
 	"save": "Save",
 	"edit": "Edit",
@@ -50,7 +50,11 @@
   "common": {
 	"back": "Back"
   },
-
+  "Profile":{
+	"notAuthorized": "Not Authorized",
+	"loginPrompt": "Sign in to your account to access your profile and settings.",
+	"loginButton": "Login"
+  },
   "SettingsSection": {
 	"title": "Settings and Actions",
 	"logout": "Logout"

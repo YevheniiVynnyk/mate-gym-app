@@ -87,11 +87,11 @@ export default function BottomNavigation() {
       description: "рост, успех, развитие",
     },
     {
-      label: t("BottomNavigation.navItems.nav4"),
-      icon: "shopping-cart",
-      path: router.toTrainingPlan,
-      route: "/trainingPlans",
-      description: "ясность, структура, планирование",
+      label: t("BottomNavigation.navItems.nav4") || "Профиль",
+      icon: "user",
+      path: router.toProfile,
+      route: "/profile",
+      description: "профиль, настройки, информация",
     },
   ];
   // Стили для корневого контейнера навигации

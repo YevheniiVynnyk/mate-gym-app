@@ -31,7 +31,7 @@
 	"registerButtonText": "Створити акаунт",
 	"forgotPassword": "Забули пароль ?"
   },
-  "userInfo": {
+  "UserInfo": {
 	"header": "Особиста інформація",
 	"save": "Зберегти",
 	"edit": "Редагувати",
@@ -50,7 +50,11 @@
   "common": {
 	"back": "Назад"
   },
-
+  "Profile":{
+	"notAuthorized": "Не авторизований",
+	"loginPrompt": "Увійдіть до свого облікового запису, щоб отримати доступ до профілю та налаштувань.",
+	"loginButton": "Увійти"
+  },
   "SettingsSection": {
 	"title": "Налаштування та дії",
 	"logout": "Вийти"

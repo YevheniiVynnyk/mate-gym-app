@@ -36,7 +36,7 @@
 	"registerButtonText": "Создать Аккаунт",
 	"forgotPassword": "Забыли пароль ?"
   },
-  "userInfo": {
+  "UserInfo": {
 	"header": "Личная информация",
 	"save": "Сохранить",
 	"edit": "Редактировать",
@@ -55,7 +55,11 @@
   "common": {
 	"back": "Назад"
   },
-
+  "Profile":{
+	"notAuthorized": "Не авторизован",
+	"loginPrompt": "Войдите в свою учетную запись, чтобы получить доступ к своему профилю и настройкам.",
+	"loginButton": "Войти"
+  },
   "SettingsSection": {
 	"title": "Настройки и действия",
 	"logout": "Выйти"

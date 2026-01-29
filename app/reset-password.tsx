@@ -12,10 +12,11 @@ import CustomInput from "@/components/welcome/CustomInput";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { authService } from "@/services/authService";
+import { useNavigation } from "@/hooks/useNavigation";
 
 export default function ResetPasswordNew() {
   const { t } = useTranslation();
-  const router = useRouter();
+  const router = useNavigation();
   const { token } = useLocalSearchParams<{ token: string }>();
 
   const [password, setPassword] = useState("");
@@ -32,7 +33,7 @@ export default function ResetPasswordNew() {
         [
           {
             text: t("resetPasswordNew.ok"),
-            onPress: () => router.replace("/welcome"),
+            onPress: () => router.toAuth(),
           },
         ],
       );
@@ -56,7 +57,7 @@ export default function ResetPasswordNew() {
         t("resetPasswordNew.successTitle"),
         t("resetPasswordNew.successMessage"),
       );
-      router.replace("/welcome"); // перенаправление на Welcome
+      router.toAuth(); // перенаправление на Auth
     } catch (e) {
       const message = e instanceof Error ? e.message : "Unknown error";
       Alert.alert(t("resetPasswordNew.errorTitle"), message);
@@ -91,10 +92,7 @@ export default function ResetPasswordNew() {
         }}
       >
         {/* Кнопка назад */}
-        <TouchableOpacity
-          onPress={() => router.replace("/welcome")}
-          className="mb-6"
-        >
+        <TouchableOpacity onPress={() => router.toAuth()} className="mb-6">
           <Text className="text-blue-600 font-semibold">
             {t("common.back") || "← На главную"}
           </Text>

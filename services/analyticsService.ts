@@ -1,4 +1,5 @@
 import { api } from "./api";
+import { ENDPOINTS } from "@/config/endpoints";
 
 export interface MonthlyProgress {
   month: string;
@@ -39,7 +40,7 @@ export const analyticsService = {
   },
 
   async getWeeklyActivity(): Promise<WeeklyActivity[]> {
-    const { data } = await api.get("/statistics/weekly");
+    const { data } = await api.get(ENDPOINTS.statistics.weekly);
     return data;
   },
 

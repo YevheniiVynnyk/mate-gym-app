@@ -6,45 +6,42 @@
   <component name="ChangeListManager">
     <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/README_GOOGLE_AUTH.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/auth/BiometricPrompt.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/profile/BiometricSelector.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/welcome/GoogleSignInButton.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config/endpoints.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/env.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config/openapi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/data-source.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/entities/Exercise.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/entities/MuscleGroup.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/entities/SyncQueue.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/entities/Training.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/entities/TrainingDay.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/entities/TrainingDetail.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/services/exerciseDbService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/services/initService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/services/muscleGroupDbService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/services/syncQueueService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/services/syncService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/services/trainingDayDbService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useTrainingDayDb.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/scripts/generate-paths.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/scripts/replacePathsAuto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/biometricService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/googleAuthService.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/services/muscleGroupService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/reset-password.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/trainingDay/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/AppLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseSearchSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseSearchSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/MuscleGroupSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/MuscleGroupSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useNavigation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProfile.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useTrainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDay.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useWelcome.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useWelcome.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/locales/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/locales/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/uk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/analyticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/analyticsService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/authService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/authService.ts" afterDir="false" />
@@ -53,8 +50,8 @@
       <change beforePath="$PROJECT_DIR$/services/settingService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/settingService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/statisticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/statisticsService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/tosService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/tosService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/trainingDayService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/trainingDayService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/userService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,5 +373,17 @@
     <MESSAGE value="Added logic for forgot password" />
     <MESSAGE value="refactor LanguageDropdown and added ads" />
     <option name="LAST_COMMIT_MESSAGE" value="refactor LanguageDropdown and added ads" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/api.ts</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

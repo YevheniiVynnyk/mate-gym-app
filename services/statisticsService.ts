@@ -1,4 +1,5 @@
 import { api } from "./api";
+import { ENDPOINTS } from "@/config/endpoints";
 
 export interface StatDTO {
   id: number;
@@ -76,7 +77,7 @@ export const statisticsService = {
 
   // Получить быструю статистику
   async getQuickStatistics(): Promise<QuickStatDTO> {
-    const response = await api.get<QuickStatDTO>("/statistics/quick");
+    const response = await api.get<QuickStatDTO>(ENDPOINTS.statistics.quick);
     return response.data;
   },
 
@@ -137,7 +138,9 @@ export const statisticsService = {
 
   // --- новые методы ---
   async getWeeklyStats(): Promise<WeeklyActivityDTO[]> {
-    const response = await api.get<WeeklyActivityDTO[]>("/statistics/weekly");
+    const response = await api.get<WeeklyActivityDTO[]>(
+      ENDPOINTS.statistics.weekly,
+    );
     return response.data;
   },
 

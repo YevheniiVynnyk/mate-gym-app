@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { User } from "@/types/user";
-import { authService } from "@/services/authService";
+import { authService, Token } from "@/services/authService";
 import { userService } from "@/services/userService";
 import { fromUserDTO } from "@/services/mapper/userMapper";
 import { tosService } from "@/services/tosService";
@@ -107,9 +107,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  const handleAuthSuccess = async (tokenData: any) => {
+  const handleAuthSuccess = async (tokenData: Token) => {
     await AsyncStorage.setItem("access_token", tokenData.accessToken);
     await AsyncStorage.setItem("refresh_token", tokenData.refreshToken);
+    await AsyncStorage.setItem("token", JSON.stringify(tokenData));
 
     const userData = await userService.getMe();
     const mappedUser = fromUserDTO(userData);

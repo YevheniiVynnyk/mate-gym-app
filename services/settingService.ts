@@ -1,4 +1,5 @@
 import { api } from "./api";
+import { ENDPOINTS } from "@/config/endpoints";
 
 export interface NotificationDTO {
   id: number;
@@ -18,12 +19,12 @@ export interface SettingDTO {
 export const settingService = {
   // Получить настройки
   async getSettings(): Promise<SettingDTO> {
-    const response = await api.get<SettingDTO>("/setting");
+    const response = await api.get<SettingDTO>(ENDPOINTS.settings);
     return response.data;
   },
 
   // Обновить настройки
   async updateSettings(settings: SettingDTO): Promise<void> {
-    await api.put("/setting", settings);
+    await api.put(ENDPOINTS.settings, settings);
   },
 };

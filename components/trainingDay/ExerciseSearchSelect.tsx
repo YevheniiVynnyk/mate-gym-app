@@ -8,7 +8,8 @@ import {
   View,
 } from "react-native";
 import { ChevronDown, X } from "lucide-react-native";
-import { ExerciseDTO, exerciseService } from "@/services/exerciseService";
+import { ExerciseDTO } from "@/services/exerciseService";
+import { trainingDayDbService } from "@/database";
 
 interface ExerciseSearchSelectProps {
   value: string;
@@ -37,9 +38,23 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
     }
     const loadExercises = async () => {
       try {
-        const data = await exerciseService.getByMuscleGroup(muscleGroupId);
-        setExercises(data);
-      } catch {
+        // Загружаем из локальной БД
+        const dbExercises = await trainingDayDbService.getExercisesByMuscleGroup(
+          muscleGroupId,
+        );
+        // Преобразуем в формат ExerciseDTO
+        const formattedExercises: ExerciseDTO[] = dbExercises.map((ex) => ({
+          id: ex.id,
+          name: ex.name,
+          description: ex.description || "",
+          muscleGroup: {
+            id: ex.muscleGroup.id,
+            name: ex.muscleGroup.name,
+          },
+        }));
+        setExercises(formattedExercises);
+      } catch (error) {
+        console.error("Failed to load exercises from local DB", error);
         setExercises([]);
       }
     };

@@ -49,6 +49,7 @@ export const useNavigation = () => {
   const toProgress = () => router.push("/progress");
   const toDeveloperSupport = () => router.push("/developerSupport");
   const toTrainingPlan = () => router.push("/trainingPlans");
+  const toAuth = () => router.push("/auth");
   return {
     goBack,
     toCreateTrainingDay,
@@ -61,5 +62,6 @@ export const useNavigation = () => {
     toProgress,
     toDeveloperSupport,
     toTrainingPlan,
+    toAuth,
   };
 };

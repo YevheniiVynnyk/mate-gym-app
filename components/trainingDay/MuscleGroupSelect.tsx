@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { ChevronDown, X } from "lucide-react-native";
 import { MuscleGroup } from "@/types/trainingDay";
-import { muscleGroupService } from "@/services/exerciseService";
+import { trainingDayDbService } from "@/database";
 
 interface MuscleGroupSearchSelectProps {
   value?: MuscleGroup | null;
@@ -28,21 +28,22 @@ const MuscleGroupSearchSelect: React.FC<MuscleGroupSearchSelectProps> = ({
   const [groups, setGroups] = useState<MuscleGroup[]>([]);
 
   useEffect(() => {
-    muscleGroupService
-      .getAll()
-      .then(setGroups)
-      .catch((e) => {
-        console.error("Failed to load muscle groups", e);
-        // fallback
-        setGroups([
-          { id: 1, name: "Грудь" },
-          { id: 2, name: "Спина" },
-          { id: 3, name: "Ноги" },
-          { id: 4, name: "Плечи" },
-          { id: 5, name: "Руки" },
-          { id: 6, name: "йцу" },
-        ]);
-      });
+    const loadMuscleGroups = async () => {
+      try {
+        // Загружаем из локальной БД
+        const dbGroups = await trainingDayDbService.getAllMuscleGroups();
+        // Преобразуем в формат MuscleGroup из types
+        const formattedGroups: MuscleGroup[] = dbGroups.map((mg) => ({
+          id: mg.id,
+          name: mg.name,
+        }));
+        setGroups(formattedGroups);
+      } catch (e) {
+        console.error("Failed to load muscle groups from local DB", e);
+        setGroups([]);
+      }
+    };
+    loadMuscleGroups();
   }, []);
 
   useEffect(() => {
