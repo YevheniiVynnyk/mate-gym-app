@@ -4,6 +4,12 @@ import {
   TrainingDayDTO,
 } from "@/services/trainingDayService";
 
+// Хелпер для очистки временных ID (отрицательных)
+const cleanId = (id: number | undefined | null) => {
+  if (typeof id === "number" && id < 0) return undefined;
+  return id || undefined;
+};
+
 export const mapToCreateDTO = (
   localData: TrainingDay,
 ): TrainingDayCreateDTO => {
@@ -39,10 +45,10 @@ export const mapToUpdateDTO = (localData: TrainingDay): TrainingDayDTO => {
     status: localData.status,
     createdBy: parseInt(localData.clientId || "0"),
     modifiedBy: parseInt(localData.trainerId || "0"),
-    createdDate: new Date(), // можно заменить, если приходит с сервера
+    createdDate: new Date(),
     modifiedDate: new Date(),
     trainings: localData.trainings.map((training) => ({
-      id: training.id,
+      id: cleanId(training.id), // Очищаем ID
       exercise: {
         id: training.exercise.id || 0,
         name: training.exercise.name,
@@ -52,7 +58,7 @@ export const mapToUpdateDTO = (localData: TrainingDay): TrainingDayDTO => {
         },
       },
       trainingDetails: training.trainingDetails.map((trainingDetail) => ({
-        id: trainingDetail.id,
+        id: cleanId(trainingDetail.id), // Очищаем ID
         set: trainingDetail.set,
         weight: trainingDetail.weight,
         repetition: trainingDetail.repetition,
@@ -65,9 +71,9 @@ export const mapToUpdateDTO = (localData: TrainingDay): TrainingDayDTO => {
 
 export const mapFromAPI = (apiData: TrainingDayDTO): TrainingDay => {
   return {
-    id: apiData.id,
+    id: apiData.id || 0,
     name: apiData.name,
-    date: new Date(apiData.date), // исправлено apiData -> localData
+    date: new Date(apiData.date),
     trainings: apiData.trainings.map((training) => ({
       id: training.id,
       exercise: {

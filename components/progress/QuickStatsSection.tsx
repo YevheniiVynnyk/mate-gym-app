@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { formatDuration } from "@/lib/utils"; // Предполагаем, что этот импорт доступен
+import { formatDuration } from "@/utils/utils"; // Предполагаем, что этот импорт доступен
 import React from "react";
 
 export default function QuickStatsSection({ quickStats }: any) {

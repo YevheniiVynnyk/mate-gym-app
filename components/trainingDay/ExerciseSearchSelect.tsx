@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
-  FlatList,
   Keyboard,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { ChevronDown, X } from "lucide-react-native";
-import { ExerciseDTO } from "@/services/exerciseService";
-import { trainingDayDbService } from "@/database";
+import { ExerciseDTO, exerciseService } from "@/services/exerciseService";
 
 interface ExerciseSearchSelectProps {
   value: string;
@@ -38,12 +37,16 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
     }
     const loadExercises = async () => {
       try {
-        // Загружаем из локальной БД
-        const dbExercises = await trainingDayDbService.getExercisesByMuscleGroup(
-          muscleGroupId,
-        );
-        // Преобразуем в формат ExerciseDTO
-        const formattedExercises: ExerciseDTO[] = dbExercises.map((ex) => ({
+        const exerciseDTOS =
+          await exerciseService.getByMuscleGroup(muscleGroupId);
+        
+        if (!Array.isArray(exerciseDTOS)) {
+             console.error("Failed to load exercises: response is not an array", exerciseDTOS);
+             setExercises([]);
+             return;
+        }
+
+        const formattedExercises: ExerciseDTO[] = exerciseDTOS.map((ex) => ({
           id: ex.id,
           name: ex.name,
           description: ex.description || "",
@@ -54,7 +57,7 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
         }));
         setExercises(formattedExercises);
       } catch (error) {
-        console.error("Failed to load exercises from local DB", error);
+        console.error("Failed to load exercises", error);
         setExercises([]);
       }
     };
@@ -121,20 +124,20 @@ const ExerciseSearchSelect: React.FC<ExerciseSearchSelectProps> = ({
           style={{ maxHeight: 200 }}
         >
           {filteredExercises.length > 0 ? (
-            <FlatList
-              data={exercises}
-              keyExtractor={(item) => item.id.toString()}
+            <ScrollView
               keyboardShouldPersistTaps="handled"
-              nestedScrollEnabled
-              renderItem={({ item }) => (
+              nestedScrollEnabled={true}
+            >
+              {filteredExercises.map((item) => (
                 <TouchableOpacity
+                  key={item.id}
                   className="p-3 border-b border-gray-200"
                   onPress={() => handleSelectExercise(item)}
                 >
                   <Text className="font-bold">{item.name}</Text>
                 </TouchableOpacity>
-              )}
-            />
+              ))}
+            </ScrollView>
           ) : (
             <Text className="p-3 text-center text-gray-400">
               Упражнений не найдено

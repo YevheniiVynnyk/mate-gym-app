@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/contexts/AuthContext";
 
-export const useWelcome = () => {
+export const useLogin = () => {
   const router = useRouter();
-  const { user, login, loginWithGoogle, register, acceptTerms, logout } = useAuth();
+  const { login, register, loginAsGuest } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
   const [showTermsRequired, setShowTermsRequired] = useState(false);
@@ -40,22 +40,21 @@ export const useWelcome = () => {
         registerForm.login,
         registerForm.role,
       );
+      router.push("/dashboard");
+    } catch (e) {
+      console.error("Ошибка регистрации:", e);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleGoogleLogin = async () => {
+  const handleGuestLogin = async () => {
     setIsLoading(true);
     try {
-      await loginWithGoogle();
+      await loginAsGuest();
       router.push("/dashboard");
-    } catch (e: any) {
-      console.error("Ошибка входа через Google:", e);
-      // Можно добавить Alert.alert для показа ошибки пользователю
-      const errorMessage =
-        e?.message || "Не удалось войти через Google. Попробуйте еще раз.";
-      throw new Error(errorMessage);
+    } catch (e) {
+      console.error("Ошибка гостевого входа:", e);
     } finally {
       setIsLoading(false);
     }
@@ -71,7 +70,6 @@ export const useWelcome = () => {
   };
 
   return {
-    user,
     isLoading,
     isRegistering,
     showTermsRequired,
@@ -82,11 +80,9 @@ export const useWelcome = () => {
     setIsRegistering,
     handleLogin,
     handleRegister,
-    handleGoogleLogin,
-    acceptTerms,
-    logout,
+    handleGuestLogin, // Экспортируем новую функцию
     setShowTermsRequired,
-    goToResetPasswordRequest, // навигация на экран запроса сброса
-    goToResetPassword, // навигация на экран установки нового пароля с токеном
+    goToResetPasswordRequest,
+    goToResetPassword,
   };
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import { FlatList, Text /*View */ } from "react-native";
+import { FlatList, Text } from "react-native";
 import TrainingCard from "./TrainingCard";
 import { Calendar } from "@/components/ui/Calendar";
 import { TrainingDay } from "@/types/trainingDay";
 import { CalendarLegend } from "@/components/trainingDay/CalendarLegend";
-import { Card /*cn */ } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
 
 interface TrainingCalendarProps {
   selectedDate: string | undefined;

@@ -10,8 +10,8 @@ type Props = {
 const AuthTabs: React.FC<Props> = ({ isRegistering, setIsRegistering }) => {
   const { t } = useTranslation();
   const tabKeys = [
-    "welcome.animatedView.authLoginText",
-    "welcome.animatedView.authRegisterText",
+    "login.animatedView.authLoginText",
+    "login.animatedView.authRegisterText",
   ];
   return (
     <View className="flex-row justify-center mx-4 my-2 bg-white dark:bg-gray-700 ocean:bg-ocean-card-DEFAULT rounded-lg">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
-import CustomInput from "@/components/welcome/CustomInput";
+import { Alert, Text, TouchableOpacity, View } from "react-native";
+import CustomInput from "@/components/login/CustomInput";
 import { useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { authService } from "@/services/authService";

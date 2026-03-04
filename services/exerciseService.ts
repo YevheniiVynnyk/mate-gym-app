@@ -22,18 +22,17 @@ export const exerciseService = {
 
   // Получить упражнение по ID
   async getById(id: number): Promise<ExerciseDTO> {
-    const response = await api.get<ExerciseDTO>(ENDPOINTS.exercises.byId);
+    // Явно используем правильный путь для получения по ID
+    const url = `/exercises/${id}`;
+    const response = await api.get<ExerciseDTO>(url);
     return response.data;
   },
 
   // Получить упражнения по группе мышц
   async getByMuscleGroup(muscleGroupId: number): Promise<ExerciseDTO[]> {
-    const response = await api.get<ExerciseDTO[]>(
-      ENDPOINTS.exercises.byMuscleGroup,
-      {
-        params: { muscleGroupId },
-      },
-    );
+    // Явно используем правильный путь, чтобы исключить ошибку в ENDPOINTS
+    const url = `/exercises/muscle-groups/${muscleGroupId}`;
+    const response = await api.get<ExerciseDTO[]>(url);
     return response.data;
   },
 };

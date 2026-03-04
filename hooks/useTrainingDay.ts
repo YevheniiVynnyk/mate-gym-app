@@ -1,89 +1,78 @@
-import { useEffect, useState } from "react";
 import { Alert } from "react-native";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { trainingDayService } from "@/services/trainingDayService";
-import { mapFromAPI } from "@/services/mapper/trainingDayMapper";
-import { TrainingDay } from "@/types/trainingDay";
+import { useNavigation } from "@/hooks/useNavigation";
+import {
+  mapFromAPI,
+  mapToUpdateDTO,
+} from "@/services/mapper/trainingDayMapper";
+import { logError } from "@/utils/logger";
+
+const CONTEXT = "useTrainingDay";
 
 export const useTrainingDay = (id: number, userId?: number) => {
-  const [trainingDay, setTrainingDay] = useState<TrainingDay | null>(null);
-  const [isStarted, setIsStarted] = useState(false);
-  const [time, setTime] = useState(0);
+  const queryClient = useQueryClient();
+  const router = useNavigation();
 
-  useEffect(() => {
-    if (!id) return;
-    const load = async () => {
-      try {
-        const apiTrainingDay = await trainingDayService.getTrainingDayById(id);
-        setTrainingDay(mapFromAPI(apiTrainingDay));
-      } catch {
-        Alert.alert("Ошибка", "Не удалось загрузить тренировку");
-      }
-    };
-    load();
-  }, [id]);
+  // 1. Получение данных (Query)
+  const {
+    data: trainingDay,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["trainingDay", id],
+    queryFn: async () => {
+      const dto = await trainingDayService.getById(id);
+      return mapFromAPI(dto);
+    },
+    enabled: !!id, // Запрос выполняется только если есть ID
+  });
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-    if (isStarted) {
-      interval = setInterval(() => setTime((t) => t + 1), 1000);
-    }
-    return () => interval && clearInterval(interval);
-  }, [isStarted]);
+  // 2. Мутация: Завершение тренировки
+  const completeMutation = useMutation({
+    mutationFn: async () => {
+      if (!trainingDay) return;
+      const updatedTrainingDay = {
+        ...trainingDay,
+        status: "COMPLETED" as const,
+      };
+      const dto = mapToUpdateDTO(updatedTrainingDay);
+      await trainingDayService.update(dto);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["trainingDay", id] });
+      queryClient.invalidateQueries({ queryKey: ["trainingDays"] });
+      Alert.alert("Готово", "Тренировка выполнена");
+    },
+    onError: (e) => {
+      logError(e, `${CONTEXT}/complete`);
+      Alert.alert("Ошибка", "Не удалось завершить тренировку");
+    },
+  });
 
-  const start = async () => {
-    if (!trainingDay) return;
-    setIsStarted(true);
-    setTime(0);
-    const now = new Date();
-    const updated = {
-      ...trainingDay,
-      status: "IN_PROGRESS",
-      startTime: now,
-      modifiedDate: now,
-      modifiedBy: userId ?? 0,
-    };
-    await trainingDayService.updateTrainingDay(updated);
-    setTrainingDay(updated);
-    Alert.alert("Тренировка начата", "Удачной тренировки!");
-  };
-
-  const finish = async () => {
-    if (!trainingDay) return;
-    setIsStarted(false);
-    const now = new Date();
-    const updated = {
-      ...trainingDay,
-      status: "COMPLETED",
-      endTime: now,
-      modifiedDate: now,
-      modifiedBy: userId ?? 0,
-    };
-    await trainingDayService.updateTrainingDay(updated);
-    setTrainingDay(updated);
-    Alert.alert("Тренировка завершена", `Время: ${formatTime(time)}`);
-  };
-
-  const remove = async () => {
-    await trainingDayService.deleteTrainingDay(id);
-    Alert.alert("Удалено", "Тренировка успешно удалена");
-  };
+  // 3. Мутация: Удаление тренировки
+  const deleteMutation = useMutation({
+    mutationFn: async () => {
+      await trainingDayService.delete(id);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["trainingDays"] });
+      Alert.alert("Удалено", "Тренировка успешно удалена");
+      router.goBack(); // Возвращаемся назад после удаления
+    },
+    onError: (e) => {
+      logError(e, `${CONTEXT}/delete`);
+      Alert.alert("Ошибка", "Не удалось удалить тренировку");
+    },
+  });
 
   return {
     trainingDay,
-    isStarted,
-    time,
-    start,
-    finish,
-    remove,
-    setTrainingDay,
+    isLoading,
+    error,
+    complete: completeMutation.mutate,
+    remove: deleteMutation.mutate,
+    isCompleting: completeMutation.isPending,
+    isDeleting: deleteMutation.isPending,
   };
-};
-
-export const formatTime = (seconds: number) => {
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = seconds % 60;
-  return h > 0
-    ? `${h}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`
-    : `${m}:${s.toString().padStart(2, "0")}`;
 };

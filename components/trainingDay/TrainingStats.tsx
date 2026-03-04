@@ -1,24 +1,17 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { Dumbbell, Layers, Repeat } from "lucide-react-native";
+import { cn } from "@/components/ui/Card";
 
-/**
- * Вспомогательная функция для расчета итогов тренировочного дня.
- * @param trainingDay Объект тренировочного дня.
- * @returns {totalReps, totalWeight}
- */
 const calcTotals = (trainingDay: any) => {
   let totalReps = 0;
   let totalWeight = 0;
-  // Убеждаемся, что trainingDay.trainings существует и является массивом
   if (trainingDay.trainings && Array.isArray(trainingDay.trainings)) {
     trainingDay.trainings.forEach((t: any) => {
-      // Убеждаемся, что trainingDetails существует
       if (t.trainingDetails && Array.isArray(t.trainingDetails)) {
         t.trainingDetails.forEach((set: any) => {
-          // Проверяем, что repetition и weight являются числами
           const reps = typeof set.repetition === "number" ? set.repetition : 0;
           const weight = typeof set.weight === "number" ? set.weight : 0;
-
           totalReps += reps;
           totalWeight += reps * weight;
         });
@@ -28,34 +21,29 @@ const calcTotals = (trainingDay: any) => {
   return { totalReps, totalWeight };
 };
 
-/**
- * Вложенный компонент плитки статистики
- */
 const StatTile = ({
   label,
   value,
+  icon,
 }: {
   label: string;
   value: string | number;
+  icon: React.ReactNode;
 }) => {
-  // Адаптивные классы для фона плитки
-  const tileBgClasses = "bg-muted dark:bg-gray-700 ocean:bg-ocean-muted";
-
-  // Адаптивные классы для текста метки (приглушенный цвет)
-  const labelTextClasses =
-    "text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70";
-
-  // Адаптивные классы для значения (основной цвет)
-  const valueTextClasses =
-    "text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
-
   return (
-    <View
-      // Применяем адаптивные классы фона
-      className={`flex-1 mx-1 p-3 rounded-xl items-center justify-center ${tileBgClasses} `}
-    >
-      <Text className={`text-sm ${labelTextClasses}`}>{label}</Text>
-      <Text className={`text-lg ${valueTextClasses}`}>{value}</Text>
+    <View className="flex-1 items-center justify-center p-3 bg-secondary/30 dark:bg-gray-800/50 rounded-2xl mx-1">
+      <View className="mb-2 p-2 bg-background dark:bg-gray-700 rounded-full shadow-sm">
+        {React.cloneElement(icon as React.ReactElement, {
+          size: 18,
+          className: "text-primary dark:text-primary-400",
+        })}
+      </View>
+      <Text className="text-lg font-bold text-foreground dark:text-gray-100 mb-0.5">
+        {value}
+      </Text>
+      <Text className="text-xs font-medium text-muted-foreground dark:text-gray-400">
+        {label}
+      </Text>
     </View>
   );
 };
@@ -63,32 +51,27 @@ const StatTile = ({
 export default function TrainingStats({ trainingDay }: { trainingDay: any }) {
   const totals = calcTotals(trainingDay);
 
-  // Адаптивные классы для фона основного контейнера (Card)
-  const mainCardClasses =
-    "bg-card rounded-xl p-4 mb-4  " +
-    "dark:bg-gray-800 " +
-    "ocean:bg-ocean-card";
-
-  // Адаптивные классы для заголовка
-  const headerTextClasses =
-    "text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
-
   return (
-    <View className={mainCardClasses}>
-      <Text className={`text-lg mb-3 ${headerTextClasses}`}>
-        Итоги тренировки
+    <View className="bg-card dark:bg-gray-800 ocean:bg-ocean-card rounded-3xl p-4 mb-4 shadow-sm border border-border/50 dark:border-gray-700">
+      <Text className="text-base font-bold text-foreground dark:text-gray-100 mb-4 ml-1">
+        Workout Summary
       </Text>
 
       <View className="flex-row justify-between">
-        <StatTile label="Повторения" value={totals.totalReps} />
-        <StatTile
-          label="Тоннаж"
-          value={`${totals.totalWeight.toFixed(0)} кг`}
+        <StatTile 
+          label="Exercises" 
+          value={trainingDay.trainings?.length ?? 0} 
+          icon={<Dumbbell />}
         />
-        {/* Проверяем наличие trainings перед использованием .length */}
+        <StatTile 
+          label="Total Reps" 
+          value={totals.totalReps} 
+          icon={<Repeat />}
+        />
         <StatTile
-          label="Упражнений"
-          value={trainingDay.trainings?.length ?? 0}
+          label="Volume"
+          value={`${(totals.totalWeight / 1000).toFixed(1)}t`}
+          icon={<Layers />}
         />
       </View>
     </View>

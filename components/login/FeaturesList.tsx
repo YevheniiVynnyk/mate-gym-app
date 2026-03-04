@@ -33,20 +33,20 @@ export default function FeaturesList() {
         // решить через контекст или стилизацию.
         // Используем Primary (зеленый акцент)
         icon={<TrendingUp color="#4ADE80" size={22} />}
-        title={t("welcome.FeaturesListBlock.FeatureTitle1")}
-        text={t("welcome.FeaturesListBlock.FeatureText1")}
+        title={t("login.FeaturesListBlock.FeatureTitle1")}
+        text={t("login.FeaturesListBlock.FeatureText1")}
       />
       <Feature
         // Используем Зеленый/Похожий на Primary оттенок
         icon={<Users color="#34D399" size={22} />}
-        title={t("welcome.FeaturesListBlock.FeatureTitle2")}
-        text={t("welcome.FeaturesListBlock.FeatureText2")}
+        title={t("login.FeaturesListBlock.FeatureTitle2")}
+        text={t("login.FeaturesListBlock.FeatureText2")}
       />
       <Feature
         // Используем Голубой/Синий оттенок
         icon={<Clock color="#3B82F6" size={22} />}
-        title={t("welcome.FeaturesListBlock.FeatureTitle3")}
-        text={t("welcome.FeaturesListBlock.FeatureText3")}
+        title={t("login.FeaturesListBlock.FeatureTitle3")}
+        text={t("login.FeaturesListBlock.FeatureText3")}
       />
     </View>
   );

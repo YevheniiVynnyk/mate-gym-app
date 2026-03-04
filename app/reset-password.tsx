@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  View,
-  Text,
-  TouchableOpacity,
   Alert,
-  ScrollView,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import CustomInput from "@/components/welcome/CustomInput";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import CustomInput from "@/components/login/CustomInput";
+import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { authService } from "@/services/authService";
 import { useNavigation } from "@/hooks/useNavigation";

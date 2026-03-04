@@ -16,7 +16,7 @@ import {
   WeeklyActivity,
 } from "@/services/analyticsService";
 import { QuickStatDTO, statisticsService } from "@/services/statisticsService";
-import { formatDuration } from "@/lib/utils";
+import { formatDuration } from "@/utils/utils";
 import { LineChart } from "react-native-chart-kit";
 
 const screenWidth = Dimensions.get("window").width;

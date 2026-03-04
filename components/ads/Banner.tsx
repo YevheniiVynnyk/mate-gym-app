@@ -8,7 +8,7 @@ import {
 
 const BANNER_ID = __DEV__
   ? TestIds.BANNER
-  : "ca-app-pub-3240569896257496/1234567890";
+  : "ca-app-pub-3240569896257496/7476643955";
 
 type BottomBannerProps = {
   size?: BannerAdSize | string;

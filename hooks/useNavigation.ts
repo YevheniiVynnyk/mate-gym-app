@@ -6,62 +6,59 @@ export const useNavigation = () => {
 
   const goBack = () => router.back();
 
-  // --- Навигация для Тренировок (TrainingDay) ---
+  // -------------------------
+  // TrainingDay navigation
+  // -------------------------
 
-  // Создание новой записи
-  const toCreateTrainingDay = () => router.push("/trainingDay/trainingDayForm");
+  // /trainingDay
+  const toTrainingList = () => router.push("/trainingDay");
 
-  // Просмотр списка
-  const toTrainingList = () => router.push("/trainingDay/trainingDayView");
+  // /trainingDay/new
+  const toCreateTrainingDay = () => router.push("/trainingDay/new");
 
-  // Детали (Динамический маршрут)
+  // /trainingDay/:id
   const toTrainingDetail = (id: string | number) =>
-    // Используем объектный синтаксис для динамического маршрута: /trainingDay/[id]
     router.push(`/trainingDay/${id}`);
 
-  // Редактирование (с параметрами запроса)
+  // /trainingDay/:id/edit
   const toTrainingEdit = (params: TrainingDayParams) => {
-    const { id, clientId, selectedDate, prefilledData } = params;
+    const { id, selectedDate, prefilledData } = params;
 
-    // Формируем параметры запроса (query)
-    const query = {
-      ...(id && { id: String(id) }), // Проверяем и добавляем ID
-      ...(clientId && { clientId }),
-      ...(selectedDate && { selectedDate }),
-      ...(prefilledData
-        ? { prefilledData: JSON.stringify(prefilledData) }
-        : {}),
-      isEdit: "true", // Флаг редактирования всегда присутствует
-    };
+    if (!id) {
+      throw new Error("toTrainingEdit requires id");
+    }
 
-    // Используем синтаксис с объектом { pathname, params }
     router.push({
-      pathname: "/trainingDay/trainingDayForm",
-      // router.push автоматически формирует строку запроса из объекта params
-      params: query,
+      pathname: `/trainingDay/${id}/edit`,
+      params: {
+        ...(selectedDate && { selectedDate }),
+        ...(prefilledData && {
+          prefilledData: JSON.stringify(prefilledData),
+        }),
+      },
     });
   };
 
-  // --- Навигация для Основных разделов ---
+  // -------------------------
+  // Main navigation
+  // -------------------------
+
   const toHome = () => router.push("/");
   const toDashboard = () => router.push("/dashboard");
   const toProfile = () => router.push("/profile");
   const toProgress = () => router.push("/progress");
-  const toDeveloperSupport = () => router.push("/developerSupport");
-  const toTrainingPlan = () => router.push("/trainingPlans");
   const toAuth = () => router.push("/auth");
+
   return {
     goBack,
-    toCreateTrainingDay,
     toTrainingList,
+    toCreateTrainingDay,
     toTrainingDetail,
     toTrainingEdit,
     toHome,
     toDashboard,
     toProfile,
     toProgress,
-    toDeveloperSupport,
-    toTrainingPlan,
     toAuth,
   };
 };

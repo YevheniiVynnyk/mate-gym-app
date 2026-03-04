@@ -1,12 +1,11 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
-import { Edit3, Pause, Play, RotateCcw, Trash2 } from "lucide-react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Check, Edit3, RotateCcw, Trash2 } from "lucide-react-native";
+import { cn } from "@/components/ui/Card";
 
 interface Props {
-  status: "CREATED" | "IN_PROGRESS" | "COMPLETED";
-  isStarted?: boolean; // флаг, начала ли тренировка
-  onStart: () => void;
-  onStop: () => void; // остановить тренировку
+  status: "PLANNED" | "COMPLETED";
+  onComplete: () => void;
   onEdit: () => void;
   onRepeat: () => void;
   onDelete: () => void;
@@ -14,118 +13,75 @@ interface Props {
 
 const ActionButton = ({
   icon,
-  buttonClasses,
+  label,
+  colorClass,
   onPress,
 }: {
   icon: React.ReactNode;
-  buttonClasses: string;
+  label: string;
+  colorClass: string;
   onPress: () => void;
 }) => {
-  const iconSize = 24;
+  // Клонируем иконку, чтобы задать ей цвет
   const coloredIcon = React.cloneElement(icon as React.ReactElement, {
-    size: iconSize,
-    color: "#fff",
+    size: 20,
+    color: "white", // Все иконки белые для контраста
   });
 
   return (
     <TouchableOpacity
-      className={`flex-row items-center justify-center px-3 py-2 rounded-lg shadow-sm active:opacity-80 ${buttonClasses}`}
-      activeOpacity={0.8}
+      className={cn(
+        "flex-1 flex-row items-center justify-center py-3 mx-1 rounded-xl shadow-sm active:opacity-80",
+        colorClass
+      )}
       onPress={onPress}
     >
       {coloredIcon}
+      <Text className="text-white font-bold ml-2 text-sm">
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };
 
 export default function TrainingActions({
   status,
-  isStarted = false,
-  onStart,
-  onStop,
+  onComplete,
   onEdit,
   onRepeat,
   onDelete,
 }: Props) {
-  const PRIMARY_BUTTON_CLASSES =
-    "bg-primary hover:bg-green-700 dark:bg-primary dark:hover:bg-green-700 ocean:bg-ocean-primary ocean:hover:bg-ocean-primary/90";
-  const INFO_BUTTON_CLASSES =
-    "bg-blue-500 hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-600 ocean:bg-ocean-info ocean:hover:bg-ocean-info/90";
-  const DESTRUCTIVE_BUTTON_CLASSES =
-    "bg-red-500 hover:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 ocean:bg-ocean-destructive ocean:hover:bg-ocean-destructive/90";
-
   return (
-    <View className="flex-row justify-around m-2">
-      {/* CREATED */}
-      {status === "CREATED" && (
-        <>
-          <ActionButton
-            icon={<Play />}
-            buttonClasses={PRIMARY_BUTTON_CLASSES}
-            onPress={onStart}
-          />
-          <ActionButton
-            icon={<Edit3 />}
-            buttonClasses={INFO_BUTTON_CLASSES}
-            onPress={onEdit}
-          />
-          <ActionButton
-            icon={<Trash2 />}
-            buttonClasses={DESTRUCTIVE_BUTTON_CLASSES}
-            onPress={onDelete}
-          />
-        </>
+    <View className="flex-row justify-between m-2">
+      {status === "PLANNED" ? (
+        <ActionButton
+          icon={<Check />}
+          label="Done"
+          colorClass="bg-green-500 dark:bg-green-600"
+          onPress={onComplete}
+        />
+      ) : (
+        <ActionButton
+          icon={<RotateCcw />}
+          label="Repeat"
+          colorClass="bg-blue-500 dark:bg-blue-600"
+          onPress={onRepeat}
+        />
       )}
 
-      {/* IN_PROGRESS */}
-      {status === "IN_PROGRESS" && (
-        <>
-          {isStarted ? (
-            <ActionButton
-              icon={<Pause />}
-              buttonClasses={PRIMARY_BUTTON_CLASSES}
-              onPress={onStop}
-            />
-          ) : (
-            <ActionButton
-              icon={<Play />}
-              buttonClasses={PRIMARY_BUTTON_CLASSES}
-              onPress={onStart}
-            />
-          )}
-          <ActionButton
-            icon={<Edit3 />}
-            buttonClasses={INFO_BUTTON_CLASSES}
-            onPress={onEdit}
-          />
-          <ActionButton
-            icon={<Trash2 />}
-            buttonClasses={DESTRUCTIVE_BUTTON_CLASSES}
-            onPress={onDelete}
-          />
-        </>
-      )}
+      <ActionButton
+        icon={<Edit3 />}
+        label="Edit"
+        colorClass="bg-orange-500 dark:bg-orange-600" // Изменил на оранжевый
+        onPress={onEdit}
+      />
 
-      {/* COMPLETED */}
-      {status === "COMPLETED" && (
-        <>
-          <ActionButton
-            icon={<Edit3 />}
-            buttonClasses={INFO_BUTTON_CLASSES}
-            onPress={onEdit}
-          />
-          <ActionButton
-            icon={<RotateCcw />}
-            buttonClasses={PRIMARY_BUTTON_CLASSES}
-            onPress={onRepeat}
-          />
-          <ActionButton
-            icon={<Trash2 />}
-            buttonClasses={DESTRUCTIVE_BUTTON_CLASSES}
-            onPress={onDelete}
-          />
-        </>
-      )}
+      <ActionButton
+        icon={<Trash2 />}
+        label="Delete"
+        colorClass="bg-red-500 dark:bg-red-600"
+        onPress={onDelete}
+      />
     </View>
   );
 }

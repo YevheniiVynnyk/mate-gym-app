@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
-  FlatList,
   Keyboard,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { ChevronDown, X } from "lucide-react-native";
 import { MuscleGroup } from "@/types/trainingDay";
-import { trainingDayDbService } from "@/database";
+import { muscleGroupService } from "@/services/muscleGroupService";
 
 interface MuscleGroupSearchSelectProps {
   value?: MuscleGroup | null;
@@ -30,10 +30,8 @@ const MuscleGroupSearchSelect: React.FC<MuscleGroupSearchSelectProps> = ({
   useEffect(() => {
     const loadMuscleGroups = async () => {
       try {
-        // Загружаем из локальной БД
-        const dbGroups = await trainingDayDbService.getAllMuscleGroups();
-        // Преобразуем в формат MuscleGroup из types
-        const formattedGroups: MuscleGroup[] = dbGroups.map((mg) => ({
+        const muscleGroupDTOS = await muscleGroupService.getAll();
+        const formattedGroups: MuscleGroup[] = muscleGroupDTOS.map((mg) => ({
           id: mg.id,
           name: mg.name,
         }));
@@ -51,7 +49,7 @@ const MuscleGroupSearchSelect: React.FC<MuscleGroupSearchSelectProps> = ({
   }, [value]);
 
   const filteredGroups = groups.filter((g) =>
-    g.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    g.name && g.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const handleInputChange = (text: string) => {
@@ -66,7 +64,6 @@ const MuscleGroupSearchSelect: React.FC<MuscleGroupSearchSelectProps> = ({
     setSearchTerm("");
     Keyboard.dismiss();
 
-    // ✅ Важный момент: уведомляем родителя о выбранной группе
     onSelect && onSelect(group);
   };
 
@@ -107,20 +104,20 @@ const MuscleGroupSearchSelect: React.FC<MuscleGroupSearchSelectProps> = ({
           className="bg-white border border-gray-300 rounded-lg mt-1"
           style={{ maxHeight: 150 }}
         >
-          <FlatList
-            data={filteredGroups}
-            keyExtractor={(item) => item.id.toString()}
+          <ScrollView
             keyboardShouldPersistTaps="handled"
-            nestedScrollEnabled
-            renderItem={({ item }) => (
+            nestedScrollEnabled={true}
+          >
+            {filteredGroups.map((item) => (
               <TouchableOpacity
+                key={item.id}
                 className="p-3 border-b border-gray-200"
                 onPress={() => handleSelectGroup(item)}
               >
                 <Text className="font-bold">{item.name}</Text>
               </TouchableOpacity>
-            )}
-          />
+            ))}
+          </ScrollView>
         </View>
       )}
     </View>

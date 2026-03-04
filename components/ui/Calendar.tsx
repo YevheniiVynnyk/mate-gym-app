@@ -82,6 +82,11 @@ export const Calendar: React.FC<CalendarProps> = ({
           statusClass =
             "bg-blue-500/20 text-blue-600 dark:text-blue-400 ocean:bg-blue-600/20 ocean:text-blue-400";
           break;
+        case "CREATED":
+          // Синий фон с прозрачностью и синий текст
+          statusClass =
+            "bg-blue-500/20 text-blue-600 dark:text-blue-400 ocean:bg-blue-600/20 ocean:text-blue-400";
+          break;
         default:
           // Стандартный фон для запланированных
           statusClass = "bg-secondary text-foreground";

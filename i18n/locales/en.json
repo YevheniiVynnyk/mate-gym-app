@@ -2,124 +2,142 @@
   "nameApp": "Mate Gym",
   "selectLanguage": "Select Language",
   "welcome": {
-	"title": "Start right now!",
-	"subtitle": "Join thousands of satisfied users",
-	"captionText1": "Your personal",
-	"captionText2": "fitness trainer",
-	"captionText3": "in your pocket",
-	"captionText4": "Create workouts, track progress, and achieve goals together with professional trainers",
-	"FeaturesListBlock": {
-	  "FeatureTitle1": "Progress",
-	  "FeatureTitle2": "Trainers",
-	  "FeatureTitle3": "Convenient",
-	  "FeatureText1": "Track your results",
-	  "FeatureText2": "Help from pros",
-	  "FeatureText3": "Everything at hand"
-	},
-	"animatedView": {
-	  "title": "Start right now!",
-	  "text": "Join thousands of satisfied users",
-	  "authLoginText": "Login",
-	  "authRegisterText": "Register"
-	}
+    "title": "Start right now!",
+    "subtitle": "Join thousands of satisfied users",
+    "captionText1": "Your personal",
+    "captionText2": "fitness trainer",
+    "captionText3": "in your pocket",
+    "captionText4": "Create workouts, track progress, and achieve goals together with professional trainers",
+    "FeaturesListBlock": {
+      "FeatureTitle1": "Progress",
+      "FeatureTitle2": "Trainers",
+      "FeatureTitle3": "Convenient",
+      "FeatureText1": "Track your results",
+      "FeatureText2": "Help from pros",
+      "FeatureText3": "Everything at hand"
+    },
+    "animatedView": {
+      "title": "Start right now!",
+      "text": "Join thousands of satisfied users",
+      "authLoginText": "Login",
+      "authRegisterText": "Register"
+    }
+  },
+  "login": {
+    "captionText1": "Your personal",
+    "captionText2": "fitness trainer",
+    "captionText3": "in your pocket",
+    "captionText4": "Create workouts, track progress, and achieve goals together with professional trainers",
+    "FeaturesListBlock": {
+      "FeatureTitle1": "Progress",
+      "FeatureTitle2": "Trainers",
+      "FeatureTitle3": "Convenient",
+      "FeatureText1": "Track your results",
+      "FeatureText2": "Help from pros",
+      "FeatureText3": "Everything at hand"
+    },
+    "animatedView": {
+      "authLoginText": "Login",
+      "authRegisterText": "Register"
+    }
   },
   "LoginForm": {
-	"loginText": "Login",
-	"passwordText": "Password",
-	"emailText": "Email",
-	"authButtonText": "Sign In",
-	"registerButtonText": "Create Account",
-	"forgotPassword": "Forgot password ?"
+    "loginText": "Login",
+    "passwordText": "Password",
+    "emailText": "Email",
+    "authButtonText": "Sign In",
+    "registerButtonText": "Create Account",
+    "forgotPassword": "Forgot password ?"
   },
   "UserInfo": {
-	"header": "Personal Information",
-	"save": "Save",
-	"edit": "Edit",
-	"placeholder": {
-	  "firstName": "First Name",
-	  "lastName": "Last Name",
-	  "email": "Email",
-	  "login": "Login",
-	  "phone": "Phone",
-	  "age": "Age"
-	},
-	"birthday": "Date of Birth",
-	"goals": "Goals"
+    "header": "Personal Information",
+    "save": "Save",
+    "edit": "Edit",
+    "placeholder": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "login": "Login",
+      "phone": "Phone",
+      "age": "Age"
+    },
+    "birthday": "Date of Birth",
+    "goals": "Goals"
   },
   "hello": "Hello",
   "common": {
-	"back": "Back"
+    "back": "Back"
   },
-  "Profile":{
-	"notAuthorized": "Not Authorized",
-	"loginPrompt": "Sign in to your account to access your profile and settings.",
-	"loginButton": "Login"
+  "Profile": {
+    "notAuthorized": "Not Authorized",
+    "loginPrompt": "Sign in to your account to access your profile and settings.",
+    "loginButton": "Login"
   },
   "SettingsSection": {
-	"title": "Settings and Actions",
-	"logout": "Logout"
+    "title": "Settings and Actions",
+    "logout": "Logout"
   },
   "BottomNavigation": {
-	"navItems": {
-	  "nav1": "Home",
-	  "nav2": "Workouts",
-	  "nav3": "Progress",
-	  "nav4": "Plans"
-	}
+    "navItems": {
+      "nav1": "Home",
+      "nav2": "Workouts",
+      "nav3": "Progress",
+      "nav4": "Profile"
+    }
   },
   "Dashboard": {
-	"welcomeText": "Welcome, ",
-	"welcomeMessage": "Ready for a new workout? View your progress and plan your next session.",
-	"statisticBlock": {
-	  "statisticTitle": "Statistics",
-	  "subTitle1": "Total Workouts",
-	  "subTitle2": "Completed",
-	  "subTitle2Caption": "% of total",
-	  "subTitle3": "Total Time",
-	  "subTitle3Caption": "Average "
-	},
-	"quickActionsBlock": {
-	  "quickActionsTite": "Quick Actions",
-	  "actionCardTitle1": "New",
-	  "actionCardTitle2": "My Workouts",
-	  "actionCardTitle3": "Progress",
-	  "actionCardTitle4": "Profile"
-	},
-	"lastTrainingsBlock": {
-	  "lastTrainingsBlockTtle": "Last Workouts",
-	  "captionZeroTraining": "You don't have any workouts yet",
-	  "captionCrreateTraining": "Create your first workout"
-	}
+    "welcomeText": "Welcome, ",
+    "welcomeMessage": "Ready for a new workout? View your progress and plan your next session.",
+    "statisticBlock": {
+      "statisticTitle": "Statistics",
+      "subTitle1": "Total Workouts",
+      "subTitle2": "Completed",
+      "subTitle2Caption": "% of total",
+      "subTitle3": "Total Time",
+      "subTitle3Caption": "Average "
+    },
+    "quickActionsBlock": {
+      "quickActionsTite": "Quick Actions",
+      "actionCardTitle1": "New",
+      "actionCardTitle2": "My Workouts",
+      "actionCardTitle3": "Progress",
+      "actionCardTitle4": "Profile"
+    },
+    "lastTrainingsBlock": {
+      "lastTrainingsBlockTtle": "Last Workouts",
+      "captionZeroTraining": "You don't have any workouts yet",
+      "captionCrreateTraining": "Create your first workout"
+    }
   },
   "loadingText": "Loading...",
   "underDevelopment": {
-	"title": "Feature under development",
-	"description": "This section will be available in future updates."
+    "title": "Feature under development",
+    "description": "This section will be available in future updates."
   },
   "resetPassword": {
-	"title": "Reset Password",
-	"email": "Email",
-	"enterEmail": "Please enter your email",
-	"send": "Send",
-	"sending": "Sending...",
-	"emailSentTitle": "Email Sent",
-	"emailSentMessage": "If the email exists, a reset link has been sent",
-	"errorTitle": "Error",
-	"errorMessage": "An error occurred while sending the email",
-	"subtitle": "Enter the email you used during registration"
+    "title": "Reset Password",
+    "email": "Email",
+    "enterEmail": "Please enter your email",
+    "send": "Send",
+    "sending": "Sending...",
+    "emailSentTitle": "Email Sent",
+    "emailSentMessage": "If the email exists, a reset link has been sent",
+    "errorTitle": "Error",
+    "errorMessage": "An error occurred while sending the email",
+    "subtitle": "Enter the email you used during registration"
   },
   "resetPasswordNew": {
-	"title": "Set New Password",
-	"newPassword": "New Password",
-	"confirmPassword": "Confirm Password",
-	"enterNewPassword": "Please enter new password",
-	"enterConfirmPassword": "Please confirm password",
-	"mismatch": "Passwords do not match",
-	"submit": "Set Password",
-	"submitting": "Submitting...",
-	"successTitle": "Password Updated",
-	"successMessage": "Your password has been successfully updated",
-	"errorTitle": "Error",
-	"errorMessage": "An error occurred while updating the password"
+    "title": "Set New Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "enterNewPassword": "Please enter new password",
+    "enterConfirmPassword": "Please confirm password",
+    "mismatch": "Passwords do not match",
+    "submit": "Set Password",
+    "submitting": "Submitting...",
+    "successTitle": "Password Updated",
+    "successMessage": "Your password has been successfully updated",
+    "errorTitle": "Error",
+    "errorMessage": "An error occurred while updating the password"
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Pressable, ScrollView, Text, View } from "react-native";
 import { X } from "lucide-react-native";
-import { cn } from "@/lib/utils"; // если нужно, можно заменить на tailwind-стили напрямую
+import { cn } from "@/utils/utils"; // если нужно, можно заменить на tailwind-стили напрямую
 
 type DialogProps = {
   open: boolean;

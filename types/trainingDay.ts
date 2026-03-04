@@ -22,7 +22,7 @@ export interface Training {
   id: number;
   exercise: Exercise;
   trainingDetails: TrainingDetail[];
-  note: string;
+  note?: string;
 }
 
 export interface TrainingDay {
@@ -31,7 +31,7 @@ export interface TrainingDay {
   trainings: Training[];
   durationMinutes?: number;
   date: Date;
-  status: "CREATED" | "IN_PROGRESS" | "COMPLETED";
+  status: "PLANNED" | "COMPLETED";
   clientId?: string;
   trainerId?: string;
   isTemplate?: boolean;

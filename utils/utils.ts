@@ -1,13 +1,12 @@
 import { Training, TrainingDetail } from "@/types/trainingDay";
 
-let tempIdCounter = Date.now();
-
-export const generateTempId = () => tempIdCounter--;
+// Генерируем временный ID для новых упражнений
+const generateTempId = () => -Date.now() - Math.floor(Math.random() * 1000);
 
 export const createEmptyTraining = (): Training => ({
-  id: generateTempId(),
-  exercise: { id: null, name: "", muscleGroup: { id: null, name: "" } },
-  trainingDetails: [{ id: null, set: 1, weight: 0, repetition: 0 }],
+  id: generateTempId(), // Временный уникальный ID
+  exercise: { id: 0, name: "", muscleGroup: { id: 0, name: "" } },
+  trainingDetails: [{ id: generateTempId(), set: 1, weight: 0, repetition: 0 }],
   note: "",
 });
 
@@ -57,8 +56,8 @@ export const updateSetsCount = (
       for (let i = currentSets.length; i < newSets; i++) {
         updatedSets.push({
           ...lastSet,
-          set: i + 1, // новый номер подхода
-          id: undefined, // или генерируй временный уникальный id
+          set: i + 1,
+          id: generateTempId(), // Временный ID для новых подходов
         });
       }
     } else if (newSets < currentSets.length) {
@@ -77,7 +76,7 @@ export const calculateTotals = (details: TrainingDetail[]) => {
   );
   return { totalReps, totalWeight };
 };
-// Helper function to get exercise display info
+
 export const getExerciseDisplayInfo = (exercise: any) => {
   if (exercise.setData && exercise.setData.length > 0) {
     const firstSet = exercise.setData[0];
@@ -93,6 +92,7 @@ export const getExerciseDisplayInfo = (exercise: any) => {
     weight: exercise.weight || 0,
   };
 };
+
 export const formatDuration = (minutes: number) => {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;

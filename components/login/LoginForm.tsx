@@ -75,20 +75,6 @@ const LoginForm: React.FC<Props> = ({
           </Text>
         )}
       </TouchableOpacity>
-
-      {/* Разделитель */}
-      <View className="flex-row items-center my-4">
-        <View className="flex-1 h-px bg-gray-300 dark:bg-gray-600 ocean:bg-blue-600" />
-        <Text className="mx-3 text-sm text-gray-500 dark:text-gray-400 ocean:text-ocean-foreground/70">
-          или
-        </Text>
-        <View className="flex-1 h-px bg-gray-300 dark:bg-gray-600 ocean:bg-blue-600" />
-      </View>
-
-      {/* Кнопка Google Sign-In */}
-      {onGoogleLogin && (
-        <GoogleSignInButton onPress={onGoogleLogin} isLoading={isLoading} />
-      )}
     </View>
   );
 };

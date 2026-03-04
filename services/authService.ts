@@ -1,4 +1,5 @@
 import { api } from "./api";
+import { paths } from "@/config/openapi";
 import { ENDPOINTS } from "@/config/endpoints";
 
 export interface SignInRequest {
@@ -58,8 +59,11 @@ export const authService = {
   },
 
   // Обновление токена
-  async refresh(token: Token): Promise<Token> {
-    const response = await api.post<Token>(ENDPOINTS.auth.refresh, token);
+  async refresh(refreshToken: string): Promise<Token> {
+    const response = await api.post<Token>(
+      ENDPOINTS.auth.refresh,
+      refreshToken,
+    );
     return response.data;
   },
 
@@ -77,6 +81,12 @@ export const authService = {
       name: data.name,
       picture: data.picture,
     });
+    return response.data;
+  },
+
+  // Гостевой вход
+  async guestLogin(): Promise<Token> {
+    const response = await api.post<Token>(ENDPOINTS.auth.guest);
     return response.data;
   },
 

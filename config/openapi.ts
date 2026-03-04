@@ -27,6 +27,7 @@ export interface paths {
   "/auth/signup": any;
   "/auth/signin": any;
   "/auth/refresh": any;
+  "/auth/guest": any;
   "/auth/password/reset": any;
   "/auth/password/forgot": any;
   "/users/{id}": any;

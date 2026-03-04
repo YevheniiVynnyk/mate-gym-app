@@ -53,6 +53,7 @@ export const ENDPOINTS = {
     passwordReset: "/auth/password/reset" as Endpoint<"/auth/password/reset">,
     passwordForgot:
       "/auth/password/forgot" as Endpoint<"/auth/password/forgot">,
+    guest: "/auth/guest" as Endpoint<"/auth/guest">, // Добавлено
   },
   tos: {
     root: "/tos" as Endpoint<"/tos">,
@@ -83,7 +84,7 @@ export const ENDPOINTS = {
   exercises: {
     byId: "/exercises/{id}" as Endpoint<"/exercises/{id}">,
     byMuscleGroup:
-      "/exercises/muscle-groups/{muscleGroupId}" as Endpoint<"/exercises/muscle-groups/{muscleGroupId}">,
+      "/exercises/{muscleGroupId}" as Endpoint<"/exercises/muscle-groups/{muscleGroupId}">,
     bulk: "/exercises/bulk" as Endpoint<"/exercises/bulk">,
   },
   chart: {

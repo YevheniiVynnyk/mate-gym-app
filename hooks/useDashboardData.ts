@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { trainingDayService } from "@/services/trainingDayService";
 import { QuickStatDTO, statisticsService } from "@/services/statisticsService";
 import { TrainingDay } from "@/types/trainingDay";
+import { trainingDayService } from "@/services/trainingDayService";
 
 export function useDashboardData() {
   const [trainingDays, setTrainingDays] = useState<TrainingDay[]>([]);
-  const [quickStats, setQuickStats] = useState<QuickStatDTO | null>(null);
+  const [quickStats, setQuickStats] = useState<QuickStatDTO | undefined>(
+    undefined,
+  );
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

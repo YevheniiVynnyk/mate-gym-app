@@ -4,54 +4,117 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README_GOOGLE_AUTH.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/auth/BiometricPrompt.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/profile/BiometricSelector.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/welcome/GoogleSignInButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/endpoints.ts" afterDir="false" />
+    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="change url endpoints">
+      <change afterPath="$PROJECT_DIR$/app/trainingDay/[id]/edit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/trainingDay/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/DashboardHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/DashboardLastTrainings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/DashboardQuickActions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/DashboardStats.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/profile/GuestProfile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/CreateTrainingButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingContent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/trainingDay/TrainingTabs.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config/env.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/openapi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/generate-paths.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/replacePathsAuto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/biometricService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/googleAuthService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/muscleGroupService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/syncService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/logger.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/networkStatus.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/analytics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/analytics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developerSupport.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reset-password-request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/reset-password-request.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/reset-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/trainingDay/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/termsRequiredPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/[id]/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/new.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/trainingDayView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingPlans.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ads/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ads/Banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/analytics/Analytics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/analytics/Analytics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/StatCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/StatCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/AppLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/BottomNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/UnderDevelopment.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/SettingsSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/QuickStatsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/QuickStatsSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/ExerciseSearchSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/ExerciseSearchSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/MuscleGroupSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/MuscleGroupSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/SetInputs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/SetInputs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingActions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCalendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingExerciseCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingStats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/textarea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/textarea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/AuthTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/AuthTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/CustomInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/CustomInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/Feature.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/Feature.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/FeaturesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/FeaturesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/GoogleSignInButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/GoogleSignInButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/LanguageDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/LanguageDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/TermsDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/TermsDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/welcome/WelcomeOnboarding.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login/WelcomeOnboarding.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/endpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/endpoints.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/openapi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/openapi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/data-source.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/entities/Exercise.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/entities/MuscleGroup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/entities/SyncQueue.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/entities/Training.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/entities/TrainingDay.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/entities/TrainingDetail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/services/exerciseDbService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/services/initService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/services/muscleGroupDbService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/services/syncQueueService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/services/syncService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/services/trainingDayDbService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useDashboardData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useDashboardData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useNavigation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProfile.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useTrainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDay.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useWelcome.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useWelcome.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDayDb.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDayForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useTrainingDays.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useTrainingDays.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useWelcome.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useLogin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useWorkoutReminders.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useWorkoutReminders.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/locales/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/ru.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/locales/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/locales/uk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/analyticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/analyticsService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/authService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/authService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/bodyService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/bodyService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/biometricService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/biometricService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/exerciseService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/exerciseService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/settingService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/settingService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/statisticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/statisticsService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/tosService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/tosService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/googleAuthService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/imageService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/imageService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapper/trainingDayMapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapper/trainingDayMapper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapper/userMapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapper/userMapper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/trainingDayService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/trainingDayService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/userService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/trainingDay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/trainingDay.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +125,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -82,6 +147,12 @@
     &quot;accountId&quot;: &quot;de15696b-1b72-435e-951b-c2d0e5760116&quot;
   }
 }</component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -99,11 +170,17 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20260205_0001&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.20.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.19.31&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vinni/Project/android/mate-gym-app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vinni/Project/android/mate-gym-app/assets&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -112,7 +189,9 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start -- -с --dev-client.executor&quot;: &quot;Run&quot;,
     &quot;npm.start --dev-client.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start --с --dev-client.executor&quot;: &quot;Run&quot;,
     &quot;npm.start -c.executor&quot;: &quot;Run&quot;,
     &quot;npm.start -с --dev-client.executor&quot;: &quot;Run&quot;,
     &quot;npm.start -с.executor&quot;: &quot;Run&quot;,
@@ -120,22 +199,27 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\vinni\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\assets" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\android\app" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\android\app\src" />
       <recent name="E:\Project\android\mate-gym-app\android\app" />
-      <recent name="E:\Project\android\mate-gym-app\android" />
-      <recent name="E:\Project\android\mate-gym-app\assets\images" />
-      <recent name="E:\Project\android\mate-gym-app\assets\fonts" />
-      <recent name="E:\Project\android\mate-gym-app\components\ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\utils" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\config" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\android\app" />
       <recent name="E:\Project\android\mate-gym-app\app" />
-      <recent name="E:\Project\android\mate-gym-app\components\layout" />
-      <recent name="E:\Project\android\mate-gym-app\hooks" />
-      <recent name="E:\Project\android\mate-gym-app\components\welcome" />
-      <recent name="E:\Project\android\mate-gym-app\assets\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -148,6 +232,9 @@
       <arguments value="-с --dev-client" />
       <node-interpreter value="project" />
       <envs />
+      <EXTENSION ID="com.intellij.javascript.debugger.execution.StartBrowserRunConfigurationExtension">
+        <browser with-js-debugger="true" />
+      </EXTENSION>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -159,7 +246,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -226,7 +313,56 @@
       <workItem from="1766494530304" duration="456000" />
       <workItem from="1766691810090" duration="80000" />
       <workItem from="1766691922548" duration="9774000" />
-      <workItem from="1766737534238" duration="6157000" />
+      <workItem from="1766737534238" duration="6610000" />
+      <workItem from="1766788605356" duration="2392000" />
+      <workItem from="1766834920282" duration="1362000" />
+      <workItem from="1767268297650" duration="3500000" />
+      <workItem from="1767277312607" duration="2664000" />
+      <workItem from="1767301266480" duration="512000" />
+      <workItem from="1768636757840" duration="408000" />
+      <workItem from="1768637185035" duration="927000" />
+      <workItem from="1768834844699" duration="331000" />
+      <workItem from="1769005042913" duration="389000" />
+      <workItem from="1769035586011" duration="168000" />
+      <workItem from="1769520702234" duration="325000" />
+      <workItem from="1769521352607" duration="3369000" />
+      <workItem from="1769591081603" duration="11679000" />
+      <workItem from="1769978960170" duration="3173000" />
+      <workItem from="1770108231824" duration="4817000" />
+      <workItem from="1770120077829" duration="8988000" />
+      <workItem from="1770281757395" duration="1024000" />
+      <workItem from="1770286776982" duration="73000" />
+      <workItem from="1770286868409" duration="1633000" />
+      <workItem from="1770308929361" duration="1485000" />
+      <workItem from="1770322180488" duration="727000" />
+      <workItem from="1770381347376" duration="4867000" />
+      <workItem from="1770397929257" duration="655000" />
+      <workItem from="1770486058224" duration="644000" />
+      <workItem from="1770561002093" duration="1379000" />
+      <workItem from="1770566528153" duration="3413000" />
+      <workItem from="1770571198908" duration="1272000" />
+      <workItem from="1771008964298" duration="192000" />
+      <workItem from="1771153683835" duration="849000" />
+      <workItem from="1771314816665" duration="1818000" />
+      <workItem from="1771516487596" duration="2465000" />
+      <workItem from="1771521577515" duration="58000" />
+      <workItem from="1771521664610" duration="2141000" />
+      <workItem from="1771604324730" duration="1512000" />
+      <workItem from="1771687077461" duration="33000" />
+      <workItem from="1771830971141" duration="6975000" />
+      <workItem from="1771859136148" duration="3570000" />
+      <workItem from="1772039155863" duration="5736000" />
+      <workItem from="1772108832607" duration="4737000" />
+      <workItem from="1772187809162" duration="5000" />
+      <workItem from="1772188056266" duration="66000" />
+      <workItem from="1772188159403" duration="272000" />
+      <workItem from="1772360796908" duration="6369000" />
+      <workItem from="1772369508236" duration="2608000" />
+      <workItem from="1772388159767" duration="2095000" />
+      <workItem from="1772455248141" duration="10729000" />
+      <workItem from="1772486896288" duration="2122000" />
+      <workItem from="1772568321164" duration="38000" />
+      <workItem from="1772603354012" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -332,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766325519245</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added new field MuscleGroup.&#10;Bug-fix fields for Sets&#10;Added copy value for Sets">
+      <option name="closed" value="true" />
+      <created>1766752662136</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1766752662136</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,15 +516,14 @@
     <MESSAGE value="refactor: return stable version" />
     <MESSAGE value="Added logic for forgot password" />
     <MESSAGE value="refactor LanguageDropdown and added ads" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor LanguageDropdown and added ads" />
+    <MESSAGE value="Added new field MuscleGroup.&#10;Bug-fix fields for Sets&#10;Added copy value for Sets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new field MuscleGroup.&#10;Bug-fix fields for Sets&#10;Added copy value for Sets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/services/api.ts</url>
-          <line>8</line>
-          <properties lambdaOrdinal="-1" />
+          <url>file://$PROJECT_DIR$/database/services/initService.ts</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

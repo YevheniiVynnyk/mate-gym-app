@@ -1,5 +1,6 @@
 export interface User {
   id: number;
+  serverId?: number;
   email: string;
   login: string;
   password: string;
@@ -8,7 +9,7 @@ export interface User {
   age: number;
   birthday: string;
   phoneNumber: string;
-  role: "CLIENT" | "TRAINER";
+  role: "CLIENT" | "TRAINER" | "GUEST"; // Добавил GUEST
   subscription: "free" | "pro_client" | "pro_trainer";
   createdAt: Date;
   trainerCode?: string;
@@ -20,6 +21,7 @@ export interface User {
     experience?: string;
     completedAt?: Date;
   };
+  isGuest: boolean; // Оставляем для удобства, но будем вычислять
 }
 
 export interface Client extends User {

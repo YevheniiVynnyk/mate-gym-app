@@ -24,11 +24,6 @@ const SetInputs: React.FC<SetInputsProps> = ({
   const [weightInputs, setWeightInputs] = useState<string[]>(
     setData.map((s) => (s.weight != null ? s.weight.toString() : "")),
   );
-  console.log(sets);
-  console.log(setData);
-  console.log(onSetDataChange);
-  console.log(onSetsChange);
-
   const handleSetsChange = (newSetsCount: number) => {
     if (newSetsCount >= 1 && newSetsCount <= 10 && onSetsChange) {
       console.log("Sets", newSetsCount);

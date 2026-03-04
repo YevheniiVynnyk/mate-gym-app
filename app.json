@@ -2,7 +2,7 @@
   "expo": {
 	"name": "Mate Gym",
 	"slug": "mate-gym-app",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"orientation": "default",
 	"icon": "./assets/images/icon.png",
 	"scheme": "mategymapp",
@@ -57,8 +57,8 @@
 	  [
 		"react-native-google-mobile-ads",
 		{
-		  "androidAppId": "ca-app-pub-3240569896257496~1234567890",
-		  "iosAppId": "ca-app-pub-3240569896257496~0987654321"
+		  "androidAppId": "ca-app-pub-3240569896257496~6910143109",
+		  "iosAppId": "ca-app-pub-3240569896257496~6910143109"
 		}
 	  ]
 	],

@@ -29,25 +29,6 @@ export default function Header() {
           {t("nameApp")}
         </Text>
       </View>
-
-      {/* Основной заголовок с акцентом */}
-      <Text
-        className={`text-center text-2xl font-bold leading-tight font-sans ${textFg}`}
-      >
-        {t("welcome.captionText1") + " "}
-        {/* Адаптивный акцентный цвет текста */}
-        <Text className={`font-sans ${primaryText}`}>
-          {t("welcome.captionText2") + " "}
-        </Text>{" "}
-        {t("welcome.captionText3") + " "}
-      </Text>
-
-      {/* Описание */}
-      <Text
-        className={`text-center mt-3 px-3 leading-relaxed font-sans ${textMutedFg}`}
-      >
-        {t("welcome.captionText4") + " "}
-      </Text>
     </View>
   );
 }

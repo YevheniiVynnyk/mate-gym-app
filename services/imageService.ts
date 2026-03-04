@@ -1,4 +1,5 @@
 import { api } from "./api";
+import { ENDPOINTS } from "@/config/endpoints";
 //import { User } from "@/types/user";
 
 export const imageService = {

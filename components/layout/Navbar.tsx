@@ -92,23 +92,23 @@ const Navbar = () => {
       </TouchableOpacity>
 
       <View className="flex-row items-center justify-center">
-        <TouchableOpacity
-          onPress={() => router.toDeveloperSupport}
-          className="mx-2"
-        >
-          <FontAwesome5 name="heart" size={22} color={heartColor} />
-        </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+        {/*  onPress={() => router.toDeveloperSupport}*/}
+        {/*  className="mx-2"*/}
+        {/*>*/}
+        {/*  <FontAwesome5 name="heart" size={22} color={heartColor} />*/}
+        {/*</TouchableOpacity>*/}
 
-        <TouchableOpacity className="mx-2">
-          <Feather name="bell" size={22} color={bellColor} />
-        </TouchableOpacity>
+        {/*<TouchableOpacity className="mx-2">*/}
+        {/*  <Feather name="bell" size={22} color={bellColor} />*/}
+        {/*</TouchableOpacity>*/}
 
-        <TouchableOpacity onPress={() => router.toProfile()} className="mx-2">
-          <Image
-            source={{ uri: avatarUri }}
-            className="w-14 h-14 rounded-full "
-          />
-        </TouchableOpacity>
+        {/*<TouchableOpacity onPress={() => router.toProfile()} className="mx-2">*/}
+        {/*  <Image*/}
+        {/*    source={{ uri: avatarUri }}*/}
+        {/*    className="w-14 h-14 rounded-full "*/}
+        {/*  />*/}
+        {/*</TouchableOpacity>*/}
       </View>
     </View>
   );

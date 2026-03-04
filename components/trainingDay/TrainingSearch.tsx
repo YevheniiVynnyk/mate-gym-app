@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
-import { Filter, Search } from "lucide-react-native";
+import { StyleSheet, TextInput, View } from "react-native";
+import { Search } from "lucide-react-native";
 
 export const TrainingSearch = ({ searchTerm, setSearchTerm }) => (
   <View style={styles.container}>
@@ -11,9 +11,9 @@ export const TrainingSearch = ({ searchTerm, setSearchTerm }) => (
       value={searchTerm}
       onChangeText={setSearchTerm}
     />
-    <TouchableOpacity>
-      <Filter size={20} />
-    </TouchableOpacity>
+    {/*<TouchableOpacity>*/}
+    {/*  <Filter size={20} />*/}
+    {/*</TouchableOpacity>*/}
   </View>
 );
 
