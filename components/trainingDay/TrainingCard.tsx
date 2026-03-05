@@ -103,8 +103,8 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
           {/* Exercises List */}
           {trainingDay.trainings.length > 0 && (
             <View className="bg-secondary/30 rounded-xl p-2">
-              {trainingDay.trainings.map((t, i) => (
-                <View key={t.id} className="mb-2 last:mb-0">
+              {trainingDay.trainings.map((training, i) => (
+                <View key={training.id} className="mb-2 last:mb-0">
                   <View className="flex-row items-center justify-between">
                     <View className="flex-row items-center flex-1 mr-2">
                       <View className="w-1.5 h-1.5 rounded-full bg-primary/60 mr-2" />
@@ -112,17 +112,17 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
                         className="text-md font-medium text-foreground/90 dark:text-gray-200"
                         numberOfLines={1}
                       >
-                        {t.exercise.name}
+                        {training.exercise.name}
                       </Text>
                     </View>
                     <Text className="text-md text-muted-foreground font-medium">
-                      {t.trainingDetails.length} {t("trainingCard.sets")}
+                      {training.trainingDetails.length} {t("trainingCard.sets")}
                     </Text>
                   </View>
 
                   {/* Sets details */}
                   <View className="flex-row flex-wrap ml-3.5 mt-0.5">
-                    {t.trainingDetails.map((d, j) => (
+                    {training.trainingDetails.map((d, j) => (
                       <View
                         key={j}
                         className="mr-2 mb-1 px-2 py-0.5 bg-gray-200 dark:bg-gray-700 rounded-md"

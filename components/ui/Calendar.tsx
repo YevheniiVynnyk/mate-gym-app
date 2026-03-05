@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import dayjs from "dayjs";
 import { ChevronLeft, ChevronRight } from "lucide-react-native";
-// ✅ Импортируем cn для условной стилизации
-import { cn } from "@/components/ui/Card";
+
+// Утилита для условного объединения классов (копия из Card.tsx для избежания проблем с импортом)
+const cn = (...classes: (string | boolean | undefined | null)[]): string => {
+  return classes.filter(Boolean).join(" ");
+};
 
 export type DayStatus = "PLANNED" | "COMPLETED";
 

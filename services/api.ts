@@ -3,8 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Token } from "@/services/authService";
 import { networkStatus } from "@/utils/networkStatus";
 
-// const API_URL = "https://mate-gym-api.onrender.com/api";
-const API_URL = "http://192.168.0.103:8080/api";
+const API_URL = "https://mate-gym-api.onrender.com/api";
+// const API_URL = "http://192.168.0.103:8080/api";
 export const api = axios.create({
   baseURL: API_URL,
   headers: {
