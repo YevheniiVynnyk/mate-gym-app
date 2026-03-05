@@ -4,6 +4,7 @@ import { Calendar, Clock, Dumbbell } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { TrainingDay } from "@/types/trainingDay";
 import { Card, cn } from "@/components/ui/Card";
+import { useTranslation } from "react-i18next";
 
 type TrainingCardProps = {
   trainingDay: TrainingDay;
@@ -11,6 +12,7 @@ type TrainingCardProps = {
 
 const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handlePress = useCallback(() => {
     router.push(`/trainingDay/${trainingDay.id}`);
@@ -22,7 +24,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
     if (!minutes) return "—";
     const h = Math.floor(minutes / 60);
     const m = minutes % 60;
-    return h > 0 ? `${h}h ${m}m` : `${m}m`;
+    return h > 0 ? `${h}${t("units.h")} ${m}${t("units.m")}` : `${m}${t("units.m")}`;
   };
 
   const formatDate = (date: string | Date) =>
@@ -77,7 +79,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
                     : "text-yellow-700 dark:text-yellow-400",
                 )}
               >
-                {isCompleted ? "Done" : "Planned"}
+                {isCompleted ? t("status.done") : t("status.planned")}
               </Text>
             </View>
           </View>
@@ -85,15 +87,15 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
           {/* Stats Row */}
           <View className="flex-row justify-between mb-4 space-x-4">
             <View className="flex-row items-center bg-secondary/50 px-2 py-1 rounded-md">
-              {/*  <Clock size={14} className="text-primary mr-1.5" />*/}
-              {/*  <Text className="text-xs font-medium text-foreground dark:text-gray-200">*/}
-              {/*    {formatDuration(trainingDay.durationMinutes)}*/}
-              {/*  </Text>*/}
+              <Clock size={14} className="text-primary mr-1.5" />
+              <Text className="text-xs font-medium text-foreground dark:text-gray-200">
+                {formatDuration(trainingDay.durationMinutes)}
+              </Text>
             </View>
             <View className="flex-row items-center bg-secondary/50 px-2 py-1 rounded-md">
               <Dumbbell size={14} className="text-blue-500 mr-1.5" />
               <Text className="text-xs font-medium text-foreground dark:text-gray-200">
-                {trainingDay.trainings.length} exercises
+                {trainingDay.trainings.length} {t("trainingCard.exercises")}
               </Text>
             </View>
           </View>
@@ -114,7 +116,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
                       </Text>
                     </View>
                     <Text className="text-md text-muted-foreground font-medium">
-                      {t.trainingDetails.length} sets
+                      {t.trainingDetails.length} {t("trainingCard.sets")}
                     </Text>
                   </View>
 
@@ -126,7 +128,7 @@ const TrainingCard: React.FC<TrainingCardProps> = memo(({ trainingDay }) => {
                         className="mr-2 mb-1 px-2 py-0.5 bg-gray-200 dark:bg-gray-700 rounded-md"
                       >
                         <Text className="text-sm text-gray-700 dark:text-gray-300">
-                          {d.repetition} x {d.weight}kg
+                          {d.repetition} x {d.weight}{t("units.kg")}
                         </Text>
                       </View>
                     ))}

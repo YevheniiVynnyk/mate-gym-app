@@ -10,10 +10,10 @@ import { api } from "@/services/api";
 const CONTEXT = "AuthContext";
 
 export enum UserSessionState {
-  UNKNOWN, // Инициализация
-  UNAUTHENTICATED, // Нет токена и не гость (нужен вход)
-  GUEST, // Вошел как гость
-  AUTHENTICATED, // Вошел как пользователь
+  UNKNOWN,        // Инициализация
+  UNAUTHENTICATED,// Нет токена и не гость (нужен вход)
+  GUEST,          // Вошел как гость
+  AUTHENTICATED,  // Вошел как пользователь
 }
 
 interface AuthContextType {
@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       logInfo("Starting ONLINE authentication initialization...", CONTEXT);
       try {
         const tokenRaw = await AsyncStorage.getItem("token");
-        console.log(tokenRaw);
+
         if (!tokenRaw) {
           logInfo("No token found. Setting state to UNAUTHENTICATED.", CONTEXT);
           setSessionState(UserSessionState.UNAUTHENTICATED);
@@ -56,30 +56,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
         logInfo("Token found, validating with server...", CONTEXT);
         const token = JSON.parse(tokenRaw);
-        api.defaults.headers.common["Authorization"] =
-          `Bearer ${token.accessToken}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${token.accessToken}`;
 
         const userData = await userService.getMe();
         const mappedUser = fromUserDTO(userData);
         setUser(mappedUser);
-
-        // Проверка роли вместо флага isGuest
+        
         if (mappedUser.role === "GUEST") {
-          setSessionState(UserSessionState.GUEST);
+             setSessionState(UserSessionState.GUEST);
         } else {
-          setSessionState(UserSessionState.AUTHENTICATED);
+             setSessionState(UserSessionState.AUTHENTICATED);
         }
-
-        logInfo(
-          `User ${mappedUser.login} authenticated successfully. Role: ${mappedUser.role}`,
-          CONTEXT,
-        );
+        
+        logInfo(`User ${mappedUser.login} authenticated successfully. Role: ${mappedUser.role}`, CONTEXT);
       } catch (e) {
         logError(e, `${CONTEXT}/initAuth`);
-        logWarn(
-          "Token validation failed. Resetting to UNAUTHENTICATED.",
-          CONTEXT,
-        );
+        logWarn("Token validation failed. Resetting to UNAUTHENTICATED.", CONTEXT);
         await AsyncStorage.removeItem("token");
         setSessionState(UserSessionState.UNAUTHENTICATED);
       } finally {
@@ -94,31 +86,43 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const handleAuthSuccess = async (token: Token) => {
     logInfo("Handling successful authentication...", CONTEXT);
     await AsyncStorage.setItem("token", JSON.stringify(token));
-    api.defaults.headers.common["Authorization"] =
-      `Bearer ${token.accessToken}`;
+    api.defaults.headers.common["Authorization"] = `Bearer ${token.accessToken}`;
 
     const userData = await userService.getMe();
     const mappedUser = fromUserDTO(userData);
     setUser(mappedUser);
-
-    // Проверка роли вместо флага isGuest
+    
     if (mappedUser.role === "GUEST") {
-      setSessionState(UserSessionState.GUEST);
+         setSessionState(UserSessionState.GUEST);
     } else {
-      setSessionState(UserSessionState.AUTHENTICATED);
+         setSessionState(UserSessionState.AUTHENTICATED);
     }
+    
+    logInfo(`Authentication handling complete. Role: ${mappedUser.role}`, CONTEXT);
+  };
 
-    logInfo(
-      `Authentication handling complete. Role: ${mappedUser.role}`,
-      CONTEXT,
-    );
+  // Хелпер для получения токена гостя
+  const getGuestToken = async (): Promise<string | undefined> => {
+    if (sessionState === UserSessionState.GUEST) {
+      const tokenRaw = await AsyncStorage.getItem("token");
+      if (tokenRaw) {
+        const token = JSON.parse(tokenRaw);
+        return token.accessToken;
+      }
+    }
+    return undefined;
   };
 
   const login = async (login, password) => {
     logInfo(`Attempting to log in user: ${login}`, CONTEXT);
     setIsLoading(true);
     try {
-      const tokenData = await authService.signIn({ login, password });
+      const guestToken = await getGuestToken();
+      if (guestToken) {
+          logInfo("Attaching guest token to login request", CONTEXT);
+      }
+      
+      const tokenData = await authService.signIn({ login, password }, guestToken);
       await handleAuthSuccess(tokenData);
     } catch (e) {
       logError(e, `${CONTEXT}/login`);
@@ -132,8 +136,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     logInfo(`Attempting to register new user: ${login}`, CONTEXT);
     setIsLoading(true);
     try {
-      const token = await authService.signUp({ email, login, password, role });
-      await handleAuthSuccess(token);
+      const guestToken = await getGuestToken();
+      if (guestToken) {
+          logInfo("Attaching guest token to registration request", CONTEXT);
+      }
+
+      const tokenData = await authService.signUp({ email, login, password, role }, guestToken);
+      await handleAuthSuccess(tokenData);
     } catch (e) {
       logError(e, `${CONTEXT}/register`);
       throw e;

@@ -47,14 +47,16 @@ export interface ResetPasswordRequest {
 
 export const authService = {
   // Вход в систему
-  async signIn(data: SignInRequest): Promise<Token> {
-    const response = await api.post<Token>(ENDPOINTS.auth.signin, data);
+  async signIn(data: SignInRequest, guestToken?: string): Promise<Token> {
+    const config = guestToken ? { headers: { "X-Guest-Token": guestToken } } : {};
+    const response = await api.post<Token>(ENDPOINTS.auth.signin, data, config);
     return response.data;
   },
 
   // Регистрация
-  async signUp(data: SignUpRequest): Promise<Token> {
-    const response = await api.post<Token>(ENDPOINTS.auth.signup, data);
+  async signUp(data: SignUpRequest, guestToken?: string): Promise<Token> {
+    const config = guestToken ? { headers: { "X-Guest-Token": guestToken } } : {};
+    const response = await api.post<Token>(ENDPOINTS.auth.signup, data, config);
     return response.data;
   },
 

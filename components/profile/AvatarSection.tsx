@@ -7,17 +7,17 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Camera, User } from "lucide-react-native";
+import { Camera, User, X } from "lucide-react-native";
 import { imageService } from "@/services/imageService";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Card } from "@/components/ui/Card";
+import { Card, cn } from "@/components/ui/Card";
 
 export default function AvatarSection({ user, pickAvatar, loading }: any) {
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Используем useTheme для получения динамических цветов
   const { theme } = useTheme();
+
   useEffect(() => {
     if (user?.imageId) {
       imageService
@@ -28,52 +28,32 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
   }, [user?.imageId]);
 
   return (
-    <Card className="p-4 mb-4 items-center">
-      {/* Контейнер аватарки */}
-      <View className="relative">
-        {/* Аватарка - для увеличения */}
+    <View className="items-center mb-8 mt-4">
+      {/* Контейнер аватарки с декоративным кольцом */}
+      <View className="relative mb-4">
+        <View className="absolute -inset-1 rounded-full border-2 border-primary/30 border-dashed animate-spin-slow" />
+        
         <TouchableOpacity
           onPress={() => avatarUri && setIsModalOpen(true)}
-          className="w-24 h-24 rounded-full items-center justify-center"
+          className="w-28 h-28 rounded-full items-center justify-center border-4 border-background dark:border-gray-900 ocean:border-ocean-background shadow-xl bg-card dark:bg-gray-800"
+          activeOpacity={0.9}
         >
           {avatarUri ? (
             <Image
               source={{ uri: avatarUri }}
-              className="w-24 h-24 rounded-full"
+              className="w-full h-full rounded-full"
               resizeMode="cover"
             />
           ) : (
-            <View
-              className="w-24 h-24 rounded-full bg-muted items-center justify-center 
-              dark:bg-gray-700 
-              ocean:bg-ocean-muted"
-            >
-              <User
-                size={60}
-                // ✅ ИЗМЕНЕНИЕ: Используем text-muted-foreground для цвета иконки
-                color={
-                  theme === "dark"
-                    ? "#6b7280" // dark:text-gray-500
-                    : theme === "ocean"
-                      ? "#336699" // Более темный синий
-                      : "#9ca3af" // gray-400
-                }
-              />
-            </View>
+            <User
+              size={48}
+              className="text-muted-foreground/50 dark:text-gray-500"
+            />
           )}
 
           {loading && (
-            <View
-              className="absolute inset-0 items-center justify-center rounded-full 
-            bg-white/50 
-            dark:bg-black/50"
-            >
-              <ActivityIndicator
-                size="small"
-                color={
-                  theme === "dark" || theme === "ocean" ? "white" : "#4ADE80" // Primary DEFAULT
-                }
-              />
+            <View className="absolute inset-0 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
+              <ActivityIndicator size="small" color="white" />
             </View>
           )}
         </TouchableOpacity>
@@ -81,48 +61,42 @@ export default function AvatarSection({ user, pickAvatar, loading }: any) {
         {/* Кнопка камеры */}
         <TouchableOpacity
           onPress={pickAvatar}
-          className="absolute bottom-0 right-0 bg-card p-1 rounded-full shadow-md -mr-1 
-          dark:bg-gray-700 
-          ocean:bg-ocean-background"
+          className="absolute bottom-0 right-0 bg-primary p-2.5 rounded-full shadow-lg border-4 border-background dark:border-gray-900 ocean:border-ocean-background"
+          activeOpacity={0.8}
         >
-          <Camera
-            size={20}
-            color={
-              theme === "ocean"
-                ? "#33c9ff"
-                : theme === "dark"
-                  ? "#10B981" // Немного темнее primary
-                  : "#4ADE80" // Primary DEFAULT
-            }
-          />
+          <Camera size={16} color="white" />
         </TouchableOpacity>
       </View>
 
-      {!avatarUri && (
-        <Text
-          className="text-lg font-medium mt-2 text-center text-foreground
-          dark:text-gray-100 
-          ocean:text-ocean-foreground"
-        >
-          Фото профиля
+      {/* Имя и Email */}
+      <View className="items-center">
+        <Text className="text-2xl font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground mb-1">
+          {user?.firstName} {user?.lastName}
         </Text>
-      )}
+        <Text className="text-sm font-medium text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/60 bg-secondary/50 px-3 py-1 rounded-full overflow-hidden">
+          {user?.email}
+        </Text>
+      </View>
 
-      {/* Модалка */}
+      {/* Модалка просмотра фото */}
       <Modal visible={isModalOpen} transparent={true} animationType="fade">
-        <Pressable
-          className="flex-1 bg-black/80 items-center justify-center"
-          onPress={() => setIsModalOpen(false)}
-        >
+        <View className="flex-1 bg-black/95 items-center justify-center relative">
+          <TouchableOpacity 
+            onPress={() => setIsModalOpen(false)}
+            className="absolute top-12 right-6 z-10 p-3 bg-white/10 rounded-full"
+          >
+            <X size={24} color="white" />
+          </TouchableOpacity>
+          
           {avatarUri && (
             <Image
               source={{ uri: avatarUri }}
-              className="w-80 h-80 rounded-lg"
+              className="w-full h-full"
               resizeMode="contain"
             />
           )}
-        </Pressable>
+        </View>
       </Modal>
-    </Card>
+    </View>
   );
 }

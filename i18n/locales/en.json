@@ -64,6 +64,54 @@
     "birthday": "Date of Birth",
     "goals": "Goals"
   },
+  "userInfo": {
+    "header": "Personal Information",
+    "save": "Save",
+    "edit": "Edit",
+    "birthday": "Date of Birth",
+    "goals": "Goals",
+    "selectDate": "Select date",
+    "placeholder": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "login": "Login",
+      "phone": "Phone",
+      "age": "Age"
+    }
+  },
+  "guestProfile": {
+    "title": "Unlock Full Potential",
+    "subtitle": "Join Mate Gym community to save your progress and access premium features.",
+    "button": "Sign Up or Login",
+    "footer": "It takes less than a minute"
+  },
+  "trainingActions": {
+    "done": "Done",
+    "repeat": "Repeat",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "status": {
+    "done": "Done",
+    "planned": "Planned"
+  },
+  "trainingCard": {
+    "exercises": "exercises",
+    "sets": "sets"
+  },
+  "units": {
+    "h": "h",
+    "m": "m",
+    "kg": "kg"
+  },
+  "dashboardStats": {
+    "title": "All-Time Stats",
+    "total": "Total Workouts",
+    "completed": "Completed",
+    "time": "Total Time",
+    "avg": "Avg"
+  },
   "hello": "Hello",
   "common": {
     "back": "Back"

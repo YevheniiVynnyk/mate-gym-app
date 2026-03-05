@@ -4,12 +4,10 @@ import { useTrainingDaysData } from "@/hooks/useTrainingDays";
 import { useNavigation } from "@/hooks/useNavigation";
 import { LoadingPage } from "@/components/ui/LoadingPage";
 import { TrainingHeader } from "@/components/trainingDay/TrainingHeader";
-import { CreateTrainingButton } from "@/components/trainingDay/CreateTrainingButton";
 import { TrainingTabs } from "@/components/trainingDay/TrainingTabs";
 import { TrainingContent } from "@/components/trainingDay/TrainingContent";
 
 export default function Index() {
-  const router = useNavigation();
   const { trainingDays, isLoading } = useTrainingDaysData();
 
   const [activeTab, setActiveTab] = useState<"calendar" | "list">("calendar");

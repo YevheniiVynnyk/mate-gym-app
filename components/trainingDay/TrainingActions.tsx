@@ -2,6 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Check, Edit3, RotateCcw, Trash2 } from "lucide-react-native";
 import { cn } from "@/components/ui/Card";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   status: "PLANNED" | "COMPLETED";
@@ -51,19 +52,21 @@ export default function TrainingActions({
   onRepeat,
   onDelete,
 }: Props) {
+  const { t } = useTranslation();
+
   return (
     <View className="flex-row justify-between m-2">
       {status === "PLANNED" ? (
         <ActionButton
           icon={<Check />}
-          label="Done"
+          label={t("trainingActions.done")}
           colorClass="bg-green-500 dark:bg-green-600"
           onPress={onComplete}
         />
       ) : (
         <ActionButton
           icon={<RotateCcw />}
-          label="Repeat"
+          label={t("trainingActions.repeat")}
           colorClass="bg-blue-500 dark:bg-blue-600"
           onPress={onRepeat}
         />
@@ -71,14 +74,14 @@ export default function TrainingActions({
 
       <ActionButton
         icon={<Edit3 />}
-        label="Edit"
-        colorClass="bg-orange-500 dark:bg-orange-600" // Изменил на оранжевый
+        label={t("trainingActions.edit")}
+        colorClass="bg-orange-500 dark:bg-orange-600"
         onPress={onEdit}
       />
 
       <ActionButton
         icon={<Trash2 />}
-        label="Delete"
+        label={t("trainingActions.delete")}
         colorClass="bg-red-500 dark:bg-red-600"
         onPress={onDelete}
       />

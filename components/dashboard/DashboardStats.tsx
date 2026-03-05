@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { useTranslation } from "react-i18next";
+import { Card } from "@/components/ui/Card";
 
 interface Props {
   quickStats?: {
@@ -15,9 +16,6 @@ interface Props {
 export default function DashboardStats({ quickStats }: Props) {
   const { t } = useTranslation();
 
-  const sectionTitle =
-    "text-lg mb-2 text-foreground dark:text-gray-100 ocean:text-ocean-foreground";
-
   const completionPercent = quickStats?.totalTrainings
     ? (
         (quickStats?.completedTrainings / quickStats?.totalTrainings) *
@@ -26,35 +24,29 @@ export default function DashboardStats({ quickStats }: Props) {
     : "0";
 
   return (
-    <View>
-      <View className="my-4 p-2">
-        <Text className={sectionTitle}>
-          📊 {t("Dashboard.statisticBlock.statisticTitle")}
-        </Text>
-      </View>
+    <Card className="p-4 mb-4 bg-card dark:bg-gray-800 ocean:bg-ocean-card rounded-2xl border-0 shadow-sm">
+      <Text className="text-base font-bold mb-3 text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
+        {t("dashboardStats.title")}
+      </Text>
 
       <View className="flex-row justify-between">
         <StatCard
-          title={t("Dashboard.statisticBlock.subTitle1")}
+          title={t("dashboardStats.total")}
           value={quickStats ? quickStats.totalTrainings.toString() : "0"}
         />
 
         <StatCard
-          title={t("Dashboard.statisticBlock.subTitle2")}
+          title={t("dashboardStats.completed")}
           value={quickStats ? quickStats?.completedTrainings.toString() : "0"}
-          subtitle={`${completionPercent}${t(
-            "Dashboard.statisticBlock.subTitle2Caption",
-          )}`}
+          subtitle={`${completionPercent}%`}
         />
 
         <StatCard
-          title={t("Dashboard.statisticBlock.subTitle3")}
+          title={t("dashboardStats.time")}
           value={quickStats ? quickStats?.totalTimeMinutes.toString() : "0"}
-          subtitle={`${quickStats?.averageDurationMinutes}${t(
-            "Dashboard.statisticBlock.subTitle2Caption",
-          )}`}
+          subtitle={`${t("dashboardStats.avg")} ${quickStats?.averageDurationMinutes}${t("units.m")}`}
         />
       </View>
-    </View>
+    </Card>
   );
 }

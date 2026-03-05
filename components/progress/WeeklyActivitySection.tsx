@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
 import { Calendar } from "lucide-react-native";
 import React from "react";
+import { cn } from "@/components/ui/Card";
 
 export default function WeeklyActivitySection({
   weeklyStats,
@@ -9,20 +10,17 @@ export default function WeeklyActivitySection({
   weekProgress,
 }: any) {
   return (
-    // ✅ Адаптивный фон: bg-card, скругление и тень
     <View
       className="bg-card dark:bg-gray-800 ocean:bg-ocean-card 
                  p-4 rounded-xl mb-4 border border-border dark:border-gray-700"
     >
       <View className="flex-row items-center mb-3">
-        {/* ✅ Адаптивный цвет для иконки (Primary) */}
         <Calendar
           size={20}
           className="text-primary dark:text-green-500 ocean:text-ocean-primary"
         />
-        {/* ✅ Адаптивный цвет для заголовка (Foreground) */}
         <Text className="ml-2 text-lg text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
-          Активность на этой неделе
+          Weekly Activity
         </Text>
       </View>
 
@@ -31,23 +29,33 @@ export default function WeeklyActivitySection({
           {/* Кружки активности */}
           <View className="flex-row justify-between mb-3">
             {weeklyStats.map((stat: any) => {
-              // Классы для кружка
-              const circleClasses = stat.completed
-                ? "bg-primary dark:bg-green-500 ocean:bg-ocean-primary" // Завершено: Primary
-                : "bg-muted dark:bg-gray-600 ocean:bg-ocean-muted"; // Не завершено: Muted/Secondary
+              let circleClasses = "bg-muted dark:bg-gray-600 ocean:bg-ocean-muted";
+              let icon = "○";
+              let textColor = "text-muted-foreground dark:text-gray-400";
+
+              if (stat.status === "COMPLETED") {
+                circleClasses = "bg-green-500 dark:bg-green-600";
+                icon = "✓";
+                textColor = "text-white";
+              } else if (stat.status === "PLANNED") {
+                circleClasses = "bg-blue-500 dark:bg-blue-600";
+                icon = "•"; // Или другая иконка для запланированного
+                textColor = "text-white";
+              }
 
               return (
                 <View key={stat.day} className="items-center">
-                  {/* ✅ Адаптивный текст дня недели (muted-foreground) */}
-                  <Text className="text-xs text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70">
+                  <Text className="text-xs text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground/70 mb-1">
                     {stat.day}
                   </Text>
                   <View
-                    className={`w-7 h-7 rounded-full items-center justify-center mt-1 ${circleClasses}`}
+                    className={cn(
+                      "w-8 h-8 rounded-full items-center justify-center",
+                      circleClasses
+                    )}
                   >
-                    {/* Текст внутри кружка всегда светлый */}
-                    <Text className="text-primary-foreground dark:text-white ocean:text-ocean-primary-foreground">
-                      {stat.completed ? "✓" : "○"}
+                    <Text className={cn("font-bold", textColor)}>
+                      {icon}
                     </Text>
                   </View>
                 </View>
@@ -57,23 +65,19 @@ export default function WeeklyActivitySection({
 
           {/* Прогресс-бар */}
           <View>
-            <View className="flex-row justify-between">
-              {/* ✅ Адаптивный текст */}
+            <View className="flex-row justify-between mb-1">
               <Text className="text-sm text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
-                Прогресс недели
+                Weekly Goal
               </Text>
-              {/* ✅ Адаптивный текст */}
               <Text className="text-sm text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
-                {completedDays}/{totalDays} дней
+                {completedDays}/{totalDays} days
               </Text>
             </View>
 
-            {/* Фон прогресс-бара */}
             <View
-              className="h-2 rounded-full mt-1 overflow-hidden 
+              className="h-2 rounded-full overflow-hidden 
                          bg-muted dark:bg-gray-600 ocean:bg-ocean-muted"
             >
-              {/* Заполненная часть прогресс-бара (Primary) */}
               <View
                 className="h-2 bg-primary dark:bg-green-500 ocean:bg-ocean-primary rounded-full"
                 style={{ width: `${weekProgress}%` }}
@@ -82,9 +86,8 @@ export default function WeeklyActivitySection({
           </View>
         </>
       ) : (
-        // ✅ Адаптивный текст
         <Text className="text-center text-muted-foreground dark:text-gray-400">
-          Нет данных за эту неделю
+          No data for this week
         </Text>
       )}
     </View>

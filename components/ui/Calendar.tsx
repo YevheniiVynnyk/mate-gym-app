@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react-native";
 // ✅ Импортируем cn для условной стилизации
 import { cn } from "@/components/ui/Card";
 
-export type DayStatus = "CREATED" | "IN_PROGRESS" | "COMPLETED";
+export type DayStatus = "PLANNED" | "COMPLETED";
 
 interface CalendarProps {
   selectedDate: string | undefined;
@@ -77,12 +77,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           statusClass =
             "bg-green-500/20 text-green-600 dark:text-green-400 ocean:bg-green-600/20 ocean:text-green-400";
           break;
-        case "IN_PROGRESS":
-          // Синий фон с прозрачностью и синий текст
-          statusClass =
-            "bg-blue-500/20 text-blue-600 dark:text-blue-400 ocean:bg-blue-600/20 ocean:text-blue-400";
-          break;
-        case "CREATED":
+        case "PLANNED":
           // Синий фон с прозрачностью и синий текст
           statusClass =
             "bg-blue-500/20 text-blue-600 dark:text-blue-400 ocean:bg-blue-600/20 ocean:text-blue-400";

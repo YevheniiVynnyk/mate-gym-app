@@ -53,7 +53,8 @@ export const ENDPOINTS = {
     passwordReset: "/auth/password/reset" as Endpoint<"/auth/password/reset">,
     passwordForgot:
       "/auth/password/forgot" as Endpoint<"/auth/password/forgot">,
-    guest: "/auth/guest" as Endpoint<"/auth/guest">, // Добавлено
+    guest: "/auth/guest" as Endpoint<"/auth/guest">,
+    registerGuest: "/auth/register-guest" as Endpoint<"/auth/register-guest">, // Добавлено
   },
   tos: {
     root: "/tos" as Endpoint<"/tos">,

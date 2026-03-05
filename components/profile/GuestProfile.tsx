@@ -4,9 +4,11 @@ import { Card } from "@/components/ui/Card";
 import { Crown, UserPlus } from "lucide-react-native";
 import { useNavigation } from "@/hooks/useNavigation";
 import FeaturesList from "@/components/login/FeaturesList";
+import { useTranslation } from "react-i18next";
 
 export default function GuestProfile() {
   const router = useNavigation();
+  const { t } = useTranslation();
 
   return (
     <Card className="p-6 w-full items-center mb-6 overflow-hidden border-primary/20 dark:border-primary/20">
@@ -20,10 +22,10 @@ export default function GuestProfile() {
       </View>
 
       <Text className="text-2xl font-bold mb-2 text-center text-foreground dark:text-gray-100">
-        Unlock Full Potential
+        {t("guestProfile.title")}
       </Text>
       <Text className="text-base text-center text-muted-foreground dark:text-gray-400 mb-6 px-4">
-        Join Mate Gym community to save your progress and access premium features.
+        {t("guestProfile.subtitle")}
       </Text>
 
       {/* Список фич */}
@@ -37,12 +39,12 @@ export default function GuestProfile() {
       >
         <UserPlus size={20} color="white" className="mr-2" />
         <Text className="text-white font-bold text-lg">
-          Sign Up or Login
+          {t("guestProfile.button")}
         </Text>
       </TouchableOpacity>
       
       <Text className="text-xs text-center text-muted-foreground mt-4 opacity-60">
-        It takes less than a minute
+        {t("guestProfile.footer")}
       </Text>
     </Card>
   );

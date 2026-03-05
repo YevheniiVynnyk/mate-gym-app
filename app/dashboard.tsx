@@ -1,14 +1,58 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ScrollView, View } from "react-native";
 import { useDashboardData } from "@/hooks/useDashboardData";
 import { LoadingPage } from "@/components/ui/LoadingPage";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardStats from "@/components/dashboard/DashboardStats";
-import DashboardQuickActions from "@/components/dashboard/DashboardQuickActions";
-import DashboardLastTrainings from "@/components/dashboard/DashboardLastTrainings";
+import { TodayWorkoutCard } from "@/components/dashboard/TodayWorkoutCard";
+import WeeklyActivitySection from "@/components/progress/WeeklyActivitySection";
+import dayjs from "dayjs";
 
 export default function Dashboard() {
   const { trainingDays, quickStats, loading } = useDashboardData();
+
+  // Находим тренировку на сегодня
+  const todayWorkout = useMemo(() => {
+    const today = dayjs().format("YYYY-MM-DD");
+    return trainingDays.find(
+      (td) => dayjs(td.date).format("YYYY-MM-DD") === today,
+    );
+  }, [trainingDays]);
+
+  // Подготовка данных для WeeklyActivitySection
+  const weeklyData = useMemo(() => {
+    const today = dayjs();
+    // Начинаем с понедельника текущей недели
+    const dayOfWeek = today.day(); // 0 (Sun) - 6 (Sat)
+    const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+    const monday = today.add(diffToMonday, "day");
+
+    const stats = Array.from({ length: 7 }).map((_, i) => {
+      const date = monday.add(i, "day");
+      const dateStr = date.format("YYYY-MM-DD");
+
+      // Ищем тренировку на этот день
+      const workout = trainingDays.find(
+        (td) => dayjs(td.date).format("YYYY-MM-DD") === dateStr,
+      );
+
+      let status = null;
+      if (workout) {
+        status = workout.status; // "COMPLETED" | "PLANNED"
+      }
+
+      return {
+        day: date.format("dd"), // Mo, Tu...
+        status: status,
+      };
+    });
+
+    const completedDays = stats.filter((s) => s.status === "COMPLETED").length;
+    const totalDays = 3; // Цель - 3 тренировки в неделю (можно сделать настраиваемой)
+    const weekProgress = Math.min((completedDays / totalDays) * 100, 100);
+
+    return { stats, completedDays, totalDays, weekProgress };
+  }, [trainingDays]);
 
   if (loading) {
     return <LoadingPage />;
@@ -21,9 +65,17 @@ export default function Dashboard() {
     >
       <View className="p-4">
         <DashboardHeader />
+
+        <TodayWorkoutCard workout={todayWorkout} />
+
+        <WeeklyActivitySection
+          weeklyStats={weeklyData.stats}
+          completedDays={weeklyData.completedDays}
+          totalDays={weeklyData.totalDays}
+          weekProgress={weeklyData.weekProgress}
+        />
+
         <DashboardStats quickStats={quickStats} />
-        <DashboardQuickActions />
-        <DashboardLastTrainings trainingDays={trainingDays} />
       </View>
     </ScrollView>
   );

@@ -1,53 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { Feather, FontAwesome5 } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@/hooks/useNavigation";
 import { imageService } from "@/services/imageService";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { usePathname } from "expo-router";
+import { cn } from "@/components/ui/Card";
 
-const cn = (
-  ...inputs: (string | Record<string, any> | null | undefined)[]
-): string => {
-  const classes: string[] = [];
-  for (const input of inputs) {
-    if (typeof input === "string" && input.trim()) {
-      classes.push(input);
-    } else if (typeof input === "object" && input !== null) {
-      for (const key in input) {
-        if (
-          Object.prototype.hasOwnProperty.call(input, key) &&
-          (input as any)[key]
-        ) {
-          classes.push(key);
-        }
-      }
-    }
-  }
-  return classes.join(" ");
-};
-
-const getIconColor = (
-  theme: string,
-  type: "primary" | "secondary" | "danger",
-) => {
-  switch (type) {
-    case "primary": // Иконка "Bell" (Уведомления)
-      if (theme === "ocean") return "#6699cc"; // Muted blue
-      if (theme === "dark") return "#9ca3af"; // gray-400
-      return "gray";
-    case "secondary": // Иконка "Heart" (Поддержка)
-      return "red"; // Красный обычно остается одинаковым
-    case "danger":
-      return "red";
-    default:
-      return "gray";
-  }
+const getPageTitle = (pathname: string) => {
+  if (pathname === "/dashboard") return "Dashboard";
+  if (pathname.startsWith("/trainingDay")) return "Workouts";
+  if (pathname === "/progress") return "Progress";
+  if (pathname === "/profile") return "Profile";
+  return "Mate Gym";
 };
 
 const Navbar = () => {
-  const user = useAuth().user;
+  const { user } = useAuth();
   const router = useNavigation();
+  const pathname = usePathname();
   const [avatarUri, setAvatarUri] = useState<string | undefined>();
   const { theme } = useTheme();
 
@@ -57,58 +29,79 @@ const Navbar = () => {
         .getBase64(user.imageId)
         .then(setAvatarUri)
         .catch(console.error);
+    } else {
+      setAvatarUri(undefined);
     }
   }, [user?.imageId]);
 
-  const rootClasses = cn(
-    "h-20 flex-row items-center justify-between px-6 border-b",
-    "bg-card border-border", // Общие классы
-    "dark:bg-gray-800 dark:border-gray-700", // Dark тема
-    "ocean:bg-ocean-card ocean:border-blue-800", // Ocean тема
-  );
+  const title = getPageTitle(pathname);
 
-  // ✅ Адаптивные классы для текста "Mate Gym"
-  const titleClasses = cn(
-    "text-2xl font-bold",
-    "text-primary dark:text-primary-400 ocean:text-ocean-primary",
-  );
-
-  // Получаем цвета иконок
-  const bellColor = getIconColor(theme, "primary"); // "Bell" - вторичный цвет
-  const heartColor = getIconColor(theme, "primary"); // "Heart" - красный
   return (
-    <View className={rootClasses}>
-      {/* Логотип и название */}
-      <TouchableOpacity
-        onPress={() => router.toDashboard()}
-        className="flex-row items-center"
-      >
-        <Image
-          source={require("../../assets/images/logo-3.png")}
-          className="w-14 h-14 rounded-full mr-2"
-          style={{ height: 56, width: 56 }}
-        />
-        <Text className={titleClasses}>Mate Gym</Text>
-      </TouchableOpacity>
+    <View
+      className={cn(
+        "h-16 flex-row items-center justify-between px-4 border-b shadow-sm z-10",
+        "bg-background border-border",
+        "dark:bg-gray-900 dark:border-gray-800",
+        "ocean:bg-ocean-card ocean:border-blue-800"
+      )}
+    >
+      {/* Левая часть: Логотип и Заголовок */}
+      <View className="flex-row items-center">
+        <TouchableOpacity onPress={() => router.toDashboard()} activeOpacity={0.7}>
+          <Image
+            source={require("../../assets/images/logo-3.png")}
+            className="w-10 h-10 rounded-full mr-3"
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+        <Text
+          className={cn(
+            "text-xl font-bold tracking-tight",
+            "text-foreground dark:text-gray-100 ocean:text-ocean-foreground"
+          )}
+        >
+          {title}
+        </Text>
+      </View>
 
-      <View className="flex-row items-center justify-center">
-        {/*<TouchableOpacity*/}
-        {/*  onPress={() => router.toDeveloperSupport}*/}
-        {/*  className="mx-2"*/}
-        {/*>*/}
-        {/*  <FontAwesome5 name="heart" size={22} color={heartColor} />*/}
-        {/*</TouchableOpacity>*/}
+      {/* Правая часть: Действия и Аватар */}
+      <View className="flex-row items-center space-x-3">
+        {/* Кнопка уведомлений (пример) */}
+        <TouchableOpacity
+          className={cn(
+            "p-2 rounded-full",
+            "bg-secondary/50 dark:bg-gray-800 ocean:bg-ocean-primary/10"
+          )}
+        >
+          <Feather
+            name="bell"
+            size={20}
+            className="text-foreground dark:text-gray-300 ocean:text-ocean-foreground"
+          />
+        </TouchableOpacity>
 
-        {/*<TouchableOpacity className="mx-2">*/}
-        {/*  <Feather name="bell" size={22} color={bellColor} />*/}
-        {/*</TouchableOpacity>*/}
-
-        {/*<TouchableOpacity onPress={() => router.toProfile()} className="mx-2">*/}
-        {/*  <Image*/}
-        {/*    source={{ uri: avatarUri }}*/}
-        {/*    className="w-14 h-14 rounded-full "*/}
-        {/*  />*/}
-        {/*</TouchableOpacity>*/}
+        {/* Аватар профиля */}
+        <TouchableOpacity onPress={() => router.toProfile()} activeOpacity={0.8}>
+          {avatarUri ? (
+            <Image
+              source={{ uri: avatarUri }}
+              className="w-9 h-9 rounded-full border border-border dark:border-gray-700"
+            />
+          ) : (
+            <View
+              className={cn(
+                "w-9 h-9 rounded-full items-center justify-center border",
+                "bg-secondary dark:bg-gray-800 border-border dark:border-gray-700 ocean:bg-ocean-primary/20 ocean:border-ocean-primary/30"
+              )}
+            >
+              <Feather
+                name="user"
+                size={18}
+                className="text-muted-foreground dark:text-gray-400 ocean:text-ocean-foreground"
+              />
+            </View>
+          )}
+        </TouchableOpacity>
       </View>
     </View>
   );

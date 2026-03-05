@@ -19,10 +19,12 @@ import AuthTabs from "@/components/login/AuthTabs";
 import Header from "@/components/login/Header";
 import LanguageDropdown from "@/components/login/LanguageDropdown";
 import { useLogin } from "@/hooks/useLogin";
+import { useAuth, UserSessionState } from "@/contexts/AuthContext";
 
 export default function Auth() {
   const { t } = useTranslation();
   const router = useNavigation();
+  const { sessionState } = useAuth();
   const {
     isLoading,
     isRegistering,
@@ -33,7 +35,7 @@ export default function Auth() {
     setIsRegistering,
     handleLogin,
     handleRegister,
-    handleGuestLogin, // Импортируем
+    handleGuestLogin,
     setShowTermsRequired,
     goToResetPasswordRequest,
   } = useLogin();
@@ -105,7 +107,9 @@ export default function Auth() {
               >
                 {t("welcome.animatedView.title")}
               </Text>
-              <Text className={`text-sm text-center font-sans ${textMutedFg}`}>
+              <Text
+                className={`text-sm text-center font-sans ${textMutedFg}`}
+              >
                 {t("welcome.animatedView.text")}
               </Text>
             </View>
@@ -132,16 +136,18 @@ export default function Auth() {
               />
             )}
 
-            {/* Кнопка гостевого входа */}
-            <TouchableOpacity
-              onPress={handleGuestLogin}
-              disabled={isLoading}
-              className="mt-4 p-3 rounded-lg border border-gray-300 dark:border-gray-600"
-            >
-              <Text className={`text-center font-medium ${textFg}`}>
-                Continue as Guest
-              </Text>
-            </TouchableOpacity>
+            {/* Кнопка гостевого входа - скрываем, если уже гость */}
+            {sessionState !== UserSessionState.GUEST && (
+              <TouchableOpacity
+                onPress={handleGuestLogin}
+                disabled={isLoading}
+                className="mt-4 p-3 rounded-lg border border-gray-300 dark:border-gray-600"
+              >
+                <Text className={`text-center font-medium ${textFg}`}>
+                  Continue as Guest
+                </Text>
+              </TouchableOpacity>
+            )}
           </Animated.View>
         </View>
       </View>
