@@ -7,9 +7,10 @@ import DashboardStats from "@/components/dashboard/DashboardStats";
 import { TodayWorkoutCard } from "@/components/dashboard/TodayWorkoutCard";
 import WeeklyActivitySection from "@/components/progress/WeeklyActivitySection";
 import dayjs from "dayjs";
+import { BMIChart } from "@/components/body/BMIChart";
 
 export default function Dashboard() {
-  const { trainingDays, quickStats, loading } = useDashboardData();
+  const { trainingDays, quickStats, bmiData, loading } = useDashboardData();
 
   // Находим тренировку на сегодня
   const todayWorkout = useMemo(() => {
@@ -22,8 +23,7 @@ export default function Dashboard() {
   // Подготовка данных для WeeklyActivitySection
   const weeklyData = useMemo(() => {
     const today = dayjs();
-    // Начинаем с понедельника текущей недели
-    const dayOfWeek = today.day(); // 0 (Sun) - 6 (Sat)
+    const dayOfWeek = today.day();
     const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     const monday = today.add(diffToMonday, "day");
 
@@ -31,24 +31,23 @@ export default function Dashboard() {
       const date = monday.add(i, "day");
       const dateStr = date.format("YYYY-MM-DD");
 
-      // Ищем тренировку на этот день
       const workout = trainingDays.find(
         (td) => dayjs(td.date).format("YYYY-MM-DD") === dateStr,
       );
 
       let status = null;
       if (workout) {
-        status = workout.status; // "COMPLETED" | "PLANNED"
+        status = workout.status;
       }
 
       return {
-        day: date.format("dd"), // Mo, Tu...
+        day: date.format("dd"),
         status: status,
       };
     });
 
     const completedDays = stats.filter((s) => s.status === "COMPLETED").length;
-    const totalDays = 3; // Цель - 3 тренировки в неделю (можно сделать настраиваемой)
+    const totalDays = 3;
     const weekProgress = Math.min((completedDays / totalDays) * 100, 100);
 
     return { stats, completedDays, totalDays, weekProgress };
@@ -67,6 +66,13 @@ export default function Dashboard() {
         <DashboardHeader />
 
         <TodayWorkoutCard workout={todayWorkout} />
+
+        <BMIChart
+          data={bmiData}
+          title="BMI Trend"
+          height={180}
+          showDots={false}
+        />
 
         <WeeklyActivitySection
           weeklyStats={weeklyData.stats}

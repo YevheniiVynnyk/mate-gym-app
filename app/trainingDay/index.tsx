@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { View } from "react-native";
 import { useTrainingDaysData } from "@/hooks/useTrainingDays";
-import { useNavigation } from "@/hooks/useNavigation";
 import { LoadingPage } from "@/components/ui/LoadingPage";
 import { TrainingHeader } from "@/components/trainingDay/TrainingHeader";
 import { TrainingTabs } from "@/components/trainingDay/TrainingTabs";

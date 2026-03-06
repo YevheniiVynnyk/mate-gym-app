@@ -30,7 +30,7 @@ export default function RootLayout() {
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return null; // Или можно вернуть компонент загрузки
+    return null;
   }
 
   return (

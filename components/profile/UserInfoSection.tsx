@@ -1,15 +1,18 @@
 import { useMemo, useState } from "react";
+import { Platform, Text, TouchableOpacity, View } from "react-native";
 import {
-  Platform,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { Calendar, Edit2, Save, User, Mail, Phone, Hash } from "lucide-react-native";
+  Calendar,
+  Edit2,
+  Hash,
+  Mail,
+  Phone,
+  Save,
+  User,
+} from "lucide-react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Card, CardHeader, CardTitle, cn } from "@/components/ui/Card";
+import { Card, cn } from "@/components/ui/Card";
 import { TextInputUI } from "@/components/ui/TextInputUI";
 
 export default function UserInfoSection({
@@ -112,9 +115,7 @@ export default function UserInfoSection({
         <TouchableOpacity
           className={cn(
             "p-2 rounded-full",
-            isEditing 
-              ? "bg-primary/10" 
-              : "bg-secondary/50"
+            isEditing ? "bg-primary/10" : "bg-secondary/50",
           )}
           onPress={() => (isEditing ? handleSaveUser() : setIsEditing(true))}
         >
@@ -125,13 +126,14 @@ export default function UserInfoSection({
           )}
         </TouchableOpacity>
       </View>
-      
+
       <View className="p-4 space-y-4">
         {textFields.map((item) => (
-          <View key={item.key} className="flex-row items-center bg-secondary/20 dark:bg-gray-900/30 rounded-xl px-4 py-1">
-            <View className="mr-3 opacity-70">
-              {getIcon(item.key)}
-            </View>
+          <View
+            key={item.key}
+            className="flex-row items-center bg-secondary/20 dark:bg-gray-900/30 rounded-xl px-4 py-1"
+          >
+            <View className="mr-3 opacity-70">{getIcon(item.key)}</View>
             <View className="flex-1">
               <Text className="text-[10px] text-muted-foreground uppercase font-bold mt-2">
                 {item.placeholder}
@@ -148,7 +150,7 @@ export default function UserInfoSection({
                 }
                 className={cn(
                   "bg-transparent border-0 px-0 py-2 text-base font-medium h-10",
-                  !isEditing && "text-foreground/80"
+                  !isEditing && "text-foreground/80",
                 )}
               />
             </View>
@@ -173,7 +175,7 @@ export default function UserInfoSection({
                   "text-base font-medium",
                   formDataUser.birthday
                     ? "text-foreground dark:text-gray-100"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
               >
                 {formDataUser.birthday

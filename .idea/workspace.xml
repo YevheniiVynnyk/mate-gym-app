@@ -4,14 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="implement guest user lifecycle and account merging">
-      <change afterPath="$PROJECT_DIR$/hooks/useInterstitialAd.ts" afterDir="false" />
+    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="fix: view training and ads">
+      <change afterPath="$PROJECT_DIR$/components/body/AddBodyMetricsModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/body/BMIChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/progress/GoalsProgress.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/progress/PersonalRecords.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/progress/charts/ActivityHeatmap.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/progress/charts/WeightChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/mockProgressService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/progress.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ads/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ads/Banner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/TrainingCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/trainingDay/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useDashboardData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useDashboardData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useProgress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProgress.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +35,8 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -77,7 +89,7 @@
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.19.31&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vinni/Project/android/mate-gym-app/assets&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vinni/Project/android/mate-gym-app/app&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -105,18 +117,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\app" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app\assets" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app\android\app" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app\android\app\src" />
-      <recent name="E:\Project\android\mate-gym-app\android\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\app" />
+      <recent name="C:\Users\vinni\Project\android\mate-gym-app\app\(main)" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app\utils" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app\config" />
       <recent name="C:\Users\vinni\Project\android\mate-gym-app" />
-      <recent name="C:\Users\vinni\Project\android\mate-gym-app\android\app" />
-      <recent name="E:\Project\android\mate-gym-app\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -264,7 +276,11 @@
       <workItem from="1772628926526" duration="4872000" />
       <workItem from="1772706609301" duration="5623000" />
       <workItem from="1772721870501" duration="845000" />
-      <workItem from="1772731203338" duration="3130000" />
+      <workItem from="1772731203338" duration="6900000" />
+      <workItem from="1772802018209" duration="251000" />
+      <workItem from="1772803147314" duration="1495000" />
+      <workItem from="1772808318352" duration="57000" />
+      <workItem from="1772810098363" duration="5509000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -394,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772710342247</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix: view training and ads">
+      <option name="closed" value="true" />
+      <created>1772734710295</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1772734710295</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +461,8 @@
     <MESSAGE value="Added new field MuscleGroup.&#10;Bug-fix fields for Sets&#10;Added copy value for Sets" />
     <MESSAGE value="remove offline logic and added Guest Profile" />
     <MESSAGE value="implement guest user lifecycle and account merging" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement guest user lifecycle and account merging" />
+    <MESSAGE value="fix: view training and ads" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: view training and ads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
