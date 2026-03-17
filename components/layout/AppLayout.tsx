@@ -6,6 +6,7 @@ import BottomNavigation from "./BottomNavigation";
 import Banner from "../ads/Banner";
 import { useAuth, UserSessionState } from "@/contexts/AuthContext";
 import { cn } from "@/components/ui/Card";
+import { LoadingPage } from "@/components/ui/LoadingPage";
 
 type Props = {
   children: React.ReactNode;
@@ -16,38 +17,48 @@ const AppLayout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   const { sessionState, isLoading } = useAuth();
 
-  const isWelcomePage = pathname === "/auth";
+  const isAuthPage = pathname === "/auth";
 
   useEffect(() => {
     if (isLoading) return;
 
-    if (sessionState === UserSessionState.UNAUTHENTICATED && !isWelcomePage) {
+    const isProtected = !isAuthPage;
+
+    // Неавторизованный → только auth
+    if (sessionState === UserSessionState.UNAUTHENTICATED && isProtected) {
       router.replace("/auth");
-    } else if (
-      sessionState === UserSessionState.AUTHENTICATED &&
-      isWelcomePage
-    ) {
+      return;
+    }
+
+    // Авторизованный → не должен быть на auth
+    if (sessionState === UserSessionState.AUTHENTICATED && isAuthPage) {
       router.replace("/dashboard");
     }
-  }, [sessionState, isLoading, pathname, isWelcomePage]);
+  }, [sessionState, isLoading, pathname]);
 
   const rootClasses = cn(
     "flex-1 bg-background dark:bg-gray-900 ocean:bg-ocean-background",
   );
 
-  if (isWelcomePage || isLoading || sessionState === UserSessionState.UNKNOWN) {
+  // Пока идет загрузка или мы неавторизованы и находимся на защищенной странице, показываем загрузку
+  if (
+    isLoading ||
+    (sessionState === UserSessionState.UNAUTHENTICATED && !isAuthPage)
+  ) {
+    return <LoadingPage />;
+  }
+
+  // Если это страница аутентификации, показываем только ее, без навигации
+  if (isAuthPage) {
     return <View className={rootClasses}>{children}</View>;
   }
 
+  // Для авторизованных пользователей показываем полный лейаут
   return (
     <View className={rootClasses}>
       <Banner />
       <Navbar />
-
-      {/* Основной контент с отступом снизу под навигацию и баннер */}
       <View className="flex-1">{children}</View>
-
-      {/* Контейнер для навигации и баннера */}
       <BottomNavigation />
     </View>
   );

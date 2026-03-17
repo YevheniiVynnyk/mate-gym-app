@@ -91,7 +91,7 @@ export const useProfile = () => {
       };
       // Перед отправкой:
       console.log("Saving user with birthday:", updatedUser.birthday);
-      await userService.updateUser(updatedUser);
+      await userService.update(updatedUser);
       // После обновления локального стейта:
       const finalUser = fromUserDTO(updatedUser);
       console.log("Local user set to birthday:", finalUser.birthday);

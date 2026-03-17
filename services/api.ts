@@ -2,11 +2,10 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Token } from "@/services/authService";
 import { networkStatus } from "@/utils/networkStatus";
+import ENV from "@/config/env";
 
-const API_URL = "https://mate-gym-api.onrender.com/api";
-// const API_URL = "http://192.168.0.103:8080/api";
 export const api = axios.create({
-  baseURL: API_URL,
+  baseURL: ENV.API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -59,18 +58,13 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => {
-    // Успешный ответ подтверждает наличие сети (хотя NetInfo уже должен знать)
-    // Можно оставить как страховку
-    // networkStatus.setOnline(true);
     return response;
   },
   async (error) => {
     const originalRequest = error.config;
 
-    // Проверка на сетевую ошибку
     if (!error.response && error.code !== "ECONNABORTED") {
       console.warn("Network error detected via API failure.");
-      // Если запрос упал, а NetInfo думал, что мы онлайн — поправляем его
       networkStatus.setOnline(false);
     }
 
@@ -85,12 +79,11 @@ api.interceptors.response.use(
         const token = await getStoredToken();
         if (token) {
           const { data: refreshToken } = await axios.post<Token>(
-            `${API_URL}/auth/refresh`,
+            `${ENV.API_URL}/auth/refresh`,
             token,
           );
 
           console.log("✅ Токен обновлён");
-          // Если обновление прошло, значит сеть точно есть
           networkStatus.setOnline(true);
 
           await AsyncStorage.setItem("token", JSON.stringify(refreshToken));
@@ -100,13 +93,13 @@ api.interceptors.response.use(
       } catch (refreshError) {
         console.error("Ошибка обновления токена:", refreshError);
 
-        // Если ошибка обновления тоже сетевая — не разлогиниваем
         if (axios.isAxiosError(refreshError) && !refreshError.response) {
           networkStatus.setOnline(false);
           return Promise.reject(refreshError);
         }
 
-        await AsyncStorage.multiRemove(["token", "user"]);
+        // Если не удалось обновить токен, не удаляем его, просто отклоняем запрос
+        // AuthContext сам переведет в UNAUTHENTICATED
       }
     }
 

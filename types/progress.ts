@@ -1,3 +1,18 @@
+// Ответ от /api/progress
+export interface ProgressSummaryDTO {
+  muscleDistribution: MuscleDistributionDTO[];
+  activityHeatmap: ActivityHeatmapDTO[];
+  personalRecord: PersonalRecordDTO[]; // Исправлено с personalRecords
+}
+
+// Ответ от /api/chart/weight и /api/chart/bmi
+export interface ChartPointDTO {
+  date: string;
+  value: number;
+}
+
+// --- Детализированные типы ---
+
 export interface WeightHistoryDTO {
   id: number;
   date: string;
@@ -6,8 +21,8 @@ export interface WeightHistoryDTO {
 }
 
 export interface VolumeHistoryDTO {
-  date: string; // "2023-W40" или "2023-10"
-  volume: number; // Общий тоннаж
+  date: string;
+  volume: number;
 }
 
 export interface PersonalRecordDTO {
@@ -15,7 +30,7 @@ export interface PersonalRecordDTO {
   exerciseName: string;
   weight: number;
   date: string;
-  previousWeight?: number; // Для сравнения
+  previousWeight?: number;
 }
 
 export interface BodyMeasurementDTO {
@@ -28,14 +43,14 @@ export interface BodyMeasurementDTO {
 }
 
 export interface ActivityHeatmapDTO {
-  date: string; // YYYY-MM-DD
-  count: number; // Количество тренировок (обычно 1)
+  date: string;
+  count: number;
 }
 
 export interface MuscleDistributionDTO {
   muscleGroupName: string;
-  percentage: number; // 0-100
-  color: string; // Цвет для графика
+  percentage: number;
+  color: string;
 }
 
 export interface GoalDTO {
@@ -43,15 +58,12 @@ export interface GoalDTO {
   title: string;
   current: number;
   target: number;
-  unit: string; // "kg", "workouts", "km"
+  unit: string;
 }
 
+// --- Агрегированные данные для UI ---
 export interface ProgressPageData {
-  weightHistory: WeightHistoryDTO[];
-  volumeHistory: VolumeHistoryDTO[];
-  personalRecords: PersonalRecordDTO[];
-  bodyMeasurements: BodyMeasurementDTO[];
-  activityHeatmap: ActivityHeatmapDTO[];
-  muscleDistribution: MuscleDistributionDTO[];
-  goals: GoalDTO[];
+  weightHistory: ChartPointDTO[];
+  bmiHistory: ChartPointDTO[];
+  summary: ProgressSummaryDTO;
 }

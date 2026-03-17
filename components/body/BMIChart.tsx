@@ -13,11 +13,11 @@ interface Props {
   showDots?: boolean;
 }
 
-export const BMIChart: React.FC<Props> = ({ 
-  data, 
-  title = "BMI Progress", 
+export const BMIChart: React.FC<Props> = ({
+  data,
+  title = "BMI Progress",
   height = 220,
-  showDots = true 
+  showDots = true,
 }) => {
   const { theme } = useTheme();
   const screenWidth = Dimensions.get("window").width;
@@ -25,22 +25,25 @@ export const BMIChart: React.FC<Props> = ({
   if (!data || data.length === 0) {
     return (
       <Card className="p-4 mb-4 bg-card dark:bg-gray-800 ocean:bg-ocean-card rounded-2xl border-0 shadow-sm items-center justify-center h-40">
-        <Text className="text-muted-foreground dark:text-gray-400">No data available</Text>
+        <Text className="text-muted-foreground dark:text-gray-400">
+          No data available
+        </Text>
       </Card>
     );
   }
 
   // Берем последние 6 точек для графика, чтобы не перегружать
-  const chartData = data.slice(-6);
-  
-  const labels = chartData.map(d => dayjs(d.date).format("DD.MM"));
-  const values = chartData.map(d => d.value);
+  let chartData = data.slice(-6);
+  const labels = chartData.map((d) => dayjs(d.date).format("DD.MM"));
+  const values = chartData.map((d) => d.value);
 
   const chartConfig = {
-    backgroundGradientFrom: theme === "dark" ? "#1f2937" : theme === "ocean" ? "#0f172a" : "#ffffff",
-    backgroundGradientTo: theme === "dark" ? "#1f2937" : theme === "ocean" ? "#0f172a" : "#ffffff",
-    color: (opacity = 1) => 
-      theme === "dark" 
+    backgroundGradientFrom:
+      theme === "dark" ? "#1f2937" : theme === "ocean" ? "#0f172a" : "#ffffff",
+    backgroundGradientTo:
+      theme === "dark" ? "#1f2937" : theme === "ocean" ? "#0f172a" : "#ffffff",
+    color: (opacity = 1) =>
+      theme === "dark"
         ? `rgba(74, 222, 128, ${opacity})` // green-400
         : theme === "ocean"
           ? `rgba(56, 189, 248, ${opacity})` // sky-400
@@ -49,9 +52,9 @@ export const BMIChart: React.FC<Props> = ({
     barPercentage: 0.5,
     useShadowColorFromDataset: false,
     decimalPlaces: 1,
-    labelColor: (opacity = 1) => 
-      theme === "dark" 
-        ? `rgba(255, 255, 255, ${opacity})` 
+    labelColor: (opacity = 1) =>
+      theme === "dark"
+        ? `rgba(255, 255, 255, ${opacity})`
         : theme === "ocean"
           ? `rgba(226, 232, 240, ${opacity})`
           : `rgba(107, 114, 128, ${opacity})`, // gray-500
@@ -63,13 +66,13 @@ export const BMIChart: React.FC<Props> = ({
   };
 
   return (
-    <Card className="p-0 mb-4 bg-card dark:bg-gray-800 ocean:bg-ocean-card rounded-2xl border-0 shadow-sm overflow-hidden">
+    <Card className="p-0 mb-4 bg-card dark:bg-gray-800 ocean:bg-ocean-card rounded-2xl shadow-sm overflow-hidden border border-border">
       <View className="p-4 border-b border-border/50 dark:border-gray-700">
         <Text className="text-base font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
           {title}
         </Text>
       </View>
-      
+
       <LineChart
         data={{
           labels: labels,

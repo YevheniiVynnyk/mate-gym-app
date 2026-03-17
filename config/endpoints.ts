@@ -54,7 +54,7 @@ export const ENDPOINTS = {
     passwordForgot:
       "/auth/password/forgot" as Endpoint<"/auth/password/forgot">,
     guest: "/auth/guest" as Endpoint<"/auth/guest">,
-    registerGuest: "/auth/register-guest" as Endpoint<"/auth/register-guest">, // Добавлено
+    registerGuest: "/auth/register-guest" as Endpoint<"/auth/register-guest">,
   },
   tos: {
     root: "/tos" as Endpoint<"/tos">,
@@ -71,8 +71,10 @@ export const ENDPOINTS = {
     quick: "/statistics/quick" as Endpoint<"/statistics/quick">,
   },
   progress: {
+    root: "/progress" as Endpoint<"/progress">, // Добавлено
     exercisesById:
       "/progress/exercises/{exerciseId}" as Endpoint<"/progress/exercises/{exerciseId}">,
+    summary: "/progress/summary" as Endpoint<"/progress/summary">,
   },
   muscleGroups: {
     byId: "/muscle-groups/{id}" as Endpoint<"/muscle-groups/{id}">,

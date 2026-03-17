@@ -24,7 +24,7 @@ export default function DashboardStats({ quickStats }: Props) {
     : "0";
 
   return (
-    <Card className="p-4 mb-4 bg-card dark:bg-gray-800 ocean:bg-ocean-card rounded-2xl border-0 shadow-sm">
+    <Card className="bg-card p-4 rounded-xl border border-border">
       <Text className="text-base font-bold mb-3 text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
         {t("dashboardStats.title")}
       </Text>

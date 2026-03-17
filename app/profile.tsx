@@ -36,7 +36,6 @@ export default function Profile() {
         contentContainerStyle={{ padding: 16 }}
       >
         <GuestProfile />
-        <SettingsSection handleLogout={() => {}} />
       </ScrollView>
     );
   }

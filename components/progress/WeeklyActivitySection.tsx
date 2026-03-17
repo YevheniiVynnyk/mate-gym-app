@@ -10,15 +10,9 @@ export default function WeeklyActivitySection({
   weekProgress,
 }: any) {
   return (
-    <View
-      className="bg-card dark:bg-gray-800 ocean:bg-ocean-card 
-                 p-4 rounded-xl mb-4 border border-border dark:border-gray-700"
-    >
+    <View className="bg-card p-4 rounded-xl mb-4 border border-border">
       <View className="flex-row items-center mb-3">
-        <Calendar
-          size={20}
-          className="text-primary dark:text-green-500 ocean:text-ocean-primary"
-        />
+        <Calendar size={20} className="text-primary" />
         <Text className="ml-2 text-lg text-foreground dark:text-gray-100 ocean:text-ocean-foreground">
           Weekly Activity
         </Text>
@@ -29,7 +23,8 @@ export default function WeeklyActivitySection({
           {/* Кружки активности */}
           <View className="flex-row justify-between mb-3">
             {weeklyStats.map((stat: any) => {
-              let circleClasses = "bg-muted dark:bg-gray-600 ocean:bg-ocean-muted";
+              let circleClasses =
+                "bg-muted dark:bg-gray-600 ocean:bg-ocean-muted";
               let icon = "○";
               let textColor = "text-muted-foreground dark:text-gray-400";
 
@@ -51,12 +46,10 @@ export default function WeeklyActivitySection({
                   <View
                     className={cn(
                       "w-8 h-8 rounded-full items-center justify-center",
-                      circleClasses
+                      circleClasses,
                     )}
                   >
-                    <Text className={cn("font-bold", textColor)}>
-                      {icon}
-                    </Text>
+                    <Text className={cn("font-bold", textColor)}>{icon}</Text>
                   </View>
                 </View>
               );

@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, AlertTriangle } from "lucide-react-native";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@/hooks/useNavigation";
 
@@ -17,14 +17,13 @@ import RegisterForm from "@/components/login/RegisterForm";
 import LoginForm from "@/components/login/LoginForm";
 import AuthTabs from "@/components/login/AuthTabs";
 import Header from "@/components/login/Header";
-import LanguageDropdown from "@/components/login/LanguageDropdown";
 import { useLogin } from "@/hooks/useLogin";
 import { useAuth, UserSessionState } from "@/contexts/AuthContext";
 
 export default function Auth() {
   const { t } = useTranslation();
   const router = useNavigation();
-  const { sessionState } = useAuth();
+  const { sessionState, sessionExpired } = useAuth();
   const {
     isLoading,
     isRegistering,
@@ -36,8 +35,6 @@ export default function Auth() {
     handleLogin,
     handleRegister,
     handleGuestLogin,
-    setShowTermsRequired,
-    goToResetPasswordRequest,
   } = useLogin();
 
   const shift = useRef(new Animated.Value(0)).current;
@@ -92,8 +89,6 @@ export default function Auth() {
           <ArrowLeft size={24} color="#111827" />
         </TouchableOpacity>
 
-        {/*<LanguageDropdown />*/}
-
         <View className="flex-1 justify-center">
           <Header />
 
@@ -101,15 +96,23 @@ export default function Auth() {
             style={{ transform: [{ translateY: shift }] }}
             className={`rounded-2xl shadow-xl p-4 mt-8 mx-4 ${cardBg}`}
           >
+            {sessionExpired && (
+              <View className="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg mb-4 flex-row items-center">
+                <AlertTriangle size={24} className="text-yellow-500 mr-3" />
+                <Text className="text-yellow-600 dark:text-yellow-400 text-xs flex-1">
+                  Your guest session has expired. To save your data, please sign
+                  up or log in again.
+                </Text>
+              </View>
+            )}
+
             <View className="p-2">
               <Text
                 className={`text-2xl font-bold tracking-tight text-center font-sans ${textFg}`}
               >
                 {t("welcome.animatedView.title")}
               </Text>
-              <Text
-                className={`text-sm text-center font-sans ${textMutedFg}`}
-              >
+              <Text className={`text-sm text-center font-sans ${textMutedFg}`}>
                 {t("welcome.animatedView.text")}
               </Text>
             </View>
@@ -125,7 +128,7 @@ export default function Auth() {
                 setForm={setLoginForm}
                 onSubmit={handleLogin}
                 isLoading={isLoading}
-                onForgotPassword={goToResetPasswordRequest}
+                onForgotPassword={() => {}}
               />
             ) : (
               <RegisterForm
@@ -136,7 +139,6 @@ export default function Auth() {
               />
             )}
 
-            {/* Кнопка гостевого входа - скрываем, если уже гость */}
             {sessionState !== UserSessionState.GUEST && (
               <TouchableOpacity
                 onPress={handleGuestLogin}

@@ -4,26 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="fix: view training and ads">
-      <change afterPath="$PROJECT_DIR$/components/body/AddBodyMetricsModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/body/BMIChart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/GoalsProgress.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/PersonalRecords.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/charts/ActivityHeatmap.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/progress/charts/WeightChart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/mockProgressService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/progress.ts" afterDir="false" />
+    <list default="true" id="47e8f103-06ea-40cc-9ef7-e65268ba34f8" name="Changes" comment="added mock logic for progress">
+      <change afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/GuestWarningBanner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/OnboardingBanner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/onboarding/OnboardingWizard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/onboarding/steps/BasicInfoStep.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/onboarding/steps/BodyMetricsStep.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/onboarding/steps/ProfileStep.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/progress/charts/MuscleDistributionChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/progressService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/trainingDay/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/trainingDay/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/UserInfoSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ads/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ads/Banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/body/AddBodyMetricsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/body/AddBodyMetricsModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/body/BMIChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/body/BMIChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/body/BodyProgress.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/DashboardStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/DashboardStats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/TodayWorkoutCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/TodayWorkoutCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/GoalsProgress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/GoalsProgress.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/PersonalRecords.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/PersonalRecords.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/WeeklyActivitySection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/WeeklyActivitySection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/charts/ActivityHeatmap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/charts/ActivityHeatmap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/progress/charts/WeightChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/progress/charts/WeightChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trainingDay/SetInputs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/trainingDay/SetInputs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/endpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/endpoints.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/AuthContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useDashboardData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useDashboardData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useInterstitialAd.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useInterstitialAd.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useProfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProfile.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hooks/useProgress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useProgress.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/bodyService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/bodyService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mockProgressService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/userService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/progress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/progress.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,47 +97,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20260205_0001&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.20.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.19.31&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vinni/Project/android/mate-gym-app/app&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\vinni\\Project\\android\\mate-gym-app\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start -- -с --dev-client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start --dev-client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start --с --dev-client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start -c.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start -с --dev-client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start -с.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\vinni\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.google.cloudcode.ide_session_index": "20260205_0001",
+    "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.nodejs.core.library.configured.version": "20.20.0",
+    "javascript.nodejs.core.library.typings.version": "20.19.31",
+    "javascript.preferred.runtime.type.id": "node",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/vinni/Project/android/mate-gym-app/app",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "C:\\Users\\vinni\\Project\\android\\mate-gym-app\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start -- -с --dev-client.executor": "Run",
+    "npm.start --dev-client.executor": "Run",
+    "npm.start --с --dev-client.executor": "Run",
+    "npm.start -c.executor": "Run",
+    "npm.start -с --dev-client.executor": "Run",
+    "npm.start -с.executor": "Run",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "ts.external.directory.path": "C:\\Users\\vinni\\Project\\android\\mate-gym-app\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vinni\Project\android\mate-gym-app\app" />
@@ -281,6 +304,16 @@
       <workItem from="1772803147314" duration="1495000" />
       <workItem from="1772808318352" duration="57000" />
       <workItem from="1772810098363" duration="5509000" />
+      <workItem from="1772824968829" duration="3550000" />
+      <workItem from="1772965485089" duration="50000" />
+      <workItem from="1772965686473" duration="1133000" />
+      <workItem from="1772991705349" duration="708000" />
+      <workItem from="1773065276008" duration="13428000" />
+      <workItem from="1773138005177" duration="61000" />
+      <workItem from="1773308766268" duration="11886000" />
+      <workItem from="1773492543641" duration="1259000" />
+      <workItem from="1773574497772" duration="7788000" />
+      <workItem from="1773732531693" duration="4242000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -418,7 +451,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772734710295</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added mock logic for progress">
+      <option name="closed" value="true" />
+      <created>1772825059919</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1772825059919</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +503,8 @@
     <MESSAGE value="remove offline logic and added Guest Profile" />
     <MESSAGE value="implement guest user lifecycle and account merging" />
     <MESSAGE value="fix: view training and ads" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: view training and ads" />
+    <MESSAGE value="added mock logic for progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="added mock logic for progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

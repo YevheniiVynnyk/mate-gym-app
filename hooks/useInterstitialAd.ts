@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { AdEventType, InterstitialAd } from "react-native-google-mobile-ads";
+import ENV from "@/config/env";
 
-const AD_UNIT_ID = "ca-app-pub-3240569896257496/4535528104";
-
-const interstitial = InterstitialAd.createForAdRequest(AD_UNIT_ID, {
+const interstitial = InterstitialAd.createForAdRequest(ENV.INTERSTITIAL_AD_ID!, {
   requestNonPersonalizedAdsOnly: true,
 });
 

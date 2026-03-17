@@ -25,7 +25,7 @@ export const userService = {
     return response.data;
   },
   // Обновить пользователя
-  async updateUser(user: UserDTO): Promise<void> {
+  async update(user: UserDTO): Promise<void> {
     await api.put(ENDPOINTS.users.root, user);
   },
 };

@@ -3,22 +3,26 @@ import { Modal, Platform, Text, TouchableOpacity, View } from "react-native";
 import { Card } from "@/components/ui/Card";
 import { TextInputUI } from "@/components/ui/TextInputUI";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { bodyService } from "@/services/bodyService";
+import { bodyService, BodyDTO } from "@/services/bodyService";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react-native";
-import { WeightHistoryDTO } from "@/types/progress";
 
 interface Props {
   visible: boolean;
   onClose: () => void;
   onSuccess: () => void;
-  initialData?: WeightHistoryDTO | null;
+  initialData?: BodyDTO | null;
 }
 
-export const AddBodyMetricsModal: React.FC<Props> = ({ visible, onClose, onSuccess, initialData }) => {
+export const AddBodyMetricsModal: React.FC<Props> = ({
+  visible,
+  onClose,
+  onSuccess,
+  initialData,
+}) => {
   const { t } = useTranslation();
   const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState(""); // Height might not be in WeightHistoryDTO, need to handle
+  const [height, setHeight] = useState("");
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,7 +31,7 @@ export const AddBodyMetricsModal: React.FC<Props> = ({ visible, onClose, onSucce
     if (visible) {
       if (initialData) {
         setWeight(initialData.weight.toString());
-        // setHeight(initialData.height.toString()); // Если height есть в DTO
+        setHeight(initialData.height.toString());
         setDate(new Date(initialData.date));
       } else {
         setWeight("");
@@ -38,19 +42,28 @@ export const AddBodyMetricsModal: React.FC<Props> = ({ visible, onClose, onSucce
   }, [visible, initialData]);
 
   const handleSave = async () => {
-    if (!weight) return; // Height might be optional for updates
+    if (!weight || !height) return;
 
     setLoading(true);
     try {
-      // Если есть initialData, это обновление (но у нас нет ID в WeightHistoryDTO пока)
-      // В реальном приложении: if (initialData?.id) await bodyService.update(...)
-      
-      // Пока просто создаем новую запись
-      await bodyService.createBodyRecord({
-        weight: parseFloat(weight),
-        height: parseFloat(height) || 175, // Default height if not provided
-        date: date,
-      });
+      if (initialData) {
+        // Обновление
+        await bodyService.update({
+          ...initialData,
+          weight: parseFloat(weight),
+          height: parseFloat(height),
+          date: date,
+        });
+        console.log("Body metrics updated successfully");
+        console.log(initialData);
+      } else {
+        // Создание
+        await bodyService.create({
+          weight: parseFloat(weight),
+          height: parseFloat(height),
+          date: date,
+        });
+      }
       onSuccess();
       onClose();
     } catch (e) {
@@ -84,7 +97,9 @@ export const AddBodyMetricsModal: React.FC<Props> = ({ visible, onClose, onSucce
 
           <View className="space-y-4">
             <View>
-              <Text className="text-sm font-medium text-muted-foreground mb-1">Weight (kg)</Text>
+              <Text className="text-sm font-medium text-muted-foreground mb-1">
+                Weight (kg)
+              </Text>
               <TextInputUI
                 value={weight}
                 onChangeText={setWeight}
@@ -95,7 +110,9 @@ export const AddBodyMetricsModal: React.FC<Props> = ({ visible, onClose, onSucce
             </View>
 
             <View>
-              <Text className="text-sm font-medium text-muted-foreground mb-1">Height (cm)</Text>
+              <Text className="text-sm font-medium text-muted-foreground mb-1">
+                Height (cm)
+              </Text>
               <TextInputUI
                 value={height}
                 onChangeText={setHeight}
@@ -106,7 +123,9 @@ export const AddBodyMetricsModal: React.FC<Props> = ({ visible, onClose, onSucce
             </View>
 
             <View>
-              <Text className="text-sm font-medium text-muted-foreground mb-1">Date</Text>
+              <Text className="text-sm font-medium text-muted-foreground mb-1">
+                Date
+              </Text>
               <TouchableOpacity
                 onPress={() => setShowDatePicker(true)}
                 className="bg-secondary/30 p-3 rounded-xl"

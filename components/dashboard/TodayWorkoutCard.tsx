@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { Card, cn } from "@/components/ui/Card";
-import { Calendar, ChevronRight, Dumbbell, Play } from "lucide-react-native";
+import { Card } from "@/components/ui/Card";
+import { ChevronRight, Dumbbell, Play } from "lucide-react-native";
 import { TrainingDay } from "@/types/trainingDay";
 import { useRouter } from "expo-router";
 
@@ -14,7 +14,7 @@ export const TodayWorkoutCard: React.FC<Props> = ({ workout }) => {
 
   if (!workout) {
     return (
-      <Card className="p-5 my-4 bg-primary/10 dark:bg-primary-900/20 ocean:bg-ocean-primary/10 rounded-2xl border-0">
+      <Card className="p-5 my-4 bg-primary/10 dark:bg-primary-900/20 ocean:bg-ocean-primary/10 rounded-2xl border border-border">
         <View className="flex-row justify-between items-center">
           <View className="flex-1">
             <Text className="text-lg font-bold text-foreground dark:text-gray-100 ocean:text-ocean-foreground mb-1">

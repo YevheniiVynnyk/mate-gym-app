@@ -3,14 +3,13 @@ import { ScrollView, Text, View } from "react-native";
 import { useProgress } from "@/hooks/useProgress";
 import { LoadingPage } from "@/components/ui/LoadingPage";
 import { useInterstitialAd } from "@/hooks/useInterstitialAd";
-
-// Новые компоненты
+import { AddBodyMetricsModal } from "@/components/body/AddBodyMetricsModal";
 import { WeightChart } from "@/components/progress/charts/WeightChart";
-import { PersonalRecords } from "@/components/progress/PersonalRecords";
 import { ActivityHeatmap } from "@/components/progress/charts/ActivityHeatmap";
+import { MuscleDistributionChart } from "@/components/progress/charts/MuscleDistributionChart";
 
 export default function Progress() {
-  const { data, loading, refresh } = useProgress();
+  const { data, bodyData, loading, refresh } = useProgress();
   const { showAd, loaded } = useInterstitialAd();
   const [hasShownAd, setHasShownAd] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -36,13 +35,28 @@ export default function Progress() {
 
   return (
     <View className="flex-1 bg-gray-50 dark:bg-gray-900 ocean:bg-ocean-background">
-      <ScrollView className="flex-1 p-4" showsVerticalScrollIndicator={false}>
-        <WeightChart data={data.weightHistory} onRefresh={refresh} />
+      <ScrollView
+        className="flex-1 p-4"
+        contentContainerStyle={{ paddingBottom: 100 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <WeightChart
+          weightData={data.weightHistory}
+          bmiData={data.bmiHistory}
+          fullHistory={bodyData}
+          onRefresh={refresh}
+        />
 
-        <PersonalRecords records={data.personalRecords} />
+        <MuscleDistributionChart data={data.summary.muscleDistribution} />
 
-        <ActivityHeatmap data={data.activityHeatmap} />
+        <ActivityHeatmap data={data.summary.activityHeatmap} />
       </ScrollView>
+
+      <AddBodyMetricsModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onSuccess={refresh}
+      />
     </View>
   );
 }

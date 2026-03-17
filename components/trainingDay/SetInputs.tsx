@@ -26,7 +26,6 @@ const SetInputs: React.FC<SetInputsProps> = ({
   );
   const handleSetsChange = (newSetsCount: number) => {
     if (newSetsCount >= 1 && newSetsCount <= 10 && onSetsChange) {
-      console.log("Sets", newSetsCount);
       onSetsChange(newSetsCount);
 
       // Добавляем новые элементы в weightInputs при увеличении подходов
